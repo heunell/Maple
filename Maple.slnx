@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Maple/Maple.vcxproj" Id="a71efa28-d7f8-4bd3-8a5b-797578e71be4" />
+</Solution>
