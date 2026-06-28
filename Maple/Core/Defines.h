@@ -2,6 +2,7 @@
 #include <memory>
 
 #define DESTROY(ptr) if(ptr) { ptr->Destroy(); Delete(ptr);}
+
 template<typename T>
 using Ptr = std::shared_ptr<T>;
 

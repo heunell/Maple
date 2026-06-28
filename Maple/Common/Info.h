@@ -10,6 +10,7 @@ public:
     }
 };
 
+
 struct FResolution
 {
     uint32 _width = 0;
@@ -18,7 +19,7 @@ struct FResolution
 
 struct FVertexBuffer
 {
-    ComPtr<ID3D11Buffer> _buffer;
+    ComPtr<ID3D11Buffer> _buffer = nullptr;
     int32 _size = 0;
     int32 _count = 0;
     std::vector<byte> _data;
@@ -42,13 +43,13 @@ struct FVertexColor
         _pos._x = x;
         _pos._y = y;
         _pos._z = z;
-        
+
         _color._x = r;
         _color._y = g;
         _color._z = b;
         _color._w = a;
     }
-    
+
     FVector3D _pos;
     FVector4D _color;
 };
@@ -66,6 +67,7 @@ struct FTransformMatrix
     FMatrix _rotation;
     FMatrix _translate;
     FMatrix _world;
+
 };
 
 struct FAABB2D
@@ -85,8 +87,8 @@ struct FVertexTexture
 {
     FVector3D _pos;
     FVector2D _uv;
-    
-    FVertexTexture(float x, float y, float z, float u, float v) : _pos(x,y,z), _uv(u,v) {}
+
+    FVertexTexture(float x, float y, float z, float u, float v) : _pos(x, y, z), _uv(u, v) {}
 };
 
 struct FAnimationFrame
@@ -109,6 +111,170 @@ enum class eAssetType
     ANIMATION,
     SOUND,
     FONT,
+    END
+};
+
+namespace SHADER_TYPE
+{
+    enum eType
+    {
+        VERTEX = 0x1,
+        PIXEL = 0x2,
+        GRAPHIC = VERTEX | PIXEL
+    };
+}
+
+namespace INPUT_TYPE
+{
+    enum eType
+    {
+        DOWN,       
+        HOLD,      
+        UP,         
+        END
+    };
+}
+
+enum class eInputSystemType
+{
+    DINPUT,
+    WINDOW,
+    END
+};
+
+namespace MOUSE_BUTTON_TYPE
+{
+    enum Type
+    {
+        LButton,
+        RButton,
+        Wheel,
+        End
+    };
+}
+
+namespace AXIS_TYPE
+{
+    enum Type
+    {
+        X,
+        Y,
+        Z, 
+        END
+    };
+}
+
+enum eCollisionChannel : unsigned char
+{
+    COLLISION_CHANNEL_PLAYER,
+    COLLISION_CHANNEL_MONSTER,
+    COLLISION_CHANNEL_BULLET,
+    COLLISION_CHANNEL_ITEM,
+    COLLISION_CHANNEL_BOSS,
+    COLLISION_CHANNEL_END,
+};
+
+enum class eCollisionShape
+{
+    AABB,              
+    OBB,              
+    Sphere,           
+    End
+};
+
+enum eCollisionResponse : unsigned char
+{
+    COLLISION_RESPONSE_IGNORE,      
+    COLLISION_RESPONSE_BLOCK,       
+    COLLISION_RESPONSE_OVERLAP,     
+    COLLISION_RESPONSE_END,
+};
+
+enum eCollisionState
+{
+    COLLISION_STATE_RELEASE,
+    COLLISION_STATE_BLOCK,  
+    COLLISION_STATE_OVERLAP,
+    COLLISION_STATE_END
+};
+
+enum eTextureSampleType
+{
+    TEXTURE_SAMPLE_POINT, 
+    TEXTURE_SAMPLE_LINEAR,
+    TEXTURE_SAMPLE_ANISOTROPIC, 
+    TEXTURE_SAMPLE_END
+};
+
+
+enum class eRenderState
+{
+    BLEND,
+    DEPTHSTENCIL,
+    END
+};
+
+
+enum class eAnimTextureType
+{
+    SPRITE,
+    FRAME,
+    END
+};
+
+enum class eTileType
+{
+    NORMAL,         //갈수 있는 곳
+    BLOCK,          //못 가는 곳
+    END
+};
+
+namespace AI_EVENT_STATE
+{
+    enum Type
+    {
+        EXIT,
+        ENTER,
+        TICK,
+        END
+    };
+}
+
+enum class eTransitionRule
+{
+    AND,
+    OR,
+    END
+};
+
+namespace UI_BUTTON_STATE
+{
+    enum Type
+    {
+        ENABLE,
+        DISABLE,
+        HOVERED,
+        PRESSED,
+        CLICK,
+        END
+    };
+}
+
+namespace UI_BUTTON_EVENT_STATE
+{
+    enum Type
+    {
+        HOVERED,
+        UNHOVERED,
+        PRESSED,
+        CLICK,
+        END
+    };
+}
+
+enum class BUTTONTYPE
+{
+    NUM,
     END
 };
 

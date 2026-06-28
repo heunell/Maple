@@ -22,11 +22,11 @@ public:
     virtual void Collision(float deltaTime);
     virtual void Render(float deltaTime);
     virtual void RenderUI(float deltaTime);
-    virtual void Destroy();
+    virtual void Destroy() override;
     
 public:
     Ptr<class Level> GetCurLevel() const;
-    Ptr<class Level> GetPlayer() const;
+    Ptr<class Actor> GetPlayer() const;
     void  SetMainPlayer(Ptr<class Actor> player);
     
 public:

@@ -7,7 +7,7 @@ class Object : public std::enable_shared_from_this<Object>
 {
 public:
     Object() {}
-    ~Object() {}
+    virtual ~Object() {}
     
 protected:
     bool _bEnable = false;
@@ -25,7 +25,7 @@ public:
     void Pool() {_IsPooled = true; }
     
     virtual void DrawInspector();
-    virtual void Destory() = 0;
+    virtual void Destroy() = 0;
     
     template<typename T>
     Ptr<T> This()

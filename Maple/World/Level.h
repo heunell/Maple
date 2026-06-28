@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Core/Object.h"
 #include "Common/IArchive.h"
+#include "Object/Actor.h"
 #include <map>
 #include <vector>
 
@@ -25,13 +26,23 @@ public:
     virtual void Collision(float deltaTime);
     virtual void Render(float deltaTime);
     virtual void RenderUI(float deltaTime);
-    virtual void Destory() override;
+    virtual void Destroy() override;
     virtual void Save(std::ofstream& file);
     virtual void Load(std::ifstream& file);
     virtual void AddTag(const std::string& tag, int32 id);
     void DeleteTag(Ptr<class Actor> actor);
     const std::map<int32, Ptr<class Actor>>& GetActors() const;
-    
+    void SetMainCamera(Ptr<class CameraComponent> camera);
+    Ptr<class CameraComponent> GetMainCamera() const;
+    const FMatrix& GetViewMatirx() const;
+    const FMatrix& GetProjMatrix() const;
+    const FVector3D& GetCameraWorldPos() const;
+    const FMatrix& GetUIProjMatrix() const;
+    void AddCollision(std::pair<int32, int32>& colID, Ptr<class CollisionComponent> comp);
+    void RemoveCollision(std::pair<int32, int32>& colID);
+    Ptr<class CollisionComponent> FindCollider(std::pair<int32, int32>& colID);
+    void FindActors(const std::string& tag, OUT std::vector<Ptr<class Actor>>& outArr);
+    void RemoveActor(int32 id);
 public:
     template<typename T>
     Ptr<T> FindActor(int32 id)

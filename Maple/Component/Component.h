@@ -28,8 +28,7 @@ public:
     virtual void Tick(float deltaTime);
     virtual void Collision(float deltaTime);
     virtual void Render(float deltaTime);
-    virtual void DrawInspector() override;
-    virtual void Destroy();
+    virtual void Destroy() override;
     
 public:
     virtual void Save(std::ofstream& file);

@@ -26,14 +26,11 @@ protected:
     std::unordered_map<std::string, int> _componentFinder;
     
 public:
-    virtual bool Init(int32 id, const FVector3D& pos, FVector3D& scale, const FRotator& rot, const std::string& name);
+    virtual bool Init(int32 id, const FVector3D& pos, const FVector3D& scale, const FRotator& rot, const std::string& name);
     virtual void Tick(float deltaTime);
     virtual void Collision(float deltaTime);
     virtual void Render(float deltaTime);
-    virtual void DrawInspector() override;
-    virtual void Destroy();
-    virtual void Save(std::ofstream& file);
-    virtual void Load(std::ifstream& file);
+    virtual void Destroy() override;
     
 public:
     Ptr<class SceneComponent> GetRoot() const;
