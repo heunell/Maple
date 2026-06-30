@@ -1,5 +1,9 @@
 ﻿#include "pch.h"
 #include "Level.h"
+#include "CameraManager.h"
+#include "Core/Device.h"
+#include "Core/DirectoryManager.h"
+#include "Component/CameraComponent.h"
 
 Level::Level()
 {}

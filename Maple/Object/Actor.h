@@ -63,7 +63,7 @@ public:
     
 public:
     const FTransform& GetWorldTransform() const;
-    void SetWorldTransform(const FTransform& transform);
+    void SetWorldTransform(const FTransform& trans);
     void SetWorldTransform(const FVector3D& pos, const FVector3D& scale, const FRotator& rot);
     
     const FVector3D& GetWorldScale() const;
@@ -99,7 +99,7 @@ public:
     void SetWorldRotation(float x, float y);
 
     const FTransform& GetRelativeTransform() const;
-    void SetRelativeTransform(const FTransform& transform);
+    void SetRelativeTransform(const FTransform& trans);
     void SetRelativeTransform(const FVector3D& pos, const FVector3D& scale, const FRotator& rot);
 
     const FVector3D& GetRelativeScale() const;
