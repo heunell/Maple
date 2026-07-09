@@ -22,8 +22,8 @@ private:
     TCHAR     _titleName[256] = {};
     float     _clearColor[4]  = { 1, 1, 1, 1 }; // 바탕색 : 하얀색
     
-    //Ptr<class World> _world;
-    //Ptr<class Input> _input;
+    Ptr<class World> _world;
+    Ptr<class Input> _input;
     
 public:
     virtual void Destroy() override;
@@ -35,7 +35,7 @@ public:
     HINSTANCE GetHINSTANCE() const { return _hInst; }
     HWND      GetHWND()      const { return _hWnd;  }
     
-    //Ptr<class World> GetWorld() const;
+    Ptr<class World> GetWorld() const;
     
 private:
     bool Create();

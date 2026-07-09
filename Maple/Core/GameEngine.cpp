@@ -3,6 +3,7 @@
 #include "DirectoryManager.h"
 #include "Device.h"
 #include "Defines.h"
+#include "World/World.h"
 
 void GameEngine::Destroy()
 {
@@ -43,6 +44,11 @@ int GameEngine::Run()
         }
     }
     return (int)msg.wParam;
+}
+
+Ptr<class World> GameEngine::GetWorld() const
+{
+    return _world;
 }
 
 bool GameEngine::Create()

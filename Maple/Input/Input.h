@@ -20,7 +20,7 @@ public:
     
 private:
     HINSTANCE _hInst = 0;
-    HWND      _hwnd  = 0;
+    HWND      _hWnd  = 0;
     ComPtr<IDirectInput8>       _input    = nullptr;
     ComPtr<IDirectInputDevice8> _keyboard = nullptr;
     ComPtr<IDirectInputDevice8> _mouse    = nullptr;
@@ -45,7 +45,7 @@ public:
 
 public:
     bool Init();
-    void Tick(float delatTime);
+    void Tick(float deltaTime);
     bool GetKeyState(uint8 key);
     virtual void Destroy() override;
 

@@ -5,6 +5,7 @@
 #include "Core/DirectoryManager.h"
 #include "Component/CameraComponent.h"
 
+// todo : TagManager, CameraManager, Collision/CollisionManager, Component/CollisionComponent 
 Level::Level()
 {}
 

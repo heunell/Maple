@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "Controller.h"
+#include "Component/InputComponent.h"
 
 class PlayerController : public Controller
 {
