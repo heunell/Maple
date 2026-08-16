@@ -7,12 +7,12 @@
 
 struct FRenderLayer
 {
-    std::string _name;
-    int32 _order;
+    std::string _Name;
+    int32 _Order;
     
-    std::vector<Weak<class SceneComponent>> _renders;
-    std::map<std::pair<int32, int32>, Weak<class SceneComponent>> _finder;
-    bool _refreshRenders;
+    std::vector<Weak<class SceneComponent>> _Renders;
+    std::map<std::pair<int32, int32>, Weak<class SceneComponent>> _Finder;
+    bool _RefreshRenders;
 };
 
 class RenderManager : public Singleton<RenderManager>
@@ -26,29 +26,29 @@ public:
     RenderManager& operator=(RenderManager&&) = delete;
     
 private:
-    std::map<int32, FRenderLayer> _layers;
-    std::unordered_map<std::string, int32> _layerFinder;
-    std::vector<std::tuple<std::string, int32, int32>> _removeRenders;
-    bool _refreshLayer;
-    bool sortY = true;
+    std::map<int32, FRenderLayer> _Layers;
+    std::unordered_map<std::string, int32> _LayerFinder;
+    std::vector<std::tuple<std::string, int32, int32>> _RemoveRenders;
+    bool _RefreshLayer;
+    bool _SortY = true;
     
-    Ptr<class RenderStateManager> _renderStateManager;
-    Ptr<class BlendState>         _alphaBlend;
-    Ptr<class DepthStencilState>  _depthStencilState;
+    Ptr<class RenderStateManager> _RenderStateManager;
+    Ptr<class BlendState>         _AlphaBlend;
+    Ptr<class DepthStencilState>  _DepthStencilState;
     
 public:
     bool Init();
-    void Tick(float deltaTime);
-    void Render(float deltaTime);
+    void Tick(float DeltaTime);
+    void Render(float DeltaTime);
     void RefreshLayer();
-    void SetYSort(bool sort);
-    void AddRenderComponent(int32 actorID, Ptr<class SceneComponent> comp);
-    void RemoveRenderComponent(const std::string& layerName, int32 actorID, int32 compID);
-    FRenderLayer* FindLayer(const std::string& name);
+    void SetYSort(bool Sort);
+    void AddRenderComponent(int32 ActorID, Ptr<class SceneComponent> Component);
+    void RemoveRenderComponent(const std::string& LayerName, int32 ActorID, int32 ComponentID);
+    FRenderLayer* FindLayer(const std::string& Name);
     virtual void Destroy() override;
     Ptr<class BlendState> GetAlphaBlend();
     Ptr<class DepthStencilState> GetDepthStencilState();
     
 private:
-    void CreateRenderLayer(const std::string& name, int32 order);
+    void CreateRenderLayer(const std::string& Name, int32 Order);
 };

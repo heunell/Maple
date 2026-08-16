@@ -18,12 +18,12 @@ private:
     HINSTANCE _hInst          = nullptr;
     HWND      _hWnd           = nullptr;
     HDC       _hdc            = nullptr;
-    TCHAR     _className[256] = {};
-    TCHAR     _titleName[256] = {};
-    float     _clearColor[4]  = { 1, 1, 1, 1 }; // 바탕색 : 하얀색
+    TCHAR     _ClassName[256] = {};
+    TCHAR     _TitleName[256] = {};
+    float     _ClearColor[4]  = { 1, 1, 1, 1 }; // 바탕색 : 하얀색
     
-    Ptr<class World> _world;
-    Ptr<class Input> _input;
+    Ptr<class World> _World;
+    Ptr<class Input> _Input;
     
 public:
     virtual void Destroy() override;
@@ -41,9 +41,9 @@ private:
     bool Create();
     void RegisterWindowClass();
     void Logic();
-    void Tick(float deltaTime);
-    void Collision(float deltaTime);
-    void Render(float deltaTime);
+    void Tick(float DeltaTime);
+    void Collision(float DeltaTime);
+    void Render(float DeltaTime);
     bool InitManager();
     static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 };

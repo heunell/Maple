@@ -23,7 +23,7 @@ void BlendState::SetSampleMask(UINT mask)
     _sampleMask = mask;
 }
 
-void BlendState::AddBlendDesc(bool enable, D3D11_BLEND src, D3D11_BLEND dest, D3D11_BLEND_OP blendop, D3D11_BLEND srcAlpha, D3D11_BLEND destAlpha, D3D11_BLEND_OP alphaOp, UINT renderTargetWriteMask)
+void BlendState::AddBlendDescription(bool enable, D3D11_BLEND src, D3D11_BLEND dest, D3D11_BLEND_OP blendop, D3D11_BLEND srcAlpha, D3D11_BLEND destAlpha, D3D11_BLEND_OP alphaOp, UINT renderTargetWriteMask)
 
 {
     D3D11_RENDER_TARGET_BLEND_DESC desc = {};

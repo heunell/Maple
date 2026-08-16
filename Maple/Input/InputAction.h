@@ -13,10 +13,12 @@ public:
     InputAction& operator=(InputAction&&) = default;
     
 private:
-    std::string _name;
+    std::string _Name;
     
 public:
-    void SetName(const std::string& name);
+    void SetName(const std::string& Name);
+   
     const std::string& GetName() const;
+    
     virtual void Destroy() override;
 };

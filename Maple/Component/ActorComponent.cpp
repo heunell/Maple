@@ -7,23 +7,23 @@ ActorComponent::ActorComponent()
 ActorComponent::~ActorComponent()
 {}
 
-bool ActorComponent::Init(int32 id, const std::string& name, Ptr<class Actor> owner)
+bool ActorComponent::Init(int32 Id, const std::string& Name, Ptr<class Actor> Owner)
 {
-    Component::Init(id, name, owner);
-    _type = COMPONENT_TYPE::ACTOR;
+    Component::Init(Id, Name, Owner);
+    _Type = COMPONENT_TYPE::ACTOR;
     return true;
 }
 
-void ActorComponent::Tick(float deltaTime)
+void ActorComponent::Tick(float DeltaTime)
 {
-    Component::Tick(deltaTime);
+    Component::Tick(DeltaTime);
 }
 
 void ActorComponent::Destroy()
 {}
 
-void ActorComponent::Save(std::ofstream& file)
+void ActorComponent::Save(std::ofstream& File)
 {}
 
-void ActorComponent::Load(std::ifstream& file)
+void ActorComponent::Load(std::ifstream& File)
 {}

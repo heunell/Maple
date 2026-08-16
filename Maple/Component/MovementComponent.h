@@ -5,26 +5,39 @@ class MovementComponent : public ActorComponent
 {
 public:
     MovementComponent() = default;
+    
     virtual ~MovementComponent() = default;
     
 protected:
-    float _speed = 0.f;
-    FVector3D _moveAxis  = FVector3D::Zero;
-    FVector3D _nextPosition = FVector3D::Zero;
-    Ptr<class SceneComponent> _updateComponent = nullptr;
+    float _Speed = 0.f;
+    
+    FVector3D _MoveAxis  = FVector3D::Zero;
+    
+    FVector3D _NextPosition = FVector3D::Zero;
+    
+    Ptr<class SceneComponent> _UpdateComponent = nullptr;
     
 public:
-    virtual bool Init(int32 id, const std::string& name, Ptr<class Actor> owner) override;
-    virtual void Tick(float deltaTime) override;
+    virtual bool Init(int32 Id, const std::string& Name, Ptr<class Actor> Owner) override;
+    
+    virtual void Tick(float DeltaTime) override;
+    
     virtual void Destroy() override;
     
 public:
-    void SetSpeed(float speed)           { _speed = speed; }
-    const float GetSpeed() const         { return _speed;  }
-    const FVector3D& GetMoveAxis() const { return _moveAxis; }
-    void SetUpdateComponent(Ptr<class SceneComponent> updateComp);
+    void SetSpeed(float Speed)           { _Speed = Speed; }
+    
+    const float GetSpeed() const         { return _Speed;  }
+    
+    const FVector3D& GetMoveAxis() const { return _MoveAxis; }
+    
+    void SetUpdateComponent(Ptr<class SceneComponent> UpdateComp);
+    
     Ptr<class SceneComponent> GetUpdateComponent() const;
-    void SetMoveAxis(const FVector3D& moveAxis);
-    void AddMoveAxis(const FVector3D& moveAxis);
+    
+    void SetMoveAxis(const FVector3D& MoveAxis);
+    
+    void AddMoveAxis(const FVector3D& MoveAxis);
+    
     void Stop();
 };

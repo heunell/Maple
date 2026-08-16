@@ -16,61 +16,96 @@ public:
     Level& operator=(Level&&) = delete;
     
 private:
-    int32 _actorID = 0;
-    std::map<int32, Ptr<class Actor>> _actors;
-    std::vector<int32> _removeActors;
+    int32 _ActorID = 0;
+   
+    std::map<int32, Ptr<class Actor>> _Actors;
     
+    std::vector<int32> _RemoveActors;
+    
+    Ptr<class TagManager> _TagManager;
+    
+    Ptr<class CameraManager> _CameraManager;
+    
+    Ptr<class CollisionManager> _CollisionManager;
+
 public:
-    virtual bool Init(const std::string& path);
-    virtual void Tick(float deltaTime);
-    virtual void Collision(float deltaTime);
-    virtual void Render(float deltaTime);
-    virtual void RenderUI(float deltaTime);
+    virtual bool Init(const std::string& Path);
+    
+    virtual void Tick(float DeltaTime);
+    
+    virtual void Collision(float DeltaTime);
+    
+    virtual void Render(float DeltaTime);
+    
+    virtual void RenderUI(float DeltaTime);
+    
     virtual void Destroy() override;
-    virtual void Save(std::ofstream& file);
-    virtual void Load(std::ifstream& file);
-    virtual void AddTag(const std::string& tag, int32 id);
-    void DeleteTag(Ptr<class Actor> actor);
+    
+    virtual void Save(std::ofstream& File);
+    
+    virtual void Load(std::ifstream& File);
+    
+    virtual void AddTag(const std::string& Tag, int32 Id);
+    
+    void DeleteTag(Ptr<class Actor> Actor);
+    
     const std::map<int32, Ptr<class Actor>>& GetActors() const;
-    void SetMainCamera(Ptr<class CameraComponent> camera);
+    
+    void SetMainCamera(Ptr<class CameraComponent> Camera);
+    
     Ptr<class CameraComponent> GetMainCamera() const;
-    const FMatrix& GetViewMatirx() const;
-    const FMatrix& GetProjMatrix() const;
-    const FVector3D& GetCameraWorldPos() const;
+    
+    const FMatrix& GetViewMatrix() const;
+    
+    const FMatrix& GetProjectionMatrix() const;
+    
+    const FVector3D& GetCameraWorldPosition() const;
+    
     const FMatrix& GetUIProjMatrix() const;
-    void AddCollision(std::pair<int32, int32>& colID, Ptr<class CollisionComponent> comp);
-    void RemoveCollision(std::pair<int32, int32>& colID);
-    Ptr<class CollisionComponent> FindCollider(std::pair<int32, int32>& colID);
-    void FindActors(const std::string& tag, OUT std::vector<Ptr<class Actor>>& outArr);
-    void RemoveActor(int32 id);
+    
+    void AddCollision(std::pair<int32, int32>& CollisionID, Ptr<class CollisionComponent> Component);
+    
+    void RemoveCollision(std::pair<int32, int32>& CollisionID);
+    
+    Ptr<class CollisionComponent> FindCollider(std::pair<int32, int32>& CollisionID);
+    
+    void FindActors(const std::string& Tag, OUT std::vector<Ptr<class Actor>>& OutArr);
+    
+    void RemoveActor(int32 Id);
+    
+    Ptr<Actor> FindActor(int32 Id);
+
 public:
     template<typename T>
-    Ptr<T> FindActor(int32 id)
+    Ptr<T> FindActor(int32 Id)
     {
-        auto it = _actors.find(id);
-        if (_actors.end() == it)
-            return nullptr;
+        auto It = _Actors.find(Id);
 
-        return Cast<Actor, T>(it->second);
+        if (_Actors.end() == It)
+        {
+            return nullptr;
+        }
+
+        return Cast<Actor, T>(It->second);
     }
 
     template<typename T>
-    Ptr<T> SpawnActor(const std::string& name, const FVector3D& pos, const FVector3D& scale, const FRotator& rot)
+    Ptr<T> SpawnActor(const std::string& Name, const FVector3D& Posision, const FVector3D& Scale, const FRotator& Rotation)
     {
-        Ptr<T> actor = New<T>();
+        Ptr<T> Actors = New<T>();
 
-        actor->SetLevel(This<Level>());
+        Actors->SetLevel(This<Level>());
 
-        int32 actorID = _actorID++;
+        int32 ActorID = _ActorID++;
 
-        if (!actor->Init(actorID, pos, scale, rot, name))
+        if (!Actors->Init(ActorID, Posision, Scale, Rotation, Name))
         {
-            DESTROY(actor)
-                return nullptr;
+            DESTROY(Actors)
+            return nullptr;
         }
 
-        _actors[actorID] = actor;
+        _Actors[ActorID] = Actors;
 
-        return actor;
+        return Actors;
     }
 };

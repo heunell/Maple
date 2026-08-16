@@ -8,15 +8,15 @@ bool Controller::Init(int32 id, const FVector3D& pos, const FVector3D& scale, co
     return true;
 }
 
-void Controller::Tick(float deltaTime)
+void Controller::Tick(float DeltaTime)
 {
-    Actor::Tick(deltaTime);
+    Actor::Tick(DeltaTime);
 }
 
-void Controller::Collision(float deltaTime)
+void Controller::Collision(float DeltaTime)
 {}
 
-void Controller::Render(float deltaTime)
+void Controller::Render(float DeltaTime)
 {}
 
 void Controller::Destroy()

@@ -1,14 +1,14 @@
 ﻿#include "pch.h"
 #include "InputAction.h"
 
-void InputAction::SetName(const std::string& name)
+void InputAction::SetName(const std::string& Name)
 {
-    _name = name;
+    _Name = Name;
 }
 
 const std::string& InputAction::GetName() const
 {
-    return _name;
+    return _Name;
 }
 
 void InputAction::Destroy()

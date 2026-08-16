@@ -13,25 +13,25 @@ public:
 
 struct FResolution
 {
-    uint32 _width = 0;
-    uint32 _height = 0;
+    uint32 _Width = 0;
+    uint32 _Height = 0;
 };
 
 struct FVertexBuffer
 {
-    ComPtr<ID3D11Buffer> _buffer = nullptr;
-    int32 _size = 0;
-    int32 _count = 0;
-    std::vector<byte> _data;
+    ComPtr<ID3D11Buffer> _Buffer = nullptr;
+    int32 _Size = 0;
+    int32 _Count = 0;
+    std::vector<byte> _Data;
 };
 
 struct FIndexBuffer
 {
     ComPtr<ID3D11Buffer> _buffer = nullptr;
-    int32 _size = 0;
-    int32 _count = 0;
-    DXGI_FORMAT _fmt = DXGI_FORMAT_UNKNOWN;
-    std::vector<byte> _data;
+    int32 _Size = 0;
+    int32 _Count = 0;
+    DXGI_FORMAT _Format = DXGI_FORMAT_UNKNOWN;
+    std::vector<byte> _Data;
 };
 
 struct FVertexColor
@@ -66,20 +66,20 @@ struct FTransformMatrix
     FMatrix _scale;
     FMatrix _rotation;
     FMatrix _translate;
-    FMatrix _world;
+    FMatrix _World;
 
 };
 
 struct FAABB2D
 {
-    FVector2D _min;
-    FVector2D _max;
+    FVector2D _Min;
+    FVector2D _Max;
 };
 
 struct FOBB2D
 {
     FVector2D _center;
-    FVector2D _axis[2];
+    FVector2D _Axis[2];
     FVector2D _halfSize;
 };
 

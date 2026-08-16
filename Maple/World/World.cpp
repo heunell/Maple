@@ -10,50 +10,59 @@ World::~World()
 
 void World::Init(const std::string& name)
 {
-    _curLevel = CreateLevel<Level>(name);
+    _CurLevel = CreateLevel<Level>(name);
 }
 
-void World::Tick(float deltaTime)
+void World::Tick(float DeltaTime)
 {
-    if (_curLevel)
-        _curLevel->Tick(deltaTime);
+    if (_CurLevel)
+    {
+        _CurLevel->Tick(DeltaTime);
+    }
 }
 
-void World::Collision(float deltaTime)
+void World::Collision(float DeltaTime)
 {
-    if (_curLevel)
-        _curLevel->Collision(deltaTime);
+    if (_CurLevel)
+    {
+        _CurLevel->Collision(DeltaTime);
+    }
 }
 
-void World::Render(float deltaTime)
+void World::Render(float DeltaTime)
 {
-    if (_curLevel)
-        _curLevel->Render(deltaTime);
+    if (_CurLevel)
+    {
+        _CurLevel->Render(DeltaTime);
+    }
 }
 
-void World::RenderUI(float deltaTime)
+void World::RenderUI(float DeltaTime)
 {
-    if (_curLevel)
-        _curLevel->RenderUI(deltaTime);
+    if (_CurLevel)
+    {
+        _CurLevel->RenderUI(DeltaTime);
+    }
 }
 
 void World::Destroy()
 {
-    DESTROY(_curLevel);
-    DESTROY(_nextLevel);
+    DESTROY(_CurLevel);
+
+    DESTROY(_NextLevel);
 }
 
 Ptr<class Level> World::GetCurLevel() const
 {
-    return _curLevel;
+    return _CurLevel;
 }
 
 Ptr<class Actor> World::GetPlayer() const
 {
-    return Lock<Actor>(_player);
+    return Lock<Actor>(_Player);
 }
 
-void World::SetMainPlayer(Ptr<class Actor> player)
+void World::SetMainPlayer(Ptr<class Actor> Player)
 {
-    _player = player;
+    _Player = Player;
 }

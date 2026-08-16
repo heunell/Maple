@@ -7,64 +7,84 @@
 
 CameraComponent::CameraComponent()
 {
-    FResolution rs = Device::Instance().GetRS();
-    _width = static_cast<float>(rs._width);
-    _height = static_cast<float>(rs._height);
+    FResolution Resolution = Device::Instance().GetRS();
+    
+    _Width = static_cast<float>(Resolution._Width);
+    
+    _Height = static_cast<float>(Resolution._Height);
 }
 
 CameraComponent::~CameraComponent()
 {}
 
-void CameraComponent::SetProjectionType(eCameraType type)
+void CameraComponent::SetProjectionType(eCameraType Type)
 {
-    _cameraType = type;
-    switch (_cameraType)
+    _CameraType = Type;
+    
+    switch (_CameraType)
     {
     case Perspective:
         break;
+    
     case Ortho:
-        _matProj = DirectX::XMMatrixOrthographicOffCenterLH(_width / -2, _width / 2, _height / -2, _height / 2, 0.f, _viewDistance);
+        _MatrixProjection = DirectX::XMMatrixOrthographicOffCenterLH(_Width / -2, _Width / 2, _Height / -2, _Height / 2, 0.f, _ViewDistance);
         break;
+    
     default:
         break;
     }
 }
 
-bool CameraComponent::Init(int32 id, const std::string& name, Ptr<class Actor> owner)
+bool CameraComponent::Init(int32 Id, const std::string& Name, Ptr<class Actor> Owner)
 {
-    SceneComponent::Init(id, name, owner);
-    SetProjectionType(_cameraType);
-    Ptr<Level> level = owner->GetLevel();
+    SceneComponent::Init(Id, Name, Owner);
+    
+    SetProjectionType(_CameraType);
+    
+    Ptr<Level> level = Owner->GetLevel();
+    
     if (nullptr == level)
+    {
         return false;
+    }
+
     level->SetMainCamera(This<CameraComponent>());
-    _type = COMPONENT_TYPE::CAMERA;
+    
+    _Type = COMPONENT_TYPE::CAMERA;
+    
     return true;
 }
 
-void CameraComponent::Tick(float deltaTime)
+void CameraComponent::Tick(float DeltaTime)
 {
-    SceneComponent::Tick(deltaTime);
-    _matView.Indentity();
+    SceneComponent::Tick(DeltaTime);
+    
+    _MatrixView.Indentity();
+   
     for (int i = 0; i < AXIS_TYPE::END; ++i)
     {
-        FVector3D axis = _axis[i];
-        memcpy(&_matView[i][0], &axis, sizeof(FVector3D));
+        FVector3D axis = _Axis[i];
+     
+        memcpy(&_MatrixView[i][0], &axis, sizeof(FVector3D));
     }
-    _matView.Transpose();
-    _matView._41 = -_axis[AXIS_TYPE::X].Dot(_world._position);
-    _matView._42 = -_axis[AXIS_TYPE::Y].Dot(_world._position);
-    _matView._43 = -_axis[AXIS_TYPE::Z].Dot(_world._position);
+   
+    _MatrixView.Transpose();
+    
+    _MatrixView._41 = -_Axis[AXIS_TYPE::X].Dot(_World._position);
+    
+    _MatrixView._42 = -_Axis[AXIS_TYPE::Y].Dot(_World._position);
+    
+    _MatrixView._43 = -_Axis[AXIS_TYPE::Z].Dot(_World._position);
 }
 
-void CameraComponent::Collision(float deltaTime)
+void CameraComponent::Collision(float DeltaTime)
 {
-    SceneComponent::Collision(deltaTime);
+    SceneComponent::Collision(DeltaTime);
 }
 
-void CameraComponent::Render(float deltaTime)
+void CameraComponent::Render(float DeltaTime)
 {
-    SceneComponent::Render(deltaTime);
+    SceneComponent::Render(DeltaTime);
 }
 
 void CameraComponent::Destroy()

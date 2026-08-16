@@ -8,16 +8,18 @@ Camera::Camera()
 Camera::~Camera()
 {}
 
-bool Camera::Init(int32 id, const FVector3D& pos, const FVector3D& scale, const FRotator& rot, const std::string& name)
+bool Camera::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
-    Actor::Init(id, pos, scale, rot, name);
-    _cam = CreateSceneComponent<CameraComponent>("cam");
+    Actor::Init(Id, Position, Scale, Rotator, Name);
+    
+    _Camera = CreateSceneComponent<CameraComponent>("camera");
+    
     return true;
 }
 
-void Camera::Tick(float deltaTime)
+void Camera::Tick(float DeltaTime)
 {
-    Actor::Tick(deltaTime);
+    Actor::Tick(DeltaTime);
 }
 
 void Camera::Destroy()

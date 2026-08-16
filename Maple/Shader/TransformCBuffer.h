@@ -9,21 +9,22 @@ public:
     virtual ~TransformCBuffer();
     
 private:
-    FTransformCBufferData _data;
+    FTransformCBufferData _Data;
     
 public:
-    virtual void Upate();
-    void SetWorldMatrix(const FMatrix& mat)
+    virtual void Update();
+
+    void SetWorldMatrix(const FMatrix& Matrix)
     {
-        _data._world = mat;
+        _Data._World = Matrix;
     }
-    void SetViewMatrix(const FMatrix& mat)
+    void SetViewMatrix(const FMatrix& Matrix)
     {
-        _data._view = mat;
+        _Data._View = Matrix;
     }
 
-    void SetProjMatrix(const FMatrix& mat)
+    void SetProjectionMatrix(const FMatrix& Matrix)
     {
-        _data._proj = mat;
+        _Data._Proj = Matrix;
     }
 };

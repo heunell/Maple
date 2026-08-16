@@ -12,36 +12,59 @@ class CameraComponent : public SceneComponent
 {
 public:
     CameraComponent();
+    
     virtual ~CameraComponent();
     
 protected:
-    FMatrix     _matView      = {};
-    FMatrix     _matProj      = {};
-    eCameraType _cameraType   = eCameraType::Ortho;
-    float       _viewAngle    = 90.f;
-    float       _width        = 0.f;
-    float       _height       = 0.f;
-    float       _viewDistance = 10000.f;
+    FMatrix     _MatrixView          = {};
+    
+    FMatrix     _MatrixProjection = {};
+    
+    eCameraType _CameraType    = eCameraType::Ortho;
+    
+    float       _ViewAngle     = 90.f;
+    
+    float       _Width         = 0.f;
+    
+    float       _Height        = 0.f;
+    
+    float       _ViewDistance  = 10000.f;
 
 public:
-    void SetProjectionType(eCameraType type);
-    eCameraType GetProjectionType() const           { return _cameraType; }
-    const FMatrix& GetViewMatrix() const            { return _matView; }
-    const FMatrix& GetProjMatrix() const            { return _matProj; }
-    float GetViewAnglg() const                      { return _viewAngle; }
-    void  SetViewAngle(float angle)                 { _viewAngle = angle; }
-    float GetWidth() const                          { return _width; }
-    void  SetWidht(float width)                     { _width = width; }
-    float GetHeight() const                         { return _height; }
-    void  SetHeight(float height)                   { _height = height; }
-    void  SetViewResolution(float w, float h)       { _width = w; _height = h; }
-    float GetViewDistance() const                   { return _viewDistance; }
-    void  SetViewDistance(float distance)           { _viewDistance = distance; }
+    void SetProjectionType(eCameraType Type);
+    
+    eCameraType GetProjectionType() const              { return _CameraType;                }
+                                                       
+    const FMatrix& GetViewMatrix() const               { return _MatrixView;                }
+                                                                                            
+    const FMatrix& GetProjectionMatrix() const         { return _MatrixProjection;          }
+                                                       
+    float GetViewAnglg() const                         { return _ViewAngle;                 }
+                                                       
+    void  SetViewAngle(float Angle)                    { _ViewAngle = Angle;                }
+                                                       
+    float GetWidth() const                             { return _Width;                     }
+                                                       
+    void  SetWidht(float Width)                        { _Width = Width;                    }
+                                                       
+    float GetHeight() const                            { return _Height;                    }
+                                                       
+    void  SetHeight(float Height)                      { _Height = Height;                  }
+    
+    void  SetViewResolution(float Width, float Height) { _Width = Width; _Height = Height;  }
+    
+    float GetViewDistance() const                      { return _ViewDistance;              }   
+                                                      
+    void  SetViewDistance(float Distance)              { _ViewDistance = Distance;          }
     
 public:
-    virtual bool Init(int32 id, const std::string& name, Ptr<class Actor> owner) override;
-    virtual void Tick(float deltaTime) override;
-    virtual void Collision(float deltaTime) override;
-    virtual void Render(float deltaTime) override;
+    virtual bool Init(int32 Id, const std::string& Name, Ptr<class Actor> Owner) override;
+    
+    virtual void Tick(float DeltaTime) override;
+    
+    virtual void Collision(float DeltaTime) override;
+    
+    virtual void Render(float DeltaTime) override;
+    
     virtual void Destroy() override;
 };

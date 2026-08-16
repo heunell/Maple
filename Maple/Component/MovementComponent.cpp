@@ -1,26 +1,39 @@
 ﻿#include "pch.h"
 #include "MovementComponent.h"
-
 #include "SceneComponent.h"
+#include "Controller/PlayerController.h"
+#include "Object/Pawn.h"
 
-bool MovementComponent::Init(int32 id, const std::string& name, Ptr<class Actor> owner)
+bool MovementComponent::Init(int32 Id, const std::string& Name, Ptr<class Actor> Owner)
 {
-    ActorComponent::Init(id, name, owner);
-    _speed = 1.f;
-    _type  = COMPONENT_TYPE::MOVEMENT;
+    ActorComponent::Init(Id, Name, Owner);
+    
+    _Speed = 1.f;
+    
+    _Type  = COMPONENT_TYPE::MOVEMENT;
+    
     return true;
 }
 
-void MovementComponent::Tick(float deltaTime)
+void MovementComponent::Tick(float DeltaTime)
 {
-    ActorComponent::Tick(deltaTime);
-    if (nullptr == _updateComponent)
+    ActorComponent::Tick(DeltaTime);
+    
+    if (nullptr == _UpdateComponent)
+    {
         return;
-    if (_moveAxis.Length() <= 0)
+    }
+
+    if (_MoveAxis.Length() <= 0)
+    {
         return;
-    FVector3D curPos = _updateComponent->GetWorldPosition();
-    _nextPosition = curPos + (_moveAxis * _speed * deltaTime);
-    _updateComponent->SetWorldPosition(_nextPosition);
+    }
+
+    FVector3D CurrentPos = _UpdateComponent->GetWorldPosition();
+    
+    _NextPosition = CurrentPos + (_MoveAxis * _Speed * DeltaTime);
+    
+    _UpdateComponent->SetWorldPosition(_NextPosition);
 }
 
 void MovementComponent::Destroy()
@@ -30,27 +43,29 @@ void MovementComponent::Destroy()
 
 void MovementComponent::SetUpdateComponent(Ptr<class SceneComponent> updateComp)
 {
-    _updateComponent = updateComp;
+    _UpdateComponent = updateComp;
 }
 
 Ptr<class SceneComponent> MovementComponent::GetUpdateComponent() const
 {
-    return _updateComponent;
+    return _UpdateComponent;
 }
 
 void MovementComponent::SetMoveAxis(const FVector3D& moveAxis)
 {
-    _moveAxis = moveAxis;
-    _moveAxis.Normalize();
+    _MoveAxis = moveAxis;
+    
+    _MoveAxis.Normalize();
 }
 
 void MovementComponent::AddMoveAxis(const FVector3D& moveAxis)
 {
-    _moveAxis += moveAxis;
-    _moveAxis.Normalize();
+    _MoveAxis += moveAxis;
+    
+    _MoveAxis.Normalize();
 }
 
 void MovementComponent::Stop()
 {
-    _moveAxis = FVector3D::Zero;
+    _MoveAxis = FVector3D::Zero;
 }

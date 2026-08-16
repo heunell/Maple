@@ -5,57 +5,57 @@
 #include "Shader/TransformCBuffer.h"
 #include "Render/RenderManager.h"
 
-SceneComponent::SceneComponent() : _renderLayerName("Default"), _isRender(false)
+SceneComponent::SceneComponent() : _RenderLayerName("Default"), _IsRender(false)
 {}
 
 SceneComponent::~SceneComponent()
 {}
 
-bool SceneComponent::Init(int32 id, const std::string& name, Ptr<class Actor> owner)
+bool SceneComponent::Init(int32 Id, const std::string& Name, Ptr<class Actor> Owner)
 {
-    Component::Init(id, name, owner);
-    _transformCBuffer = FIND_CBUFFER("Transform", TransformCBuffer);
-    if (_isRender)
-        RenderManager::Instance().AddRenderComponent(owner->GetActorID(), This<SceneComponent>());
-    _type = COMPONENT_TYPE::SCENE;
+    Component::Init(Id, Name, Owner);
+    _TransformCBuffer = FIND_CBUFFER("Transform", TransformCBuffer);
+    if (_IsRender)
+        RenderManager::Instance().AddRenderComponent(Owner->GetActorID(), This<SceneComponent>());
+    _Type = COMPONENT_TYPE::SCENE;
     return true;
 }
 
-void SceneComponent::Tick(float deltaTime)
+void SceneComponent::Tick(float DeltaTime)
 {
-    Component::Tick(deltaTime);
-    for (auto& it : _childs)
+    Component::Tick(DeltaTime);
+    for (auto& it : _Childs)
     {
         Ptr<SceneComponent> child = it.second;
         if (nullptr == child)
             continue;
         if (!child->IsActive() || !child->IsEnable())
             continue;
-        child->Tick(deltaTime);
+        child->Tick(DeltaTime);
     }
 }
 
-void SceneComponent::Collision(float deltaTime)
+void SceneComponent::Collision(float DeltaTime)
 {
-    Component::Collision(deltaTime);
+    Component::Collision(DeltaTime);
 }
 
-void SceneComponent::Render(float deltaTime)
+void SceneComponent::Render(float DeltaTime)
 {
-    Component::Render(deltaTime);
+    Component::Render(DeltaTime);
 }
 
 void SceneComponent::Destroy()
 {
-    for (auto& it : _childs)
+    for (auto& it : _Childs)
         DESTROY(it.second)
-    _childs.clear();
-    if (_isRender)
+    _Childs.clear();
+    if (_IsRender)
     {
-        Ptr<Actor> owner = Lock<Actor>(_owner);
+        Ptr<Actor> owner = Lock<Actor>(_Owner);
         if (!owner)
             return;
-        RenderManager::Instance().RemoveRenderComponent(_renderLayerName, owner->GetActorID(), GetComponentID());
+        RenderManager::Instance().RemoveRenderComponent(_RenderLayerName, owner->GetActorID(), GetComponentID());
     }
     Component::Destroy();
 }
@@ -68,23 +68,23 @@ void SceneComponent::Load(std::ifstream& file)
 
 void SceneComponent::SetRenderLayerName(const std::string& name)
 {
-    _renderLayerName = name;
+    _RenderLayerName = name;
     RenderManager::Instance().RefreshLayer();
 }
 
 const std::string& SceneComponent::GetRenderLayerName() const
 {
-    return _renderLayerName;
+    return _RenderLayerName;
 }
 
 const std::map<int32, Ptr<SceneComponent>>& SceneComponent::GetChilds() const
 {
-    return _childs;
+    return _Childs;
 }
 
 const Ptr<SceneComponent>& SceneComponent::GetParent() const
 {
-    return Lock<SceneComponent>(_parent);
+    return Lock<SceneComponent>(_Parent);
 }
 
 void SceneComponent::AttachToComponent(Ptr<SceneComponent> comp)
@@ -98,17 +98,17 @@ void SceneComponent::AddChild(Ptr<SceneComponent> comp)
         return;
     if (comp->GetComponentID() == GetComponentID())
         return;
-    comp->_parent = This<SceneComponent>();
-    _childs[comp->_id] = comp;
+    comp->_Parent = This<SceneComponent>();
+    _Childs[comp->_Id] = comp;
     UpdateTransform();
 }
 
 Ptr<SceneComponent> SceneComponent::FindComponent(int32 id) const
 {
-    auto it = _childs.find(id);
-    if (_childs.end() == it)
+    auto it = _Childs.find(id);
+    if (_Childs.end() == it)
     {
-        for (auto& subIt : _childs)
+        for (auto& subIt : _Childs)
         {
             Ptr<SceneComponent> comp = subIt.second->FindComponent(id);
             if (nullptr != comp)
@@ -124,7 +124,7 @@ Ptr<SceneComponent> SceneComponent::FindComponent(int32 id) const
 
 const FTransform& SceneComponent::GetWorldTransform() const
 {
-    return _world;
+    return _World;
 }
 
 void SceneComponent::SetWorldTransform(const FTransform& transform)
@@ -143,7 +143,7 @@ void SceneComponent::SetWorldTransform(const FVector3D& pos, const FVector3D& sc
 
 const FVector3D& SceneComponent::GetWorldPosition() const
 {
-    return _world._position;
+    return _World._position;
 }
 
 void SceneComponent::SetWorldPosition(const FVector2D& pos)
@@ -153,7 +153,7 @@ void SceneComponent::SetWorldPosition(const FVector2D& pos)
 
 void SceneComponent::SetWorldPosition(float x, float y)
 {
-    SetWorldPosition(x,y,_world._position._z);
+    SetWorldPosition(x,y,_World._position._z);
 }
 
 void SceneComponent::SetWorldPosition(const FVector3D& pos)
@@ -163,76 +163,76 @@ void SceneComponent::SetWorldPosition(const FVector3D& pos)
 
 void SceneComponent::SetWorldPosition(float x, float y, float z)
 {
-    if (Ptr<SceneComponent> parentComp = Lock<SceneComponent>(_parent))
+    if (Ptr<SceneComponent> parentComp = Lock<SceneComponent>(_Parent))
     {
-        FMatrix matParentInv = parentComp->_matrix._world;
+        FMatrix matParentInv = parentComp->_Matrix._World;
         matParentInv.Inverse();
-        _relative._position = FVector3D(x,y,z).TransformCoord(matParentInv);
+        _Relative._position = FVector3D(x,y,z).TransformCoord(matParentInv);
     }
     else
     {
-        _relative._position._x = x;
-        _relative._position._y = y;
-        _relative._position._z = z;
+        _Relative._position._x = x;
+        _Relative._position._y = y;
+        _Relative._position._z = z;
     }
     UpdateTransform();
 }
 
 const FVector3D& SceneComponent::AddWorldPosition(const FVector2D& pos)
 {
-    SetWorldPosition(pos._x + _world._position._x, pos._y + _world._position._y, _world._position._z);
-    return _world._position;
+    SetWorldPosition(pos._x + _World._position._x, pos._y + _World._position._y, _World._position._z);
+    return _World._position;
 }
 
 const FVector3D& SceneComponent::AddWorldPosition(float x, float y)
 {
-    SetWorldPosition(x + _world._position._x, y+_world._position._y,_world._position._z);
-    return _world._position;
+    SetWorldPosition(x + _World._position._x, y+_World._position._y,_World._position._z);
+    return _World._position;
 }
 
 const FVector3D& SceneComponent::AddWorldPosition(const FVector3D& pos)
 {
-    SetWorldPosition(pos._x + _world._position._x, pos._y + _world._position._y, pos._z + _world._position._z);
-    return _world._position;
+    SetWorldPosition(pos._x + _World._position._x, pos._y + _World._position._y, pos._z + _World._position._z);
+    return _World._position;
 }
 
 const FVector3D& SceneComponent::AddWorldPosition(float x, float y, float z)
 {
-    SetWorldPosition(x + _world._position._x, y + _world._position._y, z + _world._position._z);
-    return _world._position;
+    SetWorldPosition(x + _World._position._x, y + _World._position._y, z + _World._position._z);
+    return _World._position;
 }
 
 const FVector3D& SceneComponent::AddWorldPosition(float value)
 {
-    SetWorldPosition(value + _world._position._x, value + _world._position._y, _world._position._z);
-    return _world._position;
+    SetWorldPosition(value + _World._position._x, value + _World._position._y, _World._position._z);
+    return _World._position;
 }
 
 const FVector3D& SceneComponent::AddWorldPositionX(float x)
 {
-    SetWorldPosition(x + _world._position._x, _world._position._y, _world._position._z);
-    return _world._position;
+    SetWorldPosition(x + _World._position._x, _World._position._y, _World._position._z);
+    return _World._position;
 }
 
 const FVector3D& SceneComponent::AddWorldPositionY(float y)
 {
-    SetWorldPosition(_world._position._x, y + _world._position._y, _world._position._z);
-    return _world._position;
+    SetWorldPosition(_World._position._x, y + _World._position._y, _World._position._z);
+    return _World._position;
 }
 
 const FVector3D& SceneComponent::GetWorldScale() const
 {
-    return _world._scale;
+    return _World._scale;
 }
 
 void SceneComponent::SetWorldScale(const FVector2D& scale)
 {
-    SetWorldScale(scale._x, scale._y, _world._scale._z);
+    SetWorldScale(scale._x, scale._y, _World._scale._z);
 }
 
 void SceneComponent::SetWorldScale(float x, float y)
 {
-    SetWorldScale(x, y, _world._scale._z);;
+    SetWorldScale(x, y, _World._scale._z);;
 }
 
 void SceneComponent::SetWorldScale(const FVector3D& scale)
@@ -242,76 +242,76 @@ void SceneComponent::SetWorldScale(const FVector3D& scale)
 
 void SceneComponent::SetWorldScale(float x, float y, float z)
 {
-    if (Ptr<SceneComponent> parentComp = Lock<SceneComponent>(_parent))
+    if (Ptr<SceneComponent> parentComp = Lock<SceneComponent>(_Parent))
     {
-        _relative._scale._x = x / parentComp->_world._scale._x;
-        _relative._scale._y = y / parentComp->_world._scale._y;
-        _relative._scale._z = z / parentComp->_world._scale._z;
+        _Relative._scale._x = x / parentComp->_World._scale._x;
+        _Relative._scale._y = y / parentComp->_World._scale._y;
+        _Relative._scale._z = z / parentComp->_World._scale._z;
     }
     else
     {
-        _relative._scale._x = x;
-        _relative._scale._y = y;
-        _relative._scale._z = z;
+        _Relative._scale._x = x;
+        _Relative._scale._y = y;
+        _Relative._scale._z = z;
     }
     UpdateTransform();
 }
 
 const FVector3D& SceneComponent::AddWorldScale(const FVector2D& scale)
 {
-    SetWorldScale(scale._x + _world._scale._x, scale._y + _world._scale._y, _world._scale._z);
-    return _world._scale;
+    SetWorldScale(scale._x + _World._scale._x, scale._y + _World._scale._y, _World._scale._z);
+    return _World._scale;
 }
 
 const FVector3D& SceneComponent::AddWorldScale(float x, float y)
 {
-    SetWorldScale(x + _world._scale._x, y + _world._scale._y, _world._scale._z);
-    return _world._scale;
+    SetWorldScale(x + _World._scale._x, y + _World._scale._y, _World._scale._z);
+    return _World._scale;
 }
 
 const FVector3D& SceneComponent::AddWorldScale(const FVector3D& scale)
 {
-    SetWorldScale(scale._x +_world._scale._x, scale._y + _world._scale._y, scale._z + _world._scale._z);
-    return _world._scale;
+    SetWorldScale(scale._x +_World._scale._x, scale._y + _World._scale._y, scale._z + _World._scale._z);
+    return _World._scale;
 }
 
 const FVector3D& SceneComponent::AddWorldScale(float x, float y, float z)
 {
-    SetWorldScale(x + _world._scale._x, y + _world._scale._y, z + _world._scale._z);
-    return _world._scale;
+    SetWorldScale(x + _World._scale._x, y + _World._scale._y, z + _World._scale._z);
+    return _World._scale;
 }
 
 const FVector3D& SceneComponent::AddWorldScale(float value)
 {
-    SetWorldScale(value + _world._scale._x, value + _world._scale._y, value);
-    return _world._scale;
+    SetWorldScale(value + _World._scale._x, value + _World._scale._y, value);
+    return _World._scale;
 }
 
 const FVector3D& SceneComponent::AddWorldScaleX(float x)
 {
-    SetWorldScale(x + _world._scale._x, _world._scale._y, _world._scale._z);
-    return _world._scale;
+    SetWorldScale(x + _World._scale._x, _World._scale._y, _World._scale._z);
+    return _World._scale;
 }
 
 const FVector3D& SceneComponent::AddWorldScaleY(float y)
 {
-    SetWorldScale(_world._scale._x, y + _world._scale._y, _world._scale._z);
-    return _world._scale;
+    SetWorldScale(_World._scale._x, y + _World._scale._y, _World._scale._z);
+    return _World._scale;
 }
 
 const FRotator& SceneComponent::GetWorldRotation() const
 {
-    return _world._rotation;
+    return _World._rotation;
 }
 
 void SceneComponent::SetWorldRotation(const FVector2D& rot)
 {
-    SetWorldRotation(rot._x, rot._y, _world._rotation._z);
+    SetWorldRotation(rot._x, rot._y, _World._rotation._z);
 }
 
 void SceneComponent::SetWorldRotation(float x, float y)
 {
-    SetWorldRotation(x, y, _world._rotation._z);
+    SetWorldRotation(x, y, _World._rotation._z);
 }
 
 void SceneComponent::SetWorldRotation(const FRotator& rot)
@@ -321,24 +321,24 @@ void SceneComponent::SetWorldRotation(const FRotator& rot)
 
 void SceneComponent::SetWorldRotation(float x, float y, float z)
 {
-    if (Ptr<SceneComponent>parentComp = Lock<SceneComponent>(_parent))
+    if (Ptr<SceneComponent>parentComp = Lock<SceneComponent>(_Parent))
     {
-        _relative._rotation._x = x - parentComp->_world._rotation._x;
-        _relative._rotation._y = x - parentComp->_world._rotation._y;
-        _relative._rotation._z = x - parentComp->_world._rotation._z;
+        _Relative._rotation._x = x - parentComp->_World._rotation._x;
+        _Relative._rotation._y = x - parentComp->_World._rotation._y;
+        _Relative._rotation._z = x - parentComp->_World._rotation._z;
     }
     else
     {
-        _relative._rotation._x = x;
-        _relative._rotation._y = y;
-        _relative._rotation._z = z;
+        _Relative._rotation._x = x;
+        _Relative._rotation._y = y;
+        _Relative._rotation._z = z;
     }
     UpdateTransform();
 }
 
 const FTransform& SceneComponent::GetRelativeTransform() const
 {
-    return _relative;
+    return _Relative;
 }
 
 void SceneComponent::SetRelativeTransform(const FTransform& transform)
@@ -357,17 +357,17 @@ void SceneComponent::SetRelativeTransform(const FVector3D& pos, const FVector3D&
 
 const FVector3D& SceneComponent::GetRelativePosition() const
 {
-    return _relative._position;
+    return _Relative._position;
 }
 
 void SceneComponent::SetRelativePosition(const FVector2D& pos)
 {
-    SetRelativePosition(pos._x, pos._y, _relative._position._z);
+    SetRelativePosition(pos._x, pos._y, _Relative._position._z);
 }
 
 void SceneComponent::SetRelativePosition(float x, float y)
 {
-    SetRelativePosition(x, y, _relative._position._z);
+    SetRelativePosition(x, y, _Relative._position._z);
 }
 
 void SceneComponent::SetRelativePosition(const FVector3D& pos)
@@ -377,67 +377,67 @@ void SceneComponent::SetRelativePosition(const FVector3D& pos)
 
 void SceneComponent::SetRelativePosition(float x, float y, float z)
 {
-    _relative._position._x = x;
-    _relative._position._y = y;
-    _relative._position._z = z;
+    _Relative._position._x = x;
+    _Relative._position._y = y;
+    _Relative._position._z = z;
     UpdateTransform();
 }
 
 const FVector3D& SceneComponent::AddRelativePosition(const FVector2D& scale)
 {
-    SetRelativePosition(scale._x + _relative._position._x, scale._y + _relative._position._y, _relative._position._z);
-    return _relative._position;
+    SetRelativePosition(scale._x + _Relative._position._x, scale._y + _Relative._position._y, _Relative._position._z);
+    return _Relative._position;
 }
 
 const FVector3D& SceneComponent::AddRelativePosition(float x, float y)
 {
-    SetRelativePosition(x + _relative._position._x, y + _relative._position._y, _relative._position._z);
-    return _relative._position;
+    SetRelativePosition(x + _Relative._position._x, y + _Relative._position._y, _Relative._position._z);
+    return _Relative._position;
 }
 
 const FVector3D& SceneComponent::AddRelativePosition(const FVector3D& scale)
 {
-    SetRelativePosition(scale._x + _relative._position._x, scale._y + _relative._position._y, _relative._position._z);
-    return _relative._position;
+    SetRelativePosition(scale._x + _Relative._position._x, scale._y + _Relative._position._y, _Relative._position._z);
+    return _Relative._position;
 }
 
 const FVector3D& SceneComponent::AddRelativePosition(float x, float y, float z)
 {
-    SetRelativePosition(x + _relative._position._x , y + _relative._position._y, z + _relative._position._z);
-    return _relative._position;
+    SetRelativePosition(x + _Relative._position._x , y + _Relative._position._y, z + _Relative._position._z);
+    return _Relative._position;
 }
 
 const FVector3D& SceneComponent::AddRelativePosition(float value)
 {
-    SetRelativePosition(value + _relative._position._x, value + _relative._position._y, _relative._position._z);
-    return _relative._position;
+    SetRelativePosition(value + _Relative._position._x, value + _Relative._position._y, _Relative._position._z);
+    return _Relative._position;
 }
 
 const FVector3D& SceneComponent::AddRelativePositionX(float x)
 {
-    SetRelativePosition(x + _relative._position._x, _relative._position._y, _relative._position._z);
-    return _relative._position;
+    SetRelativePosition(x + _Relative._position._x, _Relative._position._y, _Relative._position._z);
+    return _Relative._position;
 }
 
 const FVector3D& SceneComponent::AddRelativePositionY(float y)
 {
-    SetRelativePosition(_relative._position._x, y + _relative._position._y, _relative._position._z);
-    return _relative._position;
+    SetRelativePosition(_Relative._position._x, y + _Relative._position._y, _Relative._position._z);
+    return _Relative._position;
 }
 
 const FVector3D& SceneComponent::GetRelativeScale() const
 {
-    return _relative._scale;
+    return _Relative._scale;
 }
 
 void SceneComponent::SetRelativeScale(const FVector2D& scale)
 {
-    SetRelativeScale(scale._x, scale._y, _relative._scale._y);
+    SetRelativeScale(scale._x, scale._y, _Relative._scale._y);
 }
 
 void SceneComponent::SetRelativeScale(float x, float y)
 {
-    SetRelativeScale(x, y, _relative._scale._y);
+    SetRelativeScale(x, y, _Relative._scale._y);
 }
 
 void SceneComponent::SetRelativeScale(const FVector3D& scale)
@@ -447,67 +447,67 @@ void SceneComponent::SetRelativeScale(const FVector3D& scale)
 
 void SceneComponent::SetRelativeScale(float x, float y, float z)
 {
-    _relative._scale._x = x;
-    _relative._scale._y = y;
-    _relative._scale._z = z;
+    _Relative._scale._x = x;
+    _Relative._scale._y = y;
+    _Relative._scale._z = z;
     UpdateTransform();
 }
 
 const FVector3D& SceneComponent::AddRelativeScale(const FVector2D& scale)
 {
-    SetRelativeScale(scale._x + _relative._scale._x, scale._y + _relative._scale._y, _relative._scale._z);
-    return _relative._scale;
+    SetRelativeScale(scale._x + _Relative._scale._x, scale._y + _Relative._scale._y, _Relative._scale._z);
+    return _Relative._scale;
 }
 
 const FVector3D& SceneComponent::AddRelativeScale(float x, float y)
 {
-    SetRelativeScale(x + _relative._scale._x, y + _relative._scale._y, _relative._scale._z);
-    return _relative._scale;
+    SetRelativeScale(x + _Relative._scale._x, y + _Relative._scale._y, _Relative._scale._z);
+    return _Relative._scale;
 }
 
 const FVector3D& SceneComponent::AddRelativeScale(const FVector3D& scale)
 {
-    SetRelativeScale(scale._x + _relative._scale._x, scale._y + _relative._scale._y, scale._z + _relative._scale._z);
-    return _relative._scale;
+    SetRelativeScale(scale._x + _Relative._scale._x, scale._y + _Relative._scale._y, scale._z + _Relative._scale._z);
+    return _Relative._scale;
 }
 
 const FVector3D& SceneComponent::AddRelativeScale(float x, float y, float z)
 {
-    SetRelativeScale(x + _relative._scale._x, y + _relative._scale._y, z + _relative._scale._z);
-    return _relative._scale;
+    SetRelativeScale(x + _Relative._scale._x, y + _Relative._scale._y, z + _Relative._scale._z);
+    return _Relative._scale;
 }
 
 const FVector3D& SceneComponent::AddRelativeScale(float value)
 {
-    SetRelativeScale(value + _relative._scale._x, value + _relative._scale._y, value + _relative._scale._z);
-    return _relative._scale;
+    SetRelativeScale(value + _Relative._scale._x, value + _Relative._scale._y, value + _Relative._scale._z);
+    return _Relative._scale;
 }
 
 const FVector3D& SceneComponent::AddRelativeScaleX(float x)
 {
-    SetRelativeScale(x + _relative._scale._x, _relative._scale._y, _relative._scale._z);
-    return _relative._scale;
+    SetRelativeScale(x + _Relative._scale._x, _Relative._scale._y, _Relative._scale._z);
+    return _Relative._scale;
 }
 
 const FVector3D& SceneComponent::AddRelativeScaleY(float y)
 {
-    SetRelativeScale(_relative._scale._x, y + _relative._scale._y, _relative._scale._z);
-    return _relative._scale;
+    SetRelativeScale(_Relative._scale._x, y + _Relative._scale._y, _Relative._scale._z);
+    return _Relative._scale;
 }
 
 const FRotator& SceneComponent::GetRelativeRotation() const
 {
-    return _relative._rotation;
+    return _Relative._rotation;
 }
 
 void SceneComponent::SetRelativeRotation(const FVector2D& rot)
 {
-    SetRelativeRotation(rot._x, rot._y, _relative._rotation._z);
+    SetRelativeRotation(rot._x, rot._y, _Relative._rotation._z);
 }
 
 void SceneComponent::SetRelativeRotation(float x, float y)
 {
-    SetRelativeRotation(x, y, _relative._rotation._z);
+    SetRelativeRotation(x, y, _Relative._rotation._z);
 }
 
 void SceneComponent::SetRelativeRotation(const FRotator& rot)
@@ -517,75 +517,75 @@ void SceneComponent::SetRelativeRotation(const FRotator& rot)
 
 void SceneComponent::SetRelativeRotation(float x, float y, float z)
 {
-    _relative._rotation._x = x;
-    _relative._rotation._y = y;
-    _relative._rotation._z = z;
+    _Relative._rotation._x = x;
+    _Relative._rotation._y = y;
+    _Relative._rotation._z = z;
 
     UpdateTransform();
 }
 
 const FRotator& SceneComponent::AddRelativeRotation(const FVector2D& rot)
 {
-    SetRelativeRotation(rot._x + _relative._rotation._x, rot._y + _relative._rotation._y, _relative._rotation._z);
-    return _relative._rotation;
+    SetRelativeRotation(rot._x + _Relative._rotation._x, rot._y + _Relative._rotation._y, _Relative._rotation._z);
+    return _Relative._rotation;
 }
 
 const FRotator& SceneComponent::AddRelativeRotation(float x, float y)
 {
-    SetRelativeRotation(x + _relative._rotation._x, y + _relative._rotation._y, _relative._rotation._z);
-    return _relative._rotation;
+    SetRelativeRotation(x + _Relative._rotation._x, y + _Relative._rotation._y, _Relative._rotation._z);
+    return _Relative._rotation;
 }
 
 const FRotator& SceneComponent::AddRelativeRotation(const FVector3D& rot)
 {
-    SetRelativeRotation(rot._x + _relative._rotation._x, rot._y + _relative._rotation._y, rot._z + _relative._rotation._z);
-    return _relative._rotation;
+    SetRelativeRotation(rot._x + _Relative._rotation._x, rot._y + _Relative._rotation._y, rot._z + _Relative._rotation._z);
+    return _Relative._rotation;
 }
 
 const FRotator& SceneComponent::AddRelativeRotation(float x, float y, float z)
 {
-    SetRelativeRotation(x + _relative._rotation._x, y + _relative._rotation._y, z + _relative._rotation._z);
-    return _relative._rotation;
+    SetRelativeRotation(x + _Relative._rotation._x, y + _Relative._rotation._y, z + _Relative._rotation._z);
+    return _Relative._rotation;
 }
 
 const FRotator& SceneComponent::AddRelativeRotation(float value)
 {
-    SetRelativeRotation(value + _relative._rotation._x, value + _relative._rotation._y, value + _relative._rotation._z);
-    return _relative._rotation;
+    SetRelativeRotation(value + _Relative._rotation._x, value + _Relative._rotation._y, value + _Relative._rotation._z);
+    return _Relative._rotation;
 }
 
 const FRotator& SceneComponent::AddRelativeRotationX(float x)
 {
-    SetRelativeRotation(x + _relative._rotation._x, _relative._rotation._y, _relative._rotation._z);
-    return _relative._rotation;
+    SetRelativeRotation(x + _Relative._rotation._x, _Relative._rotation._y, _Relative._rotation._z);
+    return _Relative._rotation;
 }
 
 const FRotator& SceneComponent::AddRelativeRotationY(float y)
 {
-    SetRelativeRotation(_relative._rotation._x, y + _relative._rotation._y, _relative._rotation._z);
-    return _relative._rotation;
+    SetRelativeRotation(_Relative._rotation._x, y + _Relative._rotation._y, _Relative._rotation._z);
+    return _Relative._rotation;
 }
 
 void SceneComponent::UpdateTransform()
 {
-    _matrix._scale.Scaling(_relative._scale);
-    _matrix._rotation.Rotation(_relative._rotation);
-    _matrix._translate.Translation(_relative._position);
-    FMatrix matLocal = _matrix._scale * _matrix._rotation * _matrix._translate;
-    if (Ptr<SceneComponent> parentComp = Lock<SceneComponent>(_parent))
+    _Matrix._scale.Scaling(_Relative._scale);
+    _Matrix._rotation.Rotation(_Relative._rotation);
+    _Matrix._translate.Translation(_Relative._position);
+    FMatrix matLocal = _Matrix._scale * _Matrix._rotation * _Matrix._translate;
+    if (Ptr<SceneComponent> parentComp = Lock<SceneComponent>(_Parent))
     {
-        _matrix._world = matLocal * parentComp->_matrix._world;
+        _Matrix._World = matLocal * parentComp->_Matrix._World;
     }
     else
     {
-        _matrix._world = matLocal;
+        _Matrix._World = matLocal;
     }
     
-    _matrix._world.ExtractPosition(_world._position);
-    _matrix._world.ExtractEuler(_world._rotation);
-    _matrix._world.ExtractScale(_world._scale);
+    _Matrix._World.ExtractPosition(_World._position);
+    _Matrix._World.ExtractEuler(_World._rotation);
+    _Matrix._World.ExtractScale(_World._scale);
     
-    for (auto& it : _childs)
+    for (auto& it : _Childs)
     {
         if (it.second)
         {
@@ -599,7 +599,7 @@ void SceneComponent::UpdateTransform()
         FVector3D(FVector3D::Axis_Y),
         FVector3D(FVector3D::Axis_Z),
     };
-    _axis[AXIS_TYPE::X] = axis[AXIS_TYPE::X].TransformNormal(_matrix._rotation);
-    _axis[AXIS_TYPE::Y] = axis[AXIS_TYPE::Y].TransformNormal(_matrix._rotation);
-    _axis[AXIS_TYPE::Z] = axis[AXIS_TYPE::Z].TransformNormal(_matrix._rotation);
+    _Axis[AXIS_TYPE::X] = axis[AXIS_TYPE::X].TransformNormal(_Matrix._rotation);
+    _Axis[AXIS_TYPE::Y] = axis[AXIS_TYPE::Y].TransformNormal(_Matrix._rotation);
+    _Axis[AXIS_TYPE::Z] = axis[AXIS_TYPE::Z].TransformNormal(_Matrix._rotation);
 }

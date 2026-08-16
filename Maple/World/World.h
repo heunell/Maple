@@ -12,33 +12,44 @@ public:
     World& operator=(World&&) = delete;
     
 public:
-    Ptr<class Level> _curLevel;
-    Ptr<class Level> _nextLevel;
-    Weak<class Actor> _player;
+    Ptr<class Level> _CurLevel;
+  
+    Ptr<class Level> _NextLevel;
+    
+    Weak<class Actor> _Player;
     
 public:
-    virtual void Init(const std::string& name);
-    virtual void Tick(float deltaTime);
-    virtual void Collision(float deltaTime);
-    virtual void Render(float deltaTime);
-    virtual void RenderUI(float deltaTime);
+    virtual void Init(const std::string& Name);
+    
+    virtual void Tick(float DeltaTime);
+    
+    virtual void Collision(float DeltaTime);
+    
+    virtual void Render(float DeltaTime);
+    
+    virtual void RenderUI(float DeltaTime);
+    
     virtual void Destroy() override;
     
 public:
     Ptr<class Level> GetCurLevel() const;
+    
     Ptr<class Actor> GetPlayer() const;
-    void  SetMainPlayer(Ptr<class Actor> player);
+    
+    void  SetMainPlayer(Ptr<class Actor> Player);
     
 public:
     template<typename T>
-    Ptr<T> CreateLevel(const std::string& path)
+    Ptr<T> CreateLevel(const std::string& Path)
     {
        Ptr<T> level = New<T>();
-       if (false == level->Init(path))
+       if (false == level->Init(Path))
        {
            DESTROY(level)
+
            return nullptr;
        }
+
        return level;
     }
 };

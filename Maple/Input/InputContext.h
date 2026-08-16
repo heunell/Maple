@@ -5,32 +5,46 @@
 
 struct FInputMapping
 {
-    Ptr<InputAction> _action;
-    bool _state[INPUT_TYPE::END] = {};
-    uint8 _key = 0;
+    Ptr<InputAction> _Action;
+  
+    bool _State[INPUT_TYPE::END] = {};
+    
+    uint8 _Key = 0;
 };
 
 class InputContext : public Object
 {
     friend class InputSystem;
     friend class InputComponent;
+
 public:
     InputContext() = default;
+
     virtual ~InputContext() = default;
+
     InputContext(InputContext const&) = default;
+
     InputContext(InputContext&&) = default;
+
     InputContext& operator=(InputContext const&) = default;
+
     InputContext& operator=(InputContext&&) = default;
     
 private:
-    std::string _name;
-    std::unordered_map<std::string, FInputMapping> _mappings;
+    std::string _Name;
+
+    std::unordered_map<std::string, FInputMapping> _Mappings;
     
 public:
     const std::string& GetName() const;
-    void SetName(const std::string& name);
-    void BindInputAction(Ptr<InputAction> action, uint8 key);
-    void ChangeInputActionKey(const std::string& actionName, uint8 key);
-    FInputMapping* FindMapping(const std::string& name);
+
+    void SetName(const std::string& Name);
+
+    void BindInputAction(Ptr<InputAction> Action, uint8 Key);
+
+    void ChangeInputActionKey(const std::string& ActionName, uint8 Key);
+
+    FInputMapping* FindMapping(const std::string& Name);
+
     virtual void Destroy() override;
 };

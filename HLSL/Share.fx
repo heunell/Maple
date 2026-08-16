@@ -1,4 +1,4 @@
-struct PS_Output_Single
+struct PixelShader_Output_Single
 {
     float4 Color : SV_TARGET;
 };
@@ -19,9 +19,9 @@ cbuffer Color : register(b0)
 
 cbuffer Material : register(b1)
 {
-    float4 gMtrlBaseColor;
-    float gMtrlOpacity;
-    int gMtrlTextureWidth;
+    float4 gMaterialBaseColor;
+    float gMaterialOpacity;
+    int gMaterialTextureWidth;
     int gMatTextureHeight;
     float gEmpty;
 }

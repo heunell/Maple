@@ -16,92 +16,127 @@ public:
     ShaderManager& operator=(ShaderManager&&) = delete;
     
 protected:
-    std::unordered_map<std::string, Ptr<Shader>>  _shaders;
+    std::unordered_map<std::string, Ptr<Shader>>  _Shaders;
+
     std::unordered_map<std::string, Ptr<CBuffer>> _cBuffers;
+
     std::unordered_map<std::string, Ptr<SBuffer>> _sBuffers;
-    ComPtr<ID3D11SamplerState> _samplers[TEXTURE_SAMPLE_END];
+
+    ComPtr<ID3D11SamplerState> _Samplers[TEXTURE_SAMPLE_END];
     
 private:
     void CreateSampler();
     
 public:
     bool Init();
+   
     virtual void Destroy() override;
-    Ptr<Shader> FindShader(const std::string& name);
-    void SetSample(eTextureSampleType type);
+    
+    Ptr<Shader> FindShader(const std::string& Name);
+    
+    void SetSample(eTextureSampleType Type);
     
     template<typename T>
-    Ptr<T> FindCBuffer(const std::string& name)
+    Ptr<T> FindCBuffer(const std::string& Name)
     {
-        auto it = _cBuffers.find(name);
+        auto it = _cBuffers.find(Name);
         if (_cBuffers.end() == it)
+        {
             return nullptr;
+        }
         
         return Cast<CBuffer, T>(it->second);
     }
     
     template<typename T>
-    Ptr<T> FindSBuffer(const std::string& name)
+    Ptr<T> FindSBuffer(const std::string& Name)
     {
-        auto it = _sBuffers.find(name);
+        auto it = _sBuffers.find(Name);
+       
         if(_sBuffers.end() == it)
+        {
             return nullptr;
+        }
         return Cast<SBuffer, T>(it->second);
     }
     
 private:
     template<typename T>
-    bool CreateShader(const std::string& name)
+    bool CreateShader(const std::string& Name)
     {
-        Ptr<Shader> shader = FindShader(name);
-        if (shader)
-            return false;
-        
-        shader = New<T>();
-        if (false == shader->Init())
+        Ptr<Shader> _Shader = FindShader(Name);
+       
+        if (_Shader)
         {
-            Delete(shader);
             return false;
         }
-        _shaders[name] = shader;
+        
+        _Shader = New<T>();
+       
+        if (false == _Shader->Init())
+        {
+            Delete(_Shader);
+            
+            return false;
+        }
+        _Shaders[Name] = _Shader;
+        
         return true;
     }
     
     template<typename T>
-    bool CreateCBuffer(const std::string& name, int size, int regi, int type)
+    bool CreateCBuffer(const std::string& Name, int32 Size, int32 Register, int32 Type)
     {
-        Ptr<T> cbuffer = FindCBuffer<T>(name);
-        if (cbuffer)
-            return false;
-        
-        cbuffer = New<T>();
-        if (false == cbuffer->Create(size, regi, type))
+        Ptr<T> cBuffer = FindCBuffer<T>(Name);
+       
+        if (cBuffer)
         {
-            Delete(cbuffer);
             return false;
         }
-        _cBuffers[name] = cbuffer;
+        
+        cBuffer = New<T>();
+
+        if (false == cBuffer->Create(Size, Register, Type))
+        {
+            Delete(cBuffer);
+
+            return false;
+        }
+        
+        _cBuffers[Name] = cBuffer;
+        
         return true;
     }
     
     template<typename T>
-    bool CreateSBuffer(const std::string& name, int32 size, int32 eleCnt, int32 regi, int32 type)
+    bool CreateSBuffer(const std::string& Name, int32 Size, int32 ElementCount, int32 Register, int32 Type)
     {
-        Ptr<T> sBuffer = FindSBuffer<T>(name);
+        Ptr<T> sBuffer = FindSBuffer<T>(Name);
+       
         if (sBuffer)
+        {
             return false;
+        }
+        
         sBuffer = New<T>();
-        if (false == sBuffer->Create(size, eleCnt, regi, type))
+        
+        if (false == sBuffer->Create(Size, ElementCount, Register, Type))
         {
             DESTROY(sBuffer);
+           
             return false;
         }
-        _sBuffers[name] = sBuffer;
+       
+        _sBuffers[Name] = sBuffer;
+       
         return true;
     }
 };
 
 #define SHADER_MANAGER ShaderManager::Instance()
+
 #define FIND_SHADER(x) ShaderManager::Instance().FindShader(x)
+
 #define FIND_CBUFFER(x, T) ShaderManager::Instance().FindCBuffer<T>(x)
+
 #define FIND_SBUFFER(x, T) ShaderManager::Instance().FindSBuffer<T>(x)

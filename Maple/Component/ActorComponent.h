@@ -5,12 +5,17 @@ class ActorComponent : public Component
 {
 public:
     ActorComponent();
+    
     virtual ~ActorComponent();
     
 public:
-    virtual bool Init(int32 id, const std::string& name, Ptr<class Actor> owner) override;
-    virtual void Tick(float deltaTime);
+    virtual bool Init(int32 Id, const std::string& Name, Ptr<class Actor> Owner) override;
+    
+    virtual void Tick(float DeltaTime);
+    
     virtual void Destroy() override;
-    virtual void Save(std::ofstream& file);
-    virtual void Load(std::ifstream& file);
+    
+    virtual void Save(std::ofstream& File);
+    
+    virtual void Load(std::ifstream& File);
 };

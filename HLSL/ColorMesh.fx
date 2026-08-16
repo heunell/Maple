@@ -1,42 +1,49 @@
 #include "Share.fx"
-struct VS_Input_Color
+struct VertexShader_Input_Color
 {
-    float3 Pos : POSITION;
+    float3 Posision : POSITION;
+   
     float4 Color : Color;
 };
 
-struct VS_Output_Color
+struct VertexShader_Output_Color
 {
-    float4 Pos : SV_POSITION;
+    float4 Posision : SV_POSITION;
+    
     float4 Color : COLOR;
 };
 
-VS_Output_Color ColorMeshVS(VS_Input_Color input)
+VertexShader_Output_Color ColorMeshVS(VertexShader_Input_Color Input)
 {
-    VS_Output_Color output = (VS_Output_Color) 0;
-    output.Pos = mul(float4(input.Pos, 1.f), gWVP);
-    output.Color = input.Color;
-    return output;
+    VertexShader_Output_Color Output = (VertexShader_Output_Color) 0;
+    
+    Output.Posision = mul(float4(Input.Posision, 1.f), gWVP);
+    
+    Output.Color = Input.Color;
+    
+    return Output;
 }
 
-PS_Output_Single ColorMeshPS(VS_Output_Color input)
+PixelShader_Output_Single ColorMeshPS(VertexShader_Output_Color Input)
 {
-    PS_Output_Single output = (PS_Output_Single) 0;
-    output.Color = input.Color;
-    return output;
+    PixelShader_Output_Single Output = (PixelShader_Output_Single) 0;
+   
+    Output.Color = Input.Color;
+    
+    return Output;
 }
 
-float4 FrameMeshVS(float3 Pos : POSITION) : SV_POSITION
+float4 FrameMeshVS(float3 Position : POSITION) : SV_POSITION
 {
-    float4 output = (float4) 0;
-    float3 InputPos = Pos;
-    output = mul(float4(InputPos, 1.f), gWVP);
-    return output;
+    float4 Output = (float4) 0;
+    float3 InputPosition = Position;
+    Output = mul(float4(InputPosition, 1.f), gWVP);
+    return Output;
 }
 
-PS_Output_Single FrameMeshPS(float4 Pos : SV_POSITION)
+PixelShader_Output_Single FrameMeshPS(float4 Position : SV_POSITION)
 {
-    PS_Output_Single output = (PS_Output_Single) 0;
-    output.Color = gColor;
-    return output;
+    PixelShader_Output_Single Output = (PixelShader_Output_Single) 0;
+    Output.Color = gColor;
+    return Output;
 }

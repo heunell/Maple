@@ -9,29 +9,29 @@ public:
     virtual~SceneComponent();
     
 protected:
-    Ptr<class TransformCBuffer> _transformCBuffer;
-    Weak<SceneComponent> _parent;
-    std::map<int32, Ptr<SceneComponent>> _childs;
-    std::string _renderLayerName;
+    Ptr<class TransformCBuffer> _TransformCBuffer;
+    Weak<SceneComponent> _Parent;
+    std::map<int32, Ptr<SceneComponent>> _Childs;
+    std::string _RenderLayerName;
     
-    FTransform       _world;
-    FTransform       _relative;
-    FTransformMatrix _matrix;
+    FTransform       _World;
+    FTransform       _Relative;
+    FTransformMatrix _Matrix;
 
-    FVector3D _axis[AXIS_TYPE::END] =
+    FVector3D _Axis[AXIS_TYPE::END] =
     {
         FVector3D(FVector3D::Axis_X),
         FVector3D(FVector3D::Axis_Y),
         FVector3D(FVector3D::Axis_Z)
     };
     
-    bool _isRender = false;
+    bool _IsRender = false;
     
 public:
-    virtual bool Init(int32 id, const std::string& name, Ptr<class Actor> owner) override;
-    virtual void Tick(float deltaTime) override;
-    virtual void Collision(float deltaTime) override;
-    virtual void Render(float deltaTime) override;
+    virtual bool Init(int32 Id, const std::string& Name, Ptr<class Actor> Owner) override;
+    virtual void Tick(float DeltaTime) override;
+    virtual void Collision(float DeltaTime) override;
+    virtual void Render(float DeltaTime) override;
     virtual void Destroy() override;
     virtual void Save(std::ofstream& file);
     virtual void Load(std::ifstream& file);

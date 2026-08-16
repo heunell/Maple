@@ -12,25 +12,36 @@ public:
     CameraManager& operator=(CameraManager&&) = delete;
     
 private:
-    Weak<class Level> _level;
-    Ptr<class CameraComponent> _mainCamera;
-    std::unordered_map<std::string, Ptr<class CameraComponent>> _cameras;
-    FMatrix _uiProj;
+    Weak<class Level> _Level;
+   
+    Ptr<class CameraComponent> _MainCamera;
+    
+    std::unordered_map<std::string, Ptr<class CameraComponent>> _Cameras;
+    
+    FMatrix _UiProjection;
     
 public:
-    bool Init(Ptr<class Level> level);
-    void SetMainCamera(Ptr<class CameraComponent> camera);
-    void ChangeMainCamera(const std::string& name);
+    bool Init(Ptr<class Level> Level);
+    
+    void SetMainCamera(Ptr<class CameraComponent> Camera);
+    
+    void ChangeMainCamera(const std::string& Name);
+    
     Ptr<class CameraComponent> GetMainCamera() const;
-    Ptr<class CameraComponent> FindCamera(const std::string& name) const;
+    
+    Ptr<class CameraComponent> FindCamera(const std::string& Name) const;
+    
     const FMatrix& GetViewMatrix() const;
-    const FMatrix& GetProjMatrix() const;
-    const FVector3D& GetCameraWorldPos() const;
-    const FMatrix& GetUIProjMatrix() const;
+    
+    const FMatrix& GetProjectionMatrix() const;
+    
+    const FVector3D& GetCameraWorldPosition() const;
+    
+    const FMatrix& GetUIProjectionMatrix() const;
     
 public:
     virtual void Destroy() override;
     
 private:
-    void CreateUIProj(float x, float y, float dist);
+    void CreateUIProjection(float x, float y, float Distance);
 };

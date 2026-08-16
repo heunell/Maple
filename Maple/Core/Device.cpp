@@ -9,7 +9,7 @@ FVector2D Device::GetRSRate() const
     float width  = static_cast<float>(windowRC.right  - windowRC.left);
     float height = static_cast<float>(windowRC.bottom - windowRC.top );
     
-    return FVector2D(_resolution._width / width, _resolution._height / height);
+    return FVector2D(_resolution._Width / width, _resolution._Height / height);
 }
 
 void Device::Destroy() {}
@@ -17,8 +17,8 @@ void Device::Destroy() {}
 bool Device::Init(HWND hwnd, uint32 width, uint32 height, bool windowMode)
 {
     _hWnd               = hwnd;
-    _resolution._width  = width;
-    _resolution._height = height;
+    _resolution._Width  = width;
+    _resolution._Height = height;
     _windowMode         = windowMode;
     
     uint32 flag = D3D11_CREATE_DEVICE_BGRA_SUPPORT;
@@ -37,7 +37,8 @@ bool Device::Init(HWND hwnd, uint32 width, uint32 height, bool windowMode)
     
     if (check <1)
         sampleCount = 1;
-    
+
+
     DXGI_SWAP_CHAIN_DESC swapDesc = {};
         swapDesc.BufferDesc.Width                   = width;
         swapDesc.BufferDesc.Height                  = height;

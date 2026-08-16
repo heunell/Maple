@@ -7,33 +7,33 @@ CBuffer::CBuffer() {}
 
 CBuffer::~CBuffer() {}
 
-bool CBuffer::Create(int size, int regi, int tpye)
+bool CBuffer::Create(int Size, int Register, int Type)
 {
-    _size = 0;
-    _register = 0;
-    int _type = 0;
+    _Size = Size;
+    _Register = Register;
+    _Type = Type;
     
-    D3D11_BUFFER_DESC desc = {};
-    desc.Usage = D3D11_USAGE_DYNAMIC;
-    desc.ByteWidth = size;
-    desc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-    desc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-    if (FAILED(Device::Instance().GetDevice()->CreateBuffer(&desc, nullptr, _buffer.GetAddressOf())))
+    D3D11_BUFFER_DESC Description = {};
+    Description.Usage = D3D11_USAGE_DYNAMIC;
+    Description.ByteWidth = Size;
+    Description.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+    Description.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+    if (FAILED(Device::Instance().GetDevice()->CreateBuffer(&Description, nullptr, _buffer.GetAddressOf())))
         return false;
     
     return true;
 }
 
-void CBuffer::SetData(void* data)
+void CBuffer::SetData(void* Data)
 {
     D3D11_MAPPED_SUBRESOURCE map = {};
     CONTEXT->Map(_buffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &map);
-    memcpy(map.pData, data, _size);
+    memcpy(map.pData, Data, _Size);
     CONTEXT->Unmap(_buffer.Get(), 0);
-    if (_type& SHADER_TYPE::VERTEX)
-        CONTEXT->VSSetConstantBuffers(_register, 1, _buffer.GetAddressOf());
-    if (_type& SHADER_TYPE::PIXEL)
-        CONTEXT->PSSetConstantBuffers(_register, 1, _buffer.GetAddressOf());
+    if (_Type& SHADER_TYPE::VERTEX)
+        CONTEXT->VSSetConstantBuffers(_Register, 1, _buffer.GetAddressOf());
+    if (_Type& SHADER_TYPE::PIXEL)
+        CONTEXT->PSSetConstantBuffers(_Register, 1, _buffer.GetAddressOf());
 }
 
 void CBuffer::Update()

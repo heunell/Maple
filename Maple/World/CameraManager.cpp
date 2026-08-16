@@ -6,63 +6,75 @@
 
 bool CameraManager::Init(Ptr<class Level> level)
 {
-    _level = level;
+    _Level = level;
+   
     FResolution rs = Device::Instance().GetRS();
-    CreateUIProj(static_cast<float>(rs._width), static_cast<float>(rs._height), 2000);
+    
+    CreateUIProjection(static_cast<float>(rs._Width), static_cast<float>(rs._Height), 2000);
+    
     return true;
 }
 
 void CameraManager::SetMainCamera(Ptr<class CameraComponent> camera)
 {
-    _mainCamera = camera;
-    _cameras[_mainCamera->GetName()] = _mainCamera;
+    _MainCamera = camera;
+    
+    _Cameras[_MainCamera->GetName()] = _MainCamera;
 }
 
 void CameraManager::ChangeMainCamera(const std::string& name)
 {
     auto foundCamera = FindCamera(name);
+    
     if (!foundCamera)
+    {
         return;
-    _mainCamera = foundCamera;
+    }
+
+    _MainCamera = foundCamera;
 }
 
 Ptr<class CameraComponent> CameraManager::GetMainCamera() const
 {
-    return _mainCamera;
+    return _MainCamera;
 }
 
 Ptr<class CameraComponent> CameraManager::FindCamera(const std::string& name) const
 {
-    auto it = _cameras.find(name);
-    if (it == _cameras.end())
+    auto it = _Cameras.find(name);
+    
+    if (it == _Cameras.end())
+    {
         return nullptr;
+    }
+
     return it->second;
 }
 
 const FMatrix& CameraManager::GetViewMatrix() const
 {
-    return _mainCamera->GetViewMatrix();
+    return _MainCamera->GetViewMatrix();
 }
 
-const FMatrix& CameraManager::GetProjMatrix() const
+const FMatrix& CameraManager::GetProjectionMatrix() const
 {
-    return _mainCamera->GetProjMatrix();
+    return _MainCamera->GetProjectionMatrix();
 }
 
-const FVector3D& CameraManager::GetCameraWorldPos() const
+const FVector3D& CameraManager::GetCameraWorldPosition() const
 {
-    return _mainCamera->GetWorldPosition();
+    return _MainCamera->GetWorldPosition();
 }
 
-const FMatrix& CameraManager::GetUIProjMatrix() const
+const FMatrix& CameraManager::GetUIProjectionMatrix() const
 {
-    return _uiProj;
+    return _UiProjection;
 }
 
 void CameraManager::Destroy()
 {}
 
-void CameraManager::CreateUIProj(float x, float y, float dist)
+void CameraManager::CreateUIProjection(float x, float y, float Distance)
 {
-    _uiProj = DirectX::XMMatrixOrthographicOffCenterLH(0.f, x, 0.f, y, 0, dist);
+    _UiProjection = DirectX::XMMatrixOrthographicOffCenterLH(0.f, x, 0.f, y, 0, Distance);
 }

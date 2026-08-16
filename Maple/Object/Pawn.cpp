@@ -9,41 +9,53 @@ Pawn::Pawn()
 Pawn::~Pawn()
 {}
 
-bool Pawn::Init(int32 id, const FVector3D& pos, const FVector3D& scale, const FRotator& rot, const std::string& name)
+bool Pawn::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
-    Actor::Init(id, pos, scale, rot, name);
+    Actor::Init(Id, Position, Scale, Rotator, Name);
+    
     return true;
 }
 
-void Pawn::Tick(float deltaTime)
+void Pawn::Tick(float DeltaTime)
 {
-    if (_controller)
-        _controller->Tick(deltaTime);
-    Actor::Tick(deltaTime);
+    if (_Controller)
+    {
+        _Controller->Tick(DeltaTime);
+    }
+
+    Actor::Tick(DeltaTime);
 }
 
-void Pawn::Collision(float deltaTime)
+void Pawn::Collision(float DeltaTime)
 {
-    Actor::Collision(deltaTime);
+    Actor::Collision(DeltaTime);
 }
 
-void Pawn::Render(float deltaTime)
+void Pawn::Render(float DeltaTime)
 {
-    Actor::Render(deltaTime);
+    Actor::Render(DeltaTime);
 }
 
 void Pawn::Destroy()
 {
     Actor::Destroy();
+
     Ptr<Level> level = GetLevel();
+
     if (!level)
+    {
         return;
-    _controller->SetActive(false);
+    }
+
+    _Controller->SetActive(false);
 }
 
-void Pawn::SetController(Ptr<Controller> ctrl)
+void Pawn::SetController(Ptr<Controller> Controll)
 {
-    if (_controller)
-        DESTROY(_controller);
-    _controller = ctrl;
+    if (_Controller)
+    {
+        DESTROY(_Controller);
+    }
+
+    _Controller = Controll;
 }

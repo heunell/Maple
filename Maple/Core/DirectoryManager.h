@@ -15,24 +15,35 @@ public:
     DirectoryManager& operator=(DirectoryManager&&) = delete;
     
 private:
-    std::filesystem::path _rootPath;
-    std::filesystem::path _rootParentPath;
-    std::unordered_map<std::string, std::filesystem::path> _paths;
+    std::filesystem::path _RootPath;
+    
+    std::filesystem::path _RootParentPath;
+    
+    std::unordered_map<std::string, std::filesystem::path> _Paths;
     
 private:
-    void RegisterPath(const std::string& path);
+    void RegisterPath(const std::string& Path);
     
 public:
     void Init();
+   
     virtual void Destroy() override;
     
-    const std::filesystem::path& GetRootPath() const { return _rootPath; }
-    std::optional<std::filesystem::path> GetCachePath(const std::string pathName) const;
-    bool GetDirectoryFromRoot(const std::string& dirName, OUT std::filesystem::path& outVal);
-    bool GetDirectoryFromRoot(const std::filesystem::path& dir, OUT std::filesystem::path& outVal);
-    bool GetDirectory(const std::filesystem::path& basePath, const std::filesystem::path& dirName, OUT std::filesystem::path& outVal);
-    bool GetFile(const std::filesystem::path& basePath, const std::filesystem::path& fileName, OUT std::filesystem::path& outVal);
-    bool IsFile(const std::filesystem::path& path);
-    bool IsDirectory(const std::filesystem::path& path);
-    bool IsExtension(const std::filesystem::path& path, const std::string& extension);
+    const std::filesystem::path& GetRootPath() const { return _RootPath; }
+    
+    std::optional<std::filesystem::path> GetCachePath(const std::string PathName) const;
+    
+    bool GetDirectoryFromRoot(const std::string& DirectoryName, OUT std::filesystem::path& OutVal);
+    
+    bool GetDirectoryFromRoot(const std::filesystem::path& Directory, OUT std::filesystem::path& OutVal);
+    
+    bool GetDirectory(const std::filesystem::path& BasePath, const std::filesystem::path& DirectoryName, OUT std::filesystem::path& OutVal);
+    
+    bool GetFile(const std::filesystem::path& BasePath, const std::filesystem::path& FileName, OUT std::filesystem::path& OutVal);
+    
+    bool IsFile(const std::filesystem::path& Path);
+    
+    bool IsDirectory(const std::filesystem::path& Path);
+    
+    bool IsExtension(const std::filesystem::path& Path, const std::string& Extension);
 };

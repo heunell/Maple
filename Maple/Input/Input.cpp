@@ -8,33 +8,46 @@
 bool Input::Init()
 {
     _hInst = GameEngine::Instance().GetHINSTANCE();
-    _hWnd  = GameEngine::Instance().GetHWND();
-    if (FAILED(DirectInput8Create(_hInst, DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)_input.GetAddressOf(), nullptr)))
-        _type = eInputSystemType::WINDOW;
+   
+	_hWnd  = GameEngine::Instance().GetHWND();
+    
+	if (FAILED(DirectInput8Create(_hInst, DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)_Input.GetAddressOf(), nullptr)))
+	{
+		_Type = eInputSystemType::WINDOW;
+	}
     else
-        _type = eInputSystemType::DINPUT;
-    if (_type == eInputSystemType::DINPUT)
-    {
-        if (false == InitInput())
-            return false;
+	{
+		_Type = eInputSystemType::DINPUT;
+	}
+	
+	if (_Type == eInputSystemType::DINPUT)
+	{
+		if (false == InitInput())
+		{
+			return false;
+		}
     }
+
     return true;
 }
 
-void Input::Tick(float deltaTime)
+void Input::Tick(float DeltaTime)
 {
-    if (_type == eInputSystemType::DINPUT)
+    if (_Type == eInputSystemType::DINPUT)
     {
         UpdateKeyBoard();
-        UpdateMouse();
+       
+		UpdateMouse();
     }
-    UpdateMousePos(deltaTime);
-    UpdateInput(deltaTime);
+   
+	UpdateMousePos(DeltaTime);
+   
+	UpdateInput(DeltaTime);
 }
 
 bool Input::GetKeyState(uint8 key)
 {
-    return _keyState[key] & KEY_PUSH;
+    return _KeyState[key] & KEY_PUSH;
 }
 
 void Input::Destroy()
@@ -42,94 +55,136 @@ void Input::Destroy()
 
 bool Input::InitInput()
 {
-    if (FAILED(_input->CreateDevice(GUID_SysKeyboard, _keyboard.GetAddressOf(), nullptr)))
-        return false;
-    if (FAILED(_keyboard->SetDataFormat(&c_dfDIKeyboard)))
-        return false;
+    if (FAILED(_Input->CreateDevice(GUID_SysKeyboard, _Keyboard.GetAddressOf(), nullptr)))
+	{
+		return false;
+	}
+
+    if (FAILED(_Keyboard->SetDataFormat(&c_dfDIKeyboard)))
+	{
+		return false;
+	}
+
     if (Device::Instance().GetWindowMode())
     {
-        if (FAILED(_keyboard->SetCooperativeLevel(_hWnd, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE)))
-            return false;
+        if (FAILED(_Keyboard->SetCooperativeLevel(_hWnd, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE)))
+		{
+			return false;
+		}
     }
     else
     {
-        if (FAILED(_keyboard->SetCooperativeLevel(_hWnd, DISCL_FOREGROUND | DISCL_EXCLUSIVE)))
-            return false;
+        if (FAILED(_Keyboard->SetCooperativeLevel(_hWnd, DISCL_FOREGROUND | DISCL_EXCLUSIVE)))
+		{
+			return false;
+		}
     }
-    if (FAILED(_keyboard->Acquire()))
-        return false;
-    if (FAILED(_input->CreateDevice(GUID_SysMouse, _mouse.GetAddressOf(), nullptr)))
-        return false;
+    
+	if (FAILED(_Keyboard->Acquire()))
+	{
+		return false;
+	}
+
+    if (FAILED(_Input->CreateDevice(GUID_SysMouse, _Mouse.GetAddressOf(), nullptr)))
+	{
+		return false;
+	}
+
     if (Device::Instance().GetWindowMode())
     {
-        if (FAILED(_mouse->SetCooperativeLevel(_hWnd, DISCL_BACKGROUND | DISCL_NONEXCLUSIVE)))
-            return false;
+        if (FAILED(_Mouse->SetCooperativeLevel(_hWnd, DISCL_BACKGROUND | DISCL_NONEXCLUSIVE)))
+		{
+			return false;
+		}
     }
     else
     {
-        if (FAILED(_mouse->SetCooperativeLevel(_hWnd, DISCL_BACKGROUND | DISCL_EXCLUSIVE)))
-            return false;
+        if (FAILED(_Mouse->SetCooperativeLevel(_hWnd, DISCL_BACKGROUND | DISCL_EXCLUSIVE)))
+		{
+			return false;
+		}
     }
-    if (FAILED(_mouse->Acquire()))
-        return false;
+
+    if (FAILED(_Mouse->Acquire()))
+	{
+		return false;
+	}
+
     return true;
 }
 
 bool Input::UpdateKeyBoard()
 {
-    if (!_keyboard)
-        return false;
-    HRESULT ret = _keyboard->GetDeviceState(256, (LPVOID)&_keyState);
-    if (FAILED(ret))
+    if (!_Keyboard)
+	{
+		return false;
+	}
+
+    HRESULT ret = _Keyboard->GetDeviceState(256, (LPVOID)&_KeyState);
+   
+	if (FAILED(ret))
     {
         if (ret == DIERR_INPUTLOST || ret == DIERR_NOTACQUIRED)
-            _keyboard->Acquire();
+		{
+			_Keyboard->Acquire();
+		}
     }
+
     return true;
 }
 
 bool Input::UpdateMouse()
 {
-	if (!_mouse)
+	if (!_Mouse)
+	{
 		return false;
-	HRESULT ret = _mouse->GetDeviceState(sizeof(_mouseState), (LPVOID)&_mouseState);
+	}
+
+	HRESULT ret = _Mouse->GetDeviceState(sizeof(_MouseState), (LPVOID)&_MouseState);
+	
 	if (FAILED(ret))
 	{
 		if (ret == DIERR_INPUTLOST || ret == DIERR_NOTACQUIRED)
-			_mouse->Acquire();
+		{
+			_Mouse->Acquire();
+		}
 	}
+	
 	return true;
 }
 
-void Input::UpdateInput(float deltaTime)
+void Input::UpdateInput(float DeltaTime)
 {
-	if (_type == eInputSystemType::DINPUT)
+	if (_Type == eInputSystemType::DINPUT)
 	{
 		for (int i = 0; i < MOUSE_BUTTON_TYPE::Type::End; ++i)
 		{
-			if (_mouseState.rgbButtons[i] & KEY_PUSH)
+			if (_MouseState.rgbButtons[i] & KEY_PUSH)
 			{
-				if (!_mouseDown[i] && !_mouseHold[i])
+				if (!_MouseDown[i] && !_MouseHold[i])
 				{
-					_mouseDown[i] = true;
-					_mouseHold[i] = true;
+					_MouseDown[i] = true;
+					
+					_MouseHold[i] = true;
 				}
 				else
 				{
-					_mouseDown[i] = false;
+					_MouseDown[i] = false;
 				}
 			}
 			else
 			{
-				if (_mouseHold[i])
+				if (_MouseHold[i])
 				{
-					_mouseDown[i] = false;
-					_mouseHold[i] = false;
-					_mouseUp[i]   = true;
+					_MouseDown[i] = false;
+					
+					_MouseHold[i] = false;
+					
+					_MouseUp[i]   = true;
 				}
 				else
 				{
-					_mouseUp[i]   = false;
+					_MouseUp[i]   = false;
 				}
 			}
 		}
@@ -146,24 +201,28 @@ void Input::UpdateMousePos(float delatTime)
 	FVector2D   mousePosition;
 	mousePosition._x          = mousePointPos.x * ratio._x;
 	mousePosition._y          = mousePointPos.y * ratio._y;
-	mousePosition._y          = viewPortRS._height - mousePosition._y;
-	if (_mouseCompute)
-		_mouseMove    = mousePosition - _mousePos;
+	mousePosition._y          = viewPortRS._Height - mousePosition._y;
+	if (_MouseCompute)
+	{
+		_MouseMove = mousePosition - _MousePosition;
+	}
 	else
-		_mouseCompute = true;
-	_mousePos         = mousePosition;
+	{
+		_MouseCompute = true;
+	}
+	_MousePosition = mousePosition;
 	Ptr<World> world = GameEngine::Instance().GetWorld();
 	Ptr<Level> level = world->GetCurLevel();
 	if (nullptr == level)
 		return;
-	FVector3D cameraPos = level->GetCameraWorldPos();
-	_mouseWorldPos._x = cameraPos._x + _mousePos._x - viewPortRS._width * 0.5f;
-	_mouseWorldPos._y = cameraPos._y + _mousePos._y - viewPortRS._height * 0.5f;
+	FVector3D cameraPos = level->GetCameraWorldPosition();
+	_MouseWorldPosition._x = cameraPos._x + _MousePosition._x - viewPortRS._Width * 0.5f;
+	_MouseWorldPosition._y = cameraPos._y + _MousePosition._y - viewPortRS._Height * 0.5f;
 }
 
 uint8 Input::ConvertKey(uint8 key)
 {
-    if (_type == eInputSystemType::DINPUT)
+    if (_Type == eInputSystemType::DINPUT)
 	{
 		switch (key)
 		{

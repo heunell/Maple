@@ -9,20 +9,25 @@ public:
     virtual ~Pawn();
     
 protected:
-    Ptr<Controller> _controller;
+    Ptr<Controller> _Controller;
     
 public:
-    virtual bool Init(int32 id, const FVector3D& pos, const FVector3D& scale, const FRotator& rot, const std::string& name) override;
-    virtual void Tick(float deltaTime) override;
-    virtual void Collision(float deltaTime) override;
-    virtual void Render(float deltaTime) override;
+    virtual bool Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name) override;
+    
+    virtual void Tick(float DeltaTime) override;
+    
+    virtual void Collision(float DeltaTime) override;
+    
+    virtual void Render(float DeltaTime) override;
+    
     virtual void Destroy() override;
     
 public:
-    void SetController(Ptr<Controller> ctrl);
+    void SetController(Ptr<Controller> Controll);
+    
     template<typename T>
     Ptr<T> GetController() const
     {
-        return Cast<Controller, T>(_controller);
+        return Cast<Controller, T>(_Controller);
     }
 };

@@ -17,7 +17,7 @@ protected:
 public:
     void SetBlendFactor(float r, float g, float b, float a);
     void SetSampleMask(UINT mask);
-    void AddBlendDesc(bool enable, D3D11_BLEND src, D3D11_BLEND dest, D3D11_BLEND_OP blendop, D3D11_BLEND srcAlpha, D3D11_BLEND destAlpha, D3D11_BLEND_OP alphaOp, UINT renderTargetWriteMask);
+    void AddBlendDescription(bool enable, D3D11_BLEND src, D3D11_BLEND dest, D3D11_BLEND_OP blendop, D3D11_BLEND srcAlpha, D3D11_BLEND destAlpha, D3D11_BLEND_OP alphaOp, UINT renderTargetWriteMask);
     bool CreateState(bool alphaToCoverage, bool Indendent);
     
 public:

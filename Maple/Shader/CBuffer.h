@@ -8,13 +8,13 @@ public:
     
 protected:
     ComPtr<ID3D11Buffer> _buffer = nullptr;
-    int _size     = 0;
-    int _register = 0;
-    int _type     = 0;
+    int _Size     = 0;
+    int _Register = 0;
+    int _Type     = 0;
     
 public:
-    bool Create(int size, int regi, int tpye);
-    void SetData(void* data);
+    bool Create(int Size, int Register, int Type);
+    void SetData(void* Data);
     virtual void Update();
     virtual void Destroy() override;
 };

@@ -12,57 +12,65 @@ Actor::Actor()
 Actor::~Actor()
 {}
 
-bool Actor::Init(int32 id, const FVector3D& pos, const FVector3D& scale, const FRotator& rot, const std::string& name)
+bool Actor::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotatar, const std::string& Name)
 {
-    _id   = id;
-    _name = name;
-    _type = eActorType::Actor;
-    _root = CreateSceneComponent<SceneComponent>("DefaultRoot");
-    SetRelativePosition(pos);
-    SetRelativeScale(scale);
-    SetRelativeRotation(rot);
+    _Id   = Id;
+    _Name = Name;
+    _Type = eActorType::Actor;
+    _Root = CreateSceneComponent<SceneComponent>("DefaultRoot");
+    SetRelativePosition(Position);
+    SetRelativeScale(Scale);
+    SetRelativeRotation(Rotatar);
     SetEnable(true);
     SetActive(true);
     return true;
 }
 
-void Actor::Tick(float deltaTime)
+void Actor::Tick(float DeltaTime)
 {
-    _root->Tick(deltaTime);
-    for (auto& it : _actorComponents)
+    _Root->Tick(DeltaTime);
+    for (auto& it : _ActorComponents)
     {
         Ptr<ActorComponent> comp = it.second;
         if (nullptr == comp)
             continue;
         if (!comp->IsActive() || !comp->IsEnable())
             continue;
-        comp->Tick(deltaTime);
+        comp->Tick(DeltaTime);
     }
 }
 
-void Actor::Collision(float deltaTime)
+void Actor::Collision(float DeltaTime)
 {}
 
-void Actor::Render(float deltaTime)
+void Actor::Render(float DeltaTime)
 {
-    // _root->Render(deltaTime);
+    // _Root->Render(deltaTime);
 }
 
 void Actor::Destroy()
 {
 }
 
+void Actor::Save(std::ofstream& File)
+{
+}
+
+void Actor::Load(std::ifstream& File)
+{
+}
+
 Ptr<class SceneComponent> Actor::GetRoot() const
 {
-    return _root;
+    return _Root;
 }
 
 void Actor::SetRootComponent(const Ptr<class SceneComponent> comp)
 {
-    if (_root)
+    if (_Root)
     {
-        comp->SetRelativeTransform(_root->GetRelativeTransform());
-        for (auto& it : _root->_childs)
+        comp->SetRelativeTransform(_Root->GetRelativeTransform());
+        for (auto& it : _Root->_Childs)
         {
             Ptr<SceneComponent> child = it.second;
             if (child)
@@ -70,79 +78,79 @@ void Actor::SetRootComponent(const Ptr<class SceneComponent> comp)
                 child->AttachToComponent(comp);
             }
         }
-        _root->_childs.clear();
-        Delete(_root);
-        _root = comp;
+        _Root->_Childs.clear();
+        Delete(_Root);
+        _Root = comp;
     }
     else
     {
-        _root = comp;
+        _Root = comp;
     }
 }
 
-Ptr<class SceneComponent> Actor::FindSceneComponent(const std::string& name) const
+Ptr<class SceneComponent> Actor::FindSceneComponent(const std::string& Name) const
 {
-    if (_root->GetName() == name)
-        return _root;
-    auto it = _componentFinder.find(name);
-    if (_componentFinder.end() == it)
+    if (_Root->GetName() == Name)
+        return _Root;
+    auto it = _ComponentFinder.find(Name);
+    if (_ComponentFinder.end() == it)
         return nullptr;
     return FindSceneComponent(it->second);
 }
 
-Ptr<class ActorComponent> Actor::FindActorComponent(const std::string& name) const
+Ptr<class ActorComponent> Actor::FindActorComponent(const std::string& Name) const
 {   
-    auto it = _componentFinder.find(name);
-    if (_componentFinder.end() == it)
+    auto it = _ComponentFinder.find(Name);
+    if (_ComponentFinder.end() == it)
         return nullptr;
     return FindActorComponent(it->second);
 }
 
-Ptr<class SceneComponent> Actor::FindSceneComponent(int32 id) const
+Ptr<class SceneComponent> Actor::FindSceneComponent(int32 Id) const
 {
-    if (_root->GetComponentID() == id)
-        return _root;
-    return _root->FindComponent(id);
+    if (_Root->GetComponentID() == Id)
+        return _Root;
+    return _Root->FindComponent(Id);
 }
 
-Ptr<class ActorComponent> Actor::FindActorComponent(int32 id) const
+Ptr<class ActorComponent> Actor::FindActorComponent(int32 Id) const
 {
-    auto compIt = _actorComponents.find(id);
-    if (_actorComponents.end() == compIt)
+    auto compIt = _ActorComponents.find(Id);
+    if (_ActorComponents.end() == compIt)
         return nullptr;
     return compIt->second;
 }
 
 Ptr<class Level> Actor::GetLevel() const
 {
-    return Lock<Level>(_level);
+    return Lock<Level>(_Level);
 }
 
 void Actor::SetLevel(Ptr<class Level> level)
 {
-    _level = level;
+    _Level = level;
 }
 
 void Actor::Remove()
 {
-    Ptr<Level> level = Lock<Level>(_level);
+    Ptr<Level> level = Lock<Level>(_Level);
     if (level)
-        level->RemoveActor(_id);
+        level->RemoveActor(_Id);
 }
 
-void Actor::SetName(const std::string& name)
+void Actor::SetName(const std::string& Name)
 {
-    _name = name;
+    _Name = Name;
 }
 
 const std::string& Actor::GetName() const
 {
-    return _name;
+    return _Name;
 }
 
 eActorType Actor::GetType() const
 {
-    return _type;
+    return _Type;
 }
 
 bool Actor::IsTag(const std::string& tag)
@@ -156,360 +164,360 @@ void Actor::AddTag(const std::string& tag)
     Ptr<Level> level = GetLevel();
     if (nullptr == level)
         return;
-    level->AddTag(tag, _id);
+    level->AddTag(tag, _Id);
 }
 
 const FTransform& Actor::GetWorldTransform() const
 {
-    return _root->GetWorldTransform();
+    return _Root->GetWorldTransform();
 }
 
 void Actor::SetWorldTransform(const FTransform& trans)
 {
-    _root->SetWorldTransform(trans);
+    _Root->SetWorldTransform(trans);
 }
 
-void Actor::SetWorldTransform(const FVector3D& pos, const FVector3D& scale, const FRotator& rot)
+void Actor::SetWorldTransform(const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator)
 {
-    _root->SetWorldTransform(pos, scale, rot);
+    _Root->SetWorldTransform(Position, Scale, Rotator);
 }
 
 const FVector3D& Actor::GetWorldScale() const
 {
-    return _root->GetWorldScale();
+    return _Root->GetWorldScale();
 }
 
-void Actor::SetWorldScale(const FVector3D& scale)
+void Actor::SetWorldScale(const FVector3D& Scale)
 {
-    _root->SetWorldScale(scale);
+    _Root->SetWorldScale(Scale);
 }
 
 void Actor::SetWorldScale(float x, float y, float z)
 {
-    _root->SetWorldScale(x, y, z);
+    _Root->SetWorldScale(x, y, z);
 }
 
-void Actor::SetWorldScale(const FVector2D& scale)
+void Actor::SetWorldScale(const FVector2D& Scale)
 {
-    _root->SetWorldScale(scale);
+    _Root->SetWorldScale(Scale);
 }
 
 void Actor::SetWorldScale(float x, float y)
 {
-    _root->SetWorldScale(x, y);
+    _Root->SetWorldScale(x, y);
 }
 
-const FVector3D& Actor::AddWorldScale(const FVector3D& scale)
+const FVector3D& Actor::AddWorldScale(const FVector3D& Scale)
 {
-    return _root->AddWorldScale(scale);
+    return _Root->AddWorldScale(Scale);
 }
 
 const FVector3D& Actor::AddWorldScale(float x, float y, float z)
 {
-    return _root->AddWorldScale(x, y, z);
+    return _Root->AddWorldScale(x, y, z);
 }
 
-const FVector3D& Actor::AddWorldScale(const FVector2D& scale)
+const FVector3D& Actor::AddWorldScale(const FVector2D& Scale)
 {
-    return _root->AddWorldScale(scale);
+    return _Root->AddWorldScale(Scale);
 }
 
 const FVector3D& Actor::AddWorldScale(float x, float y)
 {
-    return _root->AddWorldScale(x, y);
+    return _Root->AddWorldScale(x, y);
 }
 
 const FVector3D& Actor::AddWorldScale(float value)
 {
-    return _root->AddWorldScale(value);
+    return _Root->AddWorldScale(value);
 }
 
 const FVector3D& Actor::AddWorldScaleX(float x)
 {
-    return _root->AddWorldScale(x);
+    return _Root->AddWorldScale(x);
 }
 
 const FVector3D& Actor::AddWorldScaleY(float y)
 {
-    return _root->AddWorldScale(y);
+    return _Root->AddWorldScale(y);
 }
 
 const FVector3D& Actor::GetWorldPosition() const
 {
-    return _root->GetWorldPosition();
+    return _Root->GetWorldPosition();
 }
 
-void Actor::SetWorldPosition(const FVector3D& pos)
+void Actor::SetWorldPosition(const FVector3D& Position)
 {
-    _root->SetWorldPosition(pos);
+    _Root->SetWorldPosition(Position);
 }
 
 void Actor::SetWorldPosition(float x, float y, float z)
 {
-    _root->SetWorldPosition(x, y, z);
+    _Root->SetWorldPosition(x, y, z);
 }
 
-void Actor::SetWorldPosition(const FVector2D& pos)
+void Actor::SetWorldPosition(const FVector2D& Position)
 {
-    _root->SetWorldPosition(pos);
+    _Root->SetWorldPosition(Position);
 }
 
 void Actor::SetWorldPosition(float x, float y)
 {
-    _root->SetWorldPosition(x, y);
+    _Root->SetWorldPosition(x, y);
 }
 
-const FVector3D& Actor::AddWorldPosition(const FVector3D& pos)
+const FVector3D& Actor::AddWorldPosition(const FVector3D& Position)
 {
-    return _root->AddWorldPosition(pos);
+    return _Root->AddWorldPosition(Position);
 }
 
 const FVector3D& Actor::AddWorldPosition(float x, float y, float z)
 {
-    return _root->AddWorldPosition(x, y, z);
+    return _Root->AddWorldPosition(x, y, z);
 }
 
-const FVector3D& Actor::AddWorldPosition(const FVector2D& pos)
+const FVector3D& Actor::AddWorldPosition(const FVector2D& Position)
 {
-    return _root->AddWorldPosition(pos);
+    return _Root->AddWorldPosition(Position);
 }
 
 const FVector3D& Actor::AddWorldPosition(float x, float y)
 {
-    return _root->AddWorldPosition(x, y);
+    return _Root->AddWorldPosition(x, y);
 }
 
 const FVector3D& Actor::AddWorldPosition(float value)
 {
-    return _root->AddWorldPosition(value);
+    return _Root->AddWorldPosition(value);
 }
 
 const FVector3D& Actor::AddWorldPositionX(float x)
 {
-    return _root->AddWorldPosition(x);
+    return _Root->AddWorldPosition(x);
 }
 
 const FVector3D& Actor::AddWorldPositionY(float y)
 {
-    return _root->AddWorldPosition(y);
+    return _Root->AddWorldPosition(y);
 }
 
 const FRotator& Actor::GetWorldRotation() const
 {
-    return _root->GetWorldRotation();
+    return _Root->GetWorldRotation();
 }
 
-void Actor::SetWorldRotation(const FRotator& rot)
+void Actor::SetWorldRotation(const FRotator& Rotator)
 {
-    _root->SetWorldRotation(rot);
+    _Root->SetWorldRotation(Rotator);
 }
 
 void Actor::SetWorldRotation(float x, float y, float z)
 {
-    _root->SetWorldRotation(x, y, z);
+    _Root->SetWorldRotation(x, y, z);
 }
 
-void Actor::SetWorldRotation(const FVector2D& rot)
+void Actor::SetWorldRotation(const FVector2D& Rotator)
 {
-    _root->SetWorldRotation(rot);
+    _Root->SetWorldRotation(Rotator);
 }
 
 void Actor::SetWorldRotation(float x, float y)
 {
-    _root->SetWorldRotation(x, y);
+    _Root->SetWorldRotation(x, y);
 }
 
 const FTransform& Actor::GetRelativeTransform() const
 {
-    return _root->GetRelativeTransform();
+    return _Root->GetRelativeTransform();
 }
 
 void Actor::SetRelativeTransform(const FTransform& trans)
 {
-    _root->SetRelativeTransform(trans);
+    _Root->SetRelativeTransform(trans);
 }
 
-void Actor::SetRelativeTransform(const FVector3D& pos, const FVector3D& scale, const FRotator& rot)
+void Actor::SetRelativeTransform(const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator)
 {
-    _root->SetRelativeTransform(pos, scale, rot);
+    _Root->SetRelativeTransform(Position, Scale, Rotator);
 }
 
 const FVector3D& Actor::GetRelativeScale() const
 {
-    return _root->GetRelativeScale();
+    return _Root->GetRelativeScale();
 }
 
-void Actor::SetRelativeScale(const FVector3D& scale)
+void Actor::SetRelativeScale(const FVector3D& Scale)
 {
-    _root->SetRelativeScale(scale);
+    _Root->SetRelativeScale(Scale);
 }
 
 void Actor::SetRelativeScale(float x, float y, float z)
 {
-    _root->SetRelativeScale(x, y, z);
+    _Root->SetRelativeScale(x, y, z);
 }
 
-void Actor::SetRelativeScale(const FVector2D& scale)
+void Actor::SetRelativeScale(const FVector2D& Scale)
 {
-    _root->SetRelativeScale(scale);
+    _Root->SetRelativeScale(Scale);
 }
 
 void Actor::SetRelativeScale(float x, float y)
 {
-    _root->SetRelativeScale(x, y);
+    _Root->SetRelativeScale(x, y);
 }
 
-const FVector3D& Actor::AddRelativeScale(const FVector3D& scale)
+const FVector3D& Actor::AddRelativeScale(const FVector3D& Scale)
 {
-    return _root->AddRelativeScale(scale);
+    return _Root->AddRelativeScale(Scale);
 }
 
 const FVector3D& Actor::AddRelativeScale(float x, float y, float z)
 {
-    return _root->AddRelativeScale(x, y, z);
+    return _Root->AddRelativeScale(x, y, z);
 }
 
-const FVector3D& Actor::AddRelativeScale(const FVector2D& scale)
+const FVector3D& Actor::AddRelativeScale(const FVector2D& Scale)
 {
-    return _root->AddRelativeScale(scale);
+    return _Root->AddRelativeScale(Scale);
 }
 
 const FVector3D& Actor::AddRelativeScale(float x, float y)
 {
-    return _root->AddRelativeScale(x, y);
+    return _Root->AddRelativeScale(x, y);
 }
 
 const FVector3D& Actor::AddRelativeScale(float value)
 {
-    return _root->AddRelativeScale(value);
+    return _Root->AddRelativeScale(value);
 }
 
 const FVector3D& Actor::AddRelativeScaleX(float x)
 {
-    return _root->AddRelativeScaleX(x);
+    return _Root->AddRelativeScaleX(x);
 }
 
 const FVector3D& Actor::AddRelativeScaleY(float y)
 {
-    return _root->AddRelativeScaleY(y);
+    return _Root->AddRelativeScaleY(y);
 }
 
 const FVector3D& Actor::GetRelativePosition() const
 {
-    return _root->GetRelativePosition();
+    return _Root->GetRelativePosition();
 }
 
-void Actor::SetRelativePosition(const FVector3D& pos)
+void Actor::SetRelativePosition(const FVector3D& Position)
 {
-    _root->SetRelativePosition(pos);
+    _Root->SetRelativePosition(Position);
 }
 
 void Actor::SetRelativePosition(float x, float y, float z)
 {
-    _root->SetRelativePosition(x, y, z);
+    _Root->SetRelativePosition(x, y, z);
 }
 
-void Actor::SetRelativePosition(const FVector2D& pos)
+void Actor::SetRelativePosition(const FVector2D& Position)
 {
-    _root->SetRelativePosition(pos);
+    _Root->SetRelativePosition(Position);
 }
 
 void Actor::SetRelativePosition(float x, float y)
 {
-    _root->SetRelativePosition(x, y);
+    _Root->SetRelativePosition(x, y);
 }
 
-const FVector3D& Actor::AddRelativePosition(const FVector3D& scale)
+const FVector3D& Actor::AddRelativePosition(const FVector3D& Scale)
 {
-    return _root->AddRelativePosition(scale);
+    return _Root->AddRelativePosition(Scale);
 }
 
 const FVector3D& Actor::AddRelativePosition(float x, float y, float z)
 {
-    return _root->AddRelativePosition(x, y, z);
+    return _Root->AddRelativePosition(x, y, z);
 }
 
-const FVector3D& Actor::AddRelativePosition(const FVector2D& scale)
+const FVector3D& Actor::AddRelativePosition(const FVector2D& Scale)
 {
-    return _root->AddRelativePosition(scale);
+    return _Root->AddRelativePosition(Scale);
 }
 
 const FVector3D& Actor::AddRelativePosition(float x, float y)
 {
-    return _root->AddRelativePosition(x, y);
+    return _Root->AddRelativePosition(x, y);
 }
 
 const FVector3D& Actor::AddRelativePosition(float value)
 {
-    return _root->AddRelativePosition(value);
+    return _Root->AddRelativePosition(value);
 }
 
 const FVector3D& Actor::AddRelativePositionX(float x)
 {
-    return _root->AddRelativePositionX(x);
+    return _Root->AddRelativePositionX(x);
 }
 
 const FVector3D& Actor::AddRelativePositionY(float y)
 {
-    return _root->AddRelativePositionY(y);
+    return _Root->AddRelativePositionY(y);
 }
 
 const FRotator& Actor::GetRelativeRotation() const
 {
-    return _root->GetRelativeRotation();
+    return _Root->GetRelativeRotation();
 }
 
-void Actor::SetRelativeRotation(const FRotator& rot)
+void Actor::SetRelativeRotation(const FRotator& Rotator)
 {
-    _root->SetRelativeRotation(rot);
+    _Root->SetRelativeRotation(Rotator);
 }
 
 void Actor::SetRelativeRotation(float x, float y, float z)
 {
-    _root->SetRelativeRotation(x, y, z);
+    _Root->SetRelativeRotation(x, y, z);
 }
 
-void Actor::SetRelativeRotation(const FVector2D& rot)
+void Actor::SetRelativeRotation(const FVector2D& Rotator)
 {
-    _root->SetRelativeRotation(rot);
+    _Root->SetRelativeRotation(Rotator);
 }
 
 void Actor::SetRelativeRotation(float x, float y)
 {
-    _root->SetRelativeRotation(x, y);
+    _Root->SetRelativeRotation(x, y);
 }
 
-const FRotator& Actor::AddRelativeRotation(const FVector3D& scale)
+const FRotator& Actor::AddRelativeRotation(const FVector3D& Scale)
 {
-    return _root->AddRelativeRotation(scale);
+    return _Root->AddRelativeRotation(Scale);
 }
 
 const FRotator& Actor::AddRelativeRotation(float x, float y, float z)
 {
-    return _root->AddRelativeRotation(x, y, z);
+    return _Root->AddRelativeRotation(x, y, z);
 }
 
-const FRotator& Actor::AddRelativeRotation(const FVector2D& scale)
+const FRotator& Actor::AddRelativeRotation(const FVector2D& Scale)
 {
-    return _root->AddRelativeRotation(scale);
+    return _Root->AddRelativeRotation(Scale);
 }
 
 const FRotator& Actor::AddRelativeRotation(float x, float y)
 {
-    return _root->AddRelativeRotation(x, y);
+    return _Root->AddRelativeRotation(x, y);
 }
 
 const FRotator& Actor::AddRelativeRotation(float value)
 {
-    return _root->AddRelativeRotation(value);
+    return _Root->AddRelativeRotation(value);
 }
 
 const FRotator& Actor::AddRelativeRotationX(float x)
 {
-    return _root->AddRelativeRotationX(x);
+    return _Root->AddRelativeRotationX(x);
 }
 
 const FRotator& Actor::AddRelativeRotationY(float y)
 {
-    return _root->AddRelativeRotationY(y);
+    return _Root->AddRelativeRotationY(y);
 }

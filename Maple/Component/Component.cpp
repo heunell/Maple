@@ -11,43 +11,49 @@ Component::~Component()
 
 const Ptr<class Actor> Component::GetOwner() const
 {
-    return Lock<Actor>(_owner);
+    return Lock<Actor>(_Owner);
 }
 
 void Component::SetOwner(Ptr<class Actor> owner)
 {
-    _owner = owner;
+    _Owner = owner;
 }
 
 Ptr<class Level> Component::GetLevel() const
 {
-    return Lock<Level>(_level);
+    return Lock<Level>(_Level);
 }
 
-bool Component::Init(int32 id, const std::string& name, Ptr<class Actor> owner)
+bool Component::Init(int32 Id, const std::string& Name, Ptr<class Actor> Owner)
 {
-    _id    = id;
-    _name  = name;
-    _owner = owner;
-    _level = _level;
+    _Id    = Id;
+    
+    _Name  = Name;
+    
+    _Owner = Owner;
+    
+    _Level = Owner->GetLevel();
     
     SetEnable(true);
+    
     SetActive(true);
+    
     return true;
 }
 
-void Component::Tick(float deltaTime)
+void Component::Tick(float DeltaTime)
 {}
 
-void Component::Collision(float deltaTime)
+void Component::Collision(float DeltaTime)
 {}
 
-void Component::Render(float deltaTime)
+void Component::Render(float DeltaTime)
 {}
 
 void Component::Destroy()
 {
     SetEnable(false);
+    
     SetActive(false);
 }
 

@@ -1,31 +1,31 @@
 ﻿#include "pch.h"
 #include "DirectoryManager.h"
 
-void DirectoryManager::RegisterPath(const std::string& path)
+void DirectoryManager::RegisterPath(const std::string& Path)
 {
-    std::filesystem::path registeredPath = _rootPath / path;
+    std::filesystem::path registeredPath = _RootParentPath / Path;
     if (!std::filesystem::exists(registeredPath))
         std::filesystem::create_directories(registeredPath);
     
     if (!std::filesystem::is_directory(registeredPath))
         return;
     
-    _paths[path] = registeredPath;
+    _Paths[Path] = registeredPath;
 }
 
 void DirectoryManager::Init()
 {
-    _rootPath = std::filesystem::current_path();
-    if (!std::filesystem::exists(_rootPath))
+    _RootPath = std::filesystem::current_path();
+    if (!std::filesystem::exists(_RootPath))
         return;
     
-    if (!std::filesystem::is_directory(_rootPath))
+    if (!std::filesystem::is_directory(_RootPath))
         return;
     
-    _rootParentPath = _rootPath.parent_path();
-    if (!std::filesystem::exists(_rootParentPath))
+    _RootParentPath = _RootPath.parent_path();
+    if (!std::filesystem::exists(_RootParentPath))
         return;
-    if (!std::filesystem::is_directory(_rootParentPath))
+    if (!std::filesystem::is_directory(_RootParentPath))
         return;
     
     RegisterPath("Logs");
@@ -36,87 +36,87 @@ void DirectoryManager::Init()
 
 void DirectoryManager::Destroy()
 {
-    _paths.clear();
+    _Paths.clear();
 }
 
-std::optional<std::filesystem::path> DirectoryManager::GetCachePath(const std::string pathName) const
+std::optional<std::filesystem::path> DirectoryManager::GetCachePath(const std::string PathName) const
 {
-    auto it = _paths.find(pathName);
-    if (it == _paths.end())
+    auto it = _Paths.find(PathName);
+    if (it == _Paths.end())
         return std::nullopt;
     return it->second;
 }
 
-bool DirectoryManager::GetDirectoryFromRoot(const std::string& dirName, std::filesystem::path& outVal)
+bool DirectoryManager::GetDirectoryFromRoot(const std::string& DirectoryName, std::filesystem::path& OutVal)
 {
-    std::filesystem::path foundPath = _rootPath / dirName;
-    if (!std::filesystem::exists(foundPath))
+    std::filesystem::path FoundPath = _RootPath / DirectoryName;
+    if (!std::filesystem::exists(FoundPath))
         return false;
-    if (!std::filesystem::is_directory(foundPath))
+    if (!std::filesystem::is_directory(FoundPath))
         return false;
-    outVal = foundPath;
+    OutVal = FoundPath;
     return true;
 }
 
-bool DirectoryManager::GetDirectoryFromRoot(const std::filesystem::path& dir, std::filesystem::path& outVal)
+bool DirectoryManager::GetDirectoryFromRoot(const std::filesystem::path& Directory, std::filesystem::path& OutVal)
 {
-    std::filesystem::path foundPath = _rootPath / dir;
-    if (!std::filesystem::exists(foundPath))
+    std::filesystem::path FoundPath = _RootPath / Directory;
+    if (!std::filesystem::exists(FoundPath))
         return false;
-    if (!std::filesystem::is_directory(foundPath))
+    if (!std::filesystem::is_directory(FoundPath))
         return false;
-    outVal = foundPath;
+    OutVal = FoundPath;
     return true;
 }
 
-bool DirectoryManager::GetDirectory(const std::filesystem::path& basePath, const std::filesystem::path& dirName, std::filesystem::path& outVal)
+bool DirectoryManager::GetDirectory(const std::filesystem::path& BasePath, const std::filesystem::path& DirectoryName, std::filesystem::path& OutVal)
 {
-    std::filesystem::path foundPath = basePath / dirName;
-    if (!std::filesystem::exists(foundPath))
+    std::filesystem::path FoundPath = BasePath / DirectoryName;
+    if (!std::filesystem::exists(FoundPath))
         return false;
-    if (!std::filesystem::is_directory(foundPath))
+    if (!std::filesystem::is_directory(FoundPath))
         return false;
-    outVal = foundPath;
+    OutVal = FoundPath;
     return true;
 }
 
-bool DirectoryManager::GetFile(const std::filesystem::path& basePath, const std::filesystem::path& fileName, std::filesystem::path& outVal)
+bool DirectoryManager::GetFile(const std::filesystem::path& BasePath, const std::filesystem::path& FileName, std::filesystem::path& OutVal)
 {
-    std::filesystem::path foundPath = basePath / fileName;
-    outVal = foundPath;
-    if (!std::filesystem::exists(foundPath))
+    std::filesystem::path FoundPath = BasePath / FileName;
+    OutVal = FoundPath;
+    if (!std::filesystem::exists(FoundPath))
         return false;
-    if (!std::filesystem::is_regular_file(foundPath))
-        return false;
-    return true;
-}
-
-bool DirectoryManager::IsFile(const std::filesystem::path& path)
-{
-    if (!std::filesystem::exists(path))
-        return false;
-    if (!std::filesystem::is_regular_file(path))
+    if (!std::filesystem::is_regular_file(FoundPath))
         return false;
     return true;
 }
 
-bool DirectoryManager::IsDirectory(const std::filesystem::path& path)
+bool DirectoryManager::IsFile(const std::filesystem::path& Path)
 {
-    if (!std::filesystem::exists(path))
+    if (!std::filesystem::exists(Path))
         return false;
-    if (!std::filesystem::is_directory(path))
+    if (!std::filesystem::is_regular_file(Path))
         return false;
     return true;
 }
 
-bool DirectoryManager::IsExtension(const std::filesystem::path& path, const std::string& extension)
+bool DirectoryManager::IsDirectory(const std::filesystem::path& Path)
 {
-    std::filesystem::path fileExtension = path.extension();
-    std::string strExtension = fileExtension.string();
-    std::string compareExtension = extension;
-    std::transform(strExtension.begin(), strExtension.end(), strExtension.begin(), toupper);
-    std::transform(compareExtension.begin(), compareExtension.end(), compareExtension.begin(), toupper);
-    if (compareExtension == strExtension)
+    if (!std::filesystem::exists(Path))
+        return false;
+    if (!std::filesystem::is_directory(Path))
+        return false;
+    return true;
+}
+
+bool DirectoryManager::IsExtension(const std::filesystem::path& Path, const std::string& Extension)
+{
+    std::filesystem::path FileExtension = Path.extension();
+    std::string StringExtension = FileExtension.string();
+    std::string CompareExtension = Extension;
+    std::transform(StringExtension.begin(), StringExtension.end(), StringExtension.begin(), toupper);
+    std::transform(CompareExtension.begin(), CompareExtension.end(), CompareExtension.begin(), toupper);
+    if (CompareExtension == StringExtension)
         return true;
     return false;
 }

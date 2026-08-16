@@ -6,38 +6,38 @@
 
 struct FTransformCBufferData
 {
-    FMatrix _world;
-    FMatrix _view;
-    FMatrix _proj;
+    FMatrix _World;
+    FMatrix _View;
+    FMatrix _Proj;
     FMatrix _wv; 
     FMatrix _wvp;
 };
 
 struct FColorCBufferData
 {
-    FVector4D _color;
+    FVector4D _Color;
 };
 
 struct FMaterialCBufferData
 {
-    FVector4D _basaColor;
-    float _opacity;
-    int32 _textureWidht;
-    int32 _textureHeight;
-    float _empty;               
+    FVector4D _BasaColor;
+    float _Opacity;
+    int32 _TextureWidht;
+    int32 _TextureHeight;
+    float _Empty;               
 };
 
 struct FAnimation2DCBufferData
 {
     FVector2D _uvLT;
     FVector2D _uvRB;
-    int32 _animFilp;
-    FVector3D _empty;
+    int32 _AnimFilp;
+    FVector3D _Empty;
 };
 
 struct FSpriteCBufferData
 {
-    FVector4D _tint;
+    FVector4D _Tint;
 };
 
 struct FTileMapCBufferData
@@ -48,17 +48,17 @@ struct FTileMapCBufferData
 
 struct FUIBrushData
 {
-    FVector4D _tint;
+    FVector4D _Tint;
     FVector2D _uvLT;
     FVector2D _uvRB;
-    int32 _animEnable;
-    int32 _textureEnable;
-    FVector2D _empty;
+    int32 _AnimEnable;
+    int32 _TextureEnable;
+    FVector2D _Empty;
 };
 
 struct FProgressBarData
 {
-    float _percent = 1.f;
-    int32 _barDir = 0;
-    FVector2D _empty;
+    float _Percent = 1.f;
+    int32 _BarDir = 0;
+    FVector2D _Empty;
 };
