@@ -1,17 +1,124 @@
 #include "pch.h"
 #include "AnimationManager.h"
 #include "Animation2DData.h"
+#include "DirectoryManager.h"
+#include <fstream>
+#include <nlohmann/json.hpp>
 
 AnimationManager::AnimationManager()
-{}
+{
+}
 
 AnimationManager::~AnimationManager()
-{}
+{
+}
+
+bool AnimationManager::LoadAnimationFile(const std::wstring& FileName)
+{
+    std::optional<std::filesystem::path> ResourcePath = DirectoryManager::Instance().GetCachePath("Resources");
+
+    if (!ResourcePath.has_value())
+    {
+        return false;
+    }
+
+    std::filesystem::path TexturePath;
+
+    if (!DirectoryManager::Instance().GetDirectory(ResourcePath.value(), "Texture", TexturePath))
+    {
+        return false;
+    }
+
+    std::filesystem::path JsonPath;
+
+    if (!DirectoryManager::Instance().GetFile(TexturePath, FileName, JsonPath))
+    {
+        return false;
+    }
+
+    std::ifstream File(JsonPath);
+
+    if (!File.is_open())
+    {
+        return false;
+    }
+
+    nlohmann::json Json;
+
+    try
+    {
+        File >> Json;
+
+        if (!Json.contains("Animations") || !Json["Animations"].is_object())
+        {
+            return false;
+        }
+
+        for (const auto& [AnimationName, AnimationJson] : Json["Animations"].items())
+        {
+            if (!AnimationJson.contains("Texture") || !AnimationJson["Texture"].is_string() || 
+                !AnimationJson.contains("Frames") ||!AnimationJson["Frames"].is_array() || AnimationJson["Frames"].empty())
+            {
+                return false;
+            }
+
+            const std::string TextureName = AnimationJson["Texture"].get<std::string>();
+
+            if (!CreateAnimation(AnimationName, eAnimationTextureType::SPRITE))
+            {
+                return false;
+            }
+
+            SetTexture(AnimationName, TextureName);
+
+            Ptr<Animation2DData> Animation = FindAnimation(AnimationName);
+
+            if (!Animation || !Animation->GetTexture())
+            {
+                return false;
+            }
+
+            for (const nlohmann::json& FrameJson : AnimationJson["Frames"])
+            {
+                if (!FrameJson.contains("UV") || !FrameJson["UV"].is_array() || FrameJson["UV"].size() != 4 ||
+                    !FrameJson.contains("Size") || !FrameJson["Size"].is_array() || FrameJson["Size"].size() != 2 ||
+                    !FrameJson.contains("Offset") || !FrameJson["Offset"].is_array() || FrameJson["Offset"].size() != 2 ||
+                    !FrameJson.contains("Delay") || !FrameJson["Delay"].is_number())
+                {
+                    return false;
+                }
+
+                const nlohmann::json& UV = FrameJson["UV"];
+
+                const nlohmann::json& Size = FrameJson["Size"];
+
+                const nlohmann::json& Offset = FrameJson["Offset"];
+
+                const FVector2D UVLeftTop(UV[0].get<float>(), UV[1].get<float>());
+
+                const FVector2D UVRightBottom(UV[2].get<float>(), UV[3].get<float>());
+
+                const FVector2D FrameSize(Size[0].get<float>(), Size[1].get<float>());
+
+                const FVector2D FrameOffset(Offset[0].get<float>(), Offset[1].get<float>());
+
+                const float Delay = FrameJson["Delay"].get<float>() / 1000.f;
+
+                AddFrame(AnimationName, UVLeftTop, UVRightBottom, FrameSize, FrameOffset, Delay);
+            }
+        }
+    }
+    catch (const nlohmann::json::exception&)
+    {
+        return false;
+    }
+
+    return true;
+}
 
 bool AnimationManager::Init()
 {
-    // Codex : 선생님은 여기서 uv 값을 계산해서 넣으신거 같은데 나는 JSON으으로 처리해서 여기에서 재생하면 되려나? 생각좀 해보자
-    return true;
+    return LoadAnimationFile(TEXT("Characters\\CharacterState.json"));
 }
 
 Ptr<class Animation2DData> AnimationManager::FindAnimation(const std::string& Name)
@@ -94,7 +201,7 @@ void AnimationManager::SetTexture(const std::string& Name, const std::string& Te
     Animation->SetTexture(TextureName, FileName);
 }
 
-void AnimationManager::AddFrame(const std::string& Name, const FVector2D& Start, const FVector2D& Size)
+void AnimationManager::AddFrame(const std::string& Name, const FVector2D& UVLeftTop, const FVector2D& UVRightBottom, const FVector2D& Size, const FVector2D& Offset, float Delay)
 {
     Ptr<Animation2DData> Animation = FindAnimation(Name);
 
@@ -103,19 +210,7 @@ void AnimationManager::AddFrame(const std::string& Name, const FVector2D& Start,
         return;
     }
 
-    Animation->AddFrame(Start, Size);
-}
-
-void AnimationManager::AddFrame(const std::string& Name, float StartX, float StartY, float SizeX, float SizeY)
-{
-    Ptr<Animation2DData> Animation = FindAnimation(Name);
-
-    if (!Animation)
-    {
-        return;
-    }
-
-    Animation->AddFrame(StartX, StartY, SizeX, SizeY);
+    Animation->AddFrame(UVLeftTop, UVRightBottom, Size, Offset, Delay);
 }
 
 void AnimationManager::Destroy()

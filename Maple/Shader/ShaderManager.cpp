@@ -6,29 +6,42 @@
 #include "MaterialCBuffer.h"
 #include "MaterialPixelShader.h"
 #include "StaticMeshShader.h"
+#include "SpriteCBuffer.h"
+#include "SpriteShader.h"
+#include "AnimationCBuffer.h"
 #include "TransformCBuffer.h"
 #include "Core/Device.h"
 
 void ShaderManager::CreateSampler()
 {
     D3D11_SAMPLER_DESC Desc = {};
+    
     Desc.AddressU       = D3D11_TEXTURE_ADDRESS_WRAP;
+    
     Desc.AddressV       = D3D11_TEXTURE_ADDRESS_WRAP;
+    
     Desc.AddressW       = D3D11_TEXTURE_ADDRESS_WRAP;
+    
     Desc.ComparisonFunc = D3D11_COMPARISON_NEVER;
+    
     Desc.MinLOD         = 0;
+    
     Desc.MaxLOD         = D3D11_FLOAT32_MAX;
+
 
     //포인트 샘플러
     Desc.Filter = D3D11_FILTER_MIN_MAG_MIP_POINT;
+    
     Device::Instance().GetDevice()->CreateSamplerState(&Desc, _Samplers[TEXTURE_SAMPLE_POINT].GetAddressOf());
 
-    //
     Desc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
+    
     Device::Instance().GetDevice()->CreateSamplerState(&Desc, _Samplers[TEXTURE_SAMPLE_LINEAR].GetAddressOf());
 
     Desc.Filter = D3D11_FILTER_ANISOTROPIC;
+    
     Desc.MaxAnisotropy = 16; 
+    
     Device::Instance().GetDevice()->CreateSamplerState(&Desc, _Samplers[TEXTURE_SAMPLE_ANISOTROPIC].GetAddressOf());
 }
 
@@ -50,12 +63,22 @@ bool ShaderManager::Init()
         return false;
     }
 
+    if (!CreateShader<SpriteShader>("SpriteShader"))
+    {
+        return false;
+    }
+
     if (!CreateShader<MaterialPixelShader>("MaterialPixelShader"))
     {
         return false;
     }
 
     if (!CreateCBuffer<TransformCBuffer>("Transform", sizeof(FTransformCBufferData), 0, SHADER_TYPE::VERTEX))
+    {
+        return false;
+    }
+
+    if (!CreateCBuffer<AnimationCBuffer>("Animation", sizeof(FAnimation2DCBufferData), 1, SHADER_TYPE::VERTEX))
     {
         return false;
     }
@@ -68,6 +91,11 @@ bool ShaderManager::Init()
     if (!CreateCBuffer<MaterialCBuffer>("Material", sizeof(FMaterialCBufferData), 1, SHADER_TYPE::PIXEL))
     {
         return false;   
+    }
+
+    if (!CreateCBuffer<SpriteCBuffer>("Sprite", sizeof(FSpriteCBufferData), 2, SHADER_TYPE::PIXEL))
+    {
+        return false;
     }
 
     CreateSampler();

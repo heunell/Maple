@@ -248,13 +248,13 @@ void Animation2D::SetShader()
 	{
 		const FAnimationFrame& Frame = _CurrentSequence->_Data->GetFrame(_CurrentSequence->GetFrame());
 
-		LeftTopX = Frame._start._x / Texture->GetTexture(0)->_Width;
+		LeftTopX = Frame._UVLeftTop._x;
 
-		LeftTopY = Frame._start._y / Texture->GetTexture(0)->_Height;
-
-		RightBottomX = LeftTopX + Frame._size._x / Texture->GetTexture(0)->_Width;
-
-		RightBottomY = LeftTopY + Frame._size._y / Texture->GetTexture(0)->_Height;
+		LeftTopY = Frame._UVLeftTop._y;
+		
+		RightBottomX = Frame._UVRightBottom._x;
+		
+		RightBottomY = Frame._UVRightBottom._y;
 
 		Component->SetTextureIndex(0);
 	}

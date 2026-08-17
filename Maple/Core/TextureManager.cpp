@@ -4,7 +4,12 @@
 
 bool TextureManager::Init()
 {
-    if (!LoadTexture("TestCharacter", TEXT("Characters\\TestCharacter.png")))
+    //if (!LoadTexture("TestCharacter", TEXT("Characters\\TestCharacter.png")))
+    //{
+    //    return false;
+    //}
+
+    if (!LoadTexture("Characters/Armed_atlas.png", TEXT("Characters\\Armed_atlas.png")))
     {
         return false;
     }

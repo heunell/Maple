@@ -63,22 +63,19 @@ void Animation2DData::SetTexture(const std::string& Name, const std::wstring& Fi
     _Texture = TEXTURE_MANAGER->FindTexture(Name);
 }
 
-void Animation2DData::AddFrame(const FVector2D& Start, const FVector2D& Size)
-{
-    AddFrame(Start._x, Start._y, Size._x, Size._y);
-}
-
-void Animation2DData::AddFrame(float StartX, float StartY, float SizeX, float SizeY)
+void Animation2DData::AddFrame(const FVector2D& UVLeftTop, const FVector2D& UVRightBottom, const FVector2D& Size, const FVector2D& Offset, float Delay)
 {
     FAnimationFrame Frame;
-    
-    Frame._start._x = StartX;
-    
-    Frame._start._y = StartY;
 
-    Frame._size._x = SizeX;
-
-    Frame._size._y = SizeY;
+    Frame._UVLeftTop = UVLeftTop;
+    
+    Frame._UVRightBottom = UVRightBottom;
+    
+    Frame._Size = Size;
+    
+    Frame._Offset = Offset;
+    
+    Frame._Delay = Delay;
 
     _Frames.emplace_back(Frame);
 }

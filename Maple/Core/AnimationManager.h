@@ -9,6 +9,8 @@ public:
 	virtual ~AnimationManager();
 
 private:
+	bool LoadAnimationFile(const std::wstring& FileName);
+
 	std::unordered_map<std::string, Ptr<class Animation2DData>> _Animation;
 
 public:
@@ -26,10 +28,8 @@ public:
 
 	void SetTexture(const std::string& Name, const std::string& TextureName, const std::wstring& FileName);
 
-	void AddFrame(const std::string& Name, const FVector2D& Start, const FVector2D& Size);
-
-	void AddFrame(const std::string& Name, float StartX, float StartY, float SizeX, float SizeY);
-
+	void AddFrame(const std::string& Name, const FVector2D& UVLeftTop, const FVector2D& UVRightBottom, const FVector2D& Size, const FVector2D& Offset, float Delay);
+	
 	virtual void Destroy() override;
 };
 

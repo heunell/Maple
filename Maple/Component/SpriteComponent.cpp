@@ -64,20 +64,22 @@ void SpriteComponent::Render(float DeltaTime)
 
     _TransformCBuffer->SetWorldMatrix(_Matrix._World);
 
-    Ptr<Level> _Level = Lock<Level>(_Level);
+    Ptr<Level> CurrentLevel = GetLevel();
 
-    if (nullptr == _Level)
+    if (!CurrentLevel)
     {
         return;
     }
 
-    FMatrix View = _Level->GetViewMatrix();
+    FMatrix View = CurrentLevel->GetViewMatrix();
 
-    FMatrix Projection = _Level->GetProjectionMatrix();
+    FMatrix Projection = CurrentLevel->GetProjectionMatrix();
 
     _TransformCBuffer->SetViewMatrix(View);
 
     _TransformCBuffer->SetProjectionMatrix(Projection);
+
+    _TransformCBuffer->Update();
 
     _Shader->SetShader();
 

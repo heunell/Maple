@@ -2,7 +2,7 @@
 
 struct VertexShader_Input_Texture
 {
-    float3 Position : POSITIONT;
+    float3 Position : POSITION;
     float2 UV : TEXCOORD;
 };
 
@@ -22,6 +22,8 @@ VertexShader_Output_Texture SpriteVertexShader(VertexShader_Input_Texture Input)
     VertexShader_Output_Texture Output = (VertexShader_Output_Texture) 0;
     
     float3 Position = Input.Position;
+    
+    Output.Position = mul(float4(Position, 1.f), gWVP);
     
     Output.UV = UpdateAnimation2D(Input.UV);
     

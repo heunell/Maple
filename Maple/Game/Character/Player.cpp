@@ -8,6 +8,7 @@
 #include "Component/MeshComponent.h"
 #include "Component/AABBCollisionComponent.h"
 #include "Component/StaticMeshComponent.h"
+#include "Component/SpriteComponent.h"
 #include "Core/GameEngine.h"
 #include "Core/TimeManager.h"
 #include "Render/RenderManager.h"
@@ -20,13 +21,25 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 
 	_Type = eActorType::Player;
 
-	Ptr<StaticMeshComponent> MeshComponent = CreateSceneComponent<StaticMeshComponent>("PlayerMesh");
+	//Ptr<StaticMeshComponent> MeshComponent = CreateSceneComponent<StaticMeshComponent>("PlayerMesh");
 
-	MeshComponent->SetMesh("TexRect");
+	//MeshComponent->SetMesh("TexRect");
 
-	MeshComponent->AddTexture(0, "TestCharacter", 0);
+	//MeshComponent->AddTexture(0, "TestCharacter", 0);
 
-	SetRootComponent(MeshComponent);
+	//SetRootComponent(MeshComponent);
+
+	Ptr<SpriteComponent> Sprite = CreateSceneComponent<SpriteComponent>("PlayerSprite");
+
+	Sprite->AddAnimationSequence("ARMED_STAND", true, false, 0.8f, 1.f);
+
+	Sprite->AddAnimationSequence("ARMED_WALK", true, false, 0.6f, 1.f);
+	
+	Sprite->AddAnimationSequence("ARMED_JUMP", false);
+
+	Sprite->AddAnimationSequence("ARMED_SHOOT", false);
+
+	SetRootComponent(Sprite);
 
 	_Controller = GetLevel()->SpawnActor<PlayerController>("PlayerController", Position, Scale, Rotator);
 
@@ -152,11 +165,29 @@ void Player::MoveRight(float DeltaTime)
 	_Movement->SetMoveAxis(FVector3D::Axis_X);
 	
 	// todo : 이미지 리소스가 추가되면 SpriteComponent를 작성하고 재생하기
+
+	Ptr<SpriteComponent> Sprite = FindSceneComponent<SpriteComponent>("PlayerSprite");
+
+	if (Sprite)
+	{
+		Sprite->SetAnimationFlip(false);
+
+		Sprite->ChangeAnimation("ARMED_WALK");
+	}
 }
 
 void Player::MoveLeft(float DeltaTime)
 {
 	_Movement->SetMoveAxis(-FVector3D::Axis_X);
+
+	Ptr<SpriteComponent> Sprite = FindSceneComponent<SpriteComponent>("PlayerSprite");
+
+	if (Sprite)
+	{
+		Sprite->SetAnimationFlip(true);
+
+		Sprite->ChangeAnimation("ARMED_WALK");
+	}
 }
 
 void Player::MoveUp(float DeltaTime)
@@ -172,6 +203,13 @@ void Player::MoveDown(float DeltaTime)
 void Player::MoveStop(float DeltaTime)
 {
 	_Movement->Stop();
+
+	Ptr<SpriteComponent> Sprite = FindSceneComponent<SpriteComponent>("PlayerSprite");
+
+	if (Sprite)
+	{
+		Sprite->ChangeAnimation("ARMED_STAND");
+	}
 }
 
 void Player::Attack(float DeltaTime)

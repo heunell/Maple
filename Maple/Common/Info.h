@@ -93,8 +93,15 @@ struct FVertexTexture
 
 struct FAnimationFrame
 {
-    FVector2D _start;
-    FVector2D _size;
+    FVector2D _UVLeftTop;
+    
+    FVector2D _UVRightBottom;
+
+    FVector2D _Size;
+    
+    FVector2D _Offset;
+
+    float _Delay = 0.f;
 };
 
 enum class eObjectType

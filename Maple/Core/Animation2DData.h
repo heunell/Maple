@@ -31,10 +31,8 @@ public:
 
 	void SetTexture(const std::string& Name, const std::wstring& FileName);
 
-	void AddFrame(const FVector2D& Start, const FVector2D& Size);
-
-	void AddFrame(float StartX, float StartY, float SizeX, float SizeY);
-
+	void AddFrame(const FVector2D& UVLeftTop, const FVector2D& UVRightBottom, const FVector2D& Size, const FVector2D& Offset, float Delay);
+	
 	virtual void Destroy() override;
 };
 
