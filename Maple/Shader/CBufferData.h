@@ -29,9 +29,9 @@ struct FMaterialCBufferData
 
 struct FAnimation2DCBufferData
 {
-    FVector2D _uvLT;
-    FVector2D _uvRB;
-    int32 _AnimFilp;
+    FVector2D _uvLeftTop;
+    FVector2D _uvRightBottom;
+    int32 _AnimationFilp;
     FVector3D _Empty;
 };
 
@@ -42,16 +42,16 @@ struct FSpriteCBufferData
 
 struct FTileMapCBufferData
 {
-    FVector2D _uvLT;
-    FVector2D _uvRB;
+    FVector2D _uvLeftTop;
+    FVector2D _uvRightBottom;
 };
 
 struct FUIBrushData
 {
     FVector4D _Tint;
-    FVector2D _uvLT;
-    FVector2D _uvRB;
-    int32 _AnimEnable;
+    FVector2D _uvLeftTop;
+    FVector2D _uvRightBottom;
+    int32 _AnimationEnable;
     int32 _TextureEnable;
     FVector2D _Empty;
 };
@@ -59,6 +59,6 @@ struct FUIBrushData
 struct FProgressBarData
 {
     float _Percent = 1.f;
-    int32 _BarDir = 0;
+    int32 _BarDirection = 0;
     FVector2D _Empty;
 };

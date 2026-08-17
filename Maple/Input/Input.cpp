@@ -194,14 +194,23 @@ void Input::UpdateInput(float DeltaTime)
 void Input::UpdateMousePos(float delatTime)
 {
 	POINT mousePointPos;
+	
 	GetCursorPos(&mousePointPos);
+	
 	ScreenToClient(_hWnd, &mousePointPos);
+	
 	FVector2D   ratio         = Device::Instance().GetRSRate();
+	
 	FResolution viewPortRS    = Device::Instance().GetRS();
+	
 	FVector2D   mousePosition;
-	mousePosition._x          = mousePointPos.x * ratio._x;
-	mousePosition._y          = mousePointPos.y * ratio._y;
-	mousePosition._y          = viewPortRS._Height - mousePosition._y;
+	
+	mousePosition._x = mousePointPos.x * ratio._x;
+	
+	mousePosition._y = mousePointPos.y * ratio._y;
+	
+	mousePosition._y = viewPortRS._Height - mousePosition._y;
+	
 	if (_MouseCompute)
 	{
 		_MouseMove = mousePosition - _MousePosition;
@@ -210,13 +219,22 @@ void Input::UpdateMousePos(float delatTime)
 	{
 		_MouseCompute = true;
 	}
+	
 	_MousePosition = mousePosition;
+	
 	Ptr<World> world = GameEngine::Instance().GetWorld();
+	
 	Ptr<Level> level = world->GetCurLevel();
+	
 	if (nullptr == level)
+	{
 		return;
+	}
+
 	FVector3D cameraPos = level->GetCameraWorldPosition();
+	
 	_MouseWorldPosition._x = cameraPos._x + _MousePosition._x - viewPortRS._Width * 0.5f;
+	
 	_MouseWorldPosition._y = cameraPos._y + _MousePosition._y - viewPortRS._Height * 0.5f;
 }
 

@@ -5,6 +5,7 @@
 #include "MeshManager.h"
 #include "TextureManager.h"
 #include "MaterialManager.h"
+#include "AnimationManager.h"
 
 class AssetManager : public Singleton<AssetManager>
 {
@@ -56,5 +57,5 @@ public:
 #define MESH_MANAGER AssetManager::Instance().Get<MeshManager>(eAssetType::MESH)
 #define TEXTURE_MANAGER AssetManager::Instance().Get<TextureManager>(eAssetType::TEXTURE)
 #define MATERIAL_MANAGER AssetManager::Instance().Get<MaterialManager>(eAssetType::MATERIAL)
-
+#define ANIMATION_MANAGER AssetManager::Instance().Get<AnimationManager>(eAssetType::ANIMATION)
 

@@ -215,7 +215,7 @@ enum class eRenderState
 };
 
 
-enum class eAnimTextureType
+enum class eAnimationTextureType
 {
     SPRITE,
     FRAME,

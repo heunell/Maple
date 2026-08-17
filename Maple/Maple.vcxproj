@@ -169,6 +169,7 @@
     <ClInclude Include="Common\Vector4D.h" />
     <ClInclude Include="Component\AABBCollisionComponent.h" />
     <ClInclude Include="Component\ActorComponent.h" />
+    <ClInclude Include="Component\Animation2D.h" />
     <ClInclude Include="Component\CameraComponent.h" />
     <ClInclude Include="Component\CollisionComponent.h" />
     <ClInclude Include="Component\Component.h" />
@@ -178,9 +179,13 @@
     <ClInclude Include="Component\OBBCollisionComponent.h" />
     <ClInclude Include="Component\SceneComponent.h" />
     <ClInclude Include="Component\SphereCollisionComponent.h" />
+    <ClInclude Include="Component\SpriteComponent.h" />
     <ClInclude Include="Component\StaticMeshComponent.h" />
     <ClInclude Include="Controller\Controller.h" />
     <ClInclude Include="Controller\PlayerController.h" />
+    <ClInclude Include="Core\Animation2DData.h" />
+    <ClInclude Include="Core\Animation2DSequence.h" />
+    <ClInclude Include="Core\AnimationManager.h" />
     <ClInclude Include="Core\Asset.h" />
     <ClInclude Include="Core\AssetManager.h" />
     <ClInclude Include="Core\Defines.h" />
@@ -215,6 +220,7 @@
     <ClInclude Include="Render\RenderState.h" />
     <ClInclude Include="Render\RenderStateManager.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Shader\AnimationCBuffer.h" />
     <ClInclude Include="Shader\CBuffer.h" />
     <ClInclude Include="Shader\CBufferData.h" />
     <ClInclude Include="Shader\ColorCBuffer.h" />
@@ -227,6 +233,8 @@
     <ClInclude Include="Shader\SBufferData.h" />
     <ClInclude Include="Shader\Shader.h" />
     <ClInclude Include="Shader\ShaderManager.h" />
+    <ClInclude Include="Shader\SpriteCBuffer.h" />
+    <ClInclude Include="Shader\SpriteShader.h" />
     <ClInclude Include="Shader\TransformCBuffer.h" />
     <ClInclude Include="Shader\StaticMeshShader.h" />
     <ClInclude Include="targetver.h" />
@@ -246,6 +254,7 @@
     <ClCompile Include="Common\Vector4D.cpp" />
     <ClCompile Include="Component\AABBCollisionComponent.cpp" />
     <ClCompile Include="Component\ActorComponent.cpp" />
+    <ClCompile Include="Component\Animation2D.cpp" />
     <ClCompile Include="Component\CameraComponent.cpp" />
     <ClCompile Include="Component\CollisionComponent.cpp" />
     <ClCompile Include="Component\Component.cpp" />
@@ -255,9 +264,13 @@
     <ClCompile Include="Component\OBBCollisionComponent.cpp" />
     <ClCompile Include="Component\SceneComponent.cpp" />
     <ClCompile Include="Component\SphereCollisionComponent.cpp" />
+    <ClCompile Include="Component\SpriteComponent.cpp" />
     <ClCompile Include="Component\StaticMeshComponent.cpp" />
     <ClCompile Include="Controller\Controller.cpp" />
     <ClCompile Include="Controller\PlayerController.cpp" />
+    <ClCompile Include="Core\Animation2DData.cpp" />
+    <ClCompile Include="Core\Animation2DSequence.cpp" />
+    <ClCompile Include="Core\AnimationManager.cpp" />
     <ClCompile Include="Core\Asset.cpp" />
     <ClCompile Include="Core\AssetManager.cpp" />
     <ClCompile Include="Core\Device.cpp" />
@@ -294,6 +307,7 @@
     <ClCompile Include="Render\RenderManager.cpp" />
     <ClCompile Include="Render\RenderState.cpp" />
     <ClCompile Include="Render\RenderStateManager.cpp" />
+    <ClCompile Include="Shader\AnimationCBuffer.cpp" />
     <ClCompile Include="Shader\CBuffer.cpp" />
     <ClCompile Include="Shader\ColorCBuffer.cpp" />
     <ClCompile Include="Shader\ColorMeshShader.cpp" />
@@ -304,6 +318,8 @@
     <ClCompile Include="Shader\SBuffer.cpp" />
     <ClCompile Include="Shader\Shader.cpp" />
     <ClCompile Include="Shader\ShaderManager.cpp" />
+    <ClCompile Include="Shader\SpriteCBuffer.cpp" />
+    <ClCompile Include="Shader\SpriteShader.cpp" />
     <ClCompile Include="Shader\TransformCBuffer.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -502,6 +518,20 @@
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="..\HLSL\Sprite.fx">
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">SpriteVertexShader</EntryPointName>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">SpriteVertexShader</EntryPointName>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">SpriteVertexShader</EntryPointName>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">SpriteVertexShader</EntryPointName>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Effect</ShaderType>
       <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
     </FxCompile>
   </ItemGroup>

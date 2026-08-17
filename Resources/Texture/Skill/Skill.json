@@ -1,7 +1,7 @@
 {
   "Skills": {
     "StormBringer.Cast": {
-      "Texture": "Player/Skill/storm_bringer/storm_bringer_atlas.png",
+      "Texture": "Skill/storm_bringer_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -1155,7 +1155,7 @@
       ]
     },
     "SharpEyes.Cast": {
-      "Texture": "Player/Skill/sharp_eyes/sharp_eyes_atlas.png",
+      "Texture": "Skill/sharp_eyes_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -1517,7 +1517,7 @@
       ]
     },
     "DeSpell.Cast": {
-      "Texture": "Player/Skill/DeSpell/clear_spell_atlas.png",
+      "Texture": "Skill/clear_spell_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -1862,7 +1862,7 @@
       ]
     },
     "GloryOfGuardians.Cast": {
-      "Texture": "Player/Skill/glory_of_guardians/glory_of_guardians_atlas.png",
+      "Texture": "Skill/glory_of_guardians_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -2207,7 +2207,7 @@
       ]
     },
     "WindJump.DoubleFront": {
-      "Texture": "Player/Skill/WindJump/windbreaker_movement_atlas.png",
+      "Texture": "Skill/windbreaker_movement_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -2348,7 +2348,7 @@
       ]
     },
     "WindJump.DoubleBack": {
-      "Texture": "Player/Skill/WindJump/windbreaker_movement_atlas.png",
+      "Texture": "Skill/windbreaker_movement_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -2489,7 +2489,7 @@
       ]
     },
     "WindJump.UpFront": {
-      "Texture": "Player/Skill/WindJump/windbreaker_movement_atlas.png",
+      "Texture": "Skill/windbreaker_movement_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -2630,7 +2630,7 @@
       ]
     },
     "WindJump.UpBack": {
-      "Texture": "Player/Skill/WindJump/windbreaker_movement_atlas.png",
+      "Texture": "Skill/windbreaker_movement_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -2771,7 +2771,7 @@
       ]
     },
     "WindJump.UpSpecial": {
-      "Texture": "Player/Skill/WindJump/windbreaker_movement_atlas.png",
+      "Texture": "Skill/windbreaker_movement_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -2912,7 +2912,7 @@
       ]
     },
     "Anemoy.Cast": {
-      "Texture": "Player/Skill/anemoy/anemoy_atlas.png",
+      "Texture": "Skill/anemoy_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -3529,7 +3529,7 @@
       ]
     },
     "Anemoy.Summon": {
-      "Texture": "Player/Skill/anemoy/anemoy_atlas.png",
+      "Texture": "Skill/anemoy_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -3687,7 +3687,7 @@
       ]
     },
     "Anemoy.Attack": {
-      "Texture": "Player/Skill/anemoy/anemoy_atlas.png",
+      "Texture": "Skill/anemoy_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -3828,7 +3828,7 @@
       ]
     },
     "Anemoy.Stand": {
-      "Texture": "Player/Skill/anemoy/anemoy_atlas.png",
+      "Texture": "Skill/anemoy_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -3969,7 +3969,7 @@
       ]
     },
     "Anemoy.Die": {
-      "Texture": "Player/Skill/anemoy/anemoy_atlas.png",
+      "Texture": "Skill/anemoy_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -4319,7 +4319,7 @@
       ]
     },
     "Anemoy.Hit.0": {
-      "Texture": "Player/Skill/anemoy/anemoy_atlas.png",
+      "Texture": "Skill/anemoy_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -4494,7 +4494,7 @@
       ]
     },
     "Anemoy.Hit.1": {
-      "Texture": "Player/Skill/anemoy/anemoy_atlas.png",
+      "Texture": "Skill/anemoy_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -4669,7 +4669,7 @@
       ]
     },
     "Anemoy.Hit.2": {
-      "Texture": "Player/Skill/anemoy/anemoy_atlas.png",
+      "Texture": "Skill/anemoy_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -4844,7 +4844,7 @@
       ]
     },
     "Anemoy.Hit.3": {
-      "Texture": "Player/Skill/anemoy/anemoy_atlas.png",
+      "Texture": "Skill/anemoy_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -5019,7 +5019,7 @@
       ]
     },
     "Anemoy.Hit.4": {
-      "Texture": "Player/Skill/anemoy/anemoy_atlas.png",
+      "Texture": "Skill/anemoy_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -5194,7 +5194,7 @@
       ]
     },
     "Anemoy.Hit.5": {
-      "Texture": "Player/Skill/anemoy/anemoy_atlas.png",
+      "Texture": "Skill/anemoy_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -5369,7 +5369,7 @@
       ]
     },
     "TriflingWind.Spawn1": {
-      "Texture": "Player/Skill/Wind/homing_atlas.png",
+      "Texture": "Skill/homing_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -5595,7 +5595,7 @@
       ]
     },
     "TriflingWind.Spawn2": {
-      "Texture": "Player/Skill/Wind/homing_atlas.png",
+      "Texture": "Skill/homing_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -5906,7 +5906,7 @@
       ]
     },
     "TriflingWind.Die1.1": {
-      "Texture": "Player/Skill/Wind/homing_atlas.png",
+      "Texture": "Skill/homing_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -6081,7 +6081,7 @@
       ]
     },
     "TriflingWind.Die1.2": {
-      "Texture": "Player/Skill/Wind/homing_atlas.png",
+      "Texture": "Skill/homing_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -6256,7 +6256,7 @@
       ]
     },
     "TriflingWind.Die2.1": {
-      "Texture": "Player/Skill/Wind/homing_atlas.png",
+      "Texture": "Skill/homing_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -6482,7 +6482,7 @@
       ]
     },
     "TriflingWind.Die2.2": {
-      "Texture": "Player/Skill/Wind/homing_atlas.png",
+      "Texture": "Skill/homing_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -6708,7 +6708,7 @@
       ]
     },
     "VortexSphere.Cast": {
-      "Texture": "Player/Skill/VortexSphere/VoltexSphere_atlas.png",
+      "Texture": "Skill/VoltexSphere_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -6985,7 +6985,7 @@
       ]
     },
     "VortexSphere.Projectile": {
-      "Texture": "Player/Skill/VortexSphere/VoltexSphere_atlas.png",
+      "Texture": "Skill/VoltexSphere_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -7143,7 +7143,7 @@
       ]
     },
     "VortexSphere.Hit": {
-      "Texture": "Player/Skill/VortexSphere/VoltexSphere_atlas.png",
+      "Texture": "Skill/VoltexSphere_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -7250,7 +7250,7 @@
       ]
     },
     "SongOfHeaven.Prepare": {
-      "Texture": "Player/Skill/song_of_heaven/song_of_heaven_atlas.png",
+      "Texture": "Skill/song_of_sky_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -7323,7 +7323,7 @@
       ]
     },
     "SongOfHeaven.KeyDown": {
-      "Texture": "Player/Skill/song_of_heaven/song_of_heaven_atlas.png",
+      "Texture": "Skill/song_of_sky_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -7617,7 +7617,7 @@
       ]
     },
     "SongOfHeaven.KeyDownEnd": {
-      "Texture": "Player/Skill/song_of_heaven/song_of_heaven_atlas.png",
+      "Texture": "Skill/song_of_sky_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -7792,7 +7792,7 @@
       ]
     },
     "SongOfHeaven.Projectile": {
-      "Texture": "Player/Skill/song_of_heaven/song_of_heaven_atlas.png",
+      "Texture": "Skill/song_of_sky_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -7848,7 +7848,7 @@
       ]
     },
     "SongOfHeaven.Hit0": {
-      "Texture": "Player/Skill/song_of_heaven/song_of_heaven_atlas.png",
+      "Texture": "Skill/song_of_sky_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -7972,7 +7972,7 @@
       ]
     },
     "SongOfHeaven.Hit1": {
-      "Texture": "Player/Skill/song_of_heaven/song_of_heaven_atlas.png",
+      "Texture": "Skill/song_of_sky_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -8113,7 +8113,7 @@
       ]
     },
     "SongOfHeaven.KeyDownLoop": {
-      "Texture": "Player/Skill/song_of_heaven/song_of_heaven_keydown_loop_atlas.png",
+      "Texture": "Skill/song_of_sky_keydown_loop_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -8220,7 +8220,7 @@
       ]
     },
     "HowlingGale.Cast": {
-      "Texture": "Player/Skill/HowlingGale/howling_gale_atlas.png",
+      "Texture": "Skill/howling_gale_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -8480,7 +8480,7 @@
       ]
     },
     "HowlingGale.Stack1.Projectile": {
-      "Texture": "Player/Skill/HowlingGale/howling_gale_atlas.png",
+      "Texture": "Skill/howling_gale_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -8723,7 +8723,7 @@
       ]
     },
     "HowlingGale.Stack1.Die": {
-      "Texture": "Player/Skill/HowlingGale/howling_gale_atlas.png",
+      "Texture": "Skill/howling_gale_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -8813,7 +8813,7 @@
       ]
     },
     "HowlingGale.Stack1.Hit": {
-      "Texture": "Player/Skill/HowlingGale/howling_gale_atlas.png",
+      "Texture": "Skill/howling_gale_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -8920,7 +8920,7 @@
       ]
     },
     "HowlingGale.Stack2.Projectile": {
-      "Texture": "Player/Skill/HowlingGale/howling_gale_atlas.png",
+      "Texture": "Skill/howling_gale_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -9027,7 +9027,7 @@
       ]
     },
     "HowlingGale.Stack2.Die": {
-      "Texture": "Player/Skill/HowlingGale/howling_gale_atlas.png",
+      "Texture": "Skill/howling_gale_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -9185,7 +9185,7 @@
       ]
     },
     "HowlingGale.Stack2.Hit": {
-      "Texture": "Player/Skill/HowlingGale/howling_gale_atlas.png",
+      "Texture": "Skill/howling_gale_atlas.png",
       "Frames": [
         {
           "UV": [

@@ -5,16 +5,24 @@
 bool AssetManager::Init()
 {
     if (!RegisterManager<TextureManager>(eAssetType::TEXTURE))
+    {
         return false;
+    }
 
     if (!RegisterManager<MaterialManager>(eAssetType::MATERIAL))
+    {
         return false;
+    }
 
     if (!RegisterManager<MeshManager>(eAssetType::MESH))
+    {
         return false;
+    }
 
-    //if (!RegisterManager<AnimationManager>(eAssetType::ANIMATION))
-    //    return false;
+    if (!RegisterManager<AnimationManager>(eAssetType::ANIMATION))
+    {
+        return false;
+    }
 
     //if (!RegisterManager<SoundManager>(eAssetType::SOUND))
     //    return false;
