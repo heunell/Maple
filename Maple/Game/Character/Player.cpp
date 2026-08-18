@@ -39,7 +39,9 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 
 	Sprite->AddAnimationSequence("ARMED_SHOOT", false);
 
-	SetRootComponent(Sprite);
+	//SetRootComponent(Sprite);
+
+	Sprite->AttachToComponent(GetRoot());
 
 	_Controller = GetLevel()->SpawnActor<PlayerController>("PlayerController", Position, Scale, Rotator);
 
@@ -170,7 +172,7 @@ void Player::MoveRight(float DeltaTime)
 
 	if (Sprite)
 	{
-		Sprite->SetAnimationFlip(false);
+		Sprite->SetAnimationFlip(true);
 
 		Sprite->ChangeAnimation("ARMED_WALK");
 	}
@@ -184,7 +186,7 @@ void Player::MoveLeft(float DeltaTime)
 
 	if (Sprite)
 	{
-		Sprite->SetAnimationFlip(true);
+		Sprite->SetAnimationFlip(false);
 
 		Sprite->ChangeAnimation("ARMED_WALK");
 	}

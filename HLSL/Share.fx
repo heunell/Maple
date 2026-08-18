@@ -68,17 +68,27 @@ float2 UpdateAnimation2D(float2 UV)
     float2 result = (float2) 0.f;
     
     if (UV.x == 0.f)
+    {
         result.x = gAnim2DLTUV.x;
+    }
     else
+    {
         result.x = gAnim2DRBUV.x;
+    }
     
     if (UV.y == 0.f)
+    {
         result.y = gAnim2DLTUV.y;
+    }
     else
+    {
         result.y = gAnim2DRBUV.y;
-    
+    }
+
     if (gAnimFilp == 1)
-        result.x = 1 - result.x;
+    {
+        result.x = gAnim2DLTUV.x + gAnim2DRBUV.x - result.x;
+    }
     
     return result;
 }

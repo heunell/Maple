@@ -70,51 +70,109 @@ void Animation2DSequence::Tick(float DeltaTime)
         return;
     }
 
+    const int32 FrameCount = _Data->GetFrameCount();
+
+    if (FrameCount <= 1 || _PlayRate <= 0.f)
+    {
+        return;
+    }
+
     _Time += DeltaTime * _PlayRate;
 
-    if (_Time >= _FrameTime)
+    while (_Play)
     {
-        _Time -= _FrameTime;
+        const FAnimationFrame& Frame = _Data->GetFrame(_Frame);
 
-        if (_Reverse)
+        const float FrameDelay = Frame._Delay;
+
+        if (FrameDelay <= 0.f || _Time < FrameDelay)
         {
-            --_Frame;
+            break;
+        }
 
-            if (_Frame < 0)
+        _Time -= FrameDelay;
+
+        if (!_Reverse)
+        {
+            if (_Frame < FrameCount - 1)
             {
-                if (_Loop)
-                {
-                    _Frame = _Data->GetFrameCount() - 1;
-                }
-                else
-                {
-                    _Frame = 0;
+                ++_Frame;
+            }
+            else if (_Loop)
+            {
+                _Reverse = true;
 
-                    SetPlay(false);
-                }
+                _Frame = FrameCount - 2;
+            }
+            else
+            {
+                SetPlay(false);
             }
         }
         else
         {
-            ++_Frame;
-
-            if (_Frame == _Data->GetFrameCount() - 1)
+            if (_Frame > 0)
             {
-                if (_Loop)
-                {
-                    _Frame = 0;
-                }
-                else
-                {
-                    _Frame = _Data->GetFrameCount() - 1;
+                --_Frame;
+            }
+            else if (_Loop)
+            {
+                _Reverse = false;
 
-                    SetPlay(false);
-                }
+                _Frame = 1;
+            }
+            else
+            {
+                SetPlay(false);
             }
         }
 
         InvokeNotify();
     }
+
+    //if (_Time >= _FrameTime)
+    //{
+    //    _Time -= _FrameTime;
+
+    //    if (_Reverse)
+    //    {
+    //        --_Frame;
+
+    //        if (_Frame < 0)
+    //        {
+    //            if (_Loop)
+    //            {
+    //                _Frame = _Data->GetFrameCount() - 1;
+    //            }
+    //            else
+    //            {
+    //                _Frame = 0;
+
+    //                SetPlay(false);
+    //            }
+    //        }
+    //    }
+    //    else
+    //    {
+    //        ++_Frame;
+
+    //        if (_Frame == _Data->GetFrameCount() - 1)
+    //        {
+    //            if (_Loop)
+    //            {
+    //                _Frame = 0;
+    //            }
+    //            else
+    //            {
+    //                _Frame = _Data->GetFrameCount() - 1;
+
+    //                SetPlay(false);
+    //            }
+    //        }
+    //    }
+
+    //    InvokeNotify();
+    //}
 }
 
 void Animation2DSequence::Destroy()

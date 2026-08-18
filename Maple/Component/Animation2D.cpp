@@ -211,6 +211,8 @@ void Animation2D::ChangeAnimation(const std::string& Name)
 
 	_CurrentSequence->_Time = 0;
 
+	_CurrentSequence->_Reverse = false;
+
 	_CurrentSequence->SetPlay(true);
 
 	Ptr<SpriteComponent> Component = Lock<SpriteComponent>(_Owner);
@@ -256,7 +258,13 @@ void Animation2D::SetShader()
 		
 		RightBottomY = Frame._UVRightBottom._y;
 
-		Component->SetTextureIndex(0);
+		//Component->SetTextureIndex(0);
+
+		float OffsetX = _Flip ? -Frame._Offset._x : Frame._Offset._x;
+
+		Component->SetRelativeScale(Frame._Size._x, Frame._Size._y, 1.f);
+
+		Component->SetRelativePosition(OffsetX, Frame._Offset._y, 0.f);
 	}
 	break;
 

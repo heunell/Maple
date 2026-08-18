@@ -59,7 +59,7 @@ bool Level::Init(const std::string& Path)
 		return true;
 	}
 
-	Ptr<Player> PlayeActor = SpawnActor<Player>("Player", FVector3D(0.f, 0.f, 1.f), FVector3D(100.f, 100.f, 1.f), FRotator(0.f, 0.f, 0.f));
+	Ptr<Player> PlayeActor = SpawnActor<Player>("Player", FVector3D(0.f, 0.f, 1.f), FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
 	
 	Ptr<TestActor> DeadActor = SpawnActor<TestActor>("Dead", FVector3D(250.f, 0.f, 1.f), FVector3D(100.f, 100.f, 1.f), FRotator(0.f, 0.f, 0.f));
 
