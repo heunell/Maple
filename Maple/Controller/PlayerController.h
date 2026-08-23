@@ -27,4 +27,6 @@ public:
     virtual void Destroy() override;
 
     Ptr<InputComponent> GetInputComponent() const;
+
+    void KeyBind();
 };

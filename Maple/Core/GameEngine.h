@@ -20,7 +20,7 @@ private:
     HDC       _hdc            = nullptr;
     TCHAR     _ClassName[256] = {};
     TCHAR     _TitleName[256] = {};
-    float     _ClearColor[4]  = { 1, 1, 1, 1 }; // 바탕색 : 하얀색
+    float     _ClearColor[4]  = { 0, 0, 0, 1 }; // 바탕색 : 하얀색
     
     Ptr<class World> _World;
     Ptr<class Input> _Input;

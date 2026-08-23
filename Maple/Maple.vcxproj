@@ -178,6 +178,7 @@
     <ClInclude Include="Component\MovementComponent.h" />
     <ClInclude Include="Component\OBBCollisionComponent.h" />
     <ClInclude Include="Component\SceneComponent.h" />
+    <ClInclude Include="Component\SkillComponent.h" />
     <ClInclude Include="Component\SphereCollisionComponent.h" />
     <ClInclude Include="Component\SpriteComponent.h" />
     <ClInclude Include="Component\StaticMeshComponent.h" />
@@ -203,6 +204,8 @@
     <ClInclude Include="Core\TimeManager.h" />
     <ClInclude Include="Core\Timer.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Game\Skills\Skill.h" />
+    <ClInclude Include="Game\Skills\SongOfHeaven.h" />
     <ClInclude Include="Input\Input.h" />
     <ClInclude Include="Input\InputAction.h" />
     <ClInclude Include="Input\InputContext.h" />
@@ -263,6 +266,7 @@
     <ClCompile Include="Component\MovementComponent.cpp" />
     <ClCompile Include="Component\OBBCollisionComponent.cpp" />
     <ClCompile Include="Component\SceneComponent.cpp" />
+    <ClCompile Include="Component\SkillComponent.cpp" />
     <ClCompile Include="Component\SphereCollisionComponent.cpp" />
     <ClCompile Include="Component\SpriteComponent.cpp" />
     <ClCompile Include="Component\StaticMeshComponent.cpp" />
@@ -286,6 +290,8 @@
     <ClCompile Include="Core\TextureManager.cpp" />
     <ClCompile Include="Core\TimeManager.cpp" />
     <ClCompile Include="Core\Timer.cpp" />
+    <ClCompile Include="Game\Skills\Skill.cpp" />
+    <ClCompile Include="Game\Skills\SongOfHeaven.cpp" />
     <ClCompile Include="Input\Input.cpp" />
     <ClCompile Include="Input\InputAction.cpp" />
     <ClCompile Include="Input\InputContext.cpp" />

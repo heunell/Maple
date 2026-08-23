@@ -42,7 +42,7 @@ protected:
 public:
 	eCollisionShape GetShape() const { return _Shape; }
 	
-	eCollisionState CheckState(std::pair<int32, int32>& DestKey);
+	eCollisionState CheckState(std::pair<int32, int32>& DestnationKey);
 
 	const std::pair<int32, int32>& GetColliderID() const;
 
@@ -53,7 +53,7 @@ public:
 
 	virtual void Collision(float DeltaTime) override;
 	
-	virtual bool Collision(Weak<CollisionComponent> Dest);
+	virtual bool Collision(Weak<CollisionComponent> Destination);
 
 	virtual void Render(float DeltaTime) override;
 
@@ -64,19 +64,19 @@ public:
 	const Ptr<class CollisionProfile> GetProfile() const;
 
 private:
-	void Invoke(eCollisionState, Weak<CollisionComponent> Dest, const std::pair<int32, int32>& DestKey);
+	void Invoke(eCollisionState State, Weak<CollisionComponent> Destination, const std::pair<int32, int32>& DestnationKey);
 
 public:
 	template<typename T>
-	void SetCollisionCallBack(eCollisionState State, T* Obj, void(T::* MemFunc)(Weak<CollisionComponent>))
+	void SetCollisionCallBack(eCollisionState State, T* Object, void(T::* MemberFunction)(Weak<CollisionComponent>))
 	{
-		_CollisionCallBack[State] = std::bind(MemFunc, Obj, std::placeholders::_1);
+		_CollisionCallBack[State] = std::bind(MemberFunction, Object, std::placeholders::_1);
 	}
 
 	template<typename T>
-	void SetCollisionCallBack(eCollisionState State, T&& Func)
+	void SetCollisionCallBack(eCollisionState State, T&& Function)
 	{
-		_CollisionCallBack[State] = std::forward<T>(Func);
+		_CollisionCallBack[State] = std::forward<T>(Function);
 	}
 
 };

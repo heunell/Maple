@@ -31,6 +31,8 @@ public:
     
     virtual void Destroy() override;
     
+    bool IsRight() const;
+
 private:
     void MoveRight(float DeltaTime);
     
@@ -41,8 +43,6 @@ private:
     void MoveDown (float DeltaTime);
     
     void MoveStop (float DeltaTime);
-    
-    void Attack   (float DeltaTime);
     
     void Jump     (float DeltaTime);
     

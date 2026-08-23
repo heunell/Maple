@@ -282,6 +282,16 @@ void Animation2D::SetShader()
 	_AnimationBuffer->Update();
 }
 
+bool Animation2D::IsFinished() const
+{
+	if (!_CurrentSequence)
+	{
+		return false;
+	}
+
+	return _CurrentSequence->IsFinished();
+}
+
 void Animation2D::Destroy()
 {
 }

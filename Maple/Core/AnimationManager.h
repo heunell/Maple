@@ -9,7 +9,7 @@ public:
 	virtual ~AnimationManager();
 
 private:
-	bool LoadAnimationFile(const std::wstring& FileName);
+	bool LoadAnimationFile(const std::wstring& FileName, const std::string& DataName);
 
 	std::unordered_map<std::string, Ptr<class Animation2DData>> _Animation;
 

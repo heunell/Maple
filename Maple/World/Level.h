@@ -89,23 +89,24 @@ public:
         return Cast<Actor, T>(It->second);
     }
 
-    template<typename T>
-    Ptr<T> SpawnActor(const std::string& Name, const FVector3D& Posision, const FVector3D& Scale, const FRotator& Rotation)
+    template<typename T, typename...Args>
+    Ptr<T> SpawnActor(const std::string& Name, const FVector3D& Posision, const FVector3D& Scale, const FRotator& Rotation, Args&&...Arguments)
     {
-        Ptr<T> Actors = New<T>();
+        Ptr<T> SpawnActor = New<T>();
 
-        Actors->SetLevel(This<Level>());
+        SpawnActor->SetLevel(This<Level>());
 
         int32 ActorID = _ActorID++;
 
-        if (!Actors->Init(ActorID, Posision, Scale, Rotation, Name))
+        if (!SpawnActor->Init(ActorID, Posision, Scale, Rotation, Name, std::forward<Args>(Arguments)...))
         {
-            DESTROY(Actors)
+            DESTROY(SpawnActor)
+
             return nullptr;
         }
 
-        _Actors[ActorID] = Actors;
+        _Actors[ActorID] = SpawnActor;
 
-        return Actors;
+        return SpawnActor;
     }
 };

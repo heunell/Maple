@@ -284,6 +284,15 @@
     <ClInclude Include="Core\AnimationManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Component\SkillComponent.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Skills\SongOfHeaven.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Skills\Skill.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\Matrix.cpp">
@@ -515,6 +524,15 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Core\AnimationManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\SkillComponent.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Skills\SongOfHeaven.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Skills\Skill.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

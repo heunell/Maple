@@ -4,15 +4,23 @@
 bool CollisionProfileManager::Init()
 {
     CreateChannel(COLLISION_CHANNEL_PLAYER , COLLISION_RESPONSE_IGNORE);
+
     CreateChannel(COLLISION_CHANNEL_MONSTER, COLLISION_RESPONSE_IGNORE);
+    
     CreateProfile("Player" , COLLISION_CHANNEL_PLAYER);
+    
     CreateProfile("Monster", COLLISION_CHANNEL_MONSTER);
+    
     SetProfileResponse("Player",
-        std::make_pair(COLLISION_CHANNEL_MONSTER, COLLISION_RESPONSE_OVERLAP)
-        // TODO : Collision Channel Make_pair Profile  std::make_pair(COLLISION_CHANNEL_NAME, COLLISION_RESPONSE_TYPE), 
+        std::make_pair(COLLISION_CHANNEL_MONSTER, COLLISION_RESPONSE_OVERLAP),
+        std::make_pair(COLLISION_CHANNEL_BULLET, COLLISION_RESPONSE_IGNORE),
+        std::make_pair(COLLISION_CHANNEL_ITEM, COLLISION_RESPONSE_BLOCK),
+        std::make_pair(COLLISION_CHANNEL_BOSS, COLLISION_RESPONSE_OVERLAP)
         );
+    
     SetProfileResponse("Monster",
         std::make_pair(COLLISION_CHANNEL_PLAYER, COLLISION_RESPONSE_OVERLAP));
+    
     return true;
 }
 

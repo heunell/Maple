@@ -27,7 +27,7 @@ bool TextureManager::LoadTexture(const std::string& Name, const std::wstring& Fi
     Ptr<Texture> texture = nullptr;
     if (texture = FindTexture(Name))
     {
-        return texture->LoadTexture((FileName));
+        return  true; //texture->LoadTexture((FileName));
     }
 
     texture = New<Texture>();

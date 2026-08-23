@@ -9,11 +9,11 @@
 
 AABBCollisionComponent::AABBCollisionComponent()
 {
+    _Shape = eCollisionShape::AABB;
 }
 
 AABBCollisionComponent::~AABBCollisionComponent()
-{
-}
+{}
 
 const FVector2D& AABBCollisionComponent::GetBoxSize() const
 {
@@ -42,7 +42,9 @@ bool AABBCollisionComponent::Init(int32 Id, const std::string& Name, Ptr<class A
     CollisionComponent::Init(Id, Name, Owner);
 
 #if _DEBUG
+
     _Mesh = MESH_MANAGER->FindMesh("FrameRect");
+
 #endif 
 
     _Type = COMPONENT_TYPE::AABB;
@@ -56,11 +58,11 @@ void AABBCollisionComponent::Tick(float DeltaTime)
 
     _Box._Min._x = _World._position._x - _BoxSize._x * 0.5f;
           
-    _Box._Max._x = _World._position._x - _BoxSize._x * 0.5f;
+    _Box._Max._x = _World._position._x + _BoxSize._x * 0.5f;
           
     _Box._Min._y = _World._position._y - _BoxSize._y * 0.5f;
           
-    _Box._Max._y = _World._position._y - _BoxSize._y * 0.5f;
+    _Box._Max._y = _World._position._y + _BoxSize._y * 0.5f;
 
     _Min._x = _Box._Min._x;
 
@@ -101,10 +103,13 @@ bool AABBCollisionComponent::Collision(Weak<CollisionComponent> Destination)
     {
     case eCollisionShape::AABB:
         return CollisionSystem::AABBToAABB(This<AABBCollisionComponent>(), Cast<CollisionComponent, AABBCollisionComponent>(DestinationCollision));
+    
     case eCollisionShape::Sphere:
         return CollisionSystem::AABBToSphere(This<AABBCollisionComponent>(), Cast<CollisionComponent, SphereCollisionComponent>(DestinationCollision));
+    
     case eCollisionShape::OBB:
         return CollisionSystem::AABBToOBB(This<AABBCollisionComponent>(), Cast<CollisionComponent, OBBCollisionComponent>(DestinationCollision));
+    
     default:
         break;
     }

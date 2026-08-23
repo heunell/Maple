@@ -175,6 +175,11 @@ void Animation2DSequence::Tick(float DeltaTime)
     //}
 }
 
+bool Animation2DSequence::IsFinished() const
+{
+    return !_Loop && !_Play;
+}
+
 void Animation2DSequence::Destroy()
 {
 }

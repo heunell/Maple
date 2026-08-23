@@ -47,6 +47,8 @@ public:
 
 	void SetShader();
 
+	bool IsFinished() const;
+
 	virtual void Destroy() override;
 
 private:

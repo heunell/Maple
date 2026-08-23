@@ -9,6 +9,7 @@
 #include "Component/AABBCollisionComponent.h"
 #include "Component/StaticMeshComponent.h"
 #include "Component/SpriteComponent.h"
+#include "Component/SkillComponent.h"
 #include "Core/GameEngine.h"
 #include "Core/TimeManager.h"
 #include "Render/RenderManager.h"
@@ -37,7 +38,7 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 	
 	Sprite->AddAnimationSequence("ARMED_JUMP", false);
 
-	Sprite->AddAnimationSequence("ARMED_SHOOT", false);
+	Sprite->AddAnimationSequence("ARMED_SHOOT", true);
 
 	//SetRootComponent(Sprite);
 
@@ -46,6 +47,16 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 	_Controller = GetLevel()->SpawnActor<PlayerController>("PlayerController", Position, Scale, Rotator);
 
 	_Controller->SetPawn(This<Player>());
+
+	Ptr<SpriteComponent> SkillSprite = CreateSceneComponent<SpriteComponent>("SkillSprite");
+	
+	SkillSprite->AttachToComponent(GetRoot());
+	
+	SkillSprite->SetEnable(false);
+
+	CreateActorComponent<SkillComponent>("Skill");
+
+	GetController<PlayerController>()->KeyBind();
 
 	Ptr<InputComponent> InputComponent = GetController<PlayerController>()->GetInputComponent();
 
@@ -61,8 +72,6 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 
 	auto MoveJump = InputSystem::Instance().FindOrAddInputAction("MOVE_JUMP");
 
-	auto Attack = InputSystem::Instance().FindOrAddInputAction("ATTACK");
-
 
 
 	MappingContext->BindInputAction(MoveRight, VK_RIGHT);
@@ -74,8 +83,6 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 	MappingContext->BindInputAction(MoveDown, VK_DOWN);
 	
 	MappingContext->BindInputAction(MoveJump, 'C');
-
-	MappingContext->BindInputAction(Attack, 'A');
 
 
 
@@ -106,10 +113,6 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 	InputComponent->BindAction(MappingContext->GetName(), MoveJump->GetName(),  INPUT_TYPE::UP,   this, &Player::MoveStop);
 	
 
-	InputComponent->BindAction(MappingContext->GetName(), Attack->GetName(),    INPUT_TYPE::HOLD, this, &Player::Attack);
-	
-	InputComponent->BindAction(MappingContext->GetName(), Attack->GetName(),    INPUT_TYPE::UP,   this, &Player::MoveStop);
-
 
 	_Movement = CreateActorComponent<MovementComponent>("Movement");
 
@@ -127,11 +130,54 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 
 	_AABBCollision = CreateSceneComponent<AABBCollisionComponent>("AABB");
 	
-	_AABBCollision->SetBoxSize(300.f, 300.f);
+	_AABBCollision->SetBoxSize(40.f, 65.f);
+
+	_AABBCollision->SetRelativePosition(FVector3D(0.f, 32.5f, 0.f));
 
 	_AABBCollision->AttachToComponent(_Root);
 
 	_AABBCollision->SetCollisionProfile("Player");
+
+	Ptr<AABBCollisionComponent> TopCollisiion = CreateSceneComponent<AABBCollisionComponent>("TopCollisiion");
+
+	TopCollisiion->SetBoxSize(8.f, 8.f);
+
+	TopCollisiion->SetRelativePosition(0.f, 65.f, 0.f);
+
+	TopCollisiion->AttachToComponent(_Root);
+
+	TopCollisiion->SetCollisionProfile("Player");
+
+	Ptr<AABBCollisionComponent> BottomCollision = CreateSceneComponent<AABBCollisionComponent>("BottomCollision ");
+
+	BottomCollision ->SetBoxSize(8.f, 8.f);
+	
+	BottomCollision ->SetRelativePosition(0.f, 0.f, 0.f);
+	
+	BottomCollision ->AttachToComponent(_Root);
+	
+	BottomCollision ->SetCollisionProfile("Player");
+
+	Ptr<AABBCollisionComponent> LeftCollision = CreateSceneComponent<AABBCollisionComponent>("LeftCollision ");
+
+	LeftCollision->SetBoxSize(8.f, 8.f);
+
+	LeftCollision->SetRelativePosition(-20.f, 32.5f, 0.f);
+
+	LeftCollision->AttachToComponent(_Root);
+
+	LeftCollision->SetCollisionProfile("Player");
+
+	Ptr<AABBCollisionComponent> RightCollision = CreateSceneComponent<AABBCollisionComponent>("RightCollision ");
+
+	RightCollision->SetBoxSize(8.f, 8.f);
+
+	RightCollision->SetRelativePosition(20.f, 32.5f, 0.f);
+
+	RightCollision->AttachToComponent(_Root);
+
+	RightCollision->SetCollisionProfile("Player");
+
 
 
 	
@@ -162,11 +208,16 @@ void Player::Destroy()
 	TimeManager::Instance().RemoveTimer(_TimerID);
 }
 
+bool Player::IsRight() const
+{
+	return _bReverse;
+}
+
 void Player::MoveRight(float DeltaTime)
 {
+	_bReverse = true;
+
 	_Movement->SetMoveAxis(FVector3D::Axis_X);
-	
-	// todo : 이미지 리소스가 추가되면 SpriteComponent를 작성하고 재생하기
 
 	Ptr<SpriteComponent> Sprite = FindSceneComponent<SpriteComponent>("PlayerSprite");
 
@@ -180,6 +231,8 @@ void Player::MoveRight(float DeltaTime)
 
 void Player::MoveLeft(float DeltaTime)
 {
+	_bReverse = false;
+
 	_Movement->SetMoveAxis(-FVector3D::Axis_X);
 
 	Ptr<SpriteComponent> Sprite = FindSceneComponent<SpriteComponent>("PlayerSprite");
@@ -212,10 +265,6 @@ void Player::MoveStop(float DeltaTime)
 	{
 		Sprite->ChangeAnimation("ARMED_STAND");
 	}
-}
-
-void Player::Attack(float DeltaTime)
-{
 }
 
 void Player::Jump(float DeltaTime)

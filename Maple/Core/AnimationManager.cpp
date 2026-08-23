@@ -13,7 +13,7 @@ AnimationManager::~AnimationManager()
 {
 }
 
-bool AnimationManager::LoadAnimationFile(const std::wstring& FileName)
+bool AnimationManager::LoadAnimationFile(const std::wstring& FileName, const std::string& DataName)
 {
     std::optional<std::filesystem::path> ResourcePath = DirectoryManager::Instance().GetCachePath("Resources");
 
@@ -49,12 +49,12 @@ bool AnimationManager::LoadAnimationFile(const std::wstring& FileName)
     {
         File >> Json;
 
-        if (!Json.contains("Animations") || !Json["Animations"].is_object())
+        if (!Json.contains(DataName) || !Json[DataName].is_object())
         {
             return false;
         }
 
-        for (const auto& [AnimationName, AnimationJson] : Json["Animations"].items())
+        for (const auto& [AnimationName, AnimationJson] : Json[DataName].items())
         {
             if (!AnimationJson.contains("Texture") || !AnimationJson["Texture"].is_string() || 
                 !AnimationJson.contains("Frames") ||!AnimationJson["Frames"].is_array() || AnimationJson["Frames"].empty())
@@ -69,7 +69,7 @@ bool AnimationManager::LoadAnimationFile(const std::wstring& FileName)
                 return false;
             }
 
-            SetTexture(AnimationName, TextureName);
+            SetTexture(AnimationName, TextureName, std::filesystem::path(TextureName).wstring());
 
             Ptr<Animation2DData> Animation = FindAnimation(AnimationName);
 
@@ -118,7 +118,12 @@ bool AnimationManager::LoadAnimationFile(const std::wstring& FileName)
 
 bool AnimationManager::Init()
 {
-    return LoadAnimationFile(TEXT("Characters\\CharacterState.json"));
+    if (!LoadAnimationFile(TEXT("Characters\\CharacterState.json"), "Animations"))
+    {
+        return false;
+    }
+
+    return LoadAnimationFile(TEXT("Skill\\Skill.json"), "Skills");
 }
 
 Ptr<class Animation2DData> AnimationManager::FindAnimation(const std::string& Name)

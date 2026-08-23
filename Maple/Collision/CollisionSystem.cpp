@@ -52,7 +52,7 @@ bool CollisionSystem::AABBToSphere(Weak<class AABBCollisionComponent> Source, We
         return false;
     }
 
-    return AABBToSphere(SourceCollision->GetBox(), DestinationCollision->GetWorldPosition(), DestinationCollision->GetRadius()); // ShpereCollisionComponent 가 없어서 
+    return AABBToSphere(SourceCollision->GetBox(), DestinationCollision->GetWorldPosition(), DestinationCollision->GetRadius());
 }
 
 bool CollisionSystem::AABBToSphere(const FAABB2D& Source, const FVector3D& DestinationCenter, float DestinationRadius)
@@ -89,7 +89,7 @@ bool CollisionSystem::AABBToOBB(Weak<class AABBCollisionComponent> Source, Weak<
         return false;
     }
     
-    return AABBToOBB(SourceCollision->GetBox(), DestinationCollision->GetBox());    // OBBCollisionComponent 가 없어서 
+    return AABBToOBB(SourceCollision->GetBox(), DestinationCollision->GetBox());    
 }
 
 bool CollisionSystem::AABBToOBB(const FAABB2D& SourceAABB, const FOBB2D& DestinationOBB)
@@ -109,7 +109,6 @@ bool CollisionSystem::SphereToSphere(Weak<class SphereCollisionComponent> Source
         return false;
 
     return SphereToSphere(SourceCollision->GetWorldPosition(), SourceCollision->GetRadius(), DestinationCollision->GetWorldPosition(), DestinationCollision->GetRadius());
-    // SphereCollisionComponent가 없어서
 }
 
 bool CollisionSystem::SphereToSphere(const FVector3D& SourceCenter, float SourceRadiuse, const FVector3D& DestinationCenter, float DestinationRadius)
