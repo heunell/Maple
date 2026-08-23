@@ -319,3 +319,16 @@ namespace COMPONENT_TYPE
         END
     };
 }
+
+enum eLevelType : unsigned char
+{
+    MAIN, // 서버 선택
+    CHOICE, // 캐릭터 선택
+    VILLAGE, // 마을
+    FIELD, // 필드
+    ENTRY, // 보스 입장
+    BOSS_PHASE1, // 보스 1페이즈
+    BOSS_PHASE2, // 보스 2페이즈
+    BOSS_REWARD, // 보스 보상
+    LEVEL_END
+};

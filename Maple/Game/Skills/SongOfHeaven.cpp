@@ -370,6 +370,17 @@ void SongOfHeaven::Hit(const FVector3D& Position)
         return;
     }
 
+    Ptr<SceneComponent> SongOfHeavenHitRoot = CreateSceneComponent<SceneComponent>("SongOfHeavenHitRoot");
+    
+    if (!SongOfHeavenHitRoot)
+    {
+        return;
+    }
+
+    SongOfHeavenHitRoot->AttachToComponent(GetRoot());
+
+    SongOfHeavenHitRoot->SetWorldPosition(Position);
+
     Ptr<SpriteComponent> SongOfHeavenHitSprite = CreateSceneComponent<SpriteComponent>("SongOfHeavenHitSprite");
 
     if (!SongOfHeavenHitSprite)
@@ -377,13 +388,13 @@ void SongOfHeaven::Hit(const FVector3D& Position)
         return;
     }
 
-    SongOfHeavenHitSprite->AttachToComponent(GetRoot());
+    SongOfHeavenHitSprite->AttachToComponent(SongOfHeavenHitRoot);
 
     SongOfHeavenHitSprite->SetWorldPosition(Position);
 
     SongOfHeavenHitSprite->SetWorldScale(1.f, 1.f, 1.f);
 
-    SongOfHeavenHitSprite->AddAnimationSequence("SongOfHeaven.Hit1", false);
+    SongOfHeavenHitSprite->AddAnimationSequence("SongOfHeaven.Hit1", false, false);
 
     _HitEffectSprites.push_back(SongOfHeavenHitSprite);
 }

@@ -52,4 +52,13 @@ public:
 
        return level;
     }
+
+private:
+    
+    Ptr<class CameraManager> _cameraManager;
+
+    eLevelType _CurLevelType = eLevelType::LEVEL_END;
+
+    eLevelType _NextLevelType = eLevelType::LEVEL_END;
+    
 };

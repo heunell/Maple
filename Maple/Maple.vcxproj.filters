@@ -293,6 +293,9 @@
     <ClInclude Include="Game\Skills\Skill.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Map\Boss\LucidEntry.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\Matrix.cpp">
@@ -533,6 +536,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Game\Skills\Skill.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Map\Boss\LucidEntry.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

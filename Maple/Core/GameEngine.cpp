@@ -12,6 +12,8 @@
 #include "Render/RenderManager.h"
 #include "World/World.h"
 
+#include "Game/Map/Boss/LucidEntry.h"
+
 void GameEngine::Destroy()
 {
     _World->Destroy();
