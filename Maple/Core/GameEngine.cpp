@@ -40,7 +40,9 @@ bool GameEngine::Init(HINSTANCE Instance, const wchar_t* Name)
     RegisterWindowClass();
     
     if (!Create())
+    {
         return false;
+    }
     
     _hdc = GetDC(_hWnd);
 
@@ -48,7 +50,7 @@ bool GameEngine::Init(HINSTANCE Instance, const wchar_t* Name)
     
     _World = New<World>();
 
-    _World->Init("");
+    _World->Init("LucidEntry");
 
     return true;
 }
@@ -62,6 +64,7 @@ int GameEngine::Run()
         if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
         {
             TranslateMessage(&msg);
+
             DispatchMessage(&msg);
         }
         else
@@ -229,18 +232,24 @@ LRESULT GameEngine::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
     case WM_PAINT:
     {
         PAINTSTRUCT ps;
+
         HDC hdc = BeginPaint(hWnd, &ps);
+
         EndPaint(hWnd, &ps);
     }
     break;
+
     case WM_DESTROY:
         {
             g_isRun = false;
+
             PostQuitMessage(0);
         }
     break;
+
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
+
     return 0;
 }

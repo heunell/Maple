@@ -1,7 +1,9 @@
 ﻿#include "pch.h"
 #include "World.h"
 #include "Level.h"
+#include "GameLevel.h"
 #include "Object/Actor.h"
+
 World::World()
 {}
 
@@ -10,7 +12,7 @@ World::~World()
 
 void World::Init(const std::string& name)
 {
-    _CurLevel = CreateLevel<Level>(name);
+    _CurLevel = CreateLevel<GameLevel>(name);
 }
 
 void World::Tick(float DeltaTime)

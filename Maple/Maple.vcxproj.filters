@@ -296,6 +296,15 @@
     <ClInclude Include="Game\Map\Boss\LucidEntry.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="World\MapManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="World\GameLevel.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Character\PlayerStateMachine.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\Matrix.cpp">
@@ -539,6 +548,15 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Game\Map\Boss\LucidEntry.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="World\MapManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="World\GameLevel.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Character\PlayerStateMachine.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

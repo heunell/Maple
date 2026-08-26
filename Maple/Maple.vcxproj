@@ -204,6 +204,7 @@
     <ClInclude Include="Core\TimeManager.h" />
     <ClInclude Include="Core\Timer.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Game\Character\PlayerStateMachine.h" />
     <ClInclude Include="Game\Map\Boss\LucidEntry.h" />
     <ClInclude Include="Game\Skills\Skill.h" />
     <ClInclude Include="Game\Skills\SongOfHeaven.h" />
@@ -243,7 +244,9 @@
     <ClInclude Include="Shader\StaticMeshShader.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="World\CameraManager.h" />
+    <ClInclude Include="World\GameLevel.h" />
     <ClInclude Include="World\Level.h" />
+    <ClInclude Include="World\MapManager.h" />
     <ClInclude Include="World\TagManager.h" />
     <ClInclude Include="World\World.h" />
   </ItemGroup>
@@ -291,6 +294,7 @@
     <ClCompile Include="Core\TextureManager.cpp" />
     <ClCompile Include="Core\TimeManager.cpp" />
     <ClCompile Include="Core\Timer.cpp" />
+    <ClCompile Include="Game\Character\PlayerStateMachine.cpp" />
     <ClCompile Include="Game\Map\Boss\LucidEntry.cpp" />
     <ClCompile Include="Game\Skills\Skill.cpp" />
     <ClCompile Include="Game\Skills\SongOfHeaven.cpp" />
@@ -483,7 +487,9 @@
       <AdditionalIncludeDirectories>C:\Users\kuhe9\Desktop\Maple\Maple\;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="World\GameLevel.cpp" />
     <ClCompile Include="World\Level.cpp" />
+    <ClCompile Include="World\MapManager.cpp" />
     <ClCompile Include="World\TagManager.cpp" />
     <ClCompile Include="World\World.cpp" />
   </ItemGroup>
