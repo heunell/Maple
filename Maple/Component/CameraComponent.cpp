@@ -27,7 +27,7 @@ void CameraComponent::SetProjectionType(eCameraType Type)
         break;
     
     case Ortho:
-        _MatrixProjection = DirectX::XMMatrixOrthographicOffCenterLH(_Width / -2, _Width / 2, _Height / -2, _Height / 2, 0.f, _ViewDistance);
+        _MatrixProjection = DirectX::XMMatrixOrthographicOffCenterLH(_Width / -2, _Width / 2, _Height / -2, _Height / 2, -1.f, _ViewDistance);
         break;
     
     default:
