@@ -89,7 +89,7 @@ bool GameEngine::Create()
         return false;
     }
     
-    RECT windowRect = { 0, 0, 1920, 1080}; // 해상도
+    RECT windowRect = { 0, 0, 1366, 768}; // 해상도
     
     AdjustWindowRect(&windowRect, WS_OVERLAPPEDWINDOW, false);
    
@@ -188,7 +188,7 @@ bool GameEngine::InitManager()
         return false;
     }
 
-    if (false == Device::Instance().Init(_hWnd, 1920, 1080, true))
+    if (false == Device::Instance().Init(_hWnd, 1366, 768, true)) // 해상도 같이 바꿔줘야함
     {
         return false;
     }

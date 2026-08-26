@@ -133,7 +133,7 @@ void RenderManager::Render(float DeltaTime)
             Layer._RefreshRenders = false;
         }
 
-        if (_SortY)
+        /*if (_SortY)
         {
             std::sort(Layer._Renders.begin(), Layer._Renders.end(), [](const Weak<SceneComponent>& Source, const Weak<SceneComponent>& Destination)
                 {
@@ -148,7 +148,7 @@ void RenderManager::Render(float DeltaTime)
 
                     return ComponentSource->GetWorldPosition()._y < ComponentDestination->GetWorldPosition()._y;
                 });
-        }
+        }*/
 
         for (auto& It : Layer._Renders)
         {

@@ -32,15 +32,6 @@ bool LucidEntry::Init(int32 Id, const FVector3D& Position, const FVector3D& Scal
 
     std::vector<std::string> StaticParts =
     {
-        "LUCID_ENTRY_OBJ_20",
-        "LUCID_ENTRY_OBJ_22",
-        "LUCID_ENTRY_OBJ_23",
-        "LUCID_ENTRY_OBJ_21",
-        "LUCID_ENTRY_OBJ_24",
-        "LUCID_ENTRY_OBJ_25_LEFT",
-        "LUCID_ENTRY_OBJ_25_RIGHT",
-
-        "LUCID_ENTRY_BACK_42",
 
         "LUCID_ENTRY_SKY_TILE_-08",
         "LUCID_ENTRY_SKY_TILE_-07",
@@ -62,7 +53,18 @@ bool LucidEntry::Init(int32 Id, const FVector3D& Position, const FVector3D& Scal
         "LUCID_ENTRY_SKY_TILE_+09",
         "LUCID_ENTRY_SKY_TILE_+10",
         "LUCID_ENTRY_SKY_TILE_+11",
-        "LUCID_ENTRY_SKY_TILE_+12"
+        "LUCID_ENTRY_SKY_TILE_+12",
+
+        "LUCID_ENTRY_OBJ_20",
+        "LUCID_ENTRY_OBJ_22",
+        "LUCID_ENTRY_OBJ_23",
+        "LUCID_ENTRY_OBJ_21",
+        "LUCID_ENTRY_OBJ_24",
+        "LUCID_ENTRY_OBJ_25_LEFT",
+        "LUCID_ENTRY_OBJ_25_RIGHT",
+
+        "LUCID_ENTRY_BACK_42"
+
     };
 
     for (const std::string& PartName : StaticParts)
