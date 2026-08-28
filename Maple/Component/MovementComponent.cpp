@@ -19,6 +19,8 @@ void MovementComponent::Tick(float DeltaTime)
 {
     ActorComponent::Tick(DeltaTime);
     
+    const float _MaxFallSpeed = -200.f;
+
     if (nullptr == _UpdateComponent)
     {
         return;
@@ -26,7 +28,12 @@ void MovementComponent::Tick(float DeltaTime)
 
     if(!_IsLanding)
     {
-        _Velocity._y += _Gravity * DeltaTime;
+        _Velocity._y += _Gravity * DeltaTime * 3.0f;
+
+        if (_Velocity._y <= _MaxFallSpeed)
+        {
+            _Velocity._y = _MaxFallSpeed;
+        }
     }
     else if(_Velocity._y < 0.f)
     {
@@ -42,18 +49,6 @@ void MovementComponent::Tick(float DeltaTime)
     _UpdateComponent->SetWorldPosition(_NextPosition);
 
     _IsLanding = false;
-
-
-    // if (_MoveAxis.Length() <= 0)
-    // {
-    //     return;
-    // }
-
-    // FVector3D CurrentPos = _UpdateComponent->GetWorldPosition();
-    
-    // _NextPosition = CurrentPos + (_MoveAxis * _Speed * DeltaTime);
-    
-    // _UpdateComponent->SetWorldPosition(_NextPosition);
 }
 
 void MovementComponent::Destroy()

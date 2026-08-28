@@ -1,5 +1,7 @@
 ﻿#include "pch.h"
 #include "Player.h"
+#include "PlayerState.h"
+#include "PlayerStateMachine.h"
 #include "World/World.h"
 #include "World/Level.h"
 #include "Collision/CollisionProfile.h"
@@ -23,14 +25,6 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 	AddTag("Player");
 
 	_Type = eActorType::Player;
-
-	//Ptr<StaticMeshComponent> MeshComponent = CreateSceneComponent<StaticMeshComponent>("PlayerMesh");
-
-	//MeshComponent->SetMesh("TexRect");
-
-	//MeshComponent->AddTexture(0, "TestCharacter", 0);
-
-	//SetRootComponent(MeshComponent);
 
 	Ptr<SpriteComponent> Sprite = CreateSceneComponent<SpriteComponent>("PlayerSprite");
 
@@ -120,7 +114,7 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 
 	_Movement->SetSpeed(100.f);
 
-	_Movement->SetGravity(-80.f);
+	_Movement->SetGravity(-90.f);
 
 
 	_Camera = CreateSceneComponent<CameraComponent>("Camera");
@@ -395,7 +389,7 @@ void Player::MoveStop(float DeltaTime)
 
 void Player::Jump(float DeltaTime)
 {
-	if(!_Movement->StartJump(160.f))
+	if(!_Movement->StartJump(95.f))
 	{
 		return;
 	}

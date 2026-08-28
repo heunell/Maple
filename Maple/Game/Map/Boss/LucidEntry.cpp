@@ -98,8 +98,8 @@ bool LucidEntry::Init(int32 Id, const FVector3D& Position, const FVector3D& Scal
         return false;
     }
 
-    _Floor->SetBoxSize(770.f, 20.f);
-    _Floor->SetRelativePosition(155.f, -254.f, 0.f);
+    _Floor->SetBoxSize(770.f, 200.f);
+    _Floor->SetRelativePosition(155.f, -348.f, 0.f);
     _Floor->AttachToComponent(GetRoot());
     _Floor->SetCollisionProfile("Environment");
 
