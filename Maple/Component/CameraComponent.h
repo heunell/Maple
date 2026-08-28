@@ -30,6 +30,10 @@ protected:
     
     float       _ViewDistance  = 10000.f;
 
+    bool        _IsCameraLock  = false;
+
+    FAABB2D     _CameraLock    = {};
+
 public:
     void SetProjectionType(eCameraType Type);
     
@@ -67,4 +71,6 @@ public:
     virtual void Render(float DeltaTime) override;
     
     virtual void Destroy() override;
+
+    void SetCameraLock(const FAABB2D& LockBound);
 };

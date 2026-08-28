@@ -247,6 +247,7 @@
     <ClInclude Include="Shader\StaticMeshShader.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="World\CameraManager.h" />
+    <ClInclude Include="World\CameraZone.h" />
     <ClInclude Include="World\GameLevel.h" />
     <ClInclude Include="World\Level.h" />
     <ClInclude Include="World\MapManager.h" />
@@ -493,6 +494,7 @@
       <AdditionalIncludeDirectories>C:\Users\kuhe9\Desktop\Maple\Maple\;</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="World\CameraZone.cpp" />
     <ClCompile Include="World\GameLevel.cpp" />
     <ClCompile Include="World\Level.cpp" />
     <ClCompile Include="World\MapManager.cpp" />
