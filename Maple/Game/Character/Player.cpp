@@ -2,11 +2,13 @@
 #include "Player.h"
 #include "World/World.h"
 #include "World/Level.h"
+#include "Collision/CollisionProfile.h"
 #include "Controller/PlayerController.h"
 #include "Component/MovementComponent.h"
 #include "Component/CameraComponent.h"
 #include "Component/MeshComponent.h"
 #include "Component/AABBCollisionComponent.h"
+#include "Component/SphereCollisionComponent.h"
 #include "Component/StaticMeshComponent.h"
 #include "Component/SpriteComponent.h"
 #include "Component/SkillComponent.h"
@@ -108,9 +110,7 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 	InputComponent->BindAction(MappingContext->GetName(), MoveDown->GetName(),  INPUT_TYPE::UP,   this, &Player::MoveStop);
 	
 
-	InputComponent->BindAction(MappingContext->GetName(), MoveJump->GetName(),  INPUT_TYPE::HOLD, this, &Player::Jump);
-	
-	InputComponent->BindAction(MappingContext->GetName(), MoveJump->GetName(),  INPUT_TYPE::UP,   this, &Player::MoveStop);
+	InputComponent->BindAction(MappingContext->GetName(), MoveJump->GetName(),  INPUT_TYPE::DOWN, this, &Player::Jump);
 	
 
 
@@ -120,7 +120,8 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 
 	_Movement->SetSpeed(100.f);
 
-	
+	_Movement->SetGravity(-80.f);
+
 
 	_Camera = CreateSceneComponent<CameraComponent>("Camera");
 
@@ -158,6 +159,8 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 	
 	BottomCollision ->SetCollisionProfile("Player");
 
+	BottomCollision ->SetCollisionCallBack(COLLISION_STATE_BLOCK, this, &Player::OnGround);
+
 	Ptr<AABBCollisionComponent> LeftCollision = CreateSceneComponent<AABBCollisionComponent>("LeftCollision ");
 
 	LeftCollision->SetBoxSize(8.f, 8.f);
@@ -167,6 +170,8 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 	LeftCollision->AttachToComponent(_Root);
 
 	LeftCollision->SetCollisionProfile("Player");
+
+	LeftCollision->SetCollisionCallBack(COLLISION_STATE_BLOCK, this, &Player::OnLeftWall);
 
 	Ptr<AABBCollisionComponent> RightCollision = CreateSceneComponent<AABBCollisionComponent>("RightCollision ");
 
@@ -178,9 +183,8 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 
 	RightCollision->SetCollisionProfile("Player");
 
+	RightCollision->SetCollisionCallBack(COLLISION_STATE_BLOCK, this, &Player::OnRightWall);
 
-
-	
 	GameEngine::Instance().GetWorld()->SetMainPlayer(This<Player>());
 
 	return true;
@@ -255,6 +259,128 @@ void Player::MoveDown(float DeltaTime)
 
 }
 
+void Player::OnGround(Weak<class CollisionComponent> Collision)
+{
+	Ptr<CollisionComponent> Component = Lock<CollisionComponent>(Collision);
+
+	if(!Component || !Component->GetProfile())
+	{
+		return;
+	}
+
+	if(Component->GetProfile()->GetChannel() != eCollisionChannel::COLLISION_CHANNEL_ENVIRONMENT)
+	{
+		return;
+	}
+
+	Ptr<AABBCollisionComponent> Ground = Cast<CollisionComponent, AABBCollisionComponent>(Component);
+
+	if(!Ground)
+	{
+		return;
+	}
+
+	// 가로로 긴 Environment AABB만 바닥으로 처리한다.
+	if(Ground->GetBoxSize()._x <= Ground->GetBoxSize()._y)
+	{
+		return;
+	}
+
+	if(_Movement->GetVelocity()._y > 0.f)
+	{
+		return;
+	}
+
+	const FAABB2D& PlayerBox = _AABBCollision->GetBox();
+
+	const FAABB2D& GroundBox = Ground->GetBox();
+
+	const float CorrectionY = GroundBox._Max._y - PlayerBox._Min._y;
+
+	if(CorrectionY > 0.f)
+	{
+		_Movement->Blocking(FVector3D(0.f, CorrectionY, 0.f));
+	}
+
+	_Movement->SetLanding(true);
+}
+
+void Player::OnLeftWall (Weak<class CollisionComponent> Collision)
+{
+	Ptr<CollisionComponent> Component = Lock<CollisionComponent>(Collision);
+
+	if(!Component || !Component->GetProfile())
+	{
+		return;
+	}
+
+	if(Component->GetProfile()->GetChannel() != eCollisionChannel::COLLISION_CHANNEL_ENVIRONMENT)
+	{
+		return;
+	}
+
+	Ptr<AABBCollisionComponent> Wall = Cast<CollisionComponent, AABBCollisionComponent>(Component);
+
+	if(!Wall)
+	{
+		return;
+	}
+
+	if(Wall->GetBoxSize()._y <= Wall->GetBoxSize()._x)
+	{
+		return;
+	}
+
+	const FAABB2D& PlayerBox = _AABBCollision->GetBox();
+
+	const FAABB2D& WallBox = Wall->GetBox();
+
+	const float CorrectionX = WallBox._Max._x - PlayerBox._Min._x;
+
+	if(CorrectionX > 0.f)
+	{
+		_Movement->Blocking(FVector3D(CorrectionX, 0.f, 0.f));
+	}
+}
+
+void Player::OnRightWall(Weak<class CollisionComponent> Collision)
+{
+	Ptr<CollisionComponent> Component = Lock<CollisionComponent>(Collision);
+
+	if(!Component || !Component->GetProfile())
+	{
+		return;
+	}
+
+	if(Component->GetProfile()->GetChannel() != eCollisionChannel::COLLISION_CHANNEL_ENVIRONMENT)
+	{
+		return;
+	}
+
+	Ptr<AABBCollisionComponent> Wall = Cast<CollisionComponent, AABBCollisionComponent>(Component);
+
+	if(!Wall)
+	{
+		return;
+	}
+
+	if(Wall->GetBoxSize()._y <= Wall->GetBoxSize()._x)
+	{
+		return;
+	}
+
+	const FAABB2D& PlayerBox = _AABBCollision->GetBox();
+
+	const FAABB2D& WallBox = Wall->GetBox();
+
+	const float CorrectionX = WallBox._Min._x - PlayerBox._Max._x;
+
+	if(CorrectionX < 0.f)
+	{
+		_Movement->Blocking(FVector3D(CorrectionX, 0.f, 0.f));
+	}	
+}
+
 void Player::MoveStop(float DeltaTime)
 {
 	_Movement->Stop();
@@ -269,6 +395,17 @@ void Player::MoveStop(float DeltaTime)
 
 void Player::Jump(float DeltaTime)
 {
+	if(!_Movement->StartJump(160.f))
+	{
+		return;
+	}
+
+	Ptr<SpriteComponent> Sprite = FindSceneComponent<SpriteComponent>("PlayerSprite");
+
+	if(Sprite)
+	{
+		Sprite->ChangeAnimation("ARMED_JUMP");
+	}
 }
 
 void Player::Prone(float DeltaTime)

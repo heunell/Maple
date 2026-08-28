@@ -74,43 +74,71 @@ void CollisionManager::Collision(float DeltaTime)
                     continue;
                 }
 
+            const eCollisionResponse SourceResponse = SourceProfile->GetResponse(DestinationProfile->GetChannel());
+
+            const eCollisionResponse DestinationResponse = DestinationProfile->GetResponse(SourceProfile->GetChannel());
+
+            if (SourceResponse      == COLLISION_RESPONSE_IGNORE || SourceResponse      == COLLISION_RESPONSE_END ||
+                DestinationResponse == COLLISION_RESPONSE_IGNORE || DestinationResponse == COLLISION_RESPONSE_END)
+            {
+                continue;
+            }
+
+            const eCollisionState CollisionState = SourceResponse      == COLLISION_RESPONSE_BLOCK && 
+                                                   DestinationResponse == COLLISION_RESPONSE_BLOCK ? COLLISION_STATE_BLOCK : COLLISION_STATE_OVERLAP;
+
             if (ItValue->Collision(SubItValue))
             {
-                switch (ItValue->CheckState(SubItKey))
-                {
-                case eCollisionState::COLLISION_STATE_BLOCK:
-                {
-                    ItValue->Invoke(eCollisionState::COLLISION_STATE_OVERLAP, SubItValue, SubItKey);
-                }
-                break;
-                case eCollisionState::COLLISION_STATE_OVERLAP:
-                {
-                    ItValue->Invoke(eCollisionState::COLLISION_STATE_OVERLAP, SubItValue, SubItKey);
-                }
-                break;
-                case eCollisionState::COLLISION_STATE_RELEASE:
-                {
-                    ItValue->Invoke(eCollisionState::COLLISION_STATE_OVERLAP, SubItValue, SubItKey);
-                }
-                break;
-                default:
-                    break;
-                }
+                ItValue->Invoke(CollisionState, SubItValue, SubItKey);
             }
             else
             {
-                switch (ItValue->CheckState(SubItKey))
+                const eCollisionState PreviousState = ItValue->CheckState(SubItKey);
+
+                if (PreviousState == COLLISION_STATE_BLOCK ||
+                    PreviousState == COLLISION_STATE_OVERLAP)
                 {
-                case eCollisionState::COLLISION_STATE_BLOCK:
-                case eCollisionState::COLLISION_STATE_OVERLAP:
-                {
-                    ItValue->Invoke(eCollisionState::COLLISION_STATE_RELEASE, SubItValue, SubItKey);
-                }
-                break;
-                default:
-                    break;
+                    ItValue->Invoke(COLLISION_STATE_RELEASE, SubItValue, SubItKey);
                 }
             }
+
+            //if (ItValue->Collision(SubItValue))
+            //{
+            //    switch (ItValue->CheckState(SubItKey))
+            //    {
+            //    case eCollisionState::COLLISION_STATE_BLOCK:
+            //    {
+            //        ItValue->Invoke(eCollisionState::COLLISION_STATE_OVERLAP, SubItValue, SubItKey);
+            //    }
+            //    break;
+            //    case eCollisionState::COLLISION_STATE_OVERLAP:
+            //    {
+            //        ItValue->Invoke(eCollisionState::COLLISION_STATE_OVERLAP, SubItValue, SubItKey);
+            //    }
+            //    break;
+            //    case eCollisionState::COLLISION_STATE_RELEASE:
+            //    {
+            //        ItValue->Invoke(eCollisionState::COLLISION_STATE_OVERLAP, SubItValue, SubItKey);
+            //    }
+            //    break;
+            //    default:
+            //        break;
+            //    }
+            //}
+            //else
+            //{
+            //    switch (ItValue->CheckState(SubItKey))
+            //    {
+            //    case eCollisionState::COLLISION_STATE_BLOCK:
+            //    case eCollisionState::COLLISION_STATE_OVERLAP:
+            //    {
+            //        ItValue->Invoke(eCollisionState::COLLISION_STATE_RELEASE, SubItValue, SubItKey);
+            //    }
+            //    break;
+            //    default:
+            //        break;
+            //    }
+            //}
         }
     }
 }

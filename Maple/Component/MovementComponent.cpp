@@ -24,16 +24,36 @@ void MovementComponent::Tick(float DeltaTime)
         return;
     }
 
-    if (_MoveAxis.Length() <= 0)
+    if(!_IsLanding)
     {
-        return;
+        _Velocity._y += _Gravity * DeltaTime;
+    }
+    else if(_Velocity._y < 0.f)
+    {
+        _Velocity._y = 0.f;
     }
 
-    FVector3D CurrentPos = _UpdateComponent->GetWorldPosition();
+    const FVector3D CurrentPosition = _UpdateComponent->GetWorldPosition();
+
+    const FVector3D InputVelocity = _MoveAxis * _Speed;
     
-    _NextPosition = CurrentPos + (_MoveAxis * _Speed * DeltaTime);
-    
+    _NextPosition = CurrentPosition + (InputVelocity + _Velocity) * DeltaTime;
+
     _UpdateComponent->SetWorldPosition(_NextPosition);
+
+    _IsLanding = false;
+
+
+    // if (_MoveAxis.Length() <= 0)
+    // {
+    //     return;
+    // }
+
+    // FVector3D CurrentPos = _UpdateComponent->GetWorldPosition();
+    
+    // _NextPosition = CurrentPos + (_MoveAxis * _Speed * DeltaTime);
+    
+    // _UpdateComponent->SetWorldPosition(_NextPosition);
 }
 
 void MovementComponent::Destroy()
@@ -68,4 +88,51 @@ void MovementComponent::AddMoveAxis(const FVector3D& moveAxis)
 void MovementComponent::Stop()
 {
     _MoveAxis = FVector3D::Zero;
+}
+
+void MovementComponent::SetLanding(bool IsLanding)
+{
+    _IsLanding = IsLanding;
+
+    if(_IsLanding && _Velocity._y < 0.f)
+    {
+        _Velocity._y = 0.f;
+    }
+}
+
+bool MovementComponent::IsLaning() const
+{
+    return _IsLanding;
+}
+
+bool MovementComponent::StartJump(float Force)
+{
+    if (!_IsLanding)
+    {
+        return false;
+    }
+
+    _Velocity._y = Force;
+    
+    _IsLanding = false;
+
+    return true;
+}
+
+void MovementComponent::Blocking(const FVector3D &Correction)
+{
+    if(!_UpdateComponent)
+    {
+        return;
+    }
+
+    _NextPosition = _UpdateComponent->GetWorldPosition() + Correction;
+
+    _UpdateComponent->SetWorldPosition(_NextPosition);
+
+    // 벽 방향으로 진행 중인 수평 이동만 중단한다.
+    if ((Correction._x > 0.f && _MoveAxis._x < 0.f) || (Correction._x < 0.f && _MoveAxis._x > 0.f))
+    {
+        _MoveAxis._x = 0.f;
+    }
 }

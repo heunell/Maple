@@ -90,6 +90,45 @@ bool LucidEntry::Init(int32 Id, const FVector3D& Position, const FVector3D& Scal
         Sprite->AttachToComponent(GetRoot());
     }
 
+    // 지면 충돌 콜리전
+    _Floor = CreateSceneComponent<AABBCollisionComponent>("Floor");
+
+    if (!_Floor)
+    {
+        return false;
+    }
+
+    _Floor->SetBoxSize(770.f, 20.f);
+    _Floor->SetRelativePosition(155.f, -254.f, 0.f);
+    _Floor->AttachToComponent(GetRoot());
+    _Floor->SetCollisionProfile("Environment");
+
+
+    _LeftWall = CreateSceneComponent<AABBCollisionComponent>("LeftWall");
+
+    if (!_LeftWall)
+    {
+        return false;
+    }
+
+    _LeftWall->SetBoxSize(20.f, 768.f);
+    _LeftWall->SetRelativePosition(-240.f, 0.f, 0.f);
+    _LeftWall->AttachToComponent(GetRoot());
+    _LeftWall->SetCollisionProfile("Environment");
+
+
+    _RightWall = CreateSceneComponent<AABBCollisionComponent>("RightWall");
+
+    if (!_RightWall)
+    {
+        return false;
+    }
+
+    _RightWall->SetBoxSize(20.f, 768.f);
+    _RightWall->SetRelativePosition(550.f, 0.f, 0.f);
+    _RightWall->AttachToComponent(GetRoot());
+    _RightWall->SetCollisionProfile("Environment");
+
     return true;
 }
 

@@ -177,6 +177,7 @@
     <ClInclude Include="Component\MeshComponent.h" />
     <ClInclude Include="Component\MovementComponent.h" />
     <ClInclude Include="Component\OBBCollisionComponent.h" />
+    <ClInclude Include="Component\PlayerComponent.h" />
     <ClInclude Include="Component\SceneComponent.h" />
     <ClInclude Include="Component\SkillComponent.h" />
     <ClInclude Include="Component\SphereCollisionComponent.h" />
@@ -204,6 +205,8 @@
     <ClInclude Include="Core\TimeManager.h" />
     <ClInclude Include="Core\Timer.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Game\Character\PlayerBlackBoard.h" />
+    <ClInclude Include="Game\Character\PlayerState.h" />
     <ClInclude Include="Game\Character\PlayerStateMachine.h" />
     <ClInclude Include="Game\Map\Boss\LucidEntry.h" />
     <ClInclude Include="Game\Skills\Skill.h" />
@@ -269,6 +272,7 @@
     <ClCompile Include="Component\MeshComponent.cpp" />
     <ClCompile Include="Component\MovementComponent.cpp" />
     <ClCompile Include="Component\OBBCollisionComponent.cpp" />
+    <ClCompile Include="Component\PlayerComponent.cpp" />
     <ClCompile Include="Component\SceneComponent.cpp" />
     <ClCompile Include="Component\SkillComponent.cpp" />
     <ClCompile Include="Component\SphereCollisionComponent.cpp" />
@@ -294,6 +298,8 @@
     <ClCompile Include="Core\TextureManager.cpp" />
     <ClCompile Include="Core\TimeManager.cpp" />
     <ClCompile Include="Core\Timer.cpp" />
+    <ClCompile Include="Game\Character\PlayerBlackBoard.cpp" />
+    <ClCompile Include="Game\Character\PlayerState.cpp" />
     <ClCompile Include="Game\Character\PlayerStateMachine.cpp" />
     <ClCompile Include="Game\Map\Boss\LucidEntry.cpp" />
     <ClCompile Include="Game\Skills\Skill.cpp" />

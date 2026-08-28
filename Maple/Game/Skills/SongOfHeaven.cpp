@@ -321,7 +321,7 @@ void SongOfHeaven::Fire(float DeltaTime)
 
     SongOfHeavenProjectileCollision->SetRelativePosition(OwnerPlayer->IsRight() ? 173.f : -173.f , 30.f, 0.f);
     
-    SongOfHeavenProjectileCollision->SetCollisionProfile("Player");
+    SongOfHeavenProjectileCollision->SetCollisionProfile("PlayerAttack");
 
     SongOfHeavenProjectileCollision->SetCollisionCallBack(eCollisionState::COLLISION_STATE_OVERLAP, [this, ProjectileRoot](Weak<CollisionComponent> Destination)
         {

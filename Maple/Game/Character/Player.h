@@ -47,4 +47,10 @@ private:
     void Jump     (float DeltaTime);
     
     void Prone    (float DeltaTime);
+
+    void OnGround (Weak<class CollisionComponent> Collision);
+
+    void OnLeftWall (Weak<class CollisionComponent> Collision);
+    
+    void OnRightWall (Weak<class CollisionComponent> Collision);
 };
