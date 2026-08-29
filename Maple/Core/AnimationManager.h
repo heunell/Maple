@@ -5,7 +5,8 @@
 class AnimationManager : public SubManager
 {
 	friend class LucidEntry;
-
+	friend class LucidPhase1;
+	
 public:
 	AnimationManager();
 	virtual ~AnimationManager();

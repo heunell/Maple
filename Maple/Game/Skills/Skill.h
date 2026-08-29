@@ -15,11 +15,11 @@ public:
 
 	virtual void Collision(float DeltaTime) = 0;
 
-	virtual void Start(float DeltaTime) = 0;
+	virtual void Start() = 0;
 
 	virtual void Update(float DeltaTime) = 0;
 
-	virtual void End(float DeltaTime) = 0;
+	virtual void End() = 0;
 
 	virtual void Destroy() override;
 };

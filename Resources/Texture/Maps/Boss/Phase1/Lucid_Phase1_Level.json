@@ -1,0 +1,1959 @@
+{
+  "Animations": {
+    "LUCID_PHASE1_BACK_69_TILE_-05": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.435546875,
+            0.0008609556607834697,
+            0.654296875,
+            0.34438226431338786
+          ],
+          "Size": [
+            448.0,
+            798.0
+          ],
+          "Offset": [
+            -755.0,
+            4.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_69_TILE_-04": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.435546875,
+            0.0008609556607834697,
+            0.654296875,
+            0.34438226431338786
+          ],
+          "Size": [
+            448.0,
+            798.0
+          ],
+          "Offset": [
+            -605.0,
+            4.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_69_TILE_-03": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.435546875,
+            0.0008609556607834697,
+            0.654296875,
+            0.34438226431338786
+          ],
+          "Size": [
+            448.0,
+            798.0
+          ],
+          "Offset": [
+            -455.0,
+            4.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_69_TILE_-02": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.435546875,
+            0.0008609556607834697,
+            0.654296875,
+            0.34438226431338786
+          ],
+          "Size": [
+            448.0,
+            798.0
+          ],
+          "Offset": [
+            -305.0,
+            4.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_69_TILE_-01": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.435546875,
+            0.0008609556607834697,
+            0.654296875,
+            0.34438226431338786
+          ],
+          "Size": [
+            448.0,
+            798.0
+          ],
+          "Offset": [
+            -155.0,
+            4.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_69_TILE_+00": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.435546875,
+            0.0008609556607834697,
+            0.654296875,
+            0.34438226431338786
+          ],
+          "Size": [
+            448.0,
+            798.0
+          ],
+          "Offset": [
+            -5.0,
+            4.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_69_TILE_+01": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.435546875,
+            0.0008609556607834697,
+            0.654296875,
+            0.34438226431338786
+          ],
+          "Size": [
+            448.0,
+            798.0
+          ],
+          "Offset": [
+            145.0,
+            4.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_69_TILE_+02": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.435546875,
+            0.0008609556607834697,
+            0.654296875,
+            0.34438226431338786
+          ],
+          "Size": [
+            448.0,
+            798.0
+          ],
+          "Offset": [
+            295.0,
+            4.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_69_TILE_+03": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.435546875,
+            0.0008609556607834697,
+            0.654296875,
+            0.34438226431338786
+          ],
+          "Size": [
+            448.0,
+            798.0
+          ],
+          "Offset": [
+            445.0,
+            4.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_69_TILE_+04": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.435546875,
+            0.0008609556607834697,
+            0.654296875,
+            0.34438226431338786
+          ],
+          "Size": [
+            448.0,
+            798.0
+          ],
+          "Offset": [
+            595.0,
+            4.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_69_TILE_+05": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.435546875,
+            0.0008609556607834697,
+            0.654296875,
+            0.34438226431338786
+          ],
+          "Size": [
+            448.0,
+            798.0
+          ],
+          "Offset": [
+            745.0,
+            4.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_69_TILE_+06": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.435546875,
+            0.0008609556607834697,
+            0.654296875,
+            0.34438226431338786
+          ],
+          "Size": [
+            448.0,
+            798.0
+          ],
+          "Offset": [
+            895.0,
+            4.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_69_TILE_+07": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.435546875,
+            0.0008609556607834697,
+            0.654296875,
+            0.34438226431338786
+          ],
+          "Size": [
+            448.0,
+            798.0
+          ],
+          "Offset": [
+            1045.0,
+            4.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_69_TILE_+08": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.435546875,
+            0.0008609556607834697,
+            0.654296875,
+            0.34438226431338786
+          ],
+          "Size": [
+            448.0,
+            798.0
+          ],
+          "Offset": [
+            1195.0,
+            4.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_79_TILE_-05": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.6640625,
+            0.36160137752905724,
+            0.943359375,
+            0.6151528196297891
+          ],
+          "Size": [
+            572.0,
+            589.0
+          ],
+          "Offset": [
+            -2828.0,
+            -41.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_79_TILE_-04": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.6640625,
+            0.36160137752905724,
+            0.943359375,
+            0.6151528196297891
+          ],
+          "Size": [
+            572.0,
+            589.0
+          ],
+          "Offset": [
+            -2258.0,
+            -41.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_79_TILE_-03": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.6640625,
+            0.36160137752905724,
+            0.943359375,
+            0.6151528196297891
+          ],
+          "Size": [
+            572.0,
+            589.0
+          ],
+          "Offset": [
+            -1688.0,
+            -41.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_79_TILE_-02": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.6640625,
+            0.36160137752905724,
+            0.943359375,
+            0.6151528196297891
+          ],
+          "Size": [
+            572.0,
+            589.0
+          ],
+          "Offset": [
+            -1118.0,
+            -41.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_79_TILE_-01": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.6640625,
+            0.36160137752905724,
+            0.943359375,
+            0.6151528196297891
+          ],
+          "Size": [
+            572.0,
+            589.0
+          ],
+          "Offset": [
+            -548.0,
+            -41.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_79_TILE_+00": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.6640625,
+            0.36160137752905724,
+            0.943359375,
+            0.6151528196297891
+          ],
+          "Size": [
+            572.0,
+            589.0
+          ],
+          "Offset": [
+            22.0,
+            -41.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_79_TILE_+01": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.6640625,
+            0.36160137752905724,
+            0.943359375,
+            0.6151528196297891
+          ],
+          "Size": [
+            572.0,
+            589.0
+          ],
+          "Offset": [
+            592.0,
+            -41.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_79_TILE_+02": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.6640625,
+            0.36160137752905724,
+            0.943359375,
+            0.6151528196297891
+          ],
+          "Size": [
+            572.0,
+            589.0
+          ],
+          "Offset": [
+            1162.0,
+            -41.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_79_TILE_+03": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.6640625,
+            0.36160137752905724,
+            0.943359375,
+            0.6151528196297891
+          ],
+          "Size": [
+            572.0,
+            589.0
+          ],
+          "Offset": [
+            1732.0,
+            -41.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_79_TILE_+04": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.6640625,
+            0.36160137752905724,
+            0.943359375,
+            0.6151528196297891
+          ],
+          "Size": [
+            572.0,
+            589.0
+          ],
+          "Offset": [
+            2302.0,
+            -41.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_79_TILE_+05": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.6640625,
+            0.36160137752905724,
+            0.943359375,
+            0.6151528196297891
+          ],
+          "Size": [
+            572.0,
+            589.0
+          ],
+          "Offset": [
+            2872.0,
+            -41.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_79_TILE_+06": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.6640625,
+            0.36160137752905724,
+            0.943359375,
+            0.6151528196297891
+          ],
+          "Size": [
+            572.0,
+            589.0
+          ],
+          "Offset": [
+            3442.0,
+            -41.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_79_TILE_+07": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.6640625,
+            0.36160137752905724,
+            0.943359375,
+            0.6151528196297891
+          ],
+          "Size": [
+            572.0,
+            589.0
+          ],
+          "Offset": [
+            4012.0,
+            -41.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_79_TILE_+08": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.6640625,
+            0.36160137752905724,
+            0.943359375,
+            0.6151528196297891
+          ],
+          "Size": [
+            572.0,
+            589.0
+          ],
+          "Offset": [
+            4582.0,
+            -41.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_78_TILE_-05": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.6577701248385708,
+            0.3193359375,
+            0.8893671975893241
+          ],
+          "Size": [
+            652.0,
+            538.0
+          ],
+          "Offset": [
+            -3255.0,
+            -47.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_78_TILE_-04": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.6577701248385708,
+            0.3193359375,
+            0.8893671975893241
+          ],
+          "Size": [
+            652.0,
+            538.0
+          ],
+          "Offset": [
+            -2605.0,
+            -47.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_78_TILE_-03": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.6577701248385708,
+            0.3193359375,
+            0.8893671975893241
+          ],
+          "Size": [
+            652.0,
+            538.0
+          ],
+          "Offset": [
+            -1955.0,
+            -47.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_78_TILE_-02": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.6577701248385708,
+            0.3193359375,
+            0.8893671975893241
+          ],
+          "Size": [
+            652.0,
+            538.0
+          ],
+          "Offset": [
+            -1305.0,
+            -47.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_78_TILE_-01": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.6577701248385708,
+            0.3193359375,
+            0.8893671975893241
+          ],
+          "Size": [
+            652.0,
+            538.0
+          ],
+          "Offset": [
+            -655.0,
+            -47.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_78_TILE_+00": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.6577701248385708,
+            0.3193359375,
+            0.8893671975893241
+          ],
+          "Size": [
+            652.0,
+            538.0
+          ],
+          "Offset": [
+            -5.0,
+            -47.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_78_TILE_+01": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.6577701248385708,
+            0.3193359375,
+            0.8893671975893241
+          ],
+          "Size": [
+            652.0,
+            538.0
+          ],
+          "Offset": [
+            645.0,
+            -47.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_78_TILE_+02": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.6577701248385708,
+            0.3193359375,
+            0.8893671975893241
+          ],
+          "Size": [
+            652.0,
+            538.0
+          ],
+          "Offset": [
+            1295.0,
+            -47.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_78_TILE_+03": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.6577701248385708,
+            0.3193359375,
+            0.8893671975893241
+          ],
+          "Size": [
+            652.0,
+            538.0
+          ],
+          "Offset": [
+            1945.0,
+            -47.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_78_TILE_+04": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.6577701248385708,
+            0.3193359375,
+            0.8893671975893241
+          ],
+          "Size": [
+            652.0,
+            538.0
+          ],
+          "Offset": [
+            2595.0,
+            -47.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_78_TILE_+05": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.6577701248385708,
+            0.3193359375,
+            0.8893671975893241
+          ],
+          "Size": [
+            652.0,
+            538.0
+          ],
+          "Offset": [
+            3245.0,
+            -47.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_78_TILE_+06": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.6577701248385708,
+            0.3193359375,
+            0.8893671975893241
+          ],
+          "Size": [
+            652.0,
+            538.0
+          ],
+          "Offset": [
+            3895.0,
+            -47.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_78_TILE_+07": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.6577701248385708,
+            0.3193359375,
+            0.8893671975893241
+          ],
+          "Size": [
+            652.0,
+            538.0
+          ],
+          "Offset": [
+            4545.0,
+            -47.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_78_TILE_+08": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.6577701248385708,
+            0.3193359375,
+            0.8893671975893241
+          ],
+          "Size": [
+            652.0,
+            538.0
+          ],
+          "Offset": [
+            5195.0,
+            -47.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_77_TILE_-05": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.0008609556607834697,
+            0.4345703125,
+            0.36074042186827376
+          ],
+          "Size": [
+            888.0,
+            836.0
+          ],
+          "Offset": [
+            -4409.0,
+            121.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_77_TILE_-04": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.0008609556607834697,
+            0.4345703125,
+            0.36074042186827376
+          ],
+          "Size": [
+            888.0,
+            836.0
+          ],
+          "Offset": [
+            -3522.0,
+            121.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_77_TILE_-03": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.0008609556607834697,
+            0.4345703125,
+            0.36074042186827376
+          ],
+          "Size": [
+            888.0,
+            836.0
+          ],
+          "Offset": [
+            -2635.0,
+            121.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_77_TILE_-02": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.0008609556607834697,
+            0.4345703125,
+            0.36074042186827376
+          ],
+          "Size": [
+            888.0,
+            836.0
+          ],
+          "Offset": [
+            -1748.0,
+            121.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_77_TILE_-01": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.0008609556607834697,
+            0.4345703125,
+            0.36074042186827376
+          ],
+          "Size": [
+            888.0,
+            836.0
+          ],
+          "Offset": [
+            -861.0,
+            121.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_77_TILE_+00": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.0008609556607834697,
+            0.4345703125,
+            0.36074042186827376
+          ],
+          "Size": [
+            888.0,
+            836.0
+          ],
+          "Offset": [
+            26.0,
+            121.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_77_TILE_+01": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.0008609556607834697,
+            0.4345703125,
+            0.36074042186827376
+          ],
+          "Size": [
+            888.0,
+            836.0
+          ],
+          "Offset": [
+            913.0,
+            121.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_77_TILE_+02": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.0008609556607834697,
+            0.4345703125,
+            0.36074042186827376
+          ],
+          "Size": [
+            888.0,
+            836.0
+          ],
+          "Offset": [
+            1800.0,
+            121.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_77_TILE_+03": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.0008609556607834697,
+            0.4345703125,
+            0.36074042186827376
+          ],
+          "Size": [
+            888.0,
+            836.0
+          ],
+          "Offset": [
+            2687.0,
+            121.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_77_TILE_+04": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.0008609556607834697,
+            0.4345703125,
+            0.36074042186827376
+          ],
+          "Size": [
+            888.0,
+            836.0
+          ],
+          "Offset": [
+            3574.0,
+            121.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_77_TILE_+05": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.0008609556607834697,
+            0.4345703125,
+            0.36074042186827376
+          ],
+          "Size": [
+            888.0,
+            836.0
+          ],
+          "Offset": [
+            4461.0,
+            121.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_77_TILE_+06": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.0008609556607834697,
+            0.4345703125,
+            0.36074042186827376
+          ],
+          "Size": [
+            888.0,
+            836.0
+          ],
+          "Offset": [
+            5348.0,
+            121.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_77_TILE_+07": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.0008609556607834697,
+            0.4345703125,
+            0.36074042186827376
+          ],
+          "Size": [
+            888.0,
+            836.0
+          ],
+          "Offset": [
+            6235.0,
+            121.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_77_TILE_+08": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.0008609556607834697,
+            0.4345703125,
+            0.36074042186827376
+          ],
+          "Size": [
+            888.0,
+            836.0
+          ],
+          "Offset": [
+            7122.0,
+            121.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_73_76_TILE_00_BACK_73": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.44091796875,
+            0.36160137752905724,
+            0.6630859375,
+            0.6564786913473956
+          ],
+          "Size": [
+            455.0,
+            685.0
+          ],
+          "Offset": [
+            -2539.5,
+            98.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_73_76_TILE_01_BACK_74": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.36160137752905724,
+            0.18603515625,
+            0.6569091691777873
+          ],
+          "Size": [
+            379.0,
+            686.0
+          ],
+          "Offset": [
+            -2017.5,
+            99.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_73_76_TILE_02_BACK_75": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.18701171875,
+            0.36160137752905724,
+            0.43994140625,
+            0.6564786913473956
+          ],
+          "Size": [
+            518.0,
+            685.0
+          ],
+          "Offset": [
+            -1494.0,
+            99.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_73_76_TILE_03_BACK_76": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.6552734375,
+            0.0008609556607834697,
+            0.9658203125,
+            0.31338786052518297
+          ],
+          "Size": [
+            636.0,
+            726.0
+          ],
+          "Offset": [
+            -1026.0,
+            79.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_73_76_TILE_04_BACK_73": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.44091796875,
+            0.36160137752905724,
+            0.6630859375,
+            0.6564786913473956
+          ],
+          "Size": [
+            455.0,
+            685.0
+          ],
+          "Offset": [
+            -419.5,
+            98.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_73_76_TILE_05_BACK_74": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.36160137752905724,
+            0.18603515625,
+            0.6569091691777873
+          ],
+          "Size": [
+            379.0,
+            686.0
+          ],
+          "Offset": [
+            102.5,
+            99.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_73_76_TILE_06_BACK_75": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.18701171875,
+            0.36160137752905724,
+            0.43994140625,
+            0.6564786913473956
+          ],
+          "Size": [
+            518.0,
+            685.0
+          ],
+          "Offset": [
+            626.0,
+            99.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_73_76_TILE_07_BACK_76": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.6552734375,
+            0.0008609556607834697,
+            0.9658203125,
+            0.31338786052518297
+          ],
+          "Size": [
+            636.0,
+            726.0
+          ],
+          "Offset": [
+            1094.0,
+            79.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_73_76_TILE_08_BACK_73": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.44091796875,
+            0.36160137752905724,
+            0.6630859375,
+            0.6564786913473956
+          ],
+          "Size": [
+            455.0,
+            685.0
+          ],
+          "Offset": [
+            1700.5,
+            98.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_73_76_TILE_09_BACK_74": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.36160137752905724,
+            0.18603515625,
+            0.6569091691777873
+          ],
+          "Size": [
+            379.0,
+            686.0
+          ],
+          "Offset": [
+            2222.5,
+            99.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_73_76_TILE_10_BACK_75": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.18701171875,
+            0.36160137752905724,
+            0.43994140625,
+            0.6564786913473956
+          ],
+          "Size": [
+            518.0,
+            685.0
+          ],
+          "Offset": [
+            2746.0,
+            99.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_73_76_TILE_11_BACK_76": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.6552734375,
+            0.0008609556607834697,
+            0.9658203125,
+            0.31338786052518297
+          ],
+          "Size": [
+            636.0,
+            726.0
+          ],
+          "Offset": [
+            3214.0,
+            79.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_73_76_TILE_12_BACK_73": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.44091796875,
+            0.36160137752905724,
+            0.6630859375,
+            0.6564786913473956
+          ],
+          "Size": [
+            455.0,
+            685.0
+          ],
+          "Offset": [
+            3820.5,
+            98.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_73_76_TILE_13_BACK_74": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.36160137752905724,
+            0.18603515625,
+            0.6569091691777873
+          ],
+          "Size": [
+            379.0,
+            686.0
+          ],
+          "Offset": [
+            4342.5,
+            99.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_FOOTHOLD_6_TILE_-05": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.3203125,
+            0.6577701248385708,
+            0.53955078125,
+            0.7972449418854929
+          ],
+          "Size": [
+            449.0,
+            324.0
+          ],
+          "Offset": [
+            -2239.5,
+            -359.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_FOOTHOLD_6_TILE_-04": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.3203125,
+            0.6577701248385708,
+            0.53955078125,
+            0.7972449418854929
+          ],
+          "Size": [
+            449.0,
+            324.0
+          ],
+          "Offset": [
+            -1792.5,
+            -359.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_FOOTHOLD_6_TILE_-03": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.3203125,
+            0.6577701248385708,
+            0.53955078125,
+            0.7972449418854929
+          ],
+          "Size": [
+            449.0,
+            324.0
+          ],
+          "Offset": [
+            -1345.5,
+            -359.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_FOOTHOLD_6_TILE_-02": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.3203125,
+            0.6577701248385708,
+            0.53955078125,
+            0.7972449418854929
+          ],
+          "Size": [
+            449.0,
+            324.0
+          ],
+          "Offset": [
+            -898.5,
+            -359.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_FOOTHOLD_6_TILE_-01": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.3203125,
+            0.6577701248385708,
+            0.53955078125,
+            0.7972449418854929
+          ],
+          "Size": [
+            449.0,
+            324.0
+          ],
+          "Offset": [
+            -451.5,
+            -359.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_FOOTHOLD_6_TILE_+00": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.3203125,
+            0.6577701248385708,
+            0.53955078125,
+            0.7972449418854929
+          ],
+          "Size": [
+            449.0,
+            324.0
+          ],
+          "Offset": [
+            -4.5,
+            -359.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_FOOTHOLD_6_TILE_+01": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.3203125,
+            0.6577701248385708,
+            0.53955078125,
+            0.7972449418854929
+          ],
+          "Size": [
+            449.0,
+            324.0
+          ],
+          "Offset": [
+            442.5,
+            -359.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_FOOTHOLD_6_TILE_+02": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.3203125,
+            0.6577701248385708,
+            0.53955078125,
+            0.7972449418854929
+          ],
+          "Size": [
+            449.0,
+            324.0
+          ],
+          "Offset": [
+            889.5,
+            -359.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_FOOTHOLD_6_TILE_+03": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.3203125,
+            0.6577701248385708,
+            0.53955078125,
+            0.7972449418854929
+          ],
+          "Size": [
+            449.0,
+            324.0
+          ],
+          "Offset": [
+            1336.5,
+            -359.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_FOOTHOLD_6_TILE_+04": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.3203125,
+            0.6577701248385708,
+            0.53955078125,
+            0.7972449418854929
+          ],
+          "Size": [
+            449.0,
+            324.0
+          ],
+          "Offset": [
+            1783.5,
+            -359.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_FOOTHOLD_6_TILE_+05": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.3203125,
+            0.6577701248385708,
+            0.53955078125,
+            0.7972449418854929
+          ],
+          "Size": [
+            449.0,
+            324.0
+          ],
+          "Offset": [
+            2230.5,
+            -359.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_FOOTHOLD_6_TILE_+06": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.3203125,
+            0.6577701248385708,
+            0.53955078125,
+            0.7972449418854929
+          ],
+          "Size": [
+            449.0,
+            324.0
+          ],
+          "Offset": [
+            2677.5,
+            -359.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_FOOTHOLD_6_TILE_+07": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.3203125,
+            0.6577701248385708,
+            0.53955078125,
+            0.7972449418854929
+          ],
+          "Size": [
+            449.0,
+            324.0
+          ],
+          "Offset": [
+            3124.5,
+            -359.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_FOOTHOLD_6_TILE_+08": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.3203125,
+            0.6577701248385708,
+            0.53955078125,
+            0.7972449418854929
+          ],
+          "Size": [
+            449.0,
+            324.0
+          ],
+          "Offset": [
+            3571.5,
+            -359.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE1_BACK_81": {
+      "Texture": "Maps/Boss/Phase1/Lucid_Phase1_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0009765625,
+            0.8902281532501076,
+            0.35888671875,
+            0.9991390443392165
+          ],
+          "Size": [
+            733.0,
+            253.0
+          ],
+          "Offset": [
+            14.5,
+            -7.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    }
+  }
+}

@@ -52,11 +52,11 @@ public:
 
 	virtual void Tick(float DeltaTime);
 
-	virtual void Start(float DeltaTime) override;
+	virtual void Start() override;
 
 	virtual void Update(float DeltaTime) override;
 
-	virtual void End(float DeltaTime) override;
+	virtual void End() override;
 
 	virtual void Destroy() override;
 

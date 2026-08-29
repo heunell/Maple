@@ -33,18 +33,18 @@ public:
     
     bool IsRight() const;
 
+    void MoveRight();
+
+    void MoveLeft();
+
+    void MoveStop();
+
+    bool Jump();
+
 private:
-    void MoveRight(float DeltaTime);
-    
-    void MoveLeft (float DeltaTime);
-    
     void MoveUp   (float DeltaTime);
     
     void MoveDown (float DeltaTime);
-    
-    void MoveStop (float DeltaTime);
-    
-    void Jump     (float DeltaTime);
     
     void Prone    (float DeltaTime);
 

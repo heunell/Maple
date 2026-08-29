@@ -31,7 +31,8 @@ void InputComponent::Tick(float DeltaTime)
         {
             if (Mapping->_State[i] && BindIt.second._CallBack[i])
             {
-                BindIt.second._CallBack[i](DeltaTime);
+                //BindIt.second._CallBack[i](DeltaTime);
+                BindIt.second._CallBack[i](Mapping->_Action, static_cast<INPUT_TYPE::eType>(i));
             }
         }
     }
