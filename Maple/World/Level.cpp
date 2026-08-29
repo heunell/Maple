@@ -9,8 +9,6 @@
 #include "Collision/CollisionManager.h"
 #include "Component/CollisionComponent.h"
 
-#include "Object/TestActor.h"
-
 Level::Level()
 {}
 
@@ -61,8 +59,6 @@ bool Level::Init(const std::string& Path)
 
 	Ptr<Player> PlayeActor = SpawnActor<Player>("Player", FVector3D(0.f, 0.f, 1.f), FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
 	
-	Ptr<TestActor> DeadActor = SpawnActor<TestActor>("Dead", FVector3D(250.f, 0.f, 1.f), FVector3D(100.f, 100.f, 1.f), FRotator(0.f, 0.f, 0.f));
-
 	return true;
 }
 
