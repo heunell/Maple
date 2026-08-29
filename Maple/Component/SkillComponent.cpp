@@ -42,11 +42,11 @@ void SkillComponent::Destroy()
     ActorComponent::Destroy();
 }
 
-void SkillComponent::StartSkill(float DeltaTime)
+void SkillComponent::StartSkill()
 {
     if (_SongOfHeaven)
     {
-        _SongOfHeaven->Start(DeltaTime);
+        _SongOfHeaven->Start();
     }
 }
 
@@ -58,10 +58,10 @@ void SkillComponent::UseSkill(float DeltaTime)
     }
 }
 
-void SkillComponent::StopSkill(float DeltaTime)
+void SkillComponent::StopSkill()
 {
     if (_SongOfHeaven)
     {
-        _SongOfHeaven->End(DeltaTime);
+        _SongOfHeaven->End();
     }
 }

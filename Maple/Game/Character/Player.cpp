@@ -1,11 +1,12 @@
 ﻿#include "pch.h"
 #include "Player.h"
-#include "PlayerState.h"
-#include "PlayerStateMachine.h"
+#include "State/PlayerState.h"
+#include "State/PlayerStateMachine.h"
 #include "World/World.h"
 #include "World/Level.h"
 #include "Collision/CollisionProfile.h"
 #include "Controller/PlayerController.h"
+#include "Component/PlayerComponent.h"
 #include "Component/MovementComponent.h"
 #include "Component/CameraComponent.h"
 #include "Component/MeshComponent.h"
@@ -52,6 +53,8 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 
 	CreateActorComponent<SkillComponent>("Skill");
 
+	Ptr<PlayerComponent> PlayerState = CreateActorComponent<PlayerComponent>("PlayerState");
+
 	GetController<PlayerController>()->KeyBind();
 
 	Ptr<InputComponent> InputComponent = GetController<PlayerController>()->GetInputComponent();
@@ -84,27 +87,25 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 
 	InputComponent->AddInputContext("MAPPING_CONTEXT");
 
-	InputComponent->BindAction(MappingContext->GetName(), MoveRight->GetName(), INPUT_TYPE::HOLD, this, &Player::MoveRight);
-	
-	InputComponent->BindAction(MappingContext->GetName(), MoveRight->GetName(), INPUT_TYPE::UP,   this, &Player::MoveStop);
-	
+	InputComponent->BindAction(MappingContext->GetName(), MoveRight->GetName(), INPUT_TYPE::HOLD, PlayerState.get(), &PlayerComponent::HandleInput);
 
-	InputComponent->BindAction(MappingContext->GetName(), MoveLeft->GetName(),  INPUT_TYPE::HOLD, this, &Player::MoveLeft);
-	
-	InputComponent->BindAction(MappingContext->GetName(), MoveLeft->GetName(),  INPUT_TYPE::UP,   this, &Player::MoveStop);
-	
+	InputComponent->BindAction(MappingContext->GetName(), MoveRight->GetName(), INPUT_TYPE::UP,   PlayerState.get(), &PlayerComponent::HandleInput);
 
-	InputComponent->BindAction(MappingContext->GetName(), MoveUp->GetName(),    INPUT_TYPE::HOLD, this, &Player::MoveUp);
-	
-	InputComponent->BindAction(MappingContext->GetName(), MoveUp->GetName(),    INPUT_TYPE::UP,   this, &Player::MoveStop);
-	
+	InputComponent->BindAction(MappingContext->GetName(), MoveLeft->GetName(),  INPUT_TYPE::HOLD, PlayerState.get(), &PlayerComponent::HandleInput);
 
-	InputComponent->BindAction(MappingContext->GetName(), MoveDown->GetName(),  INPUT_TYPE::HOLD, this, &Player::MoveDown);
-	
-	InputComponent->BindAction(MappingContext->GetName(), MoveDown->GetName(),  INPUT_TYPE::UP,   this, &Player::MoveStop);
-	
+	InputComponent->BindAction(MappingContext->GetName(), MoveLeft->GetName(),  INPUT_TYPE::UP,   PlayerState.get(), &PlayerComponent::HandleInput);
 
-	InputComponent->BindAction(MappingContext->GetName(), MoveJump->GetName(),  INPUT_TYPE::DOWN, this, &Player::Jump);
+	InputComponent->BindAction(MappingContext->GetName(), MoveUp->GetName(),    INPUT_TYPE::HOLD, PlayerState.get(), &PlayerComponent::HandleInput);
+
+	InputComponent->BindAction(MappingContext->GetName(), MoveUp->GetName(),    INPUT_TYPE::UP,   PlayerState.get(), &PlayerComponent::HandleInput);
+
+	InputComponent->BindAction(MappingContext->GetName(), MoveDown->GetName(),  INPUT_TYPE::HOLD, PlayerState.get(), &PlayerComponent::HandleInput);
+
+	InputComponent->BindAction(MappingContext->GetName(), MoveDown->GetName(),  INPUT_TYPE::UP,   PlayerState.get(), &PlayerComponent::HandleInput);
+
+	InputComponent->BindAction(MappingContext->GetName(), MoveJump->GetName(),  INPUT_TYPE::HOLD, PlayerState.get(), &PlayerComponent::HandleInput);
+
+	InputComponent->BindAction(MappingContext->GetName(), MoveJump->GetName(),  INPUT_TYPE::UP,   PlayerState.get(), &PlayerComponent::HandleInput);
 	
 
 
@@ -112,10 +113,9 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 
 	_Movement->SetUpdateComponent(_Root);
 
-	_Movement->SetSpeed(100.f);
+	_Movement->SetSpeed(130.f);
 
-	_Movement->SetGravity(-90.f);
-
+	_Movement->SetGravity(-130.f);
 
 	_Camera = CreateSceneComponent<CameraComponent>("Camera");
 
@@ -211,7 +211,7 @@ bool Player::IsRight() const
 	return _bReverse;
 }
 
-void Player::MoveRight(float DeltaTime)
+void Player::MoveRight()
 {
 	_bReverse = true;
 
@@ -219,28 +219,34 @@ void Player::MoveRight(float DeltaTime)
 
 	Ptr<SpriteComponent> Sprite = FindSceneComponent<SpriteComponent>("PlayerSprite");
 
-	if (Sprite)
+	if(Sprite)
 	{
 		Sprite->SetAnimationFlip(true);
-
-		Sprite->ChangeAnimation("ARMED_WALK");
 	}
 }
 
-void Player::MoveLeft(float DeltaTime)
+void Player::MoveLeft()
 {
-	_bReverse = false;
+    _bReverse = false;
 
-	_Movement->SetMoveAxis(-FVector3D::Axis_X);
+    _Movement->SetMoveAxis(-FVector3D::Axis_X);
 
-	Ptr<SpriteComponent> Sprite = FindSceneComponent<SpriteComponent>("PlayerSprite");
+    Ptr<SpriteComponent> Sprite = FindSceneComponent<SpriteComponent>("PlayerSprite");
 
-	if (Sprite)
-	{
-		Sprite->SetAnimationFlip(false);
+    if (Sprite)
+    {
+        Sprite->SetAnimationFlip(false);
+    }
+}
 
-		Sprite->ChangeAnimation("ARMED_WALK");
-	}
+void Player::MoveStop()
+{
+    _Movement->Stop();
+}
+
+bool Player::Jump()
+{
+    return _Movement->StartJump(280.f);
 }
 
 void Player::MoveUp(float DeltaTime)
@@ -373,33 +379,6 @@ void Player::OnRightWall(Weak<class CollisionComponent> Collision)
 	{
 		_Movement->Blocking(FVector3D(CorrectionX, 0.f, 0.f));
 	}	
-}
-
-void Player::MoveStop(float DeltaTime)
-{
-	_Movement->Stop();
-
-	Ptr<SpriteComponent> Sprite = FindSceneComponent<SpriteComponent>("PlayerSprite");
-
-	if (Sprite)
-	{
-		Sprite->ChangeAnimation("ARMED_STAND");
-	}
-}
-
-void Player::Jump(float DeltaTime)
-{
-	if(!_Movement->StartJump(95.f))
-	{
-		return;
-	}
-
-	Ptr<SpriteComponent> Sprite = FindSceneComponent<SpriteComponent>("PlayerSprite");
-
-	if(Sprite)
-	{
-		Sprite->ChangeAnimation("ARMED_JUMP");
-	}
 }
 
 void Player::Prone(float DeltaTime)

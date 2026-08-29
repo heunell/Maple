@@ -17,10 +17,10 @@ public:
 
 	virtual void Destroy() override;
 
-	void StartSkill(float DeltaTime);
+	void StartSkill();
 
 	void UseSkill(float DeltaTime);
 
-	void StopSkill(float DeltaTime);
+	void StopSkill();
 };
 

@@ -13,6 +13,11 @@ bool CameraZone::Init(int32 Id, const FVector3D& Position, const FVector3D& Scal
 
     _LockTrigger = CreateSceneComponent<AABBCollisionComponent>("CameraZoneTrigger");
 
+    if(!_LockTrigger)
+    {
+        return false;
+    }
+
     _LockTrigger->SetCollisionProfile("CameraZone");
 
     _LockTrigger->SetCollisionCallBack(eCollisionState::COLLISION_STATE_OVERLAP, this, &CameraZone::OnTriggerZone);
@@ -22,9 +27,20 @@ bool CameraZone::Init(int32 Id, const FVector3D& Position, const FVector3D& Scal
     return true;
 }
 
-void CameraZone::SetTriggerSize(float X, float Y)
+void CameraZone::SetArea(float X, float Y)
 {
+    _LockType = eCameraZoneType::Area;
+
     _LockTrigger->SetBoxSize(X, Y);
+}
+
+void CameraZone::SetWall(float X, float Y, const FAABB2D &LockBound)
+{
+    _LockType = eCameraZoneType::Wall;
+
+    _LockTrigger->SetBoxSize(X, Y);
+
+    _WallLockBound = LockBound;
 }
 
 void CameraZone::OnTriggerZone(Weak<class CollisionComponent> Component)
@@ -43,7 +59,15 @@ void CameraZone::OnTriggerZone(Weak<class CollisionComponent> Component)
         return;
     }
 
-    const FAABB2D& LockBound = _LockTrigger->GetBox();
+    if (_LockType == eCameraZoneType::Area)
+    {
+        Camera->SetCameraLock(_LockTrigger->GetBox());
 
-    Camera->SetCameraLock(LockBound);
+        return;
+    }
+
+    if (_LockType == eCameraZoneType::Wall)
+    {
+        Camera->SetCameraLock(_WallLockBound);
+    }
 }

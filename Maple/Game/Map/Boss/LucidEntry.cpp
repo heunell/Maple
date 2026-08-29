@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "LucidEntry.h"
 #include "World/World.h"
+#include "World/Level.h"
+#include "World/CameraZone.h"
 #include "Core/AnimationManager.h"
 #include "Core/AssetManager.h"
 #include "Core/Animation2DData.h"
@@ -129,6 +131,27 @@ bool LucidEntry::Init(int32 Id, const FVector3D& Position, const FVector3D& Scal
     _RightWall->AttachToComponent(GetRoot());
     _RightWall->SetCollisionProfile("Environment");
 
+    const float LeftBound  = _LeftWall->GetWorldPosition()._x + _LeftWall->GetBoxSize()._x * 0.5f;
+
+    const float RightBound = _RightWall->GetWorldPosition()._x - _RightWall->GetBoxSize()._x * 0.5f;
+
+    const float CameraZoneWidth   = RightBound - LeftBound;
+
+    const float CameraZoneCenterX = (LeftBound + RightBound) * 0.5f;
+
+    const float CameraZoneCenterY = _LeftWall->GetWorldPosition()._y;
+
+    const float CameraZoneHeight   = _LeftWall->GetBoxSize()._y;
+
+    Ptr<CameraZone> AreaCameraZone = GetLevel()->SpawnActor<CameraZone>("LucidEntryCameraZone", FVector3D(CameraZoneCenterX, CameraZoneCenterY, 0.f), FVector3D(1.f,1.f,1.f), FRotator(0.f,0.f,0.f));
+
+    if(!AreaCameraZone)
+    {
+        return false;
+    }
+
+    AreaCameraZone->SetArea(CameraZoneWidth, CameraZoneHeight);
+    
     return true;
 }
 

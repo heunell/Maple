@@ -28,7 +28,7 @@ void MovementComponent::Tick(float DeltaTime)
 
     if(!_IsLanding)
     {
-        _Velocity._y += _Gravity * DeltaTime * 3.0f;
+        _Velocity._y += _Gravity * DeltaTime * 8.0f;
 
         if (_Velocity._y <= _MaxFallSpeed)
         {

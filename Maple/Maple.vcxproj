@@ -206,9 +206,15 @@
     <ClInclude Include="Core\Timer.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game\Character\PlayerBlackBoard.h" />
-    <ClInclude Include="Game\Character\PlayerState.h" />
-    <ClInclude Include="Game\Character\PlayerStateMachine.h" />
+    <ClInclude Include="Game\Character\State\PlayerIdleState.h" />
+    <ClInclude Include="Game\Character\State\PlayerJumpState.h" />
+    <ClInclude Include="Game\Character\State\PlayerNoneActionState.h" />
+    <ClInclude Include="Game\Character\State\PlayerShootState.h" />
+    <ClInclude Include="Game\Character\State\PlayerState.h" />
+    <ClInclude Include="Game\Character\State\PlayerStateMachine.h" />
+    <ClInclude Include="Game\Character\State\PlayerWalkState.h" />
     <ClInclude Include="Game\Map\Boss\LucidEntry.h" />
+    <ClInclude Include="Game\Map\Boss\LucidPhase1.h" />
     <ClInclude Include="Game\Skills\Skill.h" />
     <ClInclude Include="Game\Skills\SongOfHeaven.h" />
     <ClInclude Include="Input\Input.h" />
@@ -246,6 +252,7 @@
     <ClInclude Include="Shader\TransformCBuffer.h" />
     <ClInclude Include="Shader\StaticMeshShader.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="UI\MiniMap.h" />
     <ClInclude Include="World\CameraManager.h" />
     <ClInclude Include="World\CameraZone.h" />
     <ClInclude Include="World\GameLevel.h" />
@@ -300,9 +307,15 @@
     <ClCompile Include="Core\TimeManager.cpp" />
     <ClCompile Include="Core\Timer.cpp" />
     <ClCompile Include="Game\Character\PlayerBlackBoard.cpp" />
-    <ClCompile Include="Game\Character\PlayerState.cpp" />
-    <ClCompile Include="Game\Character\PlayerStateMachine.cpp" />
+    <ClCompile Include="Game\Character\State\PlayerIdleState.cpp" />
+    <ClCompile Include="Game\Character\State\PlayerJumpState.cpp" />
+    <ClCompile Include="Game\Character\State\PlayerNoneActionState.cpp" />
+    <ClCompile Include="Game\Character\State\PlayerShootState.cpp" />
+    <ClCompile Include="Game\Character\State\PlayerState.cpp" />
+    <ClCompile Include="Game\Character\State\PlayerStateMachine.cpp" />
+    <ClCompile Include="Game\Character\State\PlayerWalkState.cpp" />
     <ClCompile Include="Game\Map\Boss\LucidEntry.cpp" />
+    <ClCompile Include="Game\Map\Boss\LucidPhase1.cpp" />
     <ClCompile Include="Game\Skills\Skill.cpp" />
     <ClCompile Include="Game\Skills\SongOfHeaven.cpp" />
     <ClCompile Include="Input\Input.cpp" />
@@ -417,6 +430,7 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Shader\StaticMeshShader.cpp" />
+    <ClCompile Include="UI\MiniMap.cpp" />
     <ClCompile Include="World\CameraManager.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>

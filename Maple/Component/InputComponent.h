@@ -9,8 +9,8 @@ struct FBindAction
     std::string _Name;
 
     FInputMapping* _Mapping = nullptr;
-
-    std::function<void(float)> _CallBack[INPUT_TYPE::END];
+    // std::function<void(float)> _CallBack[INPUT_TYPE::END];
+    std::function<void(Ptr<class InputAction>, INPUT_TYPE::eType)> _CallBack[INPUT_TYPE::END];
 };
 
 
@@ -48,7 +48,7 @@ public:
     void BindAction(const std::string& ContextName, const std::string& ActionName, INPUT_TYPE::eType Type, T&& Function)
     {
         auto It = _Binds.find(ContextName);
-        if (_Binds.end() == It)
+        if (It == _Binds.end())
         {
             return;
         }
@@ -59,15 +59,15 @@ public:
 
     // 멤버함수 포인터 바인딩
     template<typename T>
-    void BindAction(const std::string& ContextName, const std::string& ActionName, INPUT_TYPE::eType Type, T* Object, void(T::* MemberFunction)(float))
+    void BindAction(const std::string& ContextName, const std::string& ActionName, INPUT_TYPE::eType Type, T* Object, void(T::* MemberFunction)(Ptr<class InputAction>, INPUT_TYPE::eType))
     {
         auto It = _Binds.find(ContextName);
-        if (_Binds.end() == It)
+        if (It == _Binds.end())
         {
             return;
         }
 
-        _Binds[ContextName][ActionName]._CallBack[Type] = std::bind(MemberFunction, Object, std::placeholders::_1);
+        _Binds[ContextName][ActionName]._CallBack[Type] = std::bind(MemberFunction, Object, std::placeholders::_1, std::placeholders::_2);
     }
 
 };

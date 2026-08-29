@@ -151,18 +151,11 @@ void SongOfHeaven::Tick(float DeltaTime)
     }
 }
 
-void SongOfHeaven::Start(float DeltaTime)
+void SongOfHeaven::Start()
 {
     Ptr<Actor> Owner = Lock<Actor>(_Owner);
 
     if (!Owner)
-    {
-        return;
-    }
-
-    Ptr<SpriteComponent> PlayerSprite = Owner->FindSceneComponent<SpriteComponent>("PlayerSprite");
-
-    if (!PlayerSprite)
     {
         return;
     }
@@ -189,8 +182,6 @@ void SongOfHeaven::Start(float DeltaTime)
     _State = eSongOfHeavenState::Ready;
 
     SkillSprite->SetAnimationFlip(OwnerPlayer->IsRight());
-
-    PlayerSprite->ChangeAnimation("ARMED_SHOOT");
 
     SkillSprite->SetEnable(true);
 
@@ -219,12 +210,6 @@ void SongOfHeaven::Update(float DeltaTime)
         return;
     }
 
-    Ptr<SpriteComponent> PlayerSprite = Owner->FindSceneComponent<SpriteComponent>("PlayerSprite");
-    if (PlayerSprite)
-    {
-        PlayerSprite->ChangeAnimation("ARMED_SHOOT");
-    }
-
     Ptr<SpriteComponent> SkillSprite = Owner->FindSceneComponent<SpriteComponent>("SkillSprite");
 
     if (SkillSprite)
@@ -243,7 +228,7 @@ void SongOfHeaven::Update(float DeltaTime)
     }
 }
 
-void SongOfHeaven::End(float DeltaTime)
+void SongOfHeaven::End()
 {
     if (_State == eSongOfHeavenState::Idle || _State == eSongOfHeavenState::End)
     {
@@ -255,13 +240,6 @@ void SongOfHeaven::End(float DeltaTime)
     if (!Owner)
     {
         return;
-    }
-
-    Ptr<SpriteComponent> PlayerSprite = Owner->FindSceneComponent<SpriteComponent>("PlayerSprite");
-
-    if (PlayerSprite)
-    {
-        PlayerSprite->ChangeAnimation("ARMED_STAND");
     }
     
     Ptr<SpriteComponent> SkillSprite = Owner->FindSceneComponent<SpriteComponent>("SkillSprite");

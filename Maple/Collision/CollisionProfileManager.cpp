@@ -34,7 +34,8 @@ bool CollisionProfileManager::Init()
                                        std::make_pair(COLLISION_CHANNEL_BOSS         ,  COLLISION_RESPONSE_OVERLAP));
                                                                                      
     SetProfileResponse("Monster"     , std::make_pair(COLLISION_CHANNEL_PLAYER       ,  COLLISION_RESPONSE_OVERLAP),
-                                       std::make_pair(COLLISION_CHANNEL_PLAYERATTACK ,  COLLISION_RESPONSE_OVERLAP));
+                                       std::make_pair(COLLISION_CHANNEL_PLAYERATTACK ,  COLLISION_RESPONSE_OVERLAP),
+                                       std::make_pair(COLLISION_CHANNEL_ENVIRONMENT  ,  COLLISION_RESPONSE_BLOCK  ));
                                                                                      
     SetProfileResponse("Environment" , std::make_pair(COLLISION_CHANNEL_PLAYER       ,  COLLISION_RESPONSE_BLOCK  ),
                                        std::make_pair(COLLISION_CHANNEL_MONSTER      ,  COLLISION_RESPONSE_BLOCK  ));

@@ -2,7 +2,7 @@
 #include "PlayerController.h"
 #include "Object/Pawn.h"
 #include "Component/InputComponent.h"
-#include "Component/SkillComponent.h"
+#include "Component/PlayerComponent.h"
 
 bool PlayerController::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotation, const std::string& Name)
 {
@@ -49,9 +49,9 @@ void PlayerController::KeyBind()
 		return;
 	}
 
-	Ptr<SkillComponent> Skill = ControllPawn->FindActorComponent<SkillComponent>("Skill");
+	Ptr<PlayerComponent> PlayerState = ControllPawn->FindActorComponent<PlayerComponent>("PlayerState");
 
-	if (!Skill)
+	if (!PlayerState)
 	{
 		return;
 	}
@@ -69,9 +69,9 @@ void PlayerController::KeyBind()
 
 	_Input->AddInputContext(MappingContext->GetName());
 
-	_Input->BindAction(MappingContext->GetName(), SkillAction->GetName(), INPUT_TYPE::DOWN, Skill.get(), &SkillComponent::StartSkill);
+	_Input->BindAction(MappingContext->GetName(), SkillAction->GetName(), INPUT_TYPE::DOWN, PlayerState.get(), &PlayerComponent::HandleInput);
 
-	_Input->BindAction(MappingContext->GetName(), SkillAction->GetName(), INPUT_TYPE::HOLD, Skill.get(), &SkillComponent::UseSkill);
+	_Input->BindAction(MappingContext->GetName(), SkillAction->GetName(), INPUT_TYPE::HOLD, PlayerState.get(), &PlayerComponent::HandleInput);
 
-	_Input->BindAction(MappingContext->GetName(), SkillAction->GetName(), INPUT_TYPE::UP, Skill.get(), &SkillComponent::StopSkill);
+	_Input->BindAction(MappingContext->GetName(), SkillAction->GetName(), INPUT_TYPE::UP,   PlayerState.get(), &PlayerComponent::HandleInput);
 }
