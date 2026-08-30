@@ -356,7 +356,7 @@
     <ClInclude Include="UI\CursorUI.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="UI\LucidEntryNPC.h">
+    <ClInclude Include="Game\Character\LucidEntryNPC.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -664,7 +664,7 @@
     <ClCompile Include="UI\CursorUI.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="UI\LucidEntryNPC.cpp">
+    <ClCompile Include="Game\Character\LucidEntryNPC.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

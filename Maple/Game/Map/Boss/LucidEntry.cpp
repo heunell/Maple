@@ -11,6 +11,7 @@
 #include "Component/SpriteComponent.h"
 #include "Render/RenderManager.h"
 #include "Object/Actor.h"
+#include "Game/Character/LucidEntryNPC.h"
 
 LucidEntry::LucidEntry()
 {
@@ -28,6 +29,11 @@ bool LucidEntry::Init(int32 Id, const FVector3D& Position, const FVector3D& Scal
     }
 
     if (!ANIMATION_MANAGER->LoadAnimationFile(TEXT("Maps\\Boss\\Entry\\LucidEntry.json"), "Animations"))
+    {
+        return false;
+    }
+
+    if (!ANIMATION_MANAGER->LoadAnimationFile(TEXT("Maps\\Boss\\Entry\\LucidEntryNpc.json"), "Animations"))
     {
         return false;
     }
@@ -90,6 +96,13 @@ bool LucidEntry::Init(int32 Id, const FVector3D& Position, const FVector3D& Scal
         Sprite->AddAnimationSequence(Data);
         
         Sprite->AttachToComponent(GetRoot());
+    }
+
+    Ptr<LucidEntryNPC> NPC = GetLevel()->SpawnActor<LucidEntryNPC>("LucidEntryNPC", FVector3D(191.f, -158.f, 0.f), FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
+
+    if (!NPC)
+    {
+        return false;
     }
 
     // 지면 충돌 콜리전

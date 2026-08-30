@@ -34,8 +34,9 @@ void ShaderManager::CreateSampler()
     
     Device::Instance().GetDevice()->CreateSamplerState(&Desc, _Samplers[TEXTURE_SAMPLE_POINT].GetAddressOf());
 
-    Desc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
-    
+    //Desc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
+    Desc.Filter = D3D11_FILTER_MIN_MAG_MIP_POINT;
+
     Device::Instance().GetDevice()->CreateSamplerState(&Desc, _Samplers[TEXTURE_SAMPLE_LINEAR].GetAddressOf());
 
     Desc.Filter = D3D11_FILTER_ANISOTROPIC;
