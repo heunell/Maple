@@ -123,7 +123,12 @@ bool AnimationManager::Init()
         return false;
     }
 
-    return LoadAnimationFile(TEXT("Skill\\Skill.json"), "Skills");
+    if (!LoadAnimationFile(TEXT("Skill\\Skill.json"), "Skills"))
+    {
+        return false;
+    }
+
+    return LoadAnimationFile(TEXT("UI\\UI.json"), "Animations");
 }
 
 Ptr<class Animation2DData> AnimationManager::FindAnimation(const std::string& Name)

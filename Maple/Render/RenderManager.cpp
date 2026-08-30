@@ -17,6 +17,8 @@ bool RenderManager::Init()
 
     //CreateRenderLayer("Monster", 500);
 
+    CreateRenderLayer("UI", 1000);
+
     CreateRenderLayer("Collider", INT_MAX);
 
     _RenderStateManager = New<RenderStateManager>();

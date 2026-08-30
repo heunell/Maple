@@ -4,6 +4,7 @@
 #include "Object/Actor.h"
 #include "Game/Map/Boss/LucidEntry.h"
 #include "Game/Map/Boss/LucidPhase1.h"
+#include "Game/Map/Boss/LucidPhase2.h"
 
 MapManager::MapManager()
 {}
@@ -48,9 +49,13 @@ bool MapManager::ChangeMap(const std::string& MapName)
 		{
 			TargetMap = OwnerLevel->SpawnActor<LucidEntry>("LucidEntry", FVector3D(0.f, 0.f, 0.f), FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
 		}
-		else if(MapName == "LucidPhase1")
+		else if (MapName == "LucidPhase1")
 		{
 			TargetMap = OwnerLevel->SpawnActor<LucidPhase1>("LucidPhase1", FVector3D(0.f, 0.f, 0.f), FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
+		}
+		else if (MapName == "LucidPhase2")
+		{
+			TargetMap = OwnerLevel->SpawnActor<LucidPhase2>("LucidPhase2", FVector3D(0.f, 0.f, 0.f), FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
 		}
 		else
 		{

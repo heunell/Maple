@@ -71,9 +71,24 @@ void SpriteComponent::Render(float DeltaTime)
         return;
     }
 
-    FMatrix View = CurrentLevel->GetViewMatrix();
+    //FMatrix View = CurrentLevel->GetViewMatrix();
 
-    FMatrix Projection = CurrentLevel->GetProjectionMatrix();
+    //FMatrix Projection = CurrentLevel->GetProjectionMatrix();
+
+    FMatrix View;
+
+    FMatrix Projection;
+
+    if (GetRenderLayerName() == "UI")
+    {
+        Projection = CurrentLevel->GetUIProjMatrix();
+    }
+    else
+    {
+        View = CurrentLevel->GetViewMatrix();
+
+        Projection = CurrentLevel->GetProjectionMatrix();
+    }
 
     _TransformCBuffer->SetViewMatrix(View);
 

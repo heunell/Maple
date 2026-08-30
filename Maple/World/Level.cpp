@@ -8,6 +8,7 @@
 #include "Component/CameraComponent.h"
 #include "Collision/CollisionManager.h"
 #include "Component/CollisionComponent.h"
+#include "UI/PlayerUI.h"
 
 Level::Level()
 {}
@@ -57,8 +58,20 @@ bool Level::Init(const std::string& Path)
 		return true;
 	}
 
-	Ptr<Player> PlayeActor = SpawnActor<Player>("Player", FVector3D(0.f, 0.f, 1.f), FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
+	Ptr<Player> PlayerActor = SpawnActor<Player>("Player", FVector3D(0.f, 0.f, 1.f), FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
 	
+	if (!PlayerActor)
+	{
+		return false;
+	}
+
+	Ptr<PlayerUI> PlayerStatusUI = SpawnActor<PlayerUI>("PlayerUI", FVector3D::Zero, FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
+
+	if (!PlayerStatusUI)
+	{
+		return false;
+	}
+
 	return true;
 }
 

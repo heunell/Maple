@@ -1,5 +1,10 @@
 #pragma once
-class MiniMap
+
+#include "Object/Actor.h"
+
+class MiniMap : public Actor
 {
+public:
+	
 };
 
