@@ -1,0 +1,27 @@
+{
+  "Animations": {
+    "LUCID_ENTRY_NPC": {
+      "Texture": "Maps/Boss/Entry/lucid_entry_npc.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00390625,
+            0.022222222222222223,
+            0.15625,
+            0.9777777777777777
+          ],
+          "Size": [
+            78.0,
+            86.0
+          ],
+          "Offset": [
+            -4.0,
+            -43.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    }
+  }
+}

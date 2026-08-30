@@ -1,0 +1,7442 @@
+{
+  "Animations": {
+    "LUCID_PHASE2_BACK_9_TILE_X-04_Y-01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -1451.0,
+            821.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X-03_Y-01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -1259.0,
+            821.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X-02_Y-01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -1067.0,
+            821.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X-01_Y-01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -875.0,
+            821.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+00_Y-01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -683.0,
+            821.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+01_Y-01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -491.0,
+            821.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+02_Y-01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -299.0,
+            821.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+03_Y-01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -107.0,
+            821.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+04_Y-01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            85.0,
+            821.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+05_Y-01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            277.0,
+            821.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+06_Y-01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            469.0,
+            821.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+07_Y-01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            661.0,
+            821.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+08_Y-01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            853.0,
+            821.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+09_Y-01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1045.0,
+            821.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+10_Y-01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1237.0,
+            821.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+11_Y-01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1429.0,
+            821.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+12_Y-01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1621.0,
+            821.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+13_Y-01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1813.0,
+            821.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+14_Y-01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            2005.0,
+            821.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X-04_Y+00": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -1451.0,
+            25.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X-03_Y+00": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -1259.0,
+            25.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X-02_Y+00": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -1067.0,
+            25.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X-01_Y+00": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -875.0,
+            25.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+00_Y+00": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -683.0,
+            25.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+01_Y+00": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -491.0,
+            25.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+02_Y+00": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -299.0,
+            25.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+03_Y+00": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -107.0,
+            25.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+04_Y+00": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            85.0,
+            25.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+05_Y+00": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            277.0,
+            25.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+06_Y+00": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            469.0,
+            25.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+07_Y+00": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            661.0,
+            25.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+08_Y+00": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            853.0,
+            25.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+09_Y+00": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1045.0,
+            25.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+10_Y+00": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1237.0,
+            25.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+11_Y+00": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1429.0,
+            25.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+12_Y+00": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1621.0,
+            25.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+13_Y+00": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1813.0,
+            25.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+14_Y+00": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            2005.0,
+            25.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X-04_Y+01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -1451.0,
+            -771.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X-03_Y+01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -1259.0,
+            -771.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X-02_Y+01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -1067.0,
+            -771.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X-01_Y+01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -875.0,
+            -771.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+00_Y+01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -683.0,
+            -771.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+01_Y+01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -491.0,
+            -771.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+02_Y+01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -299.0,
+            -771.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+03_Y+01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -107.0,
+            -771.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+04_Y+01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            85.0,
+            -771.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+05_Y+01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            277.0,
+            -771.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+06_Y+01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            469.0,
+            -771.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+07_Y+01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            661.0,
+            -771.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+08_Y+01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            853.0,
+            -771.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+09_Y+01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1045.0,
+            -771.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+10_Y+01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1237.0,
+            -771.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+11_Y+01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1429.0,
+            -771.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+12_Y+01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1621.0,
+            -771.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+13_Y+01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1813.0,
+            -771.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+14_Y+01": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            2005.0,
+            -771.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X-04_Y+02": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -1451.0,
+            -1567.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X-03_Y+02": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -1259.0,
+            -1567.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X-02_Y+02": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -1067.0,
+            -1567.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X-01_Y+02": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -875.0,
+            -1567.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+00_Y+02": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -683.0,
+            -1567.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+01_Y+02": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -491.0,
+            -1567.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+02_Y+02": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -299.0,
+            -1567.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+03_Y+02": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -107.0,
+            -1567.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+04_Y+02": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            85.0,
+            -1567.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+05_Y+02": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            277.0,
+            -1567.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+06_Y+02": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            469.0,
+            -1567.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+07_Y+02": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            661.0,
+            -1567.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+08_Y+02": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            853.0,
+            -1567.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+09_Y+02": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1045.0,
+            -1567.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+10_Y+02": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1237.0,
+            -1567.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+11_Y+02": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1429.0,
+            -1567.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+12_Y+02": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1621.0,
+            -1567.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+13_Y+02": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1813.0,
+            -1567.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+14_Y+02": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            2005.0,
+            -1567.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X-04_Y+03": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -1451.0,
+            -2363.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X-03_Y+03": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -1259.0,
+            -2363.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X-02_Y+03": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -1067.0,
+            -2363.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X-01_Y+03": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -875.0,
+            -2363.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+00_Y+03": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -683.0,
+            -2363.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+01_Y+03": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -491.0,
+            -2363.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+02_Y+03": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -299.0,
+            -2363.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+03_Y+03": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            -107.0,
+            -2363.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+04_Y+03": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            85.0,
+            -2363.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+05_Y+03": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            277.0,
+            -2363.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+06_Y+03": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            469.0,
+            -2363.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+07_Y+03": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            661.0,
+            -2363.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+08_Y+03": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            853.0,
+            -2363.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+09_Y+03": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1045.0,
+            -2363.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+10_Y+03": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1237.0,
+            -2363.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+11_Y+03": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1429.0,
+            -2363.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+12_Y+03": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1621.0,
+            -2363.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+13_Y+03": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            1813.0,
+            -2363.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_9_TILE_X+14_Y+03": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0006777363605557439,
+            0.1083984375,
+            0.2710945442222975
+          ],
+          "Size": [
+            442.0,
+            798.0
+          ],
+          "Offset": [
+            2005.0,
+            -2363.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_3": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.66455078125,
+            0.0006777363605557439,
+            0.995849609375,
+            0.2558454761097933
+          ],
+          "Size": [
+            1357.0,
+            753.0
+          ],
+          "Offset": [
+            -95.5,
+            -724.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_4": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.332763671875,
+            0.0006777363605557439,
+            0.6640625,
+            0.2578786851914605
+          ],
+          "Size": [
+            1357.0,
+            759.0
+          ],
+          "Offset": [
+            1171.5,
+            -705.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_5": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.10888671875,
+            0.0006777363605557439,
+            0.332275390625,
+            0.25889528973229414
+          ],
+          "Size": [
+            915.0,
+            762.0
+          ],
+          "Offset": [
+            658.5,
+            -1441.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_68": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.9072265625,
+            0.9593358183666554,
+            0.924072265625,
+            0.9756014910199933
+          ],
+          "Size": [
+            69.0,
+            48.0
+          ],
+          "Offset": [
+            69.5,
+            -1564.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_67": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.894775390625,
+            0.9593358183666554,
+            0.90673828125,
+            0.9759403592002711
+          ],
+          "Size": [
+            49.0,
+            49.0
+          ],
+          "Offset": [
+            293.5,
+            -1643.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_66": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.14794921875,
+            0.9593358183666554,
+            0.177734375,
+            0.9955947136563876
+          ],
+          "Size": [
+            122.0,
+            107.0
+          ],
+          "Offset": [
+            465.0,
+            -1758.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_65": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.810302734375,
+            0.9593358183666554,
+            0.826904296875,
+            0.9847509318874957
+          ],
+          "Size": [
+            68.0,
+            75.0
+          ],
+          "Offset": [
+            651.0,
+            -1336.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_64": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.827392578125,
+            0.9593358183666554,
+            0.856201171875,
+            0.9830565909861064
+          ],
+          "Size": [
+            118.0,
+            70.0
+          ],
+          "Offset": [
+            894.0,
+            -1118.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_63": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.77978515625,
+            0.9593358183666554,
+            0.809814453125,
+            0.9864452727888852
+          ],
+          "Size": [
+            123.0,
+            80.0
+          ],
+          "Offset": [
+            1078.5,
+            -1951.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_17": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.6574042697390715,
+            0.1865234375,
+            0.7712639783124364
+          ],
+          "Size": [
+            762.0,
+            336.0
+          ],
+          "Offset": [
+            37.0,
+            2875.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_16": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.35546875,
+            0.27177228058285324,
+            0.515380859375,
+            0.4798373432734666
+          ],
+          "Size": [
+            655.0,
+            614.0
+          ],
+          "Offset": [
+            -102.5,
+            -5350.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_15": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.10595703125,
+            0.5116909522195866,
+            0.275634765625,
+            0.65604879701796
+          ],
+          "Size": [
+            695.0,
+            426.0
+          ],
+          "Offset": [
+            506.5,
+            991.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_14": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.730224609375,
+            0.5116909522195866,
+            0.884521484375,
+            0.6350389698407319
+          ],
+          "Size": [
+            632.0,
+            364.0
+          ],
+          "Offset": [
+            693.0,
+            -6416.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_13": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.174560546875,
+            0.27177228058285324,
+            0.35498046875,
+            0.4930532023043036
+          ],
+          "Size": [
+            739.0,
+            653.0
+          ],
+          "Offset": [
+            663.5,
+            -1097.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_12": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.27177228058285324,
+            0.174072265625,
+            0.5110132158590308
+          ],
+          "Size": [
+            711.0,
+            706.0
+          ],
+          "Offset": [
+            325.5,
+            2633.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_82": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.65625,
+            0.27177228058285324,
+            0.763916015625,
+            0.42527956624872926
+          ],
+          "Size": [
+            441.0,
+            453.0
+          ],
+          "Offset": [
+            418.5,
+            -1317.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_83": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.649658203125,
+            0.5116909522195866,
+            0.729736328125,
+            0.6357167062012877
+          ],
+          "Size": [
+            328.0,
+            366.0
+          ],
+          "Offset": [
+            988.0,
+            -2892.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_84": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.497802734375,
+            0.6574042697390715,
+            0.578125,
+            0.7583869874618774
+          ],
+          "Size": [
+            329.0,
+            298.0
+          ],
+          "Offset": [
+            -5.5,
+            -6325.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_BACK_85": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Level_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0947265625,
+            0.7719417146729922,
+            0.156982421875,
+            0.8478481870552355
+          ],
+          "Size": [
+            255.0,
+            224.0
+          ],
+          "Offset": [
+            464.5,
+            -7324.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_ENV_BACK_72": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Env_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.0020387359836901123,
+            0.885986328125,
+            0.7787971457696228
+          ],
+          "Size": [
+            3627.0,
+            762.0
+          ],
+          "Offset": [
+            -0.5,
+            -1.0
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_ENV_BACK_80": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Env_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.00048828125,
+            0.780835881753313,
+            0.159423828125,
+            0.9979612640163099
+          ],
+          "Size": [
+            651.0,
+            213.0
+          ],
+          "Offset": [
+            -0.5,
+            26.5
+          ],
+          "Delay": 120.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_BBLUE3_IDLE": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": true,
+      "Frames": [
+        {
+          "UV": [
+            0.000244140625,
+            0.0005564830272676684,
+            0.055419921875,
+            0.04730105731775181
+          ],
+          "Size": [
+            452.0,
+            168.0
+          ],
+          "Offset": [
+            308.0,
+            -1187.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.0556640625,
+            0.0005564830272676684,
+            0.11083984375,
+            0.04730105731775181
+          ],
+          "Size": [
+            452.0,
+            168.0
+          ],
+          "Offset": [
+            308.0,
+            -1187.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.111083984375,
+            0.0005564830272676684,
+            0.166259765625,
+            0.04730105731775181
+          ],
+          "Size": [
+            452.0,
+            168.0
+          ],
+          "Offset": [
+            308.0,
+            -1187.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.16650390625,
+            0.0005564830272676684,
+            0.2216796875,
+            0.04730105731775181
+          ],
+          "Size": [
+            452.0,
+            168.0
+          ],
+          "Offset": [
+            308.0,
+            -1187.0
+          ],
+          "Delay": 90.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_BBLUE3_BREAK": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.221923828125,
+            0.0005564830272676684,
+            0.3150634765625,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            313.5,
+            -1225.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.3153076171875,
+            0.0005564830272676684,
+            0.408447265625,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            313.5,
+            -1225.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.40869140625,
+            0.0005564830272676684,
+            0.5018310546875,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            313.5,
+            -1225.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.5020751953125,
+            0.0005564830272676684,
+            0.59521484375,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            313.5,
+            -1225.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.595458984375,
+            0.0005564830272676684,
+            0.6885986328125,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            313.5,
+            -1225.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.6888427734375,
+            0.0005564830272676684,
+            0.781982421875,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            313.5,
+            -1225.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.7822265625,
+            0.0005564830272676684,
+            0.8753662109375,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            313.5,
+            -1225.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.8756103515625,
+            0.0005564830272676684,
+            0.96875,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            313.5,
+            -1225.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.000244140625,
+            0.15414579855314414,
+            0.0933837890625,
+            0.3071786310517529
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            313.5,
+            -1225.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.0936279296875,
+            0.15414579855314414,
+            0.186767578125,
+            0.3071786310517529
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            313.5,
+            -1225.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.18701171875,
+            0.15414579855314414,
+            0.2801513671875,
+            0.3071786310517529
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            313.5,
+            -1225.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.2803955078125,
+            0.15414579855314414,
+            0.37353515625,
+            0.3071786310517529
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            313.5,
+            -1225.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.373779296875,
+            0.15414579855314414,
+            0.4669189453125,
+            0.3071786310517529
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            313.5,
+            -1225.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.4671630859375,
+            0.15414579855314414,
+            0.560302734375,
+            0.3071786310517529
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            313.5,
+            -1225.0
+          ],
+          "Delay": 60.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_BRED1_IDLE": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": true,
+      "Frames": [
+        {
+          "UV": [
+            0.560546875,
+            0.15414579855314414,
+            0.61376953125,
+            0.1986644407345576
+          ],
+          "Size": [
+            436.0,
+            160.0
+          ],
+          "Offset": [
+            1101.0,
+            -693.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.614013671875,
+            0.15414579855314414,
+            0.667236328125,
+            0.1986644407345576
+          ],
+          "Size": [
+            436.0,
+            160.0
+          ],
+          "Offset": [
+            1101.0,
+            -693.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.66748046875,
+            0.15414579855314414,
+            0.720703125,
+            0.1986644407345576
+          ],
+          "Size": [
+            436.0,
+            160.0
+          ],
+          "Offset": [
+            1101.0,
+            -693.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.720947265625,
+            0.15414579855314414,
+            0.774169921875,
+            0.1986644407345576
+          ],
+          "Size": [
+            436.0,
+            160.0
+          ],
+          "Offset": [
+            1101.0,
+            -693.0
+          ],
+          "Delay": 90.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_BRED1_BREAK": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.7744140625,
+            0.15414579855314414,
+            0.865234375,
+            0.3071786310517529
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            1100.0,
+            -725.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.865478515625,
+            0.15414579855314414,
+            0.956298828125,
+            0.3071786310517529
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            1100.0,
+            -725.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.000244140625,
+            0.3077351140790206,
+            0.091064453125,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            1100.0,
+            -725.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.09130859375,
+            0.3077351140790206,
+            0.18212890625,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            1100.0,
+            -725.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.182373046875,
+            0.3077351140790206,
+            0.273193359375,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            1100.0,
+            -725.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.2734375,
+            0.3077351140790206,
+            0.3642578125,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            1100.0,
+            -725.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.364501953125,
+            0.3077351140790206,
+            0.455322265625,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            1100.0,
+            -725.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.45556640625,
+            0.3077351140790206,
+            0.54638671875,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            1100.0,
+            -725.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.546630859375,
+            0.3077351140790206,
+            0.637451171875,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            1100.0,
+            -725.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.6376953125,
+            0.3077351140790206,
+            0.728515625,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            1100.0,
+            -725.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.728759765625,
+            0.3077351140790206,
+            0.819580078125,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            1100.0,
+            -725.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.81982421875,
+            0.3077351140790206,
+            0.91064453125,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            1100.0,
+            -725.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.000244140625,
+            0.46132442960489706,
+            0.091064453125,
+            0.6143572621035058
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            1100.0,
+            -725.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.09130859375,
+            0.46132442960489706,
+            0.18212890625,
+            0.6143572621035058
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            1100.0,
+            -725.0
+          ],
+          "Delay": 60.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_BBLUE2_IDLE": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": true,
+      "Frames": [
+        {
+          "UV": [
+            0.000244140625,
+            0.0005564830272676684,
+            0.055419921875,
+            0.04730105731775181
+          ],
+          "Size": [
+            452.0,
+            168.0
+          ],
+          "Offset": [
+            713.0,
+            -822.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.0556640625,
+            0.0005564830272676684,
+            0.11083984375,
+            0.04730105731775181
+          ],
+          "Size": [
+            452.0,
+            168.0
+          ],
+          "Offset": [
+            713.0,
+            -822.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.111083984375,
+            0.0005564830272676684,
+            0.166259765625,
+            0.04730105731775181
+          ],
+          "Size": [
+            452.0,
+            168.0
+          ],
+          "Offset": [
+            713.0,
+            -822.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.16650390625,
+            0.0005564830272676684,
+            0.2216796875,
+            0.04730105731775181
+          ],
+          "Size": [
+            452.0,
+            168.0
+          ],
+          "Offset": [
+            713.0,
+            -822.0
+          ],
+          "Delay": 90.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_BBLUE2_BREAK": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.221923828125,
+            0.0005564830272676684,
+            0.3150634765625,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            718.5,
+            -860.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.3153076171875,
+            0.0005564830272676684,
+            0.408447265625,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            718.5,
+            -860.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.40869140625,
+            0.0005564830272676684,
+            0.5018310546875,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            718.5,
+            -860.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.5020751953125,
+            0.0005564830272676684,
+            0.59521484375,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            718.5,
+            -860.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.595458984375,
+            0.0005564830272676684,
+            0.6885986328125,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            718.5,
+            -860.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.6888427734375,
+            0.0005564830272676684,
+            0.781982421875,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            718.5,
+            -860.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.7822265625,
+            0.0005564830272676684,
+            0.8753662109375,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            718.5,
+            -860.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.8756103515625,
+            0.0005564830272676684,
+            0.96875,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            718.5,
+            -860.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.000244140625,
+            0.15414579855314414,
+            0.0933837890625,
+            0.3071786310517529
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            718.5,
+            -860.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.0936279296875,
+            0.15414579855314414,
+            0.186767578125,
+            0.3071786310517529
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            718.5,
+            -860.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.18701171875,
+            0.15414579855314414,
+            0.2801513671875,
+            0.3071786310517529
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            718.5,
+            -860.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.2803955078125,
+            0.15414579855314414,
+            0.37353515625,
+            0.3071786310517529
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            718.5,
+            -860.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.373779296875,
+            0.15414579855314414,
+            0.4669189453125,
+            0.3071786310517529
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            718.5,
+            -860.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.4671630859375,
+            0.15414579855314414,
+            0.560302734375,
+            0.3071786310517529
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            718.5,
+            -860.0
+          ],
+          "Delay": 60.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_BRED3_IDLE": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": true,
+      "Frames": [
+        {
+          "UV": [
+            0.560546875,
+            0.15414579855314414,
+            0.61376953125,
+            0.1986644407345576
+          ],
+          "Size": [
+            436.0,
+            160.0
+          ],
+          "Offset": [
+            793.0,
+            -1118.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.614013671875,
+            0.15414579855314414,
+            0.667236328125,
+            0.1986644407345576
+          ],
+          "Size": [
+            436.0,
+            160.0
+          ],
+          "Offset": [
+            793.0,
+            -1118.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.66748046875,
+            0.15414579855314414,
+            0.720703125,
+            0.1986644407345576
+          ],
+          "Size": [
+            436.0,
+            160.0
+          ],
+          "Offset": [
+            793.0,
+            -1118.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.720947265625,
+            0.15414579855314414,
+            0.774169921875,
+            0.1986644407345576
+          ],
+          "Size": [
+            436.0,
+            160.0
+          ],
+          "Offset": [
+            793.0,
+            -1118.0
+          ],
+          "Delay": 90.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_BRED3_BREAK": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.7744140625,
+            0.15414579855314414,
+            0.865234375,
+            0.3071786310517529
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            792.0,
+            -1150.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.865478515625,
+            0.15414579855314414,
+            0.956298828125,
+            0.3071786310517529
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            792.0,
+            -1150.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.000244140625,
+            0.3077351140790206,
+            0.091064453125,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            792.0,
+            -1150.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.09130859375,
+            0.3077351140790206,
+            0.18212890625,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            792.0,
+            -1150.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.182373046875,
+            0.3077351140790206,
+            0.273193359375,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            792.0,
+            -1150.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.2734375,
+            0.3077351140790206,
+            0.3642578125,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            792.0,
+            -1150.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.364501953125,
+            0.3077351140790206,
+            0.455322265625,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            792.0,
+            -1150.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.45556640625,
+            0.3077351140790206,
+            0.54638671875,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            792.0,
+            -1150.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.546630859375,
+            0.3077351140790206,
+            0.637451171875,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            792.0,
+            -1150.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.6376953125,
+            0.3077351140790206,
+            0.728515625,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            792.0,
+            -1150.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.728759765625,
+            0.3077351140790206,
+            0.819580078125,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            792.0,
+            -1150.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.81982421875,
+            0.3077351140790206,
+            0.91064453125,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            792.0,
+            -1150.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.000244140625,
+            0.46132442960489706,
+            0.091064453125,
+            0.6143572621035058
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            792.0,
+            -1150.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.09130859375,
+            0.46132442960489706,
+            0.18212890625,
+            0.6143572621035058
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            792.0,
+            -1150.0
+          ],
+          "Delay": 60.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_MYELLOW3_IDLE": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": true,
+      "Frames": [
+        {
+          "UV": [
+            0.182373046875,
+            0.46132442960489706,
+            0.223388671875,
+            0.4969393433500278
+          ],
+          "Size": [
+            336.0,
+            128.0
+          ],
+          "Offset": [
+            1151.0,
+            -1185.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.2236328125,
+            0.46132442960489706,
+            0.2646484375,
+            0.4969393433500278
+          ],
+          "Size": [
+            336.0,
+            128.0
+          ],
+          "Offset": [
+            1151.0,
+            -1185.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.264892578125,
+            0.46132442960489706,
+            0.305908203125,
+            0.4969393433500278
+          ],
+          "Size": [
+            336.0,
+            128.0
+          ],
+          "Offset": [
+            1151.0,
+            -1185.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.30615234375,
+            0.46132442960489706,
+            0.34716796875,
+            0.4969393433500278
+          ],
+          "Size": [
+            336.0,
+            128.0
+          ],
+          "Offset": [
+            1151.0,
+            -1185.0
+          ],
+          "Delay": 90.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_MYELLOW3_BREAK": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.347412109375,
+            0.46132442960489706,
+            0.4176025390625,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            1159.5,
+            -1224.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.4178466796875,
+            0.46132442960489706,
+            0.488037109375,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            1159.5,
+            -1224.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.48828125,
+            0.46132442960489706,
+            0.5584716796875,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            1159.5,
+            -1224.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.5587158203125,
+            0.46132442960489706,
+            0.62890625,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            1159.5,
+            -1224.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.629150390625,
+            0.46132442960489706,
+            0.6993408203125,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            1159.5,
+            -1224.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.6995849609375,
+            0.46132442960489706,
+            0.769775390625,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            1159.5,
+            -1224.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.77001953125,
+            0.46132442960489706,
+            0.8402099609375,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            1159.5,
+            -1224.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.8404541015625,
+            0.46132442960489706,
+            0.91064453125,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            1159.5,
+            -1224.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.910888671875,
+            0.46132442960489706,
+            0.9810791015625,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            1159.5,
+            -1224.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.000244140625,
+            0.6149137451307735,
+            0.0704345703125,
+            0.729827490261547
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            1159.5,
+            -1224.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.0706787109375,
+            0.6149137451307735,
+            0.140869140625,
+            0.729827490261547
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            1159.5,
+            -1224.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.14111328125,
+            0.6149137451307735,
+            0.2113037109375,
+            0.729827490261547
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            1159.5,
+            -1224.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.2115478515625,
+            0.6149137451307735,
+            0.28173828125,
+            0.729827490261547
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            1159.5,
+            -1224.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.281982421875,
+            0.6149137451307735,
+            0.3521728515625,
+            0.729827490261547
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            1159.5,
+            -1224.5
+          ],
+          "Delay": 60.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_MYELLOW1_IDLE": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": true,
+      "Frames": [
+        {
+          "UV": [
+            0.182373046875,
+            0.46132442960489706,
+            0.223388671875,
+            0.4969393433500278
+          ],
+          "Size": [
+            336.0,
+            128.0
+          ],
+          "Offset": [
+            531.0,
+            -643.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.2236328125,
+            0.46132442960489706,
+            0.2646484375,
+            0.4969393433500278
+          ],
+          "Size": [
+            336.0,
+            128.0
+          ],
+          "Offset": [
+            531.0,
+            -643.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.264892578125,
+            0.46132442960489706,
+            0.305908203125,
+            0.4969393433500278
+          ],
+          "Size": [
+            336.0,
+            128.0
+          ],
+          "Offset": [
+            531.0,
+            -643.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.30615234375,
+            0.46132442960489706,
+            0.34716796875,
+            0.4969393433500278
+          ],
+          "Size": [
+            336.0,
+            128.0
+          ],
+          "Offset": [
+            531.0,
+            -643.0
+          ],
+          "Delay": 90.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_MYELLOW1_BREAK": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.347412109375,
+            0.46132442960489706,
+            0.4176025390625,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            539.5,
+            -682.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.4178466796875,
+            0.46132442960489706,
+            0.488037109375,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            539.5,
+            -682.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.48828125,
+            0.46132442960489706,
+            0.5584716796875,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            539.5,
+            -682.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.5587158203125,
+            0.46132442960489706,
+            0.62890625,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            539.5,
+            -682.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.629150390625,
+            0.46132442960489706,
+            0.6993408203125,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            539.5,
+            -682.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.6995849609375,
+            0.46132442960489706,
+            0.769775390625,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            539.5,
+            -682.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.77001953125,
+            0.46132442960489706,
+            0.8402099609375,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            539.5,
+            -682.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.8404541015625,
+            0.46132442960489706,
+            0.91064453125,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            539.5,
+            -682.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.910888671875,
+            0.46132442960489706,
+            0.9810791015625,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            539.5,
+            -682.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.000244140625,
+            0.6149137451307735,
+            0.0704345703125,
+            0.729827490261547
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            539.5,
+            -682.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.0706787109375,
+            0.6149137451307735,
+            0.140869140625,
+            0.729827490261547
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            539.5,
+            -682.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.14111328125,
+            0.6149137451307735,
+            0.2113037109375,
+            0.729827490261547
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            539.5,
+            -682.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.2115478515625,
+            0.6149137451307735,
+            0.28173828125,
+            0.729827490261547
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            539.5,
+            -682.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.281982421875,
+            0.6149137451307735,
+            0.3521728515625,
+            0.729827490261547
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            539.5,
+            -682.5
+          ],
+          "Delay": 60.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_EXCEPT1_IDLE": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": true,
+      "Frames": [
+        {
+          "UV": [
+            0.378173828125,
+            0.8458542014468559,
+            0.406982421875,
+            0.8714524207011686
+          ],
+          "Size": [
+            236.0,
+            92.0
+          ],
+          "Offset": [
+            1013.0,
+            -501.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.4072265625,
+            0.8458542014468559,
+            0.43603515625,
+            0.8714524207011686
+          ],
+          "Size": [
+            236.0,
+            92.0
+          ],
+          "Offset": [
+            1013.0,
+            -501.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.436279296875,
+            0.8458542014468559,
+            0.465087890625,
+            0.8714524207011686
+          ],
+          "Size": [
+            236.0,
+            92.0
+          ],
+          "Offset": [
+            1013.0,
+            -501.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.46533203125,
+            0.8458542014468559,
+            0.494140625,
+            0.8714524207011686
+          ],
+          "Size": [
+            236.0,
+            92.0
+          ],
+          "Offset": [
+            1013.0,
+            -501.0
+          ],
+          "Delay": 90.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_EXCEPT1_BREAK": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.494384765625,
+            0.8458542014468559,
+            0.5408935546875,
+            0.9218141346688926
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            1020.5,
+            -537.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.5411376953125,
+            0.8458542014468559,
+            0.587646484375,
+            0.9218141346688926
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            1020.5,
+            -537.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.587890625,
+            0.8458542014468559,
+            0.6343994140625,
+            0.9218141346688926
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            1020.5,
+            -537.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.6346435546875,
+            0.8458542014468559,
+            0.68115234375,
+            0.9218141346688926
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            1020.5,
+            -537.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.681396484375,
+            0.8458542014468559,
+            0.7279052734375,
+            0.9218141346688926
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            1020.5,
+            -537.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.7281494140625,
+            0.8458542014468559,
+            0.774658203125,
+            0.9218141346688926
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            1020.5,
+            -537.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.77490234375,
+            0.8458542014468559,
+            0.8214111328125,
+            0.9218141346688926
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            1020.5,
+            -537.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.8216552734375,
+            0.8458542014468559,
+            0.8681640625,
+            0.9218141346688926
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            1020.5,
+            -537.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.868408203125,
+            0.8458542014468559,
+            0.9149169921875,
+            0.9218141346688926
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            1020.5,
+            -537.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.9151611328125,
+            0.8458542014468559,
+            0.961669921875,
+            0.9218141346688926
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            1020.5,
+            -537.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.000244140625,
+            0.9234835837506956,
+            0.0467529296875,
+            0.9994435169727324
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            1020.5,
+            -537.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.0469970703125,
+            0.9234835837506956,
+            0.093505859375,
+            0.9994435169727324
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            1020.5,
+            -537.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.09375,
+            0.9234835837506956,
+            0.1402587890625,
+            0.9994435169727324
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            1020.5,
+            -537.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.1405029296875,
+            0.9234835837506956,
+            0.18701171875,
+            0.9994435169727324
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            1020.5,
+            -537.5
+          ],
+          "Delay": 60.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_MYELLOW2_IDLE": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": true,
+      "Frames": [
+        {
+          "UV": [
+            0.182373046875,
+            0.46132442960489706,
+            0.223388671875,
+            0.4969393433500278
+          ],
+          "Size": [
+            336.0,
+            128.0
+          ],
+          "Offset": [
+            125.0,
+            -1061.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.2236328125,
+            0.46132442960489706,
+            0.2646484375,
+            0.4969393433500278
+          ],
+          "Size": [
+            336.0,
+            128.0
+          ],
+          "Offset": [
+            125.0,
+            -1061.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.264892578125,
+            0.46132442960489706,
+            0.305908203125,
+            0.4969393433500278
+          ],
+          "Size": [
+            336.0,
+            128.0
+          ],
+          "Offset": [
+            125.0,
+            -1061.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.30615234375,
+            0.46132442960489706,
+            0.34716796875,
+            0.4969393433500278
+          ],
+          "Size": [
+            336.0,
+            128.0
+          ],
+          "Offset": [
+            125.0,
+            -1061.0
+          ],
+          "Delay": 90.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_MYELLOW2_BREAK": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.347412109375,
+            0.46132442960489706,
+            0.4176025390625,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            133.5,
+            -1100.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.4178466796875,
+            0.46132442960489706,
+            0.488037109375,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            133.5,
+            -1100.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.48828125,
+            0.46132442960489706,
+            0.5584716796875,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            133.5,
+            -1100.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.5587158203125,
+            0.46132442960489706,
+            0.62890625,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            133.5,
+            -1100.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.629150390625,
+            0.46132442960489706,
+            0.6993408203125,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            133.5,
+            -1100.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.6995849609375,
+            0.46132442960489706,
+            0.769775390625,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            133.5,
+            -1100.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.77001953125,
+            0.46132442960489706,
+            0.8402099609375,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            133.5,
+            -1100.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.8404541015625,
+            0.46132442960489706,
+            0.91064453125,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            133.5,
+            -1100.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.910888671875,
+            0.46132442960489706,
+            0.9810791015625,
+            0.5762381747356705
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            133.5,
+            -1100.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.000244140625,
+            0.6149137451307735,
+            0.0704345703125,
+            0.729827490261547
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            133.5,
+            -1100.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.0706787109375,
+            0.6149137451307735,
+            0.140869140625,
+            0.729827490261547
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            133.5,
+            -1100.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.14111328125,
+            0.6149137451307735,
+            0.2113037109375,
+            0.729827490261547
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            133.5,
+            -1100.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.2115478515625,
+            0.6149137451307735,
+            0.28173828125,
+            0.729827490261547
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            133.5,
+            -1100.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.281982421875,
+            0.6149137451307735,
+            0.3521728515625,
+            0.729827490261547
+          ],
+          "Size": [
+            575.0,
+            413.0
+          ],
+          "Offset": [
+            133.5,
+            -1100.5
+          ],
+          "Delay": 60.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_BRED2_IDLE": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": true,
+      "Frames": [
+        {
+          "UV": [
+            0.560546875,
+            0.15414579855314414,
+            0.61376953125,
+            0.1986644407345576
+          ],
+          "Size": [
+            436.0,
+            160.0
+          ],
+          "Offset": [
+            158.0,
+            -762.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.614013671875,
+            0.15414579855314414,
+            0.667236328125,
+            0.1986644407345576
+          ],
+          "Size": [
+            436.0,
+            160.0
+          ],
+          "Offset": [
+            158.0,
+            -762.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.66748046875,
+            0.15414579855314414,
+            0.720703125,
+            0.1986644407345576
+          ],
+          "Size": [
+            436.0,
+            160.0
+          ],
+          "Offset": [
+            158.0,
+            -762.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.720947265625,
+            0.15414579855314414,
+            0.774169921875,
+            0.1986644407345576
+          ],
+          "Size": [
+            436.0,
+            160.0
+          ],
+          "Offset": [
+            158.0,
+            -762.0
+          ],
+          "Delay": 90.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_BRED2_BREAK": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.7744140625,
+            0.15414579855314414,
+            0.865234375,
+            0.3071786310517529
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            157.0,
+            -794.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.865478515625,
+            0.15414579855314414,
+            0.956298828125,
+            0.3071786310517529
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            157.0,
+            -794.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.000244140625,
+            0.3077351140790206,
+            0.091064453125,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            157.0,
+            -794.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.09130859375,
+            0.3077351140790206,
+            0.18212890625,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            157.0,
+            -794.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.182373046875,
+            0.3077351140790206,
+            0.273193359375,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            157.0,
+            -794.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.2734375,
+            0.3077351140790206,
+            0.3642578125,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            157.0,
+            -794.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.364501953125,
+            0.3077351140790206,
+            0.455322265625,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            157.0,
+            -794.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.45556640625,
+            0.3077351140790206,
+            0.54638671875,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            157.0,
+            -794.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.546630859375,
+            0.3077351140790206,
+            0.637451171875,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            157.0,
+            -794.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.6376953125,
+            0.3077351140790206,
+            0.728515625,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            157.0,
+            -794.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.728759765625,
+            0.3077351140790206,
+            0.819580078125,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            157.0,
+            -794.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.81982421875,
+            0.3077351140790206,
+            0.91064453125,
+            0.4607679465776294
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            157.0,
+            -794.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.000244140625,
+            0.46132442960489706,
+            0.091064453125,
+            0.6143572621035058
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            157.0,
+            -794.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.09130859375,
+            0.46132442960489706,
+            0.18212890625,
+            0.6143572621035058
+          ],
+          "Size": [
+            744.0,
+            550.0
+          ],
+          "Offset": [
+            157.0,
+            -794.0
+          ],
+          "Delay": 60.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_EXCEPT4_IDLE": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": true,
+      "Frames": [
+        {
+          "UV": [
+            0.378173828125,
+            0.8458542014468559,
+            0.406982421875,
+            0.8714524207011686
+          ],
+          "Size": [
+            236.0,
+            92.0
+          ],
+          "Offset": [
+            604.0,
+            -1295.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.4072265625,
+            0.8458542014468559,
+            0.43603515625,
+            0.8714524207011686
+          ],
+          "Size": [
+            236.0,
+            92.0
+          ],
+          "Offset": [
+            604.0,
+            -1295.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.436279296875,
+            0.8458542014468559,
+            0.465087890625,
+            0.8714524207011686
+          ],
+          "Size": [
+            236.0,
+            92.0
+          ],
+          "Offset": [
+            604.0,
+            -1295.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.46533203125,
+            0.8458542014468559,
+            0.494140625,
+            0.8714524207011686
+          ],
+          "Size": [
+            236.0,
+            92.0
+          ],
+          "Offset": [
+            604.0,
+            -1295.0
+          ],
+          "Delay": 90.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_EXCEPT4_BREAK": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.494384765625,
+            0.8458542014468559,
+            0.5408935546875,
+            0.9218141346688926
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            611.5,
+            -1331.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.5411376953125,
+            0.8458542014468559,
+            0.587646484375,
+            0.9218141346688926
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            611.5,
+            -1331.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.587890625,
+            0.8458542014468559,
+            0.6343994140625,
+            0.9218141346688926
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            611.5,
+            -1331.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.6346435546875,
+            0.8458542014468559,
+            0.68115234375,
+            0.9218141346688926
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            611.5,
+            -1331.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.681396484375,
+            0.8458542014468559,
+            0.7279052734375,
+            0.9218141346688926
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            611.5,
+            -1331.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.7281494140625,
+            0.8458542014468559,
+            0.774658203125,
+            0.9218141346688926
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            611.5,
+            -1331.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.77490234375,
+            0.8458542014468559,
+            0.8214111328125,
+            0.9218141346688926
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            611.5,
+            -1331.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.8216552734375,
+            0.8458542014468559,
+            0.8681640625,
+            0.9218141346688926
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            611.5,
+            -1331.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.868408203125,
+            0.8458542014468559,
+            0.9149169921875,
+            0.9218141346688926
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            611.5,
+            -1331.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.9151611328125,
+            0.8458542014468559,
+            0.961669921875,
+            0.9218141346688926
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            611.5,
+            -1331.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.000244140625,
+            0.9234835837506956,
+            0.0467529296875,
+            0.9994435169727324
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            611.5,
+            -1331.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.0469970703125,
+            0.9234835837506956,
+            0.093505859375,
+            0.9994435169727324
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            611.5,
+            -1331.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.09375,
+            0.9234835837506956,
+            0.1402587890625,
+            0.9994435169727324
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            611.5,
+            -1331.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.1405029296875,
+            0.9234835837506956,
+            0.18701171875,
+            0.9994435169727324
+          ],
+          "Size": [
+            381.0,
+            273.0
+          ],
+          "Offset": [
+            611.5,
+            -1331.5
+          ],
+          "Delay": 60.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_EXCEPT2_IDLE": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": true,
+      "Frames": [
+        {
+          "UV": [
+            0.564697265625,
+            0.7303839732888147,
+            0.591552734375,
+            0.7548692264885921
+          ],
+          "Size": [
+            220.0,
+            88.0
+          ],
+          "Offset": [
+            71.0,
+            -649.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.591796875,
+            0.7303839732888147,
+            0.61865234375,
+            0.7548692264885921
+          ],
+          "Size": [
+            220.0,
+            88.0
+          ],
+          "Offset": [
+            71.0,
+            -649.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.618896484375,
+            0.7303839732888147,
+            0.645751953125,
+            0.7548692264885921
+          ],
+          "Size": [
+            220.0,
+            88.0
+          ],
+          "Offset": [
+            71.0,
+            -649.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.64599609375,
+            0.7303839732888147,
+            0.6728515625,
+            0.7548692264885921
+          ],
+          "Size": [
+            220.0,
+            88.0
+          ],
+          "Offset": [
+            71.0,
+            -649.0
+          ],
+          "Delay": 90.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_EXCEPT2_BREAK": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.673095703125,
+            0.7303839732888147,
+            0.7200927734375,
+            0.8074568725653868
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            76.5,
+            -687.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.7203369140625,
+            0.7303839732888147,
+            0.767333984375,
+            0.8074568725653868
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            76.5,
+            -687.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.767578125,
+            0.7303839732888147,
+            0.8145751953125,
+            0.8074568725653868
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            76.5,
+            -687.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.8148193359375,
+            0.7303839732888147,
+            0.86181640625,
+            0.8074568725653868
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            76.5,
+            -687.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.862060546875,
+            0.7303839732888147,
+            0.9090576171875,
+            0.8074568725653868
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            76.5,
+            -687.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.9093017578125,
+            0.7303839732888147,
+            0.956298828125,
+            0.8074568725653868
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            76.5,
+            -687.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.000244140625,
+            0.8458542014468559,
+            0.0472412109375,
+            0.922927100723428
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            76.5,
+            -687.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.0474853515625,
+            0.8458542014468559,
+            0.094482421875,
+            0.922927100723428
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            76.5,
+            -687.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.0947265625,
+            0.8458542014468559,
+            0.1417236328125,
+            0.922927100723428
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            76.5,
+            -687.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.1419677734375,
+            0.8458542014468559,
+            0.18896484375,
+            0.922927100723428
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            76.5,
+            -687.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.189208984375,
+            0.8458542014468559,
+            0.2362060546875,
+            0.922927100723428
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            76.5,
+            -687.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.2364501953125,
+            0.8458542014468559,
+            0.283447265625,
+            0.922927100723428
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            76.5,
+            -687.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.28369140625,
+            0.8458542014468559,
+            0.3306884765625,
+            0.922927100723428
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            76.5,
+            -687.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.3309326171875,
+            0.8458542014468559,
+            0.3779296875,
+            0.922927100723428
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            76.5,
+            -687.5
+          ],
+          "Delay": 60.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_BBLUE1_IDLE": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": true,
+      "Frames": [
+        {
+          "UV": [
+            0.000244140625,
+            0.0005564830272676684,
+            0.055419921875,
+            0.04730105731775181
+          ],
+          "Size": [
+            452.0,
+            168.0
+          ],
+          "Offset": [
+            325.0,
+            -457.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.0556640625,
+            0.0005564830272676684,
+            0.11083984375,
+            0.04730105731775181
+          ],
+          "Size": [
+            452.0,
+            168.0
+          ],
+          "Offset": [
+            325.0,
+            -457.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.111083984375,
+            0.0005564830272676684,
+            0.166259765625,
+            0.04730105731775181
+          ],
+          "Size": [
+            452.0,
+            168.0
+          ],
+          "Offset": [
+            325.0,
+            -457.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.16650390625,
+            0.0005564830272676684,
+            0.2216796875,
+            0.04730105731775181
+          ],
+          "Size": [
+            452.0,
+            168.0
+          ],
+          "Offset": [
+            325.0,
+            -457.0
+          ],
+          "Delay": 90.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_BBLUE1_BREAK": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.221923828125,
+            0.0005564830272676684,
+            0.3150634765625,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            330.5,
+            -495.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.3153076171875,
+            0.0005564830272676684,
+            0.408447265625,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            330.5,
+            -495.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.40869140625,
+            0.0005564830272676684,
+            0.5018310546875,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            330.5,
+            -495.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.5020751953125,
+            0.0005564830272676684,
+            0.59521484375,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            330.5,
+            -495.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.595458984375,
+            0.0005564830272676684,
+            0.6885986328125,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            330.5,
+            -495.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.6888427734375,
+            0.0005564830272676684,
+            0.781982421875,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            330.5,
+            -495.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.7822265625,
+            0.0005564830272676684,
+            0.8753662109375,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            330.5,
+            -495.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.8756103515625,
+            0.0005564830272676684,
+            0.96875,
+            0.15358931552587646
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            330.5,
+            -495.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.000244140625,
+            0.15414579855314414,
+            0.0933837890625,
+            0.3071786310517529
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            330.5,
+            -495.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.0936279296875,
+            0.15414579855314414,
+            0.186767578125,
+            0.3071786310517529
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            330.5,
+            -495.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.18701171875,
+            0.15414579855314414,
+            0.2801513671875,
+            0.3071786310517529
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            330.5,
+            -495.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.2803955078125,
+            0.15414579855314414,
+            0.37353515625,
+            0.3071786310517529
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            330.5,
+            -495.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.373779296875,
+            0.15414579855314414,
+            0.4669189453125,
+            0.3071786310517529
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            330.5,
+            -495.0
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.4671630859375,
+            0.15414579855314414,
+            0.560302734375,
+            0.3071786310517529
+          ],
+          "Size": [
+            763.0,
+            550.0
+          ],
+          "Offset": [
+            330.5,
+            -495.0
+          ],
+          "Delay": 60.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_STATIC_LEFT_IDLE": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": true,
+      "Frames": [
+        {
+          "UV": [
+            0.3524169921875,
+            0.6149137451307735,
+            0.3939208984375,
+            0.6505286588759043
+          ],
+          "Size": [
+            340.0,
+            128.0
+          ],
+          "Offset": [
+            377.0,
+            -954.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.3941650390625,
+            0.6149137451307735,
+            0.4356689453125,
+            0.6505286588759043
+          ],
+          "Size": [
+            340.0,
+            128.0
+          ],
+          "Offset": [
+            377.0,
+            -954.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.4359130859375,
+            0.6149137451307735,
+            0.4774169921875,
+            0.6505286588759043
+          ],
+          "Size": [
+            340.0,
+            128.0
+          ],
+          "Offset": [
+            377.0,
+            -954.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.4776611328125,
+            0.6149137451307735,
+            0.5191650390625,
+            0.6505286588759043
+          ],
+          "Size": [
+            340.0,
+            128.0
+          ],
+          "Offset": [
+            377.0,
+            -954.0
+          ],
+          "Delay": 90.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_STATIC_LEFT_BREAK": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.5194091796875,
+            0.6149137451307735,
+            0.5897216796875,
+            0.729827490261547
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            383.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.5899658203125,
+            0.6149137451307735,
+            0.6602783203125,
+            0.729827490261547
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            383.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.6605224609375,
+            0.6149137451307735,
+            0.7308349609375,
+            0.729827490261547
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            383.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.7310791015625,
+            0.6149137451307735,
+            0.8013916015625,
+            0.729827490261547
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            383.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.8016357421875,
+            0.6149137451307735,
+            0.8719482421875,
+            0.729827490261547
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            383.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.8721923828125,
+            0.6149137451307735,
+            0.9425048828125,
+            0.729827490261547
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            383.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.000244140625,
+            0.7303839732888147,
+            0.070556640625,
+            0.8452977184195882
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            383.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.07080078125,
+            0.7303839732888147,
+            0.14111328125,
+            0.8452977184195882
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            383.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.141357421875,
+            0.7303839732888147,
+            0.211669921875,
+            0.8452977184195882
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            383.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.2119140625,
+            0.7303839732888147,
+            0.2822265625,
+            0.8452977184195882
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            383.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.282470703125,
+            0.7303839732888147,
+            0.352783203125,
+            0.8452977184195882
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            383.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.35302734375,
+            0.7303839732888147,
+            0.42333984375,
+            0.8452977184195882
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            383.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.423583984375,
+            0.7303839732888147,
+            0.493896484375,
+            0.8452977184195882
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            383.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.494140625,
+            0.7303839732888147,
+            0.564453125,
+            0.8452977184195882
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            383.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_STATIC_MID_IDLE": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": true,
+      "Frames": [
+        {
+          "UV": [
+            0.3524169921875,
+            0.6149137451307735,
+            0.3939208984375,
+            0.6505286588759043
+          ],
+          "Size": [
+            340.0,
+            128.0
+          ],
+          "Offset": [
+            913.0,
+            -954.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.3941650390625,
+            0.6149137451307735,
+            0.4356689453125,
+            0.6505286588759043
+          ],
+          "Size": [
+            340.0,
+            128.0
+          ],
+          "Offset": [
+            913.0,
+            -954.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.4359130859375,
+            0.6149137451307735,
+            0.4774169921875,
+            0.6505286588759043
+          ],
+          "Size": [
+            340.0,
+            128.0
+          ],
+          "Offset": [
+            913.0,
+            -954.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.4776611328125,
+            0.6149137451307735,
+            0.5191650390625,
+            0.6505286588759043
+          ],
+          "Size": [
+            340.0,
+            128.0
+          ],
+          "Offset": [
+            913.0,
+            -954.0
+          ],
+          "Delay": 90.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_STATIC_MID_BREAK": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.5194091796875,
+            0.6149137451307735,
+            0.5897216796875,
+            0.729827490261547
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            919.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.5899658203125,
+            0.6149137451307735,
+            0.6602783203125,
+            0.729827490261547
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            919.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.6605224609375,
+            0.6149137451307735,
+            0.7308349609375,
+            0.729827490261547
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            919.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.7310791015625,
+            0.6149137451307735,
+            0.8013916015625,
+            0.729827490261547
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            919.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.8016357421875,
+            0.6149137451307735,
+            0.8719482421875,
+            0.729827490261547
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            919.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.8721923828125,
+            0.6149137451307735,
+            0.9425048828125,
+            0.729827490261547
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            919.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.000244140625,
+            0.7303839732888147,
+            0.070556640625,
+            0.8452977184195882
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            919.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.07080078125,
+            0.7303839732888147,
+            0.14111328125,
+            0.8452977184195882
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            919.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.141357421875,
+            0.7303839732888147,
+            0.211669921875,
+            0.8452977184195882
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            919.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.2119140625,
+            0.7303839732888147,
+            0.2822265625,
+            0.8452977184195882
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            919.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.282470703125,
+            0.7303839732888147,
+            0.352783203125,
+            0.8452977184195882
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            919.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.35302734375,
+            0.7303839732888147,
+            0.42333984375,
+            0.8452977184195882
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            919.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.423583984375,
+            0.7303839732888147,
+            0.493896484375,
+            0.8452977184195882
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            919.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.494140625,
+            0.7303839732888147,
+            0.564453125,
+            0.8452977184195882
+          ],
+          "Size": [
+            576.0,
+            413.0
+          ],
+          "Offset": [
+            919.0,
+            -995.5
+          ],
+          "Delay": 60.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_STATIC_RIGHT_IDLE": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": true,
+      "Frames": [
+        {
+          "UV": [
+            0.564697265625,
+            0.7303839732888147,
+            0.591552734375,
+            0.7548692264885921
+          ],
+          "Size": [
+            220.0,
+            88.0
+          ],
+          "Offset": [
+            1205.0,
+            -963.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.591796875,
+            0.7303839732888147,
+            0.61865234375,
+            0.7548692264885921
+          ],
+          "Size": [
+            220.0,
+            88.0
+          ],
+          "Offset": [
+            1205.0,
+            -963.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.618896484375,
+            0.7303839732888147,
+            0.645751953125,
+            0.7548692264885921
+          ],
+          "Size": [
+            220.0,
+            88.0
+          ],
+          "Offset": [
+            1205.0,
+            -963.0
+          ],
+          "Delay": 90.0
+        },
+        {
+          "UV": [
+            0.64599609375,
+            0.7303839732888147,
+            0.6728515625,
+            0.7548692264885921
+          ],
+          "Size": [
+            220.0,
+            88.0
+          ],
+          "Offset": [
+            1205.0,
+            -963.0
+          ],
+          "Delay": 90.0
+        }
+      ]
+    },
+    "LUCID_PHASE2_PLATFORM_STATIC_RIGHT_BREAK": {
+      "Texture": "Maps/Boss/Phase2/Lucid_Phase2_Platform_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.673095703125,
+            0.7303839732888147,
+            0.7200927734375,
+            0.8074568725653868
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            1210.5,
+            -1001.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.7203369140625,
+            0.7303839732888147,
+            0.767333984375,
+            0.8074568725653868
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            1210.5,
+            -1001.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.767578125,
+            0.7303839732888147,
+            0.8145751953125,
+            0.8074568725653868
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            1210.5,
+            -1001.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.8148193359375,
+            0.7303839732888147,
+            0.86181640625,
+            0.8074568725653868
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            1210.5,
+            -1001.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.862060546875,
+            0.7303839732888147,
+            0.9090576171875,
+            0.8074568725653868
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            1210.5,
+            -1001.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.9093017578125,
+            0.7303839732888147,
+            0.956298828125,
+            0.8074568725653868
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            1210.5,
+            -1001.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.000244140625,
+            0.8458542014468559,
+            0.0472412109375,
+            0.922927100723428
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            1210.5,
+            -1001.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.0474853515625,
+            0.8458542014468559,
+            0.094482421875,
+            0.922927100723428
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            1210.5,
+            -1001.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.0947265625,
+            0.8458542014468559,
+            0.1417236328125,
+            0.922927100723428
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            1210.5,
+            -1001.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.1419677734375,
+            0.8458542014468559,
+            0.18896484375,
+            0.922927100723428
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            1210.5,
+            -1001.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.189208984375,
+            0.8458542014468559,
+            0.2362060546875,
+            0.922927100723428
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            1210.5,
+            -1001.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.2364501953125,
+            0.8458542014468559,
+            0.283447265625,
+            0.922927100723428
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            1210.5,
+            -1001.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.28369140625,
+            0.8458542014468559,
+            0.3306884765625,
+            0.922927100723428
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            1210.5,
+            -1001.5
+          ],
+          "Delay": 60.0
+        },
+        {
+          "UV": [
+            0.3309326171875,
+            0.8458542014468559,
+            0.3779296875,
+            0.922927100723428
+          ],
+          "Size": [
+            385.0,
+            277.0
+          ],
+          "Offset": [
+            1210.5,
+            -1001.5
+          ],
+          "Delay": 60.0
+        }
+      ]
+    }
+  }
+}

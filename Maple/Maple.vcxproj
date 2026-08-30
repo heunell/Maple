@@ -177,6 +177,7 @@
     <ClInclude Include="Component\MeshComponent.h" />
     <ClInclude Include="Component\MovementComponent.h" />
     <ClInclude Include="Component\OBBCollisionComponent.h" />
+    <ClInclude Include="Component\ParallaxComponent.h" />
     <ClInclude Include="Component\PlayerComponent.h" />
     <ClInclude Include="Component\SceneComponent.h" />
     <ClInclude Include="Component\SkillComponent.h" />
@@ -215,6 +216,7 @@
     <ClInclude Include="Game\Character\State\PlayerWalkState.h" />
     <ClInclude Include="Game\Map\Boss\LucidEntry.h" />
     <ClInclude Include="Game\Map\Boss\LucidPhase1.h" />
+    <ClInclude Include="Game\Map\Boss\LucidPhase2.h" />
     <ClInclude Include="Game\Skills\Skill.h" />
     <ClInclude Include="Game\Skills\SongOfHeaven.h" />
     <ClInclude Include="Input\Input.h" />
@@ -280,6 +282,7 @@
     <ClCompile Include="Component\MeshComponent.cpp" />
     <ClCompile Include="Component\MovementComponent.cpp" />
     <ClCompile Include="Component\OBBCollisionComponent.cpp" />
+    <ClCompile Include="Component\ParallaxComponent.cpp" />
     <ClCompile Include="Component\PlayerComponent.cpp" />
     <ClCompile Include="Component\SceneComponent.cpp" />
     <ClCompile Include="Component\SkillComponent.cpp" />
@@ -316,6 +319,7 @@
     <ClCompile Include="Game\Character\State\PlayerWalkState.cpp" />
     <ClCompile Include="Game\Map\Boss\LucidEntry.cpp" />
     <ClCompile Include="Game\Map\Boss\LucidPhase1.cpp" />
+    <ClCompile Include="Game\Map\Boss\LucidPhase2.cpp" />
     <ClCompile Include="Game\Skills\Skill.cpp" />
     <ClCompile Include="Game\Skills\SongOfHeaven.cpp" />
     <ClCompile Include="Input\Input.cpp" />

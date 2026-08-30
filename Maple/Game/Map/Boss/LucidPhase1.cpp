@@ -99,11 +99,80 @@ bool LucidPhase1::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
 		Sprite->AttachToComponent(GetRoot());
 	}
 
+	_Floor = CreateSceneComponent<AABBCollisionComponent>("Floor");
+
+	if(!_Floor)
+	{
+		return false;
+	}
+
+	_Floor->SetBoxSize(1792.f, 200.f);
+	
+	_Floor->SetRelativePosition(213.f, -361.f, 0.f);
+	
+	_Floor->AttachToComponent(GetRoot());
+	
+	_Floor->SetCollisionProfile("Environment");
+
+
+	_LeftWall = CreateSceneComponent<AABBCollisionComponent>("LeftWall");
+
+	if (!_LeftWall)
+	{
+		return false;
+	}
+
+	_LeftWall->SetBoxSize(20.f, 854.f);
+	
+	_LeftWall->SetRelativePosition(-693.f, -43.f, 0.f);
+	
+	_LeftWall->AttachToComponent(GetRoot());
+	
+	_LeftWall->SetCollisionProfile("Environment");
+
+
+	_RightWall = CreateSceneComponent<AABBCollisionComponent>("RightWall");
+
+	if (!_RightWall)
+	{
+		return false;
+	}
+
+	_RightWall->SetBoxSize(20.f, 854.f);
+	
+	_RightWall->SetRelativePosition(1119.f, -43.f, 0.f);
+	
+	_RightWall->AttachToComponent(GetRoot());
+	
+	_RightWall->SetCollisionProfile("Environment");
+
+	const float LeftBound          = _LeftWall->GetWorldPosition()._x + _LeftWall->GetBoxSize()._x * 0.5f;
+
+	const float RightBound         = _RightWall->GetWorldPosition()._x - _RightWall->GetBoxSize()._x * 0.5f;
+
+	const float CameraZoneWidth    = RightBound - LeftBound;
+	
+	const float CameraZoneCenterX  = (LeftBound + RightBound) * 0.5f;
+	
+	const float CameraZoneCenterY  = _LeftWall->GetWorldPosition()._y;
+	
+	const float CameraZoneHeight   = _LeftWall->GetBoxSize()._y;
+
+	Ptr<CameraZone> AreaCameraZone = GetLevel()->SpawnActor<CameraZone>("LucidPhase1CameraZone", FVector3D(CameraZoneCenterX, CameraZoneCenterY, 0.f), FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
+
+	if (!AreaCameraZone)
+	{
+		return false;
+	}
+
+	AreaCameraZone->SetArea(CameraZoneWidth, CameraZoneHeight);
+
 	return true;
 }
 
 void LucidPhase1::Tick(float DeltaTime)
 {
+	Actor::Tick(DeltaTime);
 }
 
 void LucidPhase1::Collision(float DeltaTime)

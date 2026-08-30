@@ -338,6 +338,12 @@
     <ClInclude Include="Game\Map\Boss\LucidPhase1.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Map\Boss\LucidPhase2.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\ParallaxComponent.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\Matrix.cpp">
@@ -623,6 +629,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Game\Map\Boss\LucidPhase1.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Map\Boss\LucidPhase2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\ParallaxComponent.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
