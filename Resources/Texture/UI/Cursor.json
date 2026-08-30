@@ -1,0 +1,216 @@
+{
+  "Animations": {
+    "Cursor.Normal": {
+      "Texture": "UI/cursor_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.015625,
+            0.015625,
+            0.203125,
+            0.234375
+          ],
+          "Size": [
+            24.0,
+            28.0
+          ],
+          "Offset": [
+            12.0,
+            -11.0
+          ],
+          "Delay": 150.0
+        }
+      ]
+    },
+    "Cursor.MouseNormal": {
+      "Texture": "UI/cursor_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.21875,
+            0.015625,
+            0.4453125,
+            0.25
+          ],
+          "Size": [
+            29.0,
+            30.0
+          ],
+          "Offset": [
+            11.5,
+            -9.0
+          ],
+          "Delay": 500.0
+        }
+      ]
+    },
+    "Cursor.LeftPressed": {
+      "Texture": "UI/cursor_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.4609375,
+            0.015625,
+            0.6953125,
+            0.234375
+          ],
+          "Size": [
+            30.0,
+            28.0
+          ],
+          "Offset": [
+            11.0,
+            -10.0
+          ],
+          "Delay": 500.0
+        }
+      ]
+    },
+    "Cursor.MouseNormalAlt": {
+      "Texture": "UI/cursor_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.7109375,
+            0.015625,
+            0.9375,
+            0.25
+          ],
+          "Size": [
+            29.0,
+            30.0
+          ],
+          "Offset": [
+            11.5,
+            -9.0
+          ],
+          "Delay": 500.0
+        }
+      ]
+    },
+    "Cursor.LeftPressedAlt": {
+      "Texture": "UI/cursor_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.015625,
+            0.265625,
+            0.25,
+            0.484375
+          ],
+          "Size": [
+            30.0,
+            28.0
+          ],
+          "Offset": [
+            11.0,
+            -10.0
+          ],
+          "Delay": 500.0
+        }
+      ]
+    },
+    "Cursor.HandClosed": {
+      "Texture": "UI/cursor_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.265625,
+            0.265625,
+            0.4375,
+            0.4296875
+          ],
+          "Size": [
+            22.0,
+            21.0
+          ],
+          "Offset": [
+            6.0,
+            -8.5
+          ],
+          "Delay": 150.0
+        }
+      ]
+    },
+    "Cursor.Drag": {
+      "Texture": "UI/cursor_atlas.png",
+      "Loop": true,
+      "Frames": [
+        {
+          "UV": [
+            0.453125,
+            0.265625,
+            0.6640625,
+            0.4921875
+          ],
+          "Size": [
+            27.0,
+            29.0
+          ],
+          "Offset": [
+            7.5,
+            -7.5
+          ],
+          "Delay": 250.0
+        },
+        {
+          "UV": [
+            0.6796875,
+            0.265625,
+            0.890625,
+            0.4921875
+          ],
+          "Size": [
+            27.0,
+            29.0
+          ],
+          "Offset": [
+            7.5,
+            -11.5
+          ],
+          "Delay": 100.0
+        },
+        {
+          "UV": [
+            0.015625,
+            0.5078125,
+            0.2265625,
+            0.734375
+          ],
+          "Size": [
+            27.0,
+            29.0
+          ],
+          "Offset": [
+            8.5,
+            -12.5
+          ],
+          "Delay": 200.0
+        },
+        {
+          "UV": [
+            0.2421875,
+            0.5078125,
+            0.453125,
+            0.734375
+          ],
+          "Size": [
+            27.0,
+            29.0
+          ],
+          "Offset": [
+            7.5,
+            -11.5
+          ],
+          "Delay": 100.0
+        }
+      ]
+    }
+  }
+}

@@ -18,6 +18,8 @@ bool RenderManager::Init()
     //CreateRenderLayer("Monster", 500);
 
     CreateRenderLayer("UI", 1000);
+    
+    CreateRenderLayer("Cursor", 1500);
 
     CreateRenderLayer("Collider", INT_MAX);
 

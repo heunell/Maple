@@ -254,6 +254,8 @@
     <ClInclude Include="Shader\TransformCBuffer.h" />
     <ClInclude Include="Shader\StaticMeshShader.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="UI\CursorUI.h" />
+    <ClInclude Include="UI\LucidEntryNPC.h" />
     <ClInclude Include="UI\MiniMap.h" />
     <ClInclude Include="UI\PlayerUI.h" />
     <ClInclude Include="UI\ProgressBar.h" />
@@ -437,6 +439,8 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Shader\StaticMeshShader.cpp" />
+    <ClCompile Include="UI\CursorUI.cpp" />
+    <ClCompile Include="UI\LucidEntryNPC.cpp" />
     <ClCompile Include="UI\MiniMap.cpp" />
     <ClCompile Include="UI\PlayerUI.cpp" />
     <ClCompile Include="UI\ProgressBar.cpp" />

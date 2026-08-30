@@ -127,8 +127,13 @@ bool AnimationManager::Init()
     {
         return false;
     }
+    
+    if (!LoadAnimationFile(TEXT("UI\\UI.json"), "Animations"))
+    {
+        return false;
+    }
 
-    return LoadAnimationFile(TEXT("UI\\UI.json"), "Animations");
+    return LoadAnimationFile(TEXT("UI\\Cursor.json"), "Animations");
 }
 
 Ptr<class Animation2DData> AnimationManager::FindAnimation(const std::string& Name)

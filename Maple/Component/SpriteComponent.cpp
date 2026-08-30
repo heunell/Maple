@@ -79,7 +79,9 @@ void SpriteComponent::Render(float DeltaTime)
 
     FMatrix Projection;
 
-    if (GetRenderLayerName() == "UI")
+    const std::string& RenderLayerName = GetRenderLayerName();
+    
+    if (RenderLayerName == "UI" || RenderLayerName == "Cursor")
     {
         Projection = CurrentLevel->GetUIProjMatrix();
     }

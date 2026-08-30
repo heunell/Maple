@@ -50,9 +50,9 @@ bool GameEngine::Init(HINSTANCE Instance, const wchar_t* Name)
     
     _World = New<World>();
 
-    //_World->Init("LucidEntry");
+    _World->Init("LucidEntry");
     
-    _World->Init("LucidPhase1");
+    //_World->Init("LucidPhase1");
     // Map List : LucidEntry , LucidPhase1 , LucidPhase2 , LucidReward
 
     return true;
@@ -248,6 +248,16 @@ LRESULT GameEngine::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 
             PostQuitMessage(0);
         }
+    break;
+
+    case WM_SETCURSOR:
+    {
+        if (LOWORD(lParam) == HTCLIENT)
+        {
+            SetCursor(nullptr);
+            return TRUE;
+        }
+    }
     break;
 
     default:

@@ -9,6 +9,7 @@
 #include "Collision/CollisionManager.h"
 #include "Component/CollisionComponent.h"
 #include "UI/PlayerUI.h"
+#include "UI/CursorUI.h"
 
 Level::Level()
 {}
@@ -68,6 +69,13 @@ bool Level::Init(const std::string& Path)
 	Ptr<PlayerUI> PlayerStatusUI = SpawnActor<PlayerUI>("PlayerUI", FVector3D::Zero, FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
 
 	if (!PlayerStatusUI)
+	{
+		return false;
+	}
+
+	Ptr<CursorUI> Cursor = SpawnActor<CursorUI>("CursorUI", FVector3D::Zero, FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
+	
+	if (!Cursor)
 	{
 		return false;
 	}
