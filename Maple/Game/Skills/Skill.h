@@ -10,8 +10,14 @@ public:
 protected:
 	Weak<class Actor> _Owner;
 
+	float _CoolDown = 0.f;
+
+	float _RemainCoolDown = 0.f;
+
 public:
 	virtual bool Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator Rotator, const std::string& Name, Ptr<Actor> Owner);
+
+	virtual void Tick(float DeltaTime) override;
 
 	virtual void Collision(float DeltaTime) = 0;
 
@@ -22,5 +28,9 @@ public:
 	virtual void End() = 0;
 
 	virtual void Destroy() override;
+
+	bool CanUse() const;
+
+	void StartCoolDown();
 };
 

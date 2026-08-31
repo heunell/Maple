@@ -10,8 +10,6 @@
 
 #include "Component/SceneComponent.h"
 #include "Component/SpriteComponent.h"
-#include "Component/ParallaxComponent.h"
-#include "Component/CameraComponent.h"
 
 bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
@@ -47,6 +45,14 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
     MiddleBackgroundRoot->AttachToComponent(GetRoot());
 
     NearBackgroundRoot->AttachToComponent(GetRoot());
+
+    _BackgroundScrollLayers.reserve(3);
+
+    _BackgroundScrollLayers.push_back({ FarBackgroundRoot, 22.f });
+    
+    _BackgroundScrollLayers.push_back({ MiddleBackgroundRoot, 45.f });
+    
+    _BackgroundScrollLayers.push_back({ NearBackgroundRoot, 70.f });
 
     std::vector<FBackgroundPart> BackgroundParts;
 
@@ -151,32 +157,9 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
 
         Sprite->AddAnimationSequence(Data);
 
+        Sprite->ChangeAnimation(Part.Name);
+
         Sprite->AttachToComponent(Part.Parent);
-    }
-
-    Ptr<ParallaxComponent> Parallax = CreateActorComponent<ParallaxComponent>("Parallax");
-
-    if (!Parallax)
-    {
-        return false;
-    }
-
-    Ptr<CameraComponent> MainCamera = GetLevel()->GetMainCamera();
-
-    if (!MainCamera)
-    {
-        return false;
-    }
-
-    Parallax->SetCamera(MainCamera);
-
-    // 반복 배경은 화면에 고정하고 잔해마다 이동 차이를 준다.
-    if (!Parallax->AddLayer(ScreenBackgroundRoot, 1.f) ||
-        !Parallax->AddLayer(FarBackgroundRoot, 0.8f) ||
-        !Parallax->AddLayer(MiddleBackgroundRoot, 0.5f) ||
-        !Parallax->AddLayer(NearBackgroundRoot, 0.2f))
-    {
-        return false;
     }
 
     const std::vector<std::string> PlatformNames =
@@ -387,4 +370,20 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
 void LucidPhase2::Tick(float DeltaTime)
 {
     Actor::Tick(DeltaTime);
+
+    for (const FBackgroundScrollLayer& Layer : _BackgroundScrollLayers)
+    {
+        Ptr<SceneComponent> BackgroundRoot = Lock(Layer.Root);
+
+        if (!BackgroundRoot)
+        {
+            continue;
+        }
+
+        FVector3D Position = BackgroundRoot->GetRelativePosition();
+
+        Position._y += Layer.ScrollSpeed * DeltaTime;
+
+        BackgroundRoot->SetRelativePosition(Position);
+    }
 }

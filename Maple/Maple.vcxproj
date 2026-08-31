@@ -221,6 +221,12 @@
     <ClInclude Include="Game\Map\Boss\LucidPhase2.h" />
     <ClInclude Include="Game\Map\Gate\BossGate.h" />
     <ClInclude Include="Game\Map\Gate\GateInteractComponent.h" />
+    <ClInclude Include="Game\Monsters\MonsterBase.h" />
+    <ClInclude Include="Game\Monsters\MonsterBlackBoard.h" />
+    <ClInclude Include="Game\Monsters\MonsterComponent.h" />
+    <ClInclude Include="Game\Monsters\MonsterState.h" />
+    <ClInclude Include="Game\Skills\Anemoy\AnemoyDatas.h" />
+    <ClInclude Include="Game\Skills\Anemoy\AnemoyState.h" />
     <ClInclude Include="Game\Skills\Skill.h" />
     <ClInclude Include="Game\Skills\SongOfHeaven.h" />
     <ClInclude Include="Input\Input.h" />
@@ -333,6 +339,12 @@
     <ClCompile Include="Game\Map\Boss\LucidPhase2.cpp" />
     <ClCompile Include="Game\Map\Gate\BossGate.cpp" />
     <ClCompile Include="Game\Map\Gate\GateInteractComponent.cpp" />
+    <ClCompile Include="Game\Monsters\MonsterBase.cpp" />
+    <ClCompile Include="Game\Monsters\MonsterBlackBoard.cpp" />
+    <ClCompile Include="Game\Monsters\MonsterComponent.cpp" />
+    <ClCompile Include="Game\Monsters\MonsterState.cpp" />
+    <ClCompile Include="Game\Skills\Anemoy\AnemoyDatas.cpp" />
+    <ClCompile Include="Game\Skills\Anemoy\AnemoyState.cpp" />
     <ClCompile Include="Game\Skills\Skill.cpp" />
     <ClCompile Include="Game\Skills\SongOfHeaven.cpp" />
     <ClCompile Include="Input\Input.cpp" />

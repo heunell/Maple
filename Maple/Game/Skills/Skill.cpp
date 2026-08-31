@@ -18,6 +18,23 @@ bool Skill::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, co
     return true;
 }
 
+void Skill::Tick(float DeltaTime)
+{
+    Actor::Tick(DeltaTime);
+
+    if(_RemainCoolDown <= 0.f)
+    {
+        return;
+    }
+
+    _RemainCoolDown -= DeltaTime;
+
+    if(_RemainCoolDown < 0.f)
+    {
+        _RemainCoolDown = 0.f;
+    }
+}
+
 void Skill::Collision(float DeltaTime)
 {}
 
@@ -35,4 +52,14 @@ void Skill::Destroy()
     _Owner.reset();
 
     Actor::Destroy();
+}
+
+bool Skill::CanUse() const
+{
+    return _RemainCoolDown <= 0.f;
+}
+
+void Skill::StartCoolDown()
+{
+    _RemainCoolDown = _CoolDown;
 }
