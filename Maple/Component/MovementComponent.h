@@ -57,5 +57,7 @@ public:
 
     void Stop();
 
+    void ResetMovement();
+
     void Blocking(const FVector3D& Correction); // 벽에 막혔을때 호출해주는 함수 
 };

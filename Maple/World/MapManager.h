@@ -18,7 +18,12 @@ private:
 
 	std::map<std::string, Weak<class Actor>> _Maps; // 생성된 맵 액터를 이름으로 다시 찾기 위한 참조 
 													// 생성되고 이동된 맵은 Destroy 되지않고 비활성화 방식으로 기억하면서 다시 찾기 위한 저장소
+
+	std::map<std::string, FVector3D> _PlayerSpawnPositions;	// 맵별 플레이어 시작 위치
+
 	Weak<class Actor> _CurrentMap; // 현재 Tick, Collision, Render 가 활성화된 맵 액터
+
+	void SetMapActorEnable(const std::string& MapName, bool Enable); // 맵과 함께 생성된 별도 Actor 까지 같은 Tag로 활성화하거나 정지하기
 
 public:
 	bool Init(Ptr<class Level> OwnerLevel);

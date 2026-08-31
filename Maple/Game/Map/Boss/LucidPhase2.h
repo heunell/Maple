@@ -2,6 +2,22 @@
 #include "Object/Actor.h"
 #include "Component/AABBCollisionComponent.h"
 
+struct FPlatformCollisionData
+{
+	const char* Name;
+
+	FVector3D Position;
+
+	FVector2D Size;
+};
+
+struct FBackgroundPart
+{
+	std::string Name;
+
+	Ptr<SceneComponent> Parent;
+};
+
 class LucidPhase2 : public Actor
 {
 public:

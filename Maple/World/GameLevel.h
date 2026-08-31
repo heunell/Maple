@@ -19,5 +19,7 @@ public:
     virtual bool Init(const std::string& MapName);
 
     virtual void Destroy() override;
+
+	Ptr<class MapManager> GetMapManager() const;
 };
 

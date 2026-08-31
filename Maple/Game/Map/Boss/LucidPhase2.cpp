@@ -20,6 +20,8 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
         return false;
     }
 
+    AddTag("Map.LucidPhase2");
+
     if (!ANIMATION_MANAGER->LoadAnimationFile(TEXT("Maps\\Boss\\Phase2\\LucidPhase2.json"), "Animations"))
     {
         return false;
@@ -33,10 +35,7 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
 
     Ptr<SceneComponent> NearBackgroundRoot = CreateSceneComponent<SceneComponent>("NearBackgroundRoot");
 
-    if (!ScreenBackgroundRoot ||
-        !FarBackgroundRoot ||
-        !MiddleBackgroundRoot ||
-        !NearBackgroundRoot)
+    if (!ScreenBackgroundRoot || !FarBackgroundRoot || !MiddleBackgroundRoot || !NearBackgroundRoot)
     {
         return false;
     }
@@ -48,13 +47,6 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
     MiddleBackgroundRoot->AttachToComponent(GetRoot());
 
     NearBackgroundRoot->AttachToComponent(GetRoot());
-
-    struct FBackgroundPart
-    {
-        std::string Name;
-
-        Ptr<SceneComponent> Parent;
-    };
 
     std::vector<FBackgroundPart> BackgroundParts;
 
@@ -239,15 +231,6 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
         PlatformSprite->AttachToComponent(GetRoot());
     }
 
-    struct FPlatformCollisionData
-    {
-        const char* Name;
-
-        FVector3D Position;
-
-        FVector2D Size;
-    };
-
     const FPlatformCollisionData PlatformCollisions[] =
     {
         {
@@ -393,6 +376,8 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
     {
         return false;
     }
+
+    AreaCameraZone->AddTag("Map.LucidPhase2");
 
     AreaCameraZone->SetArea(CameraZoneWidth, CameraZoneHeight);
 

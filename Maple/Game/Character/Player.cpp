@@ -18,6 +18,7 @@
 #include "Core/GameEngine.h"
 #include "Core/TimeManager.h"
 #include "Render/RenderManager.h"
+#include "Game/Map/Gate/GateInteractComponent.h"
 
 bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
@@ -46,7 +47,7 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 	_Controller->SetPawn(This<Player>());
 
 	Ptr<SpriteComponent> SkillSprite = CreateSceneComponent<SpriteComponent>("SkillSprite");
-	
+
 	SkillSprite->AttachToComponent(GetRoot());
 	
 	SkillSprite->SetEnable(false);
@@ -54,6 +55,13 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 	CreateActorComponent<SkillComponent>("Skill");
 
 	Ptr<PlayerComponent> PlayerState = CreateActorComponent<PlayerComponent>("PlayerState");
+
+	Ptr<GateInteractComponent> GateInteract = CreateActorComponent<GateInteractComponent>("GateInteract");
+
+	if (!GateInteract)
+	{
+		return false;
+	}
 
 	GetController<PlayerController>()->KeyBind();
 

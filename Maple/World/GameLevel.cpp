@@ -41,6 +41,11 @@ bool GameLevel::Init(const std::string& MapName)
     return true;
 }
 
+Ptr<class MapManager> GameLevel::GetMapManager() const
+{
+    return _MapManager;
+}
+
 void GameLevel::Destroy()
 {
     DESTROY(_MapManager);

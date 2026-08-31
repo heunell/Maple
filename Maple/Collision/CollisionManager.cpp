@@ -2,6 +2,7 @@
 #include "CollisionManager.h"
 #include "Component/CollisionComponent.h"
 #include "Collision/CollisionProfileManager.h"
+#include "Object/Actor.h"
 
 void CollisionManager::Init()
 {
@@ -24,6 +25,13 @@ void CollisionManager::Collision(float DeltaTime)
 
         Ptr<CollisionComponent> ItValue = It.second; // 충돌 컴포넌트(충돌체)
 
+        Ptr<Actor> ColliderOwner = ItValue->GetOwner();
+        
+        if (!ColliderOwner || !ColliderOwner->IsEnable() || !ColliderOwner->IsActive()) // 맵 Actor가 Disable이 되면 그 Actor의 Collision도 검사하지 않는다
+        {
+            continue;
+        }
+
         if (!ItValue->IsEnable())
         {
             continue;
@@ -45,6 +53,14 @@ void CollisionManager::Collision(float DeltaTime)
             std::pair<int32, int32> SubItKey = SubIt.first;     // 충돌체의 ID
 
             Ptr<CollisionComponent> SubItValue = SubIt.second;  // 충돌 컴포넌트(충돌체)
+
+            Ptr<Actor> DestinationOwner = SubItValue->GetOwner();
+
+            // 꺼진 맵에 속한 Collider가 다른 활성 Actor와 충돌하지 않게 한다.
+            if (!DestinationOwner || !DestinationOwner->IsEnable() || !DestinationOwner->IsActive())
+            {
+                continue;
+            }
 
             if (!SubItValue->IsEnable())
             {
@@ -101,44 +117,6 @@ void CollisionManager::Collision(float DeltaTime)
                     ItValue->Invoke(COLLISION_STATE_RELEASE, SubItValue, SubItKey);
                 }
             }
-
-            //if (ItValue->Collision(SubItValue))
-            //{
-            //    switch (ItValue->CheckState(SubItKey))
-            //    {
-            //    case eCollisionState::COLLISION_STATE_BLOCK:
-            //    {
-            //        ItValue->Invoke(eCollisionState::COLLISION_STATE_OVERLAP, SubItValue, SubItKey);
-            //    }
-            //    break;
-            //    case eCollisionState::COLLISION_STATE_OVERLAP:
-            //    {
-            //        ItValue->Invoke(eCollisionState::COLLISION_STATE_OVERLAP, SubItValue, SubItKey);
-            //    }
-            //    break;
-            //    case eCollisionState::COLLISION_STATE_RELEASE:
-            //    {
-            //        ItValue->Invoke(eCollisionState::COLLISION_STATE_OVERLAP, SubItValue, SubItKey);
-            //    }
-            //    break;
-            //    default:
-            //        break;
-            //    }
-            //}
-            //else
-            //{
-            //    switch (ItValue->CheckState(SubItKey))
-            //    {
-            //    case eCollisionState::COLLISION_STATE_BLOCK:
-            //    case eCollisionState::COLLISION_STATE_OVERLAP:
-            //    {
-            //        ItValue->Invoke(eCollisionState::COLLISION_STATE_RELEASE, SubItValue, SubItKey);
-            //    }
-            //    break;
-            //    default:
-            //        break;
-            //    }
-            //}
         }
     }
 }

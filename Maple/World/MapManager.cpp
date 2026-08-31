@@ -5,12 +5,39 @@
 #include "Game/Map/Boss/LucidEntry.h"
 #include "Game/Map/Boss/LucidPhase1.h"
 #include "Game/Map/Boss/LucidPhase2.h"
-
+#include "Component/MovementComponent.h"
+#include "Core/GameEngine.h"
+#include "World.h"
+#include <vector>
 MapManager::MapManager()
 {}
 
 MapManager::~MapManager()
 {}
+
+void MapManager::SetMapActorEnable(const std::string& MapName, bool Enable)
+{
+	Ptr<Level> OwnerLevel = Lock<Level>(_OwnerLevel);
+
+	if (!OwnerLevel)
+	{
+		return;
+	}
+
+	std::vector<Ptr<Actor>> MapActors;
+
+	// 같은 맵 태그를 가진 맵, NPC, 카메라 존을 모두 찾는다.
+
+	OwnerLevel->FindActors("Map." + MapName, MapActors);
+
+	for (Ptr<Actor>& MapActor : MapActors)
+	{
+		if (MapActor)
+		{
+			MapActor->SetEnable(Enable); // Active를 끄면 제거되니 Enable만 변경해서 Actor를 보존하기
+		}
+	}
+}
 
 bool MapManager::Init(Ptr<class Level> OwnerLevel)
 {
@@ -21,6 +48,22 @@ bool MapManager::Init(Ptr<class Level> OwnerLevel)
 
 	_OwnerLevel = OwnerLevel;
 
+	_PlayerSpawnPositions =					// 캐릭터 맵 시작 스폰좌표는 앞으로 여기서 관리하기
+	{
+		{
+			"LucidEntry", FVector3D(37.f, -248.f, 1.f)
+		},
+		{
+			"LucidReward", FVector3D(37.f, -248.f, 1.f)
+		},
+		{
+			"LucidPhase1", FVector3D(-423.f, -261.f, 1.f)
+		},
+		{
+			"LucidPhase2", FVector3D(911.f, -967.f, 1.f)
+		}
+	};
+
 	return true;
 }
 
@@ -29,6 +72,34 @@ bool MapManager::ChangeMap(const std::string& MapName)
 	Ptr<Level> OwnerLevel = Lock<Level>(_OwnerLevel);
 
 	if (!OwnerLevel)
+	{
+		return false;
+	}
+
+	auto SpawnIt = _PlayerSpawnPositions.find(MapName);
+
+	if (SpawnIt == _PlayerSpawnPositions.end())
+	{
+		return false;
+	}
+
+	Ptr<World> CurrentWorld = GameEngine::Instance().GetWorld();
+
+	if (!CurrentWorld)
+	{
+		return false;
+	}
+
+	Ptr<Actor> Player = CurrentWorld->GetPlayer();
+
+	if (!Player)
+	{
+		return false;
+	}
+
+	Ptr<MovementComponent> Movement = Player->FindActorComponent<MovementComponent>("Movement");
+
+	if (!Movement)
 	{
 		return false;
 	}
@@ -57,6 +128,10 @@ bool MapManager::ChangeMap(const std::string& MapName)
 		{
 			TargetMap = OwnerLevel->SpawnActor<LucidPhase2>("LucidPhase2", FVector3D(0.f, 0.f, 0.f), FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
 		}
+		else if (MapName == "LucidReward")
+		{
+			TargetMap = OwnerLevel->SpawnActor<LucidEntry>("LucidReward", FVector3D(0.f, 0.f, 0.f), FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f), eRoomType::Reward);
+		}
 		else
 		{
 			return false;
@@ -74,14 +149,16 @@ bool MapManager::ChangeMap(const std::string& MapName)
 
 	if (CurrentMap && CurrentMap != TargetMap)
 	{
-		// 기존 맵은 제거하지 않고 비활성화 처리하기
-		CurrentMap->SetEnable(false);
+		SetMapActorEnable(CurrentMap->GetName(), false);
 	}
 
-	TargetMap->SetEnable(true);
+	SetMapActorEnable(MapName, true);
 
 	_CurrentMap = TargetMap;
 
+	Player->SetWorldPosition(SpawnIt->second);
+
+	Movement->ResetMovement();
 
 	return true;
 }
@@ -92,6 +169,10 @@ void MapManager::Destroy()
 	_CurrentMap.reset();
 	
 	_Maps.clear();
+
+	_Maps.clear();
+
+	_PlayerSpawnPositions.clear();
 
 	_OwnerLevel.reset();
 }

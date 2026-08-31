@@ -85,6 +85,24 @@ void MovementComponent::Stop()
     _MoveAxis = FVector3D::Zero;
 }
 
+void MovementComponent::ResetMovement()
+{
+    Stop();
+
+    _Velocity = FVector3D::Zero;
+
+    _IsLanding = true;
+
+    if (_UpdateComponent)
+    {
+        _NextPosition = _UpdateComponent->GetWorldPosition();
+    }
+    else
+    {
+        _NextPosition = FVector3D::Zero;
+    }
+}
+
 void MovementComponent::SetLanding(bool IsLanding)
 {
     _IsLanding = IsLanding;

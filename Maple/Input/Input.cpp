@@ -90,6 +90,11 @@ bool Input::InitInput()
 		return false;
 	}
 
+	if (FAILED(_Mouse->SetDataFormat(&c_dfDIMouse)))
+	{
+		return false;
+	}
+
     if (Device::Instance().GetWindowMode())
     {
         if (FAILED(_Mouse->SetCooperativeLevel(_hWnd, DISCL_BACKGROUND | DISCL_NONEXCLUSIVE)))

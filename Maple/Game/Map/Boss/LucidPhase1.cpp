@@ -11,6 +11,7 @@
 #include "Component/SpriteComponent.h"
 #include "Render/RenderManager.h"
 #include "Object/Actor.h"
+#include "Game/Map/Gate/BossGate.h"
 
 bool LucidPhase1::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
@@ -18,6 +19,8 @@ bool LucidPhase1::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
 	{
 		return false;
 	}
+
+	AddTag("Map.LucidPhase1");
 
 	if (!ANIMATION_MANAGER->LoadAnimationFile(TEXT("Maps\\Boss\\Phase1\\Lucid_Phase1_Level.json"), "Animations"))
     {
@@ -165,7 +168,20 @@ bool LucidPhase1::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
 		return false;
 	}
 
+	AreaCameraZone->AddTag("Map.LucidPhase1");
+
 	AreaCameraZone->SetArea(CameraZoneWidth, CameraZoneHeight);
+
+	Ptr<BossGate> Gate = GetLevel()->SpawnActor<BossGate>("LucidPhase1BossGate", FVector3D(-578.f, -261.f, 0.f), FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
+
+	if (!Gate)
+	{
+		return false;
+	}
+
+	Gate->SetTargetMap("LucidEntry");
+
+	Gate->AddTag("Map.LucidPhase1");
 
 	return true;
 }

@@ -157,8 +157,15 @@ void RenderManager::Render(float DeltaTime)
         for (auto& It : Layer._Renders)
         {
             Ptr<SceneComponent> Component = Lock<SceneComponent>(It);
-            
+
             if (nullptr == Component)
+            {
+                continue;
+            }
+
+            Ptr<Actor> Owner = Component->GetOwner();
+
+            if (!Owner || !Owner->IsEnable() || !Owner->IsActive())
             {
                 continue;
             }
