@@ -30,6 +30,8 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 
 	Ptr<SpriteComponent> Sprite = CreateSceneComponent<SpriteComponent>("PlayerSprite");
 
+	Sprite->SetRenderLayerName("Player");
+
 	Sprite->AddAnimationSequence("ARMED_STAND", true, false, 0.8f, 1.f);
 
 	Sprite->AddAnimationSequence("ARMED_WALK", true, false, 0.6f, 1.f);
@@ -47,6 +49,8 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 	_Controller->SetPawn(This<Player>());
 
 	Ptr<SpriteComponent> SkillSprite = CreateSceneComponent<SpriteComponent>("SkillSprite");
+
+	SkillSprite->SetRenderLayerName("Player");
 
 	SkillSprite->AttachToComponent(GetRoot());
 	
