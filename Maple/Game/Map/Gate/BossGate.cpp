@@ -53,7 +53,7 @@ bool BossGate::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale,
         return false;
     }
 
-    _Trigger->SetBoxSize(152.f, 196.f);
+    _Trigger->SetBoxSize(90.f, 120.f);
     
     _Trigger->SetRelativePosition(0.f, 49.f, 0.f);
 

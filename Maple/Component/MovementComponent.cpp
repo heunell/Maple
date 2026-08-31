@@ -18,22 +18,15 @@ bool MovementComponent::Init(int32 Id, const std::string& Name, Ptr<class Actor>
 void MovementComponent::Tick(float DeltaTime)
 {
     ActorComponent::Tick(DeltaTime);
-    
-    const float _MaxFallSpeed = -200.f;
-
+   
     if (nullptr == _UpdateComponent)
     {
         return;
     }
 
-    if(!_IsLanding)
+    if (!_IsLanding)
     {
-        _Velocity._y += _Gravity * DeltaTime * 8.0f;
-
-        if (_Velocity._y <= _MaxFallSpeed)
-        {
-            _Velocity._y = _MaxFallSpeed;
-        }
+        _Velocity._y += _Gravity * DeltaTime;
     }
     else if(_Velocity._y < 0.f)
     {
@@ -42,8 +35,13 @@ void MovementComponent::Tick(float DeltaTime)
 
     const FVector3D CurrentPosition = _UpdateComponent->GetWorldPosition();
 
-    const FVector3D InputVelocity = _MoveAxis * _Speed;
+    FVector3D InputVelocity = _MoveAxis * _Speed;
     
+    if (!_IsLanding)
+    {
+        InputVelocity._x = 0.f;
+    }
+
     _NextPosition = CurrentPosition + (InputVelocity + _Velocity) * DeltaTime;
 
     _UpdateComponent->SetWorldPosition(_NextPosition);
@@ -107,9 +105,14 @@ void MovementComponent::SetLanding(bool IsLanding)
 {
     _IsLanding = IsLanding;
 
-    if(_IsLanding && _Velocity._y < 0.f)
+    if (_IsLanding)
     {
-        _Velocity._y = 0.f;
+        if (_Velocity._y < 0.f)
+        {
+            _Velocity._y = 0.f;
+        }
+
+        _Velocity._x = 0.f;
     }
 }
 
@@ -124,6 +127,8 @@ bool MovementComponent::StartJump(float Force)
     {
         return false;
     }
+
+    _Velocity._x = _MoveAxis._x * _Speed;
 
     _Velocity._y = Force;
     
@@ -146,6 +151,6 @@ void MovementComponent::Blocking(const FVector3D &Correction)
     // 벽 방향으로 진행 중인 수평 이동만 중단한다.
     if ((Correction._x > 0.f && _MoveAxis._x < 0.f) || (Correction._x < 0.f && _MoveAxis._x > 0.f))
     {
-        _MoveAxis._x = 0.f;
+        _Velocity._x = 0.f;
     }
 }

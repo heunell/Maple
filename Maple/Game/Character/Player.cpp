@@ -125,9 +125,9 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 
 	_Movement->SetUpdateComponent(_Root);
 
-	_Movement->SetSpeed(130.f);
+	_Movement->SetSpeed(170.f);
 
-	_Movement->SetGravity(-130.f);
+	_Movement->SetGravity(-1800.f);
 
 	_Camera = CreateSceneComponent<CameraComponent>("Camera");
 
@@ -258,7 +258,7 @@ void Player::MoveStop()
 
 bool Player::Jump()
 {
-    return _Movement->StartJump(280.f);
+    return _Movement->StartJump(500.f);
 }
 
 void Player::MoveUp(float DeltaTime)
