@@ -42,6 +42,8 @@ bool BossGate::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale,
 
     _Sprite->SetRenderLayerName("Default");
 
+    _Sprite->SetOpacity(1.4f);
+
     _Sprite->AddAnimationSequence(GetData, true);
 
     _Sprite->AttachToComponent(GetRoot());
