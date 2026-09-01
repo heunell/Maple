@@ -1,18 +1,12 @@
 #include "pch.h"
 #include "PlayerUI.h"
 #include "ProgressBar.h"
-#include "Component/SpriteComponent.h"
-#include "Core/Animation2DData.h"
-#include "Core/AnimationManager.h"
-#include "Core/AssetManager.h"
 
 PlayerUI::PlayerUI()
 {}
 
 PlayerUI::~PlayerUI()
 {}
-
-
 
 bool PlayerUI::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
@@ -69,60 +63,6 @@ bool PlayerUI::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale,
     SetEXP(0.f, 1.f);
 
     return true;
-}
-
-
-Ptr<class SpriteComponent> PlayerUI::CreateSprite(const std::string& ComponentName, const std::string& AnimationName)
-{
-    Ptr<Animation2DData> Data = ANIMATION_MANAGER->FindAnimation(AnimationName);
-
-    if (!Data)
-    {
-        return nullptr;
-    }
-
-    Ptr<SpriteComponent> Sprite = CreateSceneComponent<SpriteComponent>(ComponentName);
-
-    if (!Sprite)
-    {
-        return nullptr;
-    }
-
-    Sprite->SetRenderLayerName("UI");
-
-    Sprite->AddAnimationSequence(Data);
-    
-    Sprite->AttachToComponent(GetRoot());
-
-    return Sprite;
-}
-
-Ptr<class ProgressBar> PlayerUI::CreateProgressBar(const std::string& ComponentName, const std::string& AnimationName)
-{
-    Ptr<Animation2DData> Data = ANIMATION_MANAGER->FindAnimation(AnimationName);
-
-    if (!Data)
-    {
-        return nullptr;
-    }
-
-    Ptr<ProgressBar> Bar = CreateSceneComponent<ProgressBar>(ComponentName);
-
-    if (!Bar)
-    {
-        return nullptr;
-    }
-
-    Bar->SetRenderLayerName("UI");
-
-    Bar->AttachToComponent(GetRoot());
-
-    if (!Bar->SetData(Data))
-    {
-        return nullptr;
-    }
-
-    return Bar;
 }
 
 void PlayerUI::SetHP(float CurrentHP, float MaxHP)

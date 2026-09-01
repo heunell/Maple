@@ -133,10 +133,14 @@ bool AnimationManager::Init()
         return false;
     }
 
+    if (!LoadAnimationFile(TEXT("UI\\BossUI.json"), "BossHUD"))
+    {
+        return false;
+    }
     return LoadAnimationFile(TEXT("UI\\Cursor.json"), "Animations");
 }
 
-Ptr<class Animation2DData> AnimationManager::FindAnimation(const std::string& Name)
+Ptr<Animation2DData> AnimationManager::FindAnimation(const std::string& Name)
 {
     auto It = _Animation.find(Name);
 

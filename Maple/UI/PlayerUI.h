@@ -29,9 +29,4 @@ public:
     void SetMP(float CurrentMP, float MaxMP);
 
     void SetEXP(float CurrentEXP, float MaxEXP);
-
-private:
-    Ptr<class SpriteComponent> CreateSprite(const std::string& ComponentName, const std::string& AnimationName);
-
-    Ptr<class ProgressBar> CreateProgressBar(const std::string& ComponentName, const std::string& AnimationName);
 };

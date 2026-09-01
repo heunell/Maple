@@ -52,7 +52,7 @@ bool GameEngine::Init(HINSTANCE Instance, const wchar_t* Name)
 
     //_World->Init("LucidEntry");
     
-    _World->Init("LucidPhase2");
+    _World->Init("LucidPhase1");
     // Map List : LucidEntry , LucidPhase1 , LucidPhase2 , LucidReward
 
     return true;

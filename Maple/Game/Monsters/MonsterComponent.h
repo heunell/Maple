@@ -15,4 +15,23 @@ public:
 	MonsterComponent& operator=(const MonsterComponent&) = delete;
 	MonsterComponent& operator=(MonsterComponent&&) = delete;
 
+private:
+	Ptr<class MonsterStateMachine> _StateMachine;
+
+public:
+	virtual bool Init(int32 Id, const std::string& Name, Ptr<class Actor> Owner) override;
+
+	virtual void Tick(float DeltaTime) override;
+
+	virtual void Destroy() override;
+
+	void TransitionState(Ptr<class MonsterState> State);
+
+	Ptr<class MonsterBase> GetMonster() const;
+
+	Ptr<class MonsterStateMachine> GetStateMachine() const;
+
+	void SetBlackBoard(Ptr<class MonsterBlackBoard> BlackBoard);
+
+	Ptr<class MonsterBlackBoard> GetBlackBoard() const;
 };

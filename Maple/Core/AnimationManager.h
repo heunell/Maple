@@ -8,6 +8,7 @@ class AnimationManager : public SubManager
 	friend class LucidPhase1;
 	friend class LucidPhase2;
 	friend class BossGate;
+	friend class Boss;
 	
 public:
 	AnimationManager();

@@ -12,6 +12,8 @@
 #include "Render/RenderManager.h"
 #include "Object/Actor.h"
 #include "Game/Map/Gate/BossGate.h"
+#include "Game/Monsters/Boss/Boss.h"
+#include "UI/BossHUD.h"
 
 bool LucidPhase1::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
@@ -183,6 +185,24 @@ bool LucidPhase1::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
 
 	Gate->AddTag("Map.LucidPhase1");
 
+	Ptr<Boss> _Boss = GetLevel()->SpawnActor<Boss>("Lucid", FVector3D(213.f, -261.f, 0.f), FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
+
+	if (!_Boss)
+	{
+		return false;
+	}
+
+	_Boss->AddTag("Map.LucidPhase1");
+
+	Ptr<BossHUD> BossHUDActor = GetLevel()->SpawnActor<BossHUD>("BossHUD", FVector3D::Zero, FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
+
+	if (!BossHUDActor)
+	{
+		return false;
+	}
+
+	BossHUDActor->AddTag("Map.LucidPhase1");
+	
 	return true;
 }
 

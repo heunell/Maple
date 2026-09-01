@@ -1,50 +1,28 @@
 #pragma once
-
 #include "Core/Object.h"
 
-enum class eMonsterAnimationType // 몬스터의 State
-{
-    Idle, // = stand
-    Move,
-    Fly,
-    Die,
-    Respawn,
-
-    End
-};
-
-enum class eBossAnimationType // 보스의 State
-{
-    Idle, // = stand
-    Move, // 
-    Fly,
-    Die,
-
-    Blade,
-    Drangon,
-    Laser,
-    Sommon,
-
-    End
-};
 
 class MonsterState : public Object
 {
 public:
-    MonsterState() = default;
-    virtual ~MonsterState() = default;
+	MonsterState() = default;
+	virtual ~MonsterState() = default;
+	MonsterState(const MonsterState&) = delete;
+	MonsterState(MonsterState&&) = delete;
+	MonsterState& operator=(const MonsterState&) = delete;
+	MonsterState& operator=(MonsterState&&) = delete;
 
 protected:
-    uint8 _StateType = static_cast<uint8>(-1);
+	uint8 _StateType = static_cast<uint8>(-1);
 
 public:
-    virtual void Destroy() override;
+	virtual void Enter(Ptr<class MonsterComponent> Monster);
 
-    virtual void PatternSequence();
+	virtual Ptr<MonsterState> Tick(Ptr<class MonsterComponent> Monster, float DeltaTime);
 
-    virtual void Tick(Ptr<class MonsterComponent> Monster, float DeltaTime) {}
+	virtual void Exit(Ptr<class MonsterComponent> Monster);
 
-    virtual eMonsterAnimationType GetAnimation() const = 0;
+	virtual void Destroy() override;
 
-    uint8 GetType() const;
+	uint8 GetType() const;
 };

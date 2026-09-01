@@ -1,10 +1,21 @@
 #include "pch.h"
 #include "MonsterState.h"
 
-void MonsterState::Destroy()
+void MonsterState::Enter(Ptr<class MonsterComponent> Monster)
+{}
+
+Ptr<MonsterState> MonsterState::Tick(Ptr<class MonsterComponent> Monster, float DeltaTime)
 {
+	return nullptr;
 }
 
-void MonsterState::PatternSequence()
+void MonsterState::Exit(Ptr<class MonsterComponent> Monster)
+{}
+
+void MonsterState::Destroy()
+{}
+
+uint8 MonsterState::GetType() const
 {
+	return _StateType;
 }
