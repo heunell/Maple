@@ -15,6 +15,7 @@
 #include "Component/StaticMeshComponent.h"
 #include "Component/SpriteComponent.h"
 #include "Component/SkillComponent.h"
+#include "Component/BuffComponent.h"
 #include "Core/GameEngine.h"
 #include "Core/TimeManager.h"
 #include "Render/RenderManager.h"
@@ -40,6 +41,8 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 
 	Sprite->AddAnimationSequence("ARMED_SHOOT", true);
 
+	Sprite->AddAnimationSequence("ARMED_PRONE", true);
+
 	//SetRootComponent(Sprite);
 
 	Sprite->AttachToComponent(GetRoot());
@@ -58,6 +61,11 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 
 	CreateActorComponent<SkillComponent>("Skill");
 
+	if (!CreateActorComponent<BuffComponent>("Buff"))
+	{
+		return false;
+	}
+
 	Ptr<PlayerComponent> PlayerState = CreateActorComponent<PlayerComponent>("PlayerState");
 
 	Ptr<GateInteractComponent> GateInteract = CreateActorComponent<GateInteractComponent>("GateInteract");
@@ -73,15 +81,15 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 
 	auto MappingContext = InputSystem::Instance().FindOrAddInputContext("MAPPING_CONTEXT");
 
-	auto MoveRight = InputSystem::Instance().FindOrAddInputAction("MOVE_RIGHT");
-
-	auto MoveLeft = InputSystem::Instance().FindOrAddInputAction("MOVE_LEFT");
-
-	auto MoveUp = InputSystem::Instance().FindOrAddInputAction("MOVE_UP");
-
-	auto MoveDown = InputSystem::Instance().FindOrAddInputAction("MOVE_DOWN");
-
-	auto MoveJump = InputSystem::Instance().FindOrAddInputAction("MOVE_JUMP");
+	auto MoveRight      = InputSystem::Instance().FindOrAddInputAction("MOVE_RIGHT");
+				        
+	auto MoveLeft       = InputSystem::Instance().FindOrAddInputAction("MOVE_LEFT");
+				        
+	auto MoveUp         = InputSystem::Instance().FindOrAddInputAction("MOVE_UP");
+				        
+	auto MoveDown       = InputSystem::Instance().FindOrAddInputAction("MOVE_DOWN");
+				        
+	auto MoveJump       = InputSystem::Instance().FindOrAddInputAction("MOVE_JUMP");
 
 
 
@@ -119,7 +127,7 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 
 	InputComponent->BindAction(MappingContext->GetName(), MoveJump->GetName(),  INPUT_TYPE::UP,   PlayerState.get(), &PlayerComponent::HandleInput);
 	
-
+	
 
 	_Movement = CreateActorComponent<MovementComponent>("Movement");
 
@@ -266,11 +274,6 @@ void Player::MoveUp(float DeltaTime)
 	// todo : Move Up과 Down은 메이플스토리에서 해당하는 로직이 조금씩 다르기 때문에 잠시 대기
 }
 
-void Player::MoveDown(float DeltaTime)
-{
-
-}
-
 void Player::OnGround(Weak<class CollisionComponent> Collision)
 {
 	Ptr<CollisionComponent> Component = Lock<CollisionComponent>(Collision);
@@ -395,4 +398,5 @@ void Player::OnRightWall(Weak<class CollisionComponent> Collision)
 
 void Player::Prone(float DeltaTime)
 {
+	MoveStop();
 }

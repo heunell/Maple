@@ -8,12 +8,23 @@ enum class eMonsterType
 {
     Common,     // 일반몬스터, 패턴으로 인해 소환되어도 일반몬스터 취급한다. [1페이즈 골렘, 2페이즈 골렘, 1페이즈 버섯, ...]
     Boss,       // 보스몬스터 [ 루시드 ]
-    Pattern,    // 플레이어에게 공격당하지 않고 오로지 패턴중 나오는 몬스터 타입, 자기 애니메이션이 끝나거나 생명주기가 다하면 사라진다.
 
     End
 };
 
+struct FMonsterStatus
+{
+    int64 MaxHP     = 0.f;
+
+    int64 CurrentHP = 0.f;
+};
+
 class MonsterBase : public Actor
 {
+public:
+    MonsterBase() = default;
+    virtual ~MonsterBase() = default;
 
+protected:
+    FMonsterStatus _Status;
 };

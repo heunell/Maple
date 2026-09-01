@@ -133,6 +133,16 @@ bool MovementComponent::StartJump(float Force)
     return true;
 }
 
+bool MovementComponent::StartDoubleJump(float HorizontalForce, float VerticalForce)
+{
+    return false;
+}
+
+bool MovementComponent::StartDownJump()
+{
+    return false;
+}
+
 void MovementComponent::Blocking(const FVector3D &Correction)
 {
     if(!_UpdateComponent)

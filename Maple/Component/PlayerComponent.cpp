@@ -151,11 +151,20 @@ void PlayerComponent::UpdateAnimation()
     case ePlayerAnimationType::Shoot:
         Sprite->ChangeAnimation("ARMED_SHOOT");
         break;
-    
-    case ePlayerAnimationType::None:
+
     case ePlayerAnimationType::Prone:
+        Sprite->ChangeAnimation("ARMED_PRONE");
+        break;
+
     case ePlayerAnimationType::Dead:
+        Sprite->ChangeAnimation("Dead");
+        break;
+
     case ePlayerAnimationType::Alter:
+        Sprite->ChangeAnimation("ARMED_ALTER");
+        break;
+
+    case ePlayerAnimationType::None:
     case ePlayerAnimationType::End:
     break;    
     }

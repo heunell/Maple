@@ -4,6 +4,7 @@
 #include "Game/Character/Player.h"
 #include "PlayerIdleState.h"
 #include "PlayerJumpState.h"
+#include "PlayerProneState.h"
 
 Ptr<PlayerState> PlayerWalkState::HandleInput(Ptr<class PlayerComponent> PlayerComponent, Ptr<InputAction> Action, INPUT_TYPE::eType ButtonEvent)
 {
@@ -21,6 +22,11 @@ Ptr<PlayerState> PlayerWalkState::HandleInput(Ptr<class PlayerComponent> PlayerC
 
     if (ButtonEvent == INPUT_TYPE::HOLD)
     {
+        if (Action->GetName() == "MOVE_DOWN")
+        {
+            return New<PlayerProneState>();
+        }
+
         if (Action->GetName() == "MOVE_RIGHT")
         {
             Player->MoveRight();

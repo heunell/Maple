@@ -44,8 +44,6 @@ public:
 private:
     void MoveUp   (float DeltaTime);
     
-    void MoveDown (float DeltaTime);
-    
     void Prone    (float DeltaTime);
 
     void OnGround (Weak<class CollisionComponent> Collision);
