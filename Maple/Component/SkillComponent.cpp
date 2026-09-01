@@ -4,6 +4,7 @@
 #include "Component/SpriteComponent.h"
 #include "World/Level.h"
 #include "Game/Skills/SongOfHeaven.h"
+#include "Game/Skills/Anemoi/Anemoi.h"
 
 SkillComponent::SkillComponent()
 {}
@@ -25,9 +26,25 @@ bool SkillComponent::Init(int32 Id, const std::string& Name, Ptr<Actor> Owner)
         return false;
     }
 
-    _SongOfHeaven = _Level->SpawnActor<SongOfHeaven>("SongOfHeaven", FVector3D::Zero, FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f), Owner);
+    Ptr<SongOfHeaven> _SongOfHeaven = _Level->SpawnActor<SongOfHeaven>("SongOfHeaven", FVector3D::Zero, FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f), Owner);
 
-    return _SongOfHeaven != nullptr;
+    if(!_SongOfHeaven)
+    {
+        return false;
+    }
+    
+    Ptr<Anemoi> _Anemoi = _Level->SpawnActor<Anemoi>("Anemoi", FVector3D::Zero, FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f), Owner);
+
+    if(!_Anemoi)
+    {
+        return false;
+    }
+    
+    _Skills[eSkillType::SongOfHeaven] = _SongOfHeaven;
+
+    _Skills[eSkillType::Anemoi] = _Anemoi;
+
+    return true;
 }
 
 void SkillComponent::Tick(float DeltaTime)
@@ -37,31 +54,48 @@ void SkillComponent::Tick(float DeltaTime)
 
 void SkillComponent::Destroy()
 {
-    DESTROY(_SongOfHeaven);
+    for(auto& [SkillType, Skill] : _Skills)
+    {
+        DESTROY(Skill);
+    }
+
+    _Skills.clear();
 
     ActorComponent::Destroy();
 }
 
-void SkillComponent::StartSkill()
+void SkillComponent::StartSkill(eSkillType SkillType)
 {
-    if (_SongOfHeaven)
+    auto FindSkill = _Skills.find(SkillType);
+
+    if (FindSkill == _Skills.end() || !FindSkill->second)
     {
-        _SongOfHeaven->Start();
+        return;
     }
+
+    FindSkill->second->Start();
 }
 
-void SkillComponent::UseSkill(float DeltaTime)
+void SkillComponent::UseSkill(eSkillType SkillType, float DeltaTime)
 {
-    if (_SongOfHeaven)
+    auto FindSkill = _Skills.find(SkillType);
+
+    if (FindSkill == _Skills.end() || !FindSkill->second)
     {
-        _SongOfHeaven->Update(DeltaTime);
+        return;
     }
+
+    FindSkill->second->Update(DeltaTime);
 }
 
-void SkillComponent::StopSkill()
+void SkillComponent::StopSkill(eSkillType SkillType)
 {
-    if (_SongOfHeaven)
+    auto FindSkill = _Skills.find(SkillType);
+
+    if (FindSkill == _Skills.end() || !FindSkill->second)
     {
-        _SongOfHeaven->End();
+        return;
     }
+
+    FindSkill->second->End();
 }

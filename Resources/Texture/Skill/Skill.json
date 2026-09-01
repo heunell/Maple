@@ -2911,8 +2911,8 @@
         }
       ]
     },
-    "Anemoy.Cast": {
-      "Texture": "Skill/anemoy_atlas.png",
+    "Anemoi.Cast": {
+      "Texture": "Skill/anemoi_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -3528,8 +3528,8 @@
         }
       ]
     },
-    "Anemoy.Summon": {
-      "Texture": "Skill/anemoy_atlas.png",
+    "Anemoi.Summon": {
+      "Texture": "Skill/anemoi_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -3686,8 +3686,8 @@
         }
       ]
     },
-    "Anemoy.Attack": {
-      "Texture": "Skill/anemoy_atlas.png",
+    "Anemoi.Attack": {
+      "Texture": "Skill/anemoi_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -3827,8 +3827,8 @@
         }
       ]
     },
-    "Anemoy.Stand": {
-      "Texture": "Skill/anemoy_atlas.png",
+    "Anemoi.Stand": {
+      "Texture": "Skill/anemoi_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -3968,8 +3968,8 @@
         }
       ]
     },
-    "Anemoy.Die": {
-      "Texture": "Skill/anemoy_atlas.png",
+    "Anemoi.Die": {
+      "Texture": "Skill/anemoi_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -4177,8 +4177,8 @@
         }
       ]
     },
-    "Anemoy.Hit.Cast": {
-      "Texture": "Skill/anemoy_atlas.png",
+    "Anemoi.Hit.Cast": {
+      "Texture": "Skill/anemoi_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -4318,8 +4318,8 @@
         }
       ]
     },
-    "Anemoy.Hit.0": {
-      "Texture": "Skill/anemoy_atlas.png",
+    "Anemoi.Hit.0": {
+      "Texture": "Skill/anemoi_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -4493,8 +4493,8 @@
         }
       ]
     },
-    "Anemoy.Hit.1": {
-      "Texture": "Skill/anemoy_atlas.png",
+    "Anemoi.Hit.1": {
+      "Texture": "Skill/anemoi_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -4668,8 +4668,8 @@
         }
       ]
     },
-    "Anemoy.Hit.2": {
-      "Texture": "Skill/anemoy_atlas.png",
+    "Anemoi.Hit.2": {
+      "Texture": "Skill/anemoi_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -4843,8 +4843,8 @@
         }
       ]
     },
-    "Anemoy.Hit.3": {
-      "Texture": "Skill/anemoy_atlas.png",
+    "Anemoi.Hit.3": {
+      "Texture": "Skill/anemoi_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -5018,8 +5018,8 @@
         }
       ]
     },
-    "Anemoy.Hit.4": {
-      "Texture": "Skill/anemoy_atlas.png",
+    "Anemoi.Hit.4": {
+      "Texture": "Skill/anemoi_atlas.png",
       "Frames": [
         {
           "UV": [
@@ -5193,8 +5193,8 @@
         }
       ]
     },
-    "Anemoy.Hit.5": {
-      "Texture": "Skill/anemoy_atlas.png",
+    "Anemoi.Hit.5": {
+      "Texture": "Skill/anemoi_atlas.png",
       "Frames": [
         {
           "UV": [

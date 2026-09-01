@@ -383,10 +383,34 @@
     <ClInclude Include="Game\Monsters\MonsterState.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Skills\Anemoy\AnemoyDatas.h">
+    <ClInclude Include="Game\Skills\Anemoi\AnemoiDatas.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Skills\Anemoy\AnemoyState.h">
+    <ClInclude Include="Game\Skills\Anemoi\AnemoiState.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Skills\Anemoi\AnemoiStateMachine.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Skills\Anemoi\AnemoiActor.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Skills\Anemoi\AnemoiIdleState.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Skills\Anemoi\AnemoiEndState.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Skills\Anemoi\AnemoiTraceState.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Skills\Anemoi\AnemoiAttackState.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Skills\Anemoi\Anemoi.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\BuffComponent.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -721,10 +745,34 @@
     <ClCompile Include="Game\Monsters\MonsterState.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Skills\Anemoy\AnemoyDatas.cpp">
+    <ClCompile Include="Game\Skills\Anemoi\AnemoiDatas.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Skills\Anemoy\AnemoyState.cpp">
+    <ClCompile Include="Game\Skills\Anemoi\AnemoiState.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Skills\Anemoi\AnemoiStateMachine.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Skills\Anemoi\AnemoiActor.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Skills\Anemoi\AnemoiIdleState.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Skills\Anemoi\AnemoiEndState.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Skills\Anemoi\AnemoiTraceState.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Skills\Anemoi\AnemoiAttackState.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Skills\Anemoi\Anemoi.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\BuffComponent.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

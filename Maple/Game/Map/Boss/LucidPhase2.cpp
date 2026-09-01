@@ -10,6 +10,8 @@
 
 #include "Component/SceneComponent.h"
 #include "Component/SpriteComponent.h"
+#include "Component/ParallaxComponent.h"
+#include "Component/CameraComponent.h"
 
 bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
@@ -38,6 +40,14 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
         return false;
     }
 
+    ScreenBackgroundRoot->SetRelativeScale(1.f, 1.f, 1.f);
+    
+    FarBackgroundRoot->SetRelativeScale(1.f, 1.f, 1.f);
+    
+    MiddleBackgroundRoot->SetRelativeScale(1.f, 1.f, 1.f);
+    
+    NearBackgroundRoot->SetRelativeScale(1.f, 1.f, 1.f);
+
     ScreenBackgroundRoot->AttachToComponent(GetRoot());
 
     FarBackgroundRoot->AttachToComponent(GetRoot());
@@ -48,11 +58,11 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
 
     _BackgroundScrollLayers.reserve(3);
 
-    _BackgroundScrollLayers.push_back({ FarBackgroundRoot, 22.f });
+    _BackgroundScrollLayers.push_back({ FarBackgroundRoot, 44.f });
     
-    _BackgroundScrollLayers.push_back({ MiddleBackgroundRoot, 45.f });
+    _BackgroundScrollLayers.push_back({ MiddleBackgroundRoot, 90.f });
     
-    _BackgroundScrollLayers.push_back({ NearBackgroundRoot, 70.f });
+    _BackgroundScrollLayers.push_back({ NearBackgroundRoot, 140.f });
 
     std::vector<FBackgroundPart> BackgroundParts;
 
@@ -83,7 +93,7 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
     }
 
     // 가장 먼 환경 배경
-    BackgroundParts.push_back({ "LUCID_PHASE2_ENV_BACK_72", FarBackgroundRoot });
+    BackgroundParts.push_back({ "LUCID_PHASE2_ENV_BACK_72", ScreenBackgroundRoot });
 
     BackgroundParts.push_back({ "LUCID_PHASE2_ENV_BACK_80", FarBackgroundRoot });
 
@@ -162,6 +172,29 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
         Sprite->AttachToComponent(Part.Parent);
     }
 
+    Ptr<ParallaxComponent> BackgroundParallax = CreateActorComponent<ParallaxComponent>("BackgroundParallax");
+
+    if(!BackgroundParallax)
+    {
+        return false;
+    }
+
+    Ptr<CameraComponent> ParallaxCamera = GetLevel()->GetMainCamera();
+
+    if(!ParallaxCamera)
+    {
+        return false;
+    }
+
+    ScreenBackgroundRoot->SetRelativePosition(0.f, ParallaxCamera->GetRelativePosition()._y, 0.f);
+    
+    BackgroundParallax->SetCamera(ParallaxCamera);
+
+    if(!BackgroundParallax->AddLayer(ScreenBackgroundRoot, 1.f))
+    {
+        return false;
+    }
+
     const std::vector<std::string> PlatformNames =
     {
         "BBLUE3",
@@ -217,79 +250,49 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
     const FPlatformCollisionData PlatformCollisions[] =
     {
         {
-            "Bblue3Collision",
-            FVector3D(306.f, -1228.f, 0.f),
-            FVector2D(350.f, 18.f)
+            "Bblue3Collision",      FVector3D(306.f, -1228.f, 0.f),  FVector2D(350.f, 18.f)
+        },                                                           
+        {                                                            
+            "Bred1Collision",       FVector3D(1100.f, -734.f, 0.f),  FVector2D(350.f, 18.f)
+        },                                                           
+        {                                                            
+            "Bblue2Collision",      FVector3D(711.f, -863.f, 0.f),   FVector2D(350.f, 18.f)
+        },                                                           
+        {                                                            
+            "Bred3Collision",       FVector3D(792.f, -1159.f, 0.f),  FVector2D(350.f, 18.f)
+        },                                                           
+        {                                                            
+            "Myellow3Collision",    FVector3D(1150.f, -1210.f, 0.f), FVector2D(260.f, 18.f)
+        },                          
+        {                           
+            "Myellow1Collision",    FVector3D(530.f, -668.f, 0.f),   FVector2D(260.f, 18.f)
+        },                          
+        {                           
+            "Except1Collision",     FVector3D(1012.f, -514.f, 0.f),  FVector2D(180.f, 18.f)
+        },                           
+        {                           
+            "Myellow2Collision",    FVector3D(124.f, -1086.f, 0.f),  FVector2D(260.f, 18.f)
+        },                          
+        {                           
+            "Bred2Collision",       FVector3D(157.f, -803.f, 0.f),   FVector2D(350.f, 18.f)
+        },                          
+        {                           
+            "Except4Collision",     FVector3D(603.f, -1308.f, 0.f),  FVector2D(180.f, 18.f)
+        },                          
+        {                            
+            "Except2Collision",     FVector3D(71.f, -662.f, 0.f),    FVector2D(170.f, 18.f)
+        },                          
+        {                           
+            "Bblue1Collision",      FVector3D(323.f, -498.f, 0.f),   FVector2D(350.f, 18.f)
         },
         {
-            "Bred1Collision",
-            FVector3D(1100.f, -734.f, 0.f),
-            FVector2D(350.f, 18.f)
+            "StaticLeftCollision",  FVector3D(375.f, -976.f, 0.f),   FVector2D(260.f, 18.f)
+        },                          
+        {                           
+            "StaticMidCollision",   FVector3D(911.f, -976.f, 0.f),   FVector2D(260.f, 18.f)
         },
         {
-            "Bblue2Collision",
-            FVector3D(711.f, -863.f, 0.f),
-            FVector2D(350.f, 18.f)
-        },
-        {
-            "Bred3Collision",
-            FVector3D(792.f, -1159.f, 0.f),
-            FVector2D(350.f, 18.f)
-        },
-        {
-            "Myellow3Collision",
-            FVector3D(1150.f, -1210.f, 0.f),
-            FVector2D(260.f, 18.f)
-        },
-        {
-            "Myellow1Collision",
-            FVector3D(530.f, -668.f, 0.f),
-            FVector2D(260.f, 18.f)
-        },
-        {
-            "Except1Collision",
-            FVector3D(1012.f, -514.f, 0.f),
-            FVector2D(180.f, 18.f)
-        },
-        {
-            "Myellow2Collision",
-            FVector3D(124.f, -1086.f, 0.f),
-            FVector2D(260.f, 18.f)
-        },
-        {
-            "Bred2Collision",
-            FVector3D(157.f, -803.f, 0.f),
-            FVector2D(350.f, 18.f)
-        },
-        {
-            "Except4Collision",
-            FVector3D(603.f, -1308.f, 0.f),
-            FVector2D(180.f, 18.f)
-        },
-        {
-            "Except2Collision",
-            FVector3D(71.f, -662.f, 0.f),
-            FVector2D(170.f, 18.f)
-        },
-        {
-            "Bblue1Collision",
-            FVector3D(323.f, -498.f, 0.f),
-            FVector2D(350.f, 18.f)
-        },
-        {
-            "StaticLeftCollision",
-            FVector3D(375.f, -976.f, 0.f),
-            FVector2D(260.f, 18.f)
-        },
-        {
-            "StaticMidCollision",
-            FVector3D(911.f, -976.f, 0.f),
-            FVector2D(260.f, 18.f)
-        },
-        {
-            "StaticRightCollision",
-            FVector3D(1205.f, -976.f, 0.f),
-            FVector2D(220.f, 18.f)
+            "StaticRightCollision", FVector3D(1205.f, -976.f, 0.f),  FVector2D(220.f, 18.f)
         }
     };
 

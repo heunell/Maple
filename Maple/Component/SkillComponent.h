@@ -1,6 +1,7 @@
 #pragma once
 #include "ActorComponent.h"
-
+#include "Game/Skills/Skill.h"
+#include <unordered_map>
 class SkillComponent : public ActorComponent
 {
 public:
@@ -8,7 +9,7 @@ public:
 	virtual ~SkillComponent();
 
 private:
-	Ptr<class SongOfHeaven> _SongOfHeaven;
+	std::unordered_map<eSkillType, Ptr<Skill>> _Skills;
 
 public:
 	virtual bool Init(int32 Id, const std::string& Name, Ptr<Actor>Owner) override;
@@ -17,10 +18,10 @@ public:
 
 	virtual void Destroy() override;
 
-	void StartSkill();
+	void StartSkill(eSkillType SkillType);
 
-	void UseSkill(float DeltaTime);
+	void UseSkill(eSkillType SkillType, float DeltaTime);
 
-	void StopSkill();
+	void StopSkill(eSkillType SkillType);
 };
 

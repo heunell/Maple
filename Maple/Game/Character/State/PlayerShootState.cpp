@@ -38,7 +38,7 @@ void PlayerShootState::Enter(Ptr<class PlayerComponent> PlayerComponent)
 
     if (Skill)
     {
-        Skill->StartSkill();
+        Skill->StartSkill(eSkillType::SongOfHeaven);
     }
 }
 
@@ -55,7 +55,7 @@ void PlayerShootState::Exit(Ptr<class PlayerComponent> PlayerComponent)
 
     if (Skill)
     {
-        Skill->StopSkill();
+        Skill->StopSkill(eSkillType::SongOfHeaven);
     }
 }
 
@@ -72,7 +72,7 @@ Ptr<PlayerState> PlayerShootState::Tick(Ptr<class PlayerComponent> PlayerCompone
 
     if (Skill)
     {
-        Skill->UseSkill(DeltaTime);
+        Skill->UseSkill(eSkillType::SongOfHeaven, DeltaTime);
     }
 
     return nullptr;

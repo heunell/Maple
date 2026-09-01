@@ -1,6 +1,14 @@
 #pragma once
 #include "Object/Actor.h"
 
+enum class eSkillType
+{
+	SongOfHeaven,
+	Anemoi,
+
+	END
+};
+
 class Skill : public Actor
 {
 public:
