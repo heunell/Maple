@@ -269,6 +269,16 @@ bool Player::Jump()
     return _Movement->StartJump(500.f);
 }
 
+bool Player::DoubleJump()
+{
+	if (!_Movement)
+	{
+		return false;
+	}
+
+	return _Movement->StartDoubleJump(IsRight() ? 430.f : -430.f, 360.f);
+}
+
 void Player::MoveUp(float DeltaTime)
 {
 	// todo : Move Up과 Down은 메이플스토리에서 해당하는 로직이 조금씩 다르기 때문에 잠시 대기

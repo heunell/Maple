@@ -20,6 +20,28 @@ Ptr<PlayerState> PlayerJumpState::HandleInput(Ptr<class PlayerComponent> PlayerC
         return nullptr;
     }
 
+    // 일반 점프 키를 놓은 뒤부터 더블점프를 허용한다.
+    if (Action->GetName() == "MOVE_JUMP" && ButtonEvent == INPUT_TYPE::UP)
+    {
+        if (!_UsedDoubleJump)
+        {
+            _CanDoubleJump = true;
+        }
+
+        return nullptr;
+    }
+
+    if (Action->GetName() == "MOVE_JUMP" && ButtonEvent == INPUT_TYPE::HOLD && _CanDoubleJump && !_UsedDoubleJump)
+    {
+        if (Player->DoubleJump())
+        {
+            _CanDoubleJump = false;
+            _UsedDoubleJump = true;
+        }
+
+        return nullptr;
+    }
+
     if (ButtonEvent == INPUT_TYPE::HOLD)
     {
         if (Action->GetName() == "MOVE_RIGHT")

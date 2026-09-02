@@ -156,11 +156,7 @@ void BossFlowerState::SpawnFlowerPattern()
 
 	float JitterRange = SlotWidth * _PatternData.SpawnJitterRatio;
 
-	int32 TotalWeight =
-		_PatternData.MediumSmallWeight +
-		_PatternData.MediumWeight +
-		_PatternData.LargeWeight +
-		_PatternData.ExtraLargeWeight;
+	int32 TotalWeight = _PatternData.MediumSmallWeight + _PatternData.MediumWeight + _PatternData.LargeWeight + _PatternData.ExtraLargeWeight;
 
 	std::random_device RandomDevice;
 

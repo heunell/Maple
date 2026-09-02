@@ -135,7 +135,15 @@ bool MovementComponent::StartJump(float Force)
 
 bool MovementComponent::StartDoubleJump(float HorizontalForce, float VerticalForce)
 {
-    return false;
+    if (_IsLanding)
+    {
+        return false;
+    }
+
+    _Velocity._x = HorizontalForce;
+    _Velocity._y = VerticalForce;
+
+    return true;
 }
 
 bool MovementComponent::StartDownJump()

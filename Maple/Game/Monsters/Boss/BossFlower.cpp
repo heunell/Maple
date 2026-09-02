@@ -65,24 +65,32 @@ void BossFlower::Start(Ptr<class BossFlowerState> Owner, const FVector3D& Positi
 
 	SetRelativeRotation(0.f, 0.f, Rotation);
 
+	std::string AnimationName;
+
 	switch (ResourceIndex)
 	{
 	case 0:
-		_Sprite->ChangeAnimation("lucid_flower_ms");
+		AnimationName = "lucid_flower_ms";
 		break;
 
 	case 1:
-		_Sprite->ChangeAnimation("lucid_flower_m");
+		AnimationName = "lucid_flower_m";
 		break;
 
 	case 2:
-		_Sprite->ChangeAnimation("lucid_flower_l");
+		AnimationName = "lucid_flower_l";
 		break;
 
 	case 3:
-		_Sprite->ChangeAnimation("lucid_flower_xl");
+		AnimationName = "lucid_flower_xl";
 		break;
 	}
+
+	_Sprite->ChangeAnimation(AnimationName);
+
+	_Sprite->SetAnimationFrame(0);
+
+	_Sprite->SetPlay(AnimationName, true);
 }
 
 void BossFlower::SetPoolEnable(bool Enable)

@@ -20,6 +20,8 @@ public:
 
 	virtual Ptr<MonsterState> Tick(Ptr<class MonsterComponent> Monster, float DeltaTime);
 
+	virtual bool CanSelect() const;
+	
 	virtual void Exit(Ptr<class MonsterComponent> Monster);
 
 	virtual void Destroy() override;

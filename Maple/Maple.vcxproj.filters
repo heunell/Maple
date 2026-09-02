@@ -452,6 +452,18 @@
     <ClInclude Include="Game\Monsters\Boss\BossFlowerState.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Monsters\Boss\BossMushroom.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Monsters\Boss\BossMushroomState.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Monsters\Boss\BossPhase1Golem.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Monsters\Boss\BossPhase1GolemState.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\Matrix.cpp">
@@ -851,6 +863,18 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Game\Monsters\Boss\BossFlowerState.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Monsters\Boss\BossMushroom.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Monsters\Boss\BossMushroomState.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Monsters\Boss\BossPhase1Golem.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Monsters\Boss\BossPhase1GolemState.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

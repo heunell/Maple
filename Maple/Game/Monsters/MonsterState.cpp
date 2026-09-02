@@ -9,6 +9,11 @@ Ptr<MonsterState> MonsterState::Tick(Ptr<class MonsterComponent> Monster, float 
 	return nullptr;
 }
 
+bool MonsterState::CanSelect() const
+{
+    return true;
+}
+
 void MonsterState::Exit(Ptr<class MonsterComponent> Monster)
 {}
 

@@ -185,8 +185,10 @@ void Animation2D::SetFrame(int32 Frame)
 {
 	if(!_CurrentSequence)
 	{
-		_CurrentSequence->SetFrame(Frame);
+		return;
 	}
+
+	_CurrentSequence->SetFrame(Frame);
 }
 
 void Animation2D::ChangeAnimation(const std::string& Name)

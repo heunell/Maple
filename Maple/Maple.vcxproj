@@ -231,7 +231,11 @@
     <ClInclude Include="Game\Monsters\Boss\BossFlower.h" />
     <ClInclude Include="Game\Monsters\Boss\BossFlowerState.h" />
     <ClInclude Include="Game\Monsters\Boss\BossIdleState.h" />
+    <ClInclude Include="Game\Monsters\Boss\BossMushroom.h" />
+    <ClInclude Include="Game\Monsters\Boss\BossMushroomState.h" />
     <ClInclude Include="Game\Monsters\Boss\BossPatternData.h" />
+    <ClInclude Include="Game\Monsters\Boss\BossPhase1Golem.h" />
+    <ClInclude Include="Game\Monsters\Boss\BossPhase1GolemState.h" />
     <ClInclude Include="Game\Monsters\MonsterBase.h" />
     <ClInclude Include="Game\Monsters\MonsterBlackBoard.h" />
     <ClInclude Include="Game\Monsters\MonsterComponent.h" />
@@ -370,7 +374,11 @@
     <ClCompile Include="Game\Monsters\Boss\BossFlower.cpp" />
     <ClCompile Include="Game\Monsters\Boss\BossFlowerState.cpp" />
     <ClCompile Include="Game\Monsters\Boss\BossIdleState.cpp" />
+    <ClCompile Include="Game\Monsters\Boss\BossMushroom.cpp" />
+    <ClCompile Include="Game\Monsters\Boss\BossMushroomState.cpp" />
     <ClCompile Include="Game\Monsters\Boss\BossPatternData.cpp" />
+    <ClCompile Include="Game\Monsters\Boss\BossPhase1Golem.cpp" />
+    <ClCompile Include="Game\Monsters\Boss\BossPhase1GolemState.cpp" />
     <ClCompile Include="Game\Monsters\MonsterBase.cpp" />
     <ClCompile Include="Game\Monsters\MonsterBlackBoard.cpp" />
     <ClCompile Include="Game\Monsters\MonsterComponent.cpp" />

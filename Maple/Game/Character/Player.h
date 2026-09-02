@@ -41,6 +41,8 @@ public:
 
     bool Jump();
 
+    bool DoubleJump();
+
 private:
     void MoveUp   (float DeltaTime);
     

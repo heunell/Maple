@@ -8,6 +8,11 @@ public:
     PlayerJumpState() = default;
     virtual ~PlayerJumpState() = default;
     
+private:
+    bool _CanDoubleJump = false;
+
+    bool _UsedDoubleJump = false;
+
 public:
     virtual Ptr<PlayerState> HandleInput(Ptr<class PlayerComponent> PlayerComponent, Ptr<InputAction> Action, INPUT_TYPE::eType ButtonEvent) override;
 
