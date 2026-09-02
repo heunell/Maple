@@ -4,12 +4,12 @@
 
 bool BuffComponent::Init(int32 Id, const std::string& Name, Ptr<class Actor> Owner)
 {
-	if (!ActorComponent::Init(Id, Name, Owner))
-	{
-		return false;
-	}
+    if (!ActorComponent::Init(Id, Name, Owner))
+    {
+        return false;
+    }
 
-	return GetPlayer() != nullptr;
+    return GetPlayer() != nullptr;
 }
 
 void BuffComponent::Tick(float DeltaTime)
@@ -23,19 +23,16 @@ void BuffComponent::Tick(float DeltaTime)
 
     std::vector<eBuffType> ExpiredBuffs;
 
-    for (auto& Buff : _Buffs)
+    for (auto& [Type, Data] : _Buffs)
     {
-        FBuffData& Data = Buff.second;
-
         Data.RemainTime -= DeltaTime;
 
         if (Data.RemainTime <= 0.f)
         {
-            ExpiredBuffs.push_back(Buff.first);
+            ExpiredBuffs.push_back(Type);
         }
     }
 
-    // 순회 중 Map을 직접 지우지 않고 만료 목록을 따로 제거한다.
     for (eBuffType Type : ExpiredBuffs)
     {
         RemoveBuff(Type);
@@ -51,7 +48,9 @@ void BuffComponent::Destroy()
 
 bool BuffComponent::ApplyBuff(const FBuffData& Data)
 {
-    if (Data.Type == eBuffType::END || Data.Category == eBuffCategory::END || Data.Duration <= 0.f)
+    if (Data.Type == eBuffType::END ||
+        Data.Category == eBuffCategory::END ||
+        Data.Duration <= 0.f)
     {
         return false;
     }
@@ -67,18 +66,15 @@ bool BuffComponent::ApplyBuff(const FBuffData& Data)
 
     if (It != _Buffs.end())
     {
-        // 같은 Buff를 다시 사용하면 중첩하지 않고 시간을 갱신한다.
-        It->second.Category   = Data.Category;
+        It->second.Category = Data.Category;
 
-        It->second.Duration   = Data.Duration;
+        It->second.Duration = Data.Duration;
         
         It->second.RemainTime = Data.Duration;
         
-        It->second.CanCleanse = Data.CanCleanse;
+        It->second.OnStart = Data.OnStart;
         
-        It->second.OnStart    = Data.OnStart;
-        
-        It->second.OnEnd      = Data.OnEnd;
+        It->second.OnEnd = Data.OnEnd;
 
         return true;
     }
@@ -106,12 +102,11 @@ bool BuffComponent::RemoveBuff(eBuffType Type)
         return false;
     }
 
-    Ptr<Player> PlayerOwner = GetPlayer();
-
-    // 콜백에서 Buff 목록을 변경할 수 있으므로 먼저 복사한다.
     std::function<void(Ptr<Player>)> OnEnd = It->second.OnEnd;
-
+    
     _Buffs.erase(It);
+
+    Ptr<Player> PlayerOwner = GetPlayer();
 
     if (OnEnd && PlayerOwner)
     {
@@ -121,21 +116,19 @@ bool BuffComponent::RemoveBuff(eBuffType Type)
     return true;
 }
 
-void BuffComponent::RemoveCleanseableDebuffs()
+void BuffComponent::RemoveDebuffs()
 {
-    std::vector<eBuffType> RemoveBuffs;
+    std::vector<eBuffType> Debuffs;
 
-    for (const auto& Buff : _Buffs)
+    for (const auto& [Type, Data] : _Buffs)
     {
-        const FBuffData& Data = Buff.second;
-
-        if (Data.Category == eBuffCategory::Debuff && Data.CanCleanse)
+        if (Data.Category == eBuffCategory::Debuff)
         {
-            RemoveBuffs.push_back(Buff.first);
+            Debuffs.push_back(Type);
         }
     }
 
-    for (eBuffType Type : RemoveBuffs)
+    for (eBuffType Type : Debuffs)
     {
         RemoveBuff(Type);
     }
@@ -163,7 +156,7 @@ const std::map<eBuffType, FBuffData>& BuffComponent::GetBuffs() const
     return _Buffs;
 }
 
-Ptr<class Player> BuffComponent::GetPlayer() const
+Ptr<Player> BuffComponent::GetPlayer() const
 {
     return Cast<Actor, Player>(GetOwner());
 }

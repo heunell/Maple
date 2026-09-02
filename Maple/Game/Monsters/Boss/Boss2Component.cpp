@@ -5,7 +5,7 @@
 #include "Boss2IdleState.h"
 #include "BossBladeState.h"
 #include "Game/Monsters/MonsterStateMachine.h"
-
+#include "UI/BossPatternNotice.h"
 #include <random>
 
 
@@ -118,4 +118,14 @@ Ptr<MonsterState> Boss2Component::SelectPatternState()
 Ptr<Boss2IdleState> Boss2Component::GetIdleState() const
 {
 	return _IdleState;
+}
+
+void Boss2Component::SetPatternNotice(Ptr<class BossPatternNotice> PatternNotice)
+{
+	_PatternNotice = PatternNotice;
+}
+
+Ptr<BossPatternNotice> Boss2Component::GetPatternNotice() const
+{
+	return Lock(_PatternNotice);
 }

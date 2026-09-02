@@ -15,10 +15,11 @@ public:
 	Boss2Component& operator=(Boss2Component&&) = delete;
 
 private:
-	Ptr<class Boss2IdleState> _IdleState;
+	Ptr<class Boss2IdleState> 			 _IdleState;
 
 	std::vector<Ptr<class MonsterState>> _PatternStates;
 
+	Weak<class BossPatternNotice> 		 _PatternNotice;
 
 public:
 	virtual bool Init(int32 Id, const std::string& Name, Ptr<class Actor> Owner) override;
@@ -28,4 +29,8 @@ public:
 	Ptr<class MonsterState> SelectPatternState();
 
 	Ptr<class Boss2IdleState> GetIdleState() const;
+
+	void SetPatternNotice(Ptr<class BossPatternNotice> PatternNotice);
+
+	Ptr<class BossPatternNotice> GetPatternNotice() const;
 };

@@ -3,10 +3,15 @@
 
 enum class eSkillType
 {
-	SongOfHeaven,
-	Anemoi,
+    SongOfHeaven,
+    Anemoi,
+    SharpEyes,
+    CKnight,
+    StormBringer,
+    GloryOfGuardians,
+    DeSpell,
 
-	END
+    END
 };
 
 class Skill : public Actor

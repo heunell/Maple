@@ -105,3 +105,33 @@ struct FBossTeleportPatternData
 {
 	int32 EffectStartFrame = 17;
 };
+
+struct FBossPatternNoticeData
+{
+	float FadeInTime = 0.1f;
+
+	float HoldTime = 2.f;
+
+	float FadeOutTime = 0.25f;
+
+	float TotalWidth = 564.f;
+
+	float LeftWidth = 102.f;
+
+	float RightWidth = 32.f;
+};
+
+struct FBossDragonPatternData
+{
+	int32 SpawnFrame = 24;
+
+	int32 BreathCount = 9;
+
+	float AppearanceTime = 3.f;
+
+	float BreathTime = 4.5f;
+
+	float SpawnHeight = 300.f;
+
+	float DragonHeight = 220.f;
+};

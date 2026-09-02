@@ -75,17 +75,23 @@ void PlayerController::KeyBind()
 
 	MappingContext->BindInputAction(PortalAction, VK_SPACE);
 
-	Ptr<InputAction> SkillAction = InputSystem::Instance().FindOrAddInputAction("SongOfHeaven");
+	Ptr<InputAction> SOHAction = InputSystem::Instance().FindOrAddInputAction("SongOfHeaven");
 
-	MappingContext->BindInputAction(SkillAction, 'A');
+	MappingContext->BindInputAction(SOHAction, 'A');
+
+	Ptr<InputAction> AnemoiAction = InputSystem::Instance().FindOrAddInputAction("Anemoi");
+
+	MappingContext->BindInputAction(AnemoiAction, 'F');
 
 	_Input->AddInputContext(MappingContext->GetName());
 
 	_Input->BindAction(MappingContext->GetName(), PortalAction->GetName(), INPUT_TYPE::DOWN, GateInteract.get(), &GateInteractComponent::HandleInput);
 
-	_Input->BindAction(MappingContext->GetName(), SkillAction->GetName(),  INPUT_TYPE::DOWN, PlayerState.get(), &PlayerComponent::HandleInput);
+	_Input->BindAction(MappingContext->GetName(), SOHAction->GetName(),  INPUT_TYPE::DOWN, PlayerState.get(), &PlayerComponent::HandleInput);
 
-	_Input->BindAction(MappingContext->GetName(), SkillAction->GetName(),  INPUT_TYPE::HOLD, PlayerState.get(), &PlayerComponent::HandleInput);
+	_Input->BindAction(MappingContext->GetName(), SOHAction->GetName(),  INPUT_TYPE::HOLD, PlayerState.get(), &PlayerComponent::HandleInput);
 
-	_Input->BindAction(MappingContext->GetName(), SkillAction->GetName(),  INPUT_TYPE::UP,   PlayerState.get(), &PlayerComponent::HandleInput);
+	_Input->BindAction(MappingContext->GetName(), SOHAction->GetName(),  INPUT_TYPE::UP,   PlayerState.get(), &PlayerComponent::HandleInput);
+
+	_Input->BindAction(MappingContext->GetName(), AnemoiAction->GetName(), INPUT_TYPE::DOWN, PlayerState.get(), &PlayerComponent::HandleInput);
 }

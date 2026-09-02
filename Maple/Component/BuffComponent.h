@@ -7,7 +7,11 @@
 enum class eBuffType
 {
     SharpEyes,
-    // todo : Despell, 
+    CKnight,
+    StormBringer,
+    GloryOfGuardians,
+    DebuffResistance,
+
     END
 };
 
@@ -22,18 +26,15 @@ enum class eBuffCategory
 struct FBuffData
 {
     eBuffType Type = eBuffType::END;
-
+    
     eBuffCategory Category = eBuffCategory::END;
 
     float Duration = 0.f;
-
+    
     float RemainTime = 0.f;
 
-    bool CanCleanse = false;
-
-    // Gameplay 상태 적용과 해제에만 사용한다.
     std::function<void(Ptr<class Player>)> OnStart;
-
+    
     std::function<void(Ptr<class Player>)> OnEnd;
 };
 
@@ -41,7 +42,6 @@ class BuffComponent : public ActorComponent
 {
 public:
     BuffComponent() = default;
-
     virtual ~BuffComponent() = default;
 
 private:
@@ -57,11 +57,11 @@ public:
     bool ApplyBuff(const FBuffData& Data);
 
     bool RemoveBuff(eBuffType Type);
-
-    void RemoveCleanseableDebuffs();
+    
+    void RemoveDebuffs();
 
     bool IsActive(eBuffType Type) const;
-
+    
     const FBuffData* FindBuff(eBuffType Type) const;
 
     const std::map<eBuffType, FBuffData>& GetBuffs() const;

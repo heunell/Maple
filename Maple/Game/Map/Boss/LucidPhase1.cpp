@@ -12,6 +12,7 @@
 #include "Component/SpriteComponent.h"
 #include "Render/RenderManager.h"
 #include "UI/BossHUD.h"
+#include "UI/BossPatternNotice.h"
 #include "Game/Map/Gate/BossGate.h"
 #include "Game/Monsters/Boss/Boss.h"
 #include "Game/Monsters/Boss/BossComponent.h"

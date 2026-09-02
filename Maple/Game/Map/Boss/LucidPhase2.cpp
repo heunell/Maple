@@ -16,8 +16,10 @@
 #include "Component/CameraComponent.h"
 #include "Component/MovementComponent.h"
 
-#include "Game/Monsters/Boss/Boss2.h"
 #include "UI/BossHUD.h"
+#include "UI/BossPatternNotice.h"
+
+#include "Game/Monsters/Boss/Boss2.h"
 
 #include <random>
 
@@ -411,6 +413,15 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
     {
         return false;
     }
+
+    Ptr<BossPatternNotice> PatternNotice = GetLevel()->SpawnActor<BossPatternNotice>("BossPatternNotice", FVector3D::Zero, FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
+
+    if(!PatternNotice)
+    {
+        return false;
+    }
+
+    PatternNotice->AddTag("Map.LucidPhase2");
 
     return true;
 }

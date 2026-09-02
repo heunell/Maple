@@ -24,7 +24,7 @@ struct FAnemoiDatas
                                  
     float AttackRangeHeight      = 460.f;  
                                  
-    float AttackRangeOffsetY     = -40.f;
+    float AttackRangeOffsetY     = 125.f;
                                 
     float AttackInterval         = 1.10f;  // 공격 인터벌
                                  
