@@ -26,9 +26,9 @@ private:
 private:
 	Ptr<BossBlade> CreateBlade();
 
-	void EnableBlade(const Ptr<BossBlade>& Blade);
+	void EnableBlade(const Ptr<BossBlade>& Flower);
 
-	void DisableBlade(const Ptr<BossBlade>& Blade);
+	void DisableBlade(const Ptr<BossBlade>& Flower);
 
 	void SpawnBladePattern();
 
@@ -41,5 +41,5 @@ public:
 
 	virtual void Destroy() override;
 
-	void ReleaseBlade(Ptr<BossBlade> Blade);
+	void ReleaseBlade(Ptr<BossBlade> Flower);
 };

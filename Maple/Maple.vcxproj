@@ -228,6 +228,8 @@
     <ClInclude Include="Game\Monsters\Boss\BossBladeState.h" />
     <ClInclude Include="Game\Monsters\Boss\BossComponent.h" />
     <ClInclude Include="Game\Monsters\Boss\Boss.h" />
+    <ClInclude Include="Game\Monsters\Boss\BossFlower.h" />
+    <ClInclude Include="Game\Monsters\Boss\BossFlowerState.h" />
     <ClInclude Include="Game\Monsters\Boss\BossIdleState.h" />
     <ClInclude Include="Game\Monsters\Boss\BossPatternData.h" />
     <ClInclude Include="Game\Monsters\MonsterBase.h" />
@@ -365,6 +367,8 @@
     <ClCompile Include="Game\Monsters\Boss\BossBladeState.cpp" />
     <ClCompile Include="Game\Monsters\Boss\BossComponent.cpp" />
     <ClCompile Include="Game\Monsters\Boss\Boss.cpp" />
+    <ClCompile Include="Game\Monsters\Boss\BossFlower.cpp" />
+    <ClCompile Include="Game\Monsters\Boss\BossFlowerState.cpp" />
     <ClCompile Include="Game\Monsters\Boss\BossIdleState.cpp" />
     <ClCompile Include="Game\Monsters\Boss\BossPatternData.cpp" />
     <ClCompile Include="Game\Monsters\MonsterBase.cpp" />

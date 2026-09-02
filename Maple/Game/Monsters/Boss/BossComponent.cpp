@@ -3,7 +3,9 @@
 #include "BossIdleState.h"
 #include "BossBlackBoard.h"
 #include "BossBladeState.h"
+#include "BossFlowerState.h"
 #include "Game/Monsters/MonsterStateMachine.h"
+#include <random>
 
 bool BossComponent::Init(int32 Id, const std::string& Name, Ptr<Actor> Owner)
 {
@@ -47,6 +49,18 @@ bool BossComponent::Init(int32 Id, const std::string& Name, Ptr<Actor> Owner)
 		return false;
 	}
 
+	Ptr<BossFlowerState> FlowerState = New<BossFlowerState>();
+
+	if (!FlowerState)
+	{
+		return false;
+	}
+
+	if (!FlowerState->Init(This<BossComponent>()))
+	{
+		return false;
+	}
+
 	if (!StateMachine->AddState(_IdleState))
 	{
 		return false;
@@ -57,7 +71,14 @@ bool BossComponent::Init(int32 Id, const std::string& Name, Ptr<Actor> Owner)
 		return false;
 	}
 
+	if (!StateMachine->AddState(FlowerState))
+	{
+		return false;
+	}
+
 	_PatternStates.push_back(BladeState);
+
+	_PatternStates.push_back(FlowerState);
 
 	TransitionState(_IdleState);
 
@@ -75,12 +96,15 @@ void BossComponent::Destroy()
 
 Ptr<MonsterState> BossComponent::SelectPatternState()
 {
-	if (_PatternStates.empty())
-	{
-		return nullptr;
-	}
+	std::random_device RandomDevice;
 
-	return _PatternStates.front();
+	std::mt19937 RandomEngine(RandomDevice());
+
+	std::uniform_int_distribution<int32> PatternDistribution(0, static_cast<int32>(_PatternStates.size()) - 1);
+
+	int32 PatternIndex = PatternDistribution(RandomEngine);
+
+	return _PatternStates[PatternIndex];
 }
 
 Ptr<BossIdleState> BossComponent::GetIdleState() const

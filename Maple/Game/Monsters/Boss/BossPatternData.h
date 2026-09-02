@@ -19,6 +19,29 @@ struct FBossBladePatternData
 	FVector3D SpawnOffset = FVector3D(23.f, 288.5f, 0.f); // 기존 (0, -100, 0)
 };
 
+struct FBossFlowerPatternData
+{
+	int32 PoolMaxCount = 8;
+
+	int32 FirstSlotIndex = 1;
+
+	int32 LastSlotIndex = 8;
+
+	int32 MediumSmallWeight = 33;
+
+	int32 MediumWeight = 45;
+
+	int32 LargeWeight = 18;
+
+	int32 ExtraLargeWeight = 4;
+
+	float RotationMin = 20.f;
+
+	float RotationMax = 70.f;
+
+	float SpawnJitterRatio = 0.15f;
+};
+
 struct FBossPatternAreaData
 {
 	int32 SlotCount = 10;
