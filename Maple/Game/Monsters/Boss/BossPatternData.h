@@ -12,11 +12,22 @@ struct FBossBladePatternData
 						  
 	int32 ResourceCount   = 3;
 						  
-	int32 SpawnFrame      = 34;
+	//int32 SpawnFrame      = 34;
 						  
 	float SpawnMaxRadius  = 55.f;
 
-	FVector3D SpawnOffset = FVector3D(23.f, 288.5f, 0.f); // 기존 (0, -100, 0)
+	//FVector3D SpawnOffset = FVector3D(23.f, 288.5f, 0.f); // 기존 (0, -100, 0)
+};
+
+struct FBossBladeStateData
+{
+	std::string CastAnimation;
+
+	std::string IdleAnimation;
+
+	int32 SpawnFrame = 0;
+
+	FVector3D SpawnOffset = FVector3D::Zero;
 };
 
 struct FBossFlowerPatternData
@@ -92,5 +103,5 @@ struct FBossPhase1GolemFallData
 
 struct FBossTeleportPatternData
 {
-	int32 TeleportFrame = 24;
+	int32 EffectStartFrame = 17;
 };

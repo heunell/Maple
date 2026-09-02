@@ -9,7 +9,8 @@ class AnimationManager : public SubManager
 	friend class LucidPhase2;
 	friend class BossGate;
 	friend class Boss;
-	
+	friend class Boss2;
+
 public:
 	AnimationManager();
 	virtual ~AnimationManager();

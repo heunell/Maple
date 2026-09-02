@@ -1,17 +1,25 @@
 #include "pch.h"
 #include "LucidPhase2.h"
 
+#include "World/World.h"
 #include "World/Level.h"
 #include "World/CameraZone.h"
 
 #include "Core/AnimationManager.h"
 #include "Core/Animation2DData.h"
 #include "Core/AssetManager.h"
+#include "Core/GameEngine.h"
 
 #include "Component/SceneComponent.h"
 #include "Component/SpriteComponent.h"
 #include "Component/ParallaxComponent.h"
 #include "Component/CameraComponent.h"
+#include "Component/MovementComponent.h"
+
+#include "Game/Monsters/Boss/Boss2.h"
+#include "UI/BossHUD.h"
+
+#include <random>
 
 bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
@@ -35,7 +43,9 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
 
     Ptr<SceneComponent> NearBackgroundRoot = CreateSceneComponent<SceneComponent>("NearBackgroundRoot");
 
-    if (!ScreenBackgroundRoot || !FarBackgroundRoot || !MiddleBackgroundRoot || !NearBackgroundRoot)
+    Ptr<SceneComponent> SkyRoot = CreateSceneComponent<SceneComponent>("SkyRoot");
+
+    if (!ScreenBackgroundRoot || !FarBackgroundRoot || !MiddleBackgroundRoot || !NearBackgroundRoot || !SkyRoot)
     {
         return false;
     }
@@ -48,6 +58,8 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
     
     NearBackgroundRoot->SetRelativeScale(1.f, 1.f, 1.f);
 
+    SkyRoot->SetRelativeScale(1.f, 1.5f, 1.f);
+
     ScreenBackgroundRoot->AttachToComponent(GetRoot());
 
     FarBackgroundRoot->AttachToComponent(GetRoot());
@@ -56,13 +68,15 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
 
     NearBackgroundRoot->AttachToComponent(GetRoot());
 
+    SkyRoot->AttachToComponent(ScreenBackgroundRoot);
+
     _BackgroundScrollLayers.reserve(3);
 
-    _BackgroundScrollLayers.push_back({ FarBackgroundRoot, 44.f });
+    _BackgroundScrollLayers.push_back({ FarBackgroundRoot, 10.f });
     
-    _BackgroundScrollLayers.push_back({ MiddleBackgroundRoot, 90.f });
+    _BackgroundScrollLayers.push_back({ MiddleBackgroundRoot, 120.f });
     
-    _BackgroundScrollLayers.push_back({ NearBackgroundRoot, 140.f });
+    _BackgroundScrollLayers.push_back({ NearBackgroundRoot, 170.f });
 
     std::vector<FBackgroundPart> BackgroundParts;
 
@@ -78,7 +92,7 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
 
     const std::vector<std::string> YSuffixes =
     {
-        "-01", "+00", "+01", "+02", "+03"
+        "+01"
     };
 
     // 화면을 채우는 반복 배경
@@ -88,22 +102,25 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
         {
             const std::string AnimationName = "LUCID_PHASE2_BACK_9_TILE_X" + XSuffix + "_Y" + YSuffix;
 
-            BackgroundParts.push_back({ AnimationName, ScreenBackgroundRoot });
+            BackgroundParts.push_back({ AnimationName, SkyRoot });
         }
     }
 
-    // 가장 먼 환경 배경
+    // 카메라에 고정되는 밤하늘과 별
     BackgroundParts.push_back({ "LUCID_PHASE2_ENV_BACK_72", ScreenBackgroundRoot });
 
+    BackgroundParts.push_back({ "LUCID_PHASE2_BACK_3", ScreenBackgroundRoot });
+
+    BackgroundParts.push_back({ "LUCID_PHASE2_BACK_4", ScreenBackgroundRoot });
+
+    BackgroundParts.push_back({ "LUCID_PHASE2_BACK_5", ScreenBackgroundRoot });
+
+    // 상승하는 먼 환경 파츠
     BackgroundParts.push_back({ "LUCID_PHASE2_ENV_BACK_80", FarBackgroundRoot });
 
     // 큰 건물 잔해
     const std::vector<std::string> FarBackgroundNames =
     {
-        "LUCID_PHASE2_BACK_3",
-        "LUCID_PHASE2_BACK_4",
-        "LUCID_PHASE2_BACK_5",
-
         "LUCID_PHASE2_BACK_17",
         "LUCID_PHASE2_BACK_16",
         "LUCID_PHASE2_BACK_15",
@@ -312,6 +329,12 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
         Collision->AttachToComponent(GetRoot());
 
         Collision->SetCollisionProfile("Environment");
+
+        FVector3D RegenPosition = Platform.Position;
+
+        RegenPosition._y += Platform.Size._y * 0.5f;
+        
+        _PlatformRegenPositions.push_back(RegenPosition);
     }
 
     _LeftWall = CreateSceneComponent<AABBCollisionComponent>("LeftWall");
@@ -344,17 +367,23 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
 
     _RightWall->SetCollisionProfile("Environment");
 
-    const float LeftBound = _LeftWall->GetWorldPosition()._x + _LeftWall->GetBoxSize()._x * 0.5f;
+    float LeftBound = _LeftWall->GetWorldPosition()._x + _LeftWall->GetBoxSize()._x * 0.5f;
 
-    const float RightBound = _RightWall->GetWorldPosition()._x - _RightWall->GetBoxSize()._x * 0.5f;
-
-    const float CameraZoneWidth = RightBound - LeftBound;
-
-    const float CameraZoneCenterX = (LeftBound + RightBound) * 0.5f;
-
-    const float CameraZoneCenterY = -816.f;
-
-    const float CameraZoneHeight = 2400.f;
+    float RightBound = _RightWall->GetWorldPosition()._x - _RightWall->GetBoxSize()._x * 0.5f;
+    
+    float CameraHalfHeight = ParallaxCamera->GetHeight() * 0.5f;
+    
+    float CameraZoneBottom = _CameraMinCenterY - CameraHalfHeight;
+    
+    float CameraZoneTop = _CameraMaxCenterY + CameraHalfHeight;
+    
+    float CameraZoneWidth = RightBound - LeftBound;
+    
+    float CameraZoneHeight = CameraZoneTop - CameraZoneBottom;
+    
+    float CameraZoneCenterX = (LeftBound + RightBound) * 0.5f;
+    
+    float CameraZoneCenterY = (CameraZoneBottom + CameraZoneTop) * 0.5f;
 
     Ptr<CameraZone> AreaCameraZone = GetLevel()->SpawnActor<CameraZone>("LucidPhase2CameraZone", FVector3D(CameraZoneCenterX, CameraZoneCenterY, 0.f), FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
 
@@ -367,7 +396,52 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
 
     AreaCameraZone->SetArea(CameraZoneWidth, CameraZoneHeight);
 
+    Ptr<Boss2> BossMonster = GetLevel()->SpawnActor<Boss2>("LucidPhase2Boss", FVector3D(911.f, -700.f, 0.f), FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
+
+	if (!BossMonster)
+	{
+		return false;
+	}
+
+    BossMonster->AddTag("Map.LucidPhase2");
+
+    Ptr<BossHUD> BossHUDActor = GetLevel()->SpawnActor<BossHUD>("BossHUD", FVector3D::Zero, FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
+
+    if (!BossHUDActor)
+    {
+        return false;
+    }
+
     return true;
+}
+
+void LucidPhase2::RegenPlayerPlatform(Ptr<Actor> Player)
+{
+	if (!Player || _PlatformRegenPositions.empty())
+	{
+		return;
+	}
+
+	std::random_device RandomDevice;
+
+	std::mt19937 RandomEngine(RandomDevice());
+
+	std::uniform_int_distribution<int32> PlatformDistribution(0, static_cast<int32>(_PlatformRegenPositions.size()) - 1);
+
+	int32 PlatformIndex = PlatformDistribution(RandomEngine);
+
+	FVector3D Destination = _PlatformRegenPositions[PlatformIndex];
+
+	Destination._z = Player->GetWorldPosition()._z;
+
+	Player->SetWorldPosition(Destination);
+
+	Ptr<MovementComponent> Movement = Player->FindActorComponent<MovementComponent>("Movement");
+
+	if (Movement)
+	{
+		Movement->ResetMovement();
+	}
 }
 
 void LucidPhase2::Tick(float DeltaTime)
@@ -388,5 +462,28 @@ void LucidPhase2::Tick(float DeltaTime)
         Position._y += Layer.ScrollSpeed * DeltaTime;
 
         BackgroundRoot->SetRelativePosition(Position);
+    }
+
+    Ptr<World> CurrentWorld = GameEngine::Instance().GetWorld();
+
+    if (!CurrentWorld)
+    {
+        return;
+    }
+
+    Ptr<Actor> Player = CurrentWorld->GetPlayer();
+
+    Ptr<CameraComponent> Camera = GetLevel()->GetMainCamera();
+
+    if (!Player || !Camera)
+    {
+        return;
+    }
+
+    float CameraBottom = Camera->GetWorldPosition()._y - Camera->GetHeight() * 0.5f;
+
+    if (Player->GetWorldPosition()._y < CameraBottom - 600.f)
+    {
+        RegenPlayerPlatform(Player);
     }
 }

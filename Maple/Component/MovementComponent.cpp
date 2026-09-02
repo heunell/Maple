@@ -133,7 +133,7 @@ bool MovementComponent::StartJump(float Force)
     return true;
 }
 
-bool MovementComponent::StartDoubleJump(float HorizontalForce, float VerticalForce)
+bool MovementComponent::StartAirJump(float HorizontalForce, float VerticalForce)
 {
     if (_IsLanding)
     {
@@ -148,7 +148,17 @@ bool MovementComponent::StartDoubleJump(float HorizontalForce, float VerticalFor
 
 bool MovementComponent::StartDownJump()
 {
-    return false;
+    if (!_IsLanding)
+    {
+        return false;
+    }
+
+    _Velocity._x = 0.f;
+    _Velocity._y = 0.f;
+
+    _IsLanding = false;
+
+    return true;
 }
 
 void MovementComponent::Blocking(const FVector3D &Correction)

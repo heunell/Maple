@@ -13,6 +13,18 @@ Ptr<PlayerState> PlayerProneState::HandleInput(Ptr<class PlayerComponent> Player
         return nullptr;
     }
 
+    Ptr<Player> Player = PlayerComponent->GetPlayer();
+
+    if (!Player)
+    {
+        return nullptr;
+    }
+
+    if (Action->GetName() == "MOVE_JUMP" && ButtonEvent == INPUT_TYPE::HOLD && Player->DownJump())
+    {
+        return New<PlayerJumpState>();
+    }
+
     if (Action->GetName() == "MOVE_DOWN" && ButtonEvent == INPUT_TYPE::UP)
     {
         return New<PlayerIdleState>();

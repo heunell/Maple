@@ -47,7 +47,17 @@ bool BossComponent::Init(int32 Id, const std::string& Name, Ptr<Actor> Owner)
 		return false;
 	}
 
-	if (!BladeState->Init(This<BossComponent>()))
+	FBossBladeStateData BladeData;
+
+	BladeData.CastAnimation = "LUCID_MOB_8880140.skill1";
+
+	BladeData.IdleAnimation = "LUCID_MOB_8880140.stand";
+
+	BladeData.SpawnFrame = 34;
+
+	BladeData.SpawnOffset = FVector3D(23.f, 288.5f, 0.f);
+
+	if (!BladeState->Init(This<BossComponent>(), _IdleState, BladeData))
 	{
 		return false;
 	}

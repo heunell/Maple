@@ -223,6 +223,10 @@
     <ClInclude Include="Game\Map\Boss\LucidPhase2.h" />
     <ClInclude Include="Game\Map\Gate\BossGate.h" />
     <ClInclude Include="Game\Map\Gate\GateInteractComponent.h" />
+    <ClInclude Include="Game\Monsters\Boss\Boss2.h" />
+    <ClInclude Include="Game\Monsters\Boss\Boss2BlackBoard.h" />
+    <ClInclude Include="Game\Monsters\Boss\Boss2Component.h" />
+    <ClInclude Include="Game\Monsters\Boss\Boss2IdleState.h" />
     <ClInclude Include="Game\Monsters\Boss\BossBlackBoard.h" />
     <ClInclude Include="Game\Monsters\Boss\BossBlade.h" />
     <ClInclude Include="Game\Monsters\Boss\BossBladeState.h" />
@@ -236,6 +240,7 @@
     <ClInclude Include="Game\Monsters\Boss\BossPatternData.h" />
     <ClInclude Include="Game\Monsters\Boss\BossPhase1Golem.h" />
     <ClInclude Include="Game\Monsters\Boss\BossPhase1GolemState.h" />
+    <ClInclude Include="Game\Monsters\Boss\BossTeleportEffect.h" />
     <ClInclude Include="Game\Monsters\Boss\BossTeleportState.h" />
     <ClInclude Include="Game\Monsters\MonsterBase.h" />
     <ClInclude Include="Game\Monsters\MonsterBlackBoard.h" />
@@ -254,6 +259,7 @@
     <ClInclude Include="Game\Skills\Skill.h" />
     <ClInclude Include="Game\Skills\SongOfHeaven.h" />
     <ClInclude Include="Game\Skills\TriflingWind.h" />
+    <ClInclude Include="Game\Skills\WindJump.h" />
     <ClInclude Include="Input\Input.h" />
     <ClInclude Include="Input\InputAction.h" />
     <ClInclude Include="Input\InputContext.h" />
@@ -367,6 +373,10 @@
     <ClCompile Include="Game\Map\Boss\LucidPhase2.cpp" />
     <ClCompile Include="Game\Map\Gate\BossGate.cpp" />
     <ClCompile Include="Game\Map\Gate\GateInteractComponent.cpp" />
+    <ClCompile Include="Game\Monsters\Boss\Boss2.cpp" />
+    <ClCompile Include="Game\Monsters\Boss\Boss2BlackBoard.cpp" />
+    <ClCompile Include="Game\Monsters\Boss\Boss2Component.cpp" />
+    <ClCompile Include="Game\Monsters\Boss\Boss2IdleState.cpp" />
     <ClCompile Include="Game\Monsters\Boss\BossBlackBoard.cpp" />
     <ClCompile Include="Game\Monsters\Boss\BossBlade.cpp" />
     <ClCompile Include="Game\Monsters\Boss\BossBladeState.cpp" />
@@ -380,6 +390,7 @@
     <ClCompile Include="Game\Monsters\Boss\BossPatternData.cpp" />
     <ClCompile Include="Game\Monsters\Boss\BossPhase1Golem.cpp" />
     <ClCompile Include="Game\Monsters\Boss\BossPhase1GolemState.cpp" />
+    <ClCompile Include="Game\Monsters\Boss\BossTeleportEffect.cpp" />
     <ClCompile Include="Game\Monsters\Boss\BossTeleportState.cpp" />
     <ClCompile Include="Game\Monsters\MonsterBase.cpp" />
     <ClCompile Include="Game\Monsters\MonsterBlackBoard.cpp" />
@@ -398,6 +409,7 @@
     <ClCompile Include="Game\Skills\Skill.cpp" />
     <ClCompile Include="Game\Skills\SongOfHeaven.cpp" />
     <ClCompile Include="Game\Skills\TriflingWind.cpp" />
+    <ClCompile Include="Game\Skills\WindJump.cpp" />
     <ClCompile Include="Input\Input.cpp" />
     <ClCompile Include="Input\InputAction.cpp" />
     <ClCompile Include="Input\InputContext.cpp" />

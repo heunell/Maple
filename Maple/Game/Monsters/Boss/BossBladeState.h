@@ -4,6 +4,8 @@
 #include "BossPatternData.h"
 #include "BossBlade.h"
 
+#include <string>
+
 class BossBladeState : public MonsterState
 {
 public:
@@ -15,11 +17,15 @@ public:
 	BossBladeState& operator=(BossBladeState&&) = delete;
 
 private:
-	Weak<class BossComponent> _Owner;
+	Weak<class MonsterComponent> _Owner;
 
-	ObjectPool<BossBlade> _BladePool;
-
-	FBossBladePatternData _PatternData;
+	Weak<class MonsterState>     _IdleState;
+ 							     
+	ObjectPool<BossBlade>        _BladePool;
+							     
+	FBossBladePatternData        _PatternData;
+							     
+	FBossBladeStateData          _StateData;
 
 	bool _Spawned = false;
 
@@ -33,7 +39,7 @@ private:
 	void SpawnBladePattern();
 
 public:
-	bool Init(Ptr<class BossComponent> Owner);
+	bool Init(Ptr<MonsterComponent> Owner, Ptr<MonsterState> IdleState, const FBossBladeStateData& StateData);
 
 	virtual void Enter(Ptr<class MonsterComponent> Monster) override;
 

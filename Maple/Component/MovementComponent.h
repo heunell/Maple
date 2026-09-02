@@ -55,7 +55,7 @@ public:
 
     bool StartJump(float Force);
 
-    bool StartDoubleJump(float HorizontalForce, float VerticalForce);
+    bool StartAirJump(float HorizontalForce, float VerticalForce);
 
     bool StartDownJump();
 

@@ -14,6 +14,10 @@ private:
 
     Ptr<class AABBCollisionComponent> _AABBCollision;
 
+    Weak<class CollisionComponent> _CurrentGround;
+
+    Weak<class CollisionComponent> _IgnoredGround;
+
     int32 _TimerID = -1;
     
     bool _bReverse = false;
@@ -43,6 +47,10 @@ public:
 
     bool DoubleJump();
 
+    bool UpJump();
+
+    bool DownJump();
+
 private:
     void MoveUp   (float DeltaTime);
     
@@ -53,4 +61,6 @@ private:
     void OnLeftWall (Weak<class CollisionComponent> Collision);
     
     void OnRightWall (Weak<class CollisionComponent> Collision);
+
+    void OnGroundRelease(Weak<class CollisionComponent> Collision);
 };

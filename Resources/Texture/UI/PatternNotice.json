@@ -1,0 +1,73 @@
+{
+  "Animations": {
+    "PATTERN_NOTICE.LEFT": {
+      "Texture": "UI/ui_floatnotice_222_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.01360544,
+            0.02083333,
+            0.70748299,
+            0.97916667
+          ],
+          "Size": [
+            102.0,
+            92.0
+          ],
+          "Offset": [
+            0.0,
+            0.0
+          ],
+          "Delay": 1000.0
+        }
+      ]
+    },
+    "PATTERN_NOTICE.CENTER": {
+      "Texture": "UI/ui_floatnotice_222_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.73469388,
+            0.02083333,
+            0.7414966,
+            0.97916667
+          ],
+          "Size": [
+            1.0,
+            92.0
+          ],
+          "Offset": [
+            0.0,
+            0.0
+          ],
+          "Delay": 1000.0
+        }
+      ]
+    },
+    "PATTERN_NOTICE.RIGHT": {
+      "Texture": "UI/ui_floatnotice_222_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.76870748,
+            0.02083333,
+            0.98639456,
+            0.97916667
+          ],
+          "Size": [
+            32.0,
+            92.0
+          ],
+          "Offset": [
+            0.0,
+            0.0
+          ],
+          "Delay": 1000.0
+        }
+      ]
+    }
+  }
+}

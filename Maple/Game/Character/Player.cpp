@@ -175,6 +175,8 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 
 	BottomCollision ->SetCollisionCallBack(COLLISION_STATE_BLOCK, this, &Player::OnGround);
 
+	BottomCollision->SetCollisionCallBack(COLLISION_STATE_RELEASE, this, &Player::OnGroundRelease);
+
 	Ptr<AABBCollisionComponent> LeftCollision = CreateSceneComponent<AABBCollisionComponent>("LeftCollision ");
 
 	LeftCollision->SetBoxSize(8.f, 8.f);
@@ -271,12 +273,65 @@ bool Player::Jump()
 
 bool Player::DoubleJump()
 {
+    if (!_Movement)
+    {
+        return false;
+    }
+
+    float Direction = _Movement->GetMoveAxis()._x;
+
+    if (Direction == 0.f)
+    {
+        Direction = IsRight() ? 1.f : -1.f;
+    }
+
+    return _Movement->StartAirJump(Direction * 430.f, 360.f);
+}
+
+bool Player::UpJump()
+{
 	if (!_Movement)
 	{
 		return false;
 	}
 
-	return _Movement->StartDoubleJump(IsRight() ? 430.f : -430.f, 360.f);
+	if (!_Movement->StartAirJump(_Movement->GetMoveAxis()._x * 120.f, 820.f))
+	{
+		return false;
+	}
+	
+	return true;
+}
+
+bool Player::DownJump()
+{
+	if (!_Movement || !_AABBCollision || !_Movement->IsLaning())
+	{
+		return false;
+	}
+
+	Ptr<CollisionComponent> CurrentGround = Lock(_CurrentGround);
+
+	if (!CurrentGround || !GetLevel())
+{
+		return false;
+	}
+
+	if (!GetLevel()->FindPlatformBelow(_AABBCollision->GetBox(), 260.f, CurrentGround))
+	{
+		return false;
+	}
+
+	if (!_Movement->StartDownJump())
+	{
+		return false;
+	}
+
+	_IgnoredGround = CurrentGround;
+
+	_CurrentGround.reset();
+
+	return true;
 }
 
 void Player::MoveUp(float DeltaTime)
@@ -294,6 +349,11 @@ void Player::OnGround(Weak<class CollisionComponent> Collision)
 	}
 
 	if(Component->GetProfile()->GetChannel() != eCollisionChannel::COLLISION_CHANNEL_ENVIRONMENT)
+	{
+		return;
+	}
+
+	if (Component == Lock(_IgnoredGround))
 	{
 		return;
 	}
@@ -326,8 +386,30 @@ void Player::OnGround(Weak<class CollisionComponent> Collision)
 	{
 		_Movement->Blocking(FVector3D(0.f, CorrectionY, 0.f));
 	}
+	
+	_CurrentGround = Ground;
 
 	_Movement->SetLanding(true);
+}
+
+void Player::OnGroundRelease(Weak<class CollisionComponent> Collision)
+{
+	Ptr<CollisionComponent> Component = Lock(Collision);
+
+	if (!Component)
+	{
+		return;
+	}
+
+	if (Component == Lock(_CurrentGround))
+	{
+		_CurrentGround.reset();
+	}
+
+	if (Component == Lock(_IgnoredGround))
+	{
+		_IgnoredGround.reset();
+	}
 }
 
 void Player::OnLeftWall (Weak<class CollisionComponent> Collision)

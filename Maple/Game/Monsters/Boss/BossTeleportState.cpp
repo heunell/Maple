@@ -5,6 +5,7 @@
 #include "BossComponent.h"
 #include "BossIdleState.h"
 #include "BossPhase1Golem.h"
+#include "BossTeleportEffect.h"
 #include "Component/MovementComponent.h"
 #include "Component/SpriteComponent.h"
 #include "Core/GameEngine.h"
@@ -12,7 +13,7 @@
 #include "Game/Monsters/MonsterStateMachine.h"
 #include "Object/Actor.h"
 #include "World/World.h"
-
+#include "World/Level.h"
 #include <random>
 #include <vector>
 
@@ -46,14 +47,36 @@ bool BossTeleportState::Init(Ptr<BossComponent> Owner)
 		return false;
 	}
 
-	BossSprite->AddNotify("LUCID_MOB_8880140.skill2", _PatternData.TeleportFrame, this, &BossTeleportState::TeleportPlayer);
+
+	Ptr<Level> LevelOwner = MonsterOwner->GetLevel();
+
+	if (!LevelOwner)
+	{
+		return false;
+	}
+
+	_TeleportEffect = LevelOwner->SpawnActor<BossTeleportEffect>("BossTeleportEffect", FVector3D::Zero, FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
+
+	if (!_TeleportEffect)
+	{
+		return false;
+	}
+
+	BossSprite->AddNotify("LUCID_MOB_8880140.skill4", _PatternData.EffectStartFrame, this, &BossTeleportState::StartTeleportEffect);
 
 	return true;
 }
 
 void BossTeleportState::Enter(Ptr<MonsterComponent> Monster)
 {
+	_EffectStarted = false;
+
 	_Teleported = false;
+
+	if (_TeleportEffect)
+	{
+		_TeleportEffect->SetEffectEnable(false);
+	}
 
 	if (!Monster)
 	{
@@ -81,7 +104,7 @@ void BossTeleportState::Enter(Ptr<MonsterComponent> Monster)
 		return;
 	}
 
-	BossSprite->ChangeAnimation("LUCID_MOB_8880140.skill2");
+	BossSprite->ChangeAnimation("LUCID_MOB_8880140.skill4");
 }
 
 Ptr<MonsterState> BossTeleportState::Tick(Ptr<MonsterComponent> Monster, float DeltaTime)
@@ -104,6 +127,50 @@ Ptr<MonsterState> BossTeleportState::Tick(Ptr<MonsterComponent> Monster, float D
 	}
 
 	return BossController->GetIdleState();
+}
+
+void BossTeleportState::StartTeleportEffect()
+{
+	if (_EffectStarted)
+	{
+		return;
+	}
+
+	Ptr<BossComponent> BossController = Lock(_Owner);
+
+	if (!BossController)
+	{
+		return;
+	}
+
+	Ptr<MonsterStateMachine> StateMachine = BossController->GetStateMachine();
+
+	if (!StateMachine || StateMachine->GetCurrentState().get() != this)
+	{
+		return;
+	}
+
+	_EffectStarted = true;
+
+	Ptr<World> CurrentWorld = GameEngine::Instance().GetWorld();
+
+	if (!CurrentWorld)
+	{
+		_Teleported = true;
+
+		return;
+	}
+
+	Ptr<Actor> Player = CurrentWorld->GetPlayer();
+
+	if (!Player || !_TeleportEffect)
+	{
+		_Teleported = true;
+
+		return;
+	}
+
+	_TeleportEffect->Start(This<BossTeleportState>(), Player);
 }
 
 void BossTeleportState::TeleportPlayer()
@@ -219,6 +286,13 @@ void BossTeleportState::TeleportPlayer()
 
 void BossTeleportState::Destroy()
 {
+	if (_TeleportEffect)
+	{
+		_TeleportEffect->SetEffectEnable(false);
+	}
+
+	_TeleportEffect.reset();
+
 	_Owner.reset();
 
 	MonsterState::Destroy();

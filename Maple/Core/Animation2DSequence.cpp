@@ -117,9 +117,7 @@ void Animation2DSequence::Tick(float DeltaTime)
             }
             else if (_Loop)
             {
-                _Reverse = true;
-
-                _Frame = FrameCount - 2;
+                _Frame = 0;
             }
             else
             {
@@ -134,9 +132,7 @@ void Animation2DSequence::Tick(float DeltaTime)
             }
             else if (_Loop)
             {
-                _Reverse = false;
-
-                _Frame = 1;
+                _Frame =  FrameCount - 1;
             }
             else
             {

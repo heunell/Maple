@@ -1,0 +1,1109 @@
+{
+  "Animations": {
+    "DeathNoticeUIFrame.background_full": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0,
+            0.0,
+            0.41601562,
+            0.265625
+          ],
+          "Size": [
+            426.0,
+            272.0
+          ],
+          "Offset": [
+            213.0,
+            -136.0
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.background_top": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.41601562,
+            0.0,
+            0.83203125,
+            0.10644531
+          ],
+          "Size": [
+            426.0,
+            109.0
+          ],
+          "Offset": [
+            213.0,
+            -54.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.background_bottom": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0,
+            0.265625,
+            0.41601562,
+            0.37304688
+          ],
+          "Size": [
+            426.0,
+            110.0
+          ],
+          "Offset": [
+            213.0,
+            -55.0
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.background_autorevive": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.41601562,
+            0.265625,
+            0.83203125,
+            0.34375
+          ],
+          "Size": [
+            426.0,
+            80.0
+          ],
+          "Offset": [
+            213.0,
+            -40.0
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.top_noTransfer": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0,
+            0.37304688,
+            0.29785156,
+            0.4296875
+          ],
+          "Size": [
+            305.0,
+            58.0
+          ],
+          "Offset": [
+            248.5,
+            -52.0
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.autoRevive_msgWaitUser": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.29785156,
+            0.37304688,
+            0.61035156,
+            0.38769531
+          ],
+          "Size": [
+            320.0,
+            15.0
+          ],
+          "Offset": [
+            213.0,
+            -22.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.autoRevive_msgDelay": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.61035156,
+            0.37304688,
+            0.89160156,
+            0.38769531
+          ],
+          "Size": [
+            288.0,
+            15.0
+          ],
+          "Offset": [
+            214.0,
+            -22.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.autoRevive_msgDeathcount": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0,
+            0.4296875,
+            0.27246094,
+            0.44335938
+          ],
+          "Size": [
+            279.0,
+            14.0
+          ],
+          "Offset": [
+            213.5,
+            -13.0
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.autoRevive_msgMVP": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.27246094,
+            0.4296875,
+            0.44824219,
+            0.44335938
+          ],
+          "Size": [
+            180.0,
+            14.0
+          ],
+          "Offset": [
+            212.0,
+            -12.0
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.autoRevive_timerGaugeBack": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.44824219,
+            0.4296875,
+            0.81347656,
+            0.45117188
+          ],
+          "Size": [
+            374.0,
+            22.0
+          ],
+          "Offset": [
+            213.0,
+            -55.0
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.autoRevive_timerGauge": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0,
+            0.45117188,
+            0.35742188,
+            0.46289062
+          ],
+          "Size": [
+            366.0,
+            12.0
+          ],
+          "Offset": [
+            213.0,
+            -54.0
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.autoRevive_timerGaugeEdge": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.35742188,
+            0.45117188,
+            0.36621094,
+            0.47070312
+          ],
+          "Size": [
+            9.0,
+            20.0
+          ],
+          "Offset": [
+            -0.5,
+            6.0
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.manualRevive_back": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.36621094,
+            0.45117188,
+            0.67089844,
+            0.46191406
+          ],
+          "Size": [
+            312.0,
+            11.0
+          ],
+          "Offset": [
+            244.0,
+            -51.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.manualRevive_gauge": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.67089844,
+            0.45117188,
+            0.96972656,
+            0.45605469
+          ],
+          "Size": [
+            306.0,
+            5.0
+          ],
+          "Offset": [
+            244.0,
+            -51.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.manualRevive_edge": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.96972656,
+            0.45117188,
+            0.97460938,
+            0.45996094
+          ],
+          "Size": [
+            5.0,
+            9.0
+          ],
+          "Offset": [
+            0.5,
+            2.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.btYes_normal_0": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0,
+            0.47070312,
+            0.08203125,
+            0.50097656
+          ],
+          "Size": [
+            84.0,
+            31.0
+          ],
+          "Offset": [
+            167.0,
+            -80.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.btYes_mouseOver_0": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.08203125,
+            0.47070312,
+            0.1640625,
+            0.50097656
+          ],
+          "Size": [
+            84.0,
+            31.0
+          ],
+          "Offset": [
+            167.0,
+            -80.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.btYes_pressed_0": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.1640625,
+            0.47070312,
+            0.24609375,
+            0.50097656
+          ],
+          "Size": [
+            84.0,
+            31.0
+          ],
+          "Offset": [
+            167.0,
+            -80.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.btYes_disabled_0": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.24609375,
+            0.47070312,
+            0.328125,
+            0.50097656
+          ],
+          "Size": [
+            84.0,
+            31.0
+          ],
+          "Offset": [
+            167.0,
+            -80.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.btNo_normal_0": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.328125,
+            0.47070312,
+            0.41015625,
+            0.50097656
+          ],
+          "Size": [
+            84.0,
+            31.0
+          ],
+          "Offset": [
+            259.0,
+            -80.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.btNo_mouseOver_0": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.41015625,
+            0.47070312,
+            0.4921875,
+            0.50097656
+          ],
+          "Size": [
+            84.0,
+            31.0
+          ],
+          "Offset": [
+            259.0,
+            -80.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.btNo_pressed_0": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.4921875,
+            0.47070312,
+            0.57421875,
+            0.50097656
+          ],
+          "Size": [
+            84.0,
+            31.0
+          ],
+          "Offset": [
+            259.0,
+            -80.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.btNo_disabled_0": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.57421875,
+            0.47070312,
+            0.65625,
+            0.50097656
+          ],
+          "Size": [
+            84.0,
+            31.0
+          ],
+          "Offset": [
+            259.0,
+            -80.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.number_0": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.65625,
+            0.47070312,
+            0.6640625,
+            0.48339844
+          ],
+          "Size": [
+            8.0,
+            13.0
+          ],
+          "Offset": [
+            4.0,
+            -6.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.number_1": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.6640625,
+            0.47070312,
+            0.66992188,
+            0.48339844
+          ],
+          "Size": [
+            6.0,
+            13.0
+          ],
+          "Offset": [
+            4.0,
+            -6.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.number_2": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.66992188,
+            0.47070312,
+            0.67773438,
+            0.48339844
+          ],
+          "Size": [
+            8.0,
+            13.0
+          ],
+          "Offset": [
+            4.0,
+            -6.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.number_3": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.67773438,
+            0.47070312,
+            0.68457031,
+            0.48339844
+          ],
+          "Size": [
+            7.0,
+            13.0
+          ],
+          "Offset": [
+            4.5,
+            -6.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.number_4": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.68457031,
+            0.47070312,
+            0.69335938,
+            0.48339844
+          ],
+          "Size": [
+            9.0,
+            13.0
+          ],
+          "Offset": [
+            4.5,
+            -6.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.number_5": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.69335938,
+            0.47070312,
+            0.70117188,
+            0.48339844
+          ],
+          "Size": [
+            8.0,
+            13.0
+          ],
+          "Offset": [
+            4.0,
+            -6.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.number_6": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.70117188,
+            0.47070312,
+            0.70800781,
+            0.48339844
+          ],
+          "Size": [
+            7.0,
+            13.0
+          ],
+          "Offset": [
+            4.5,
+            -6.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.number_7": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.70800781,
+            0.47070312,
+            0.71582031,
+            0.48339844
+          ],
+          "Size": [
+            8.0,
+            13.0
+          ],
+          "Offset": [
+            4.0,
+            -6.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.number_8": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.71582031,
+            0.47070312,
+            0.72363281,
+            0.48339844
+          ],
+          "Size": [
+            8.0,
+            13.0
+          ],
+          "Offset": [
+            4.0,
+            -6.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "DeathNoticeUIFrame.number_9": {
+      "Texture": "UI/player_death_notice_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.72363281,
+            0.47070312,
+            0.73144531,
+            0.48339844
+          ],
+          "Size": [
+            8.0,
+            13.0
+          ],
+          "Offset": [
+            4.0,
+            -6.5
+          ],
+          "Delay": 0.0
+        }
+      ]
+    },
+    "TombFallFrame": {
+      "Texture": "UI/player_death_tomb_fall_atlas.png",
+      "Loop": false,
+      "Frames": [
+        {
+          "UV": [
+            0.0,
+            0.0,
+            0.07421875,
+            0.16796875
+          ],
+          "Size": [
+            38.0,
+            43.0
+          ],
+          "Offset": [
+            0.0,
+            21.5
+          ],
+          "Delay": 80.0
+        },
+        {
+          "UV": [
+            0.07421875,
+            0.0,
+            0.15234375,
+            0.16796875
+          ],
+          "Size": [
+            40.0,
+            43.0
+          ],
+          "Offset": [
+            0.0,
+            21.5
+          ],
+          "Delay": 80.0
+        },
+        {
+          "UV": [
+            0.15234375,
+            0.0,
+            0.22460938,
+            0.16796875
+          ],
+          "Size": [
+            37.0,
+            43.0
+          ],
+          "Offset": [
+            0.5,
+            21.5
+          ],
+          "Delay": 80.0
+        },
+        {
+          "UV": [
+            0.22460938,
+            0.0,
+            0.27539062,
+            0.16796875
+          ],
+          "Size": [
+            26.0,
+            43.0
+          ],
+          "Offset": [
+            0.0,
+            21.5
+          ],
+          "Delay": 80.0
+        },
+        {
+          "UV": [
+            0.27539062,
+            0.0,
+            0.34765625,
+            0.16796875
+          ],
+          "Size": [
+            37.0,
+            43.0
+          ],
+          "Offset": [
+            0.5,
+            21.5
+          ],
+          "Delay": 80.0
+        },
+        {
+          "UV": [
+            0.34765625,
+            0.0,
+            0.42578125,
+            0.16796875
+          ],
+          "Size": [
+            40.0,
+            43.0
+          ],
+          "Offset": [
+            0.0,
+            21.5
+          ],
+          "Delay": 80.0
+        },
+        {
+          "UV": [
+            0.42578125,
+            0.0,
+            0.5,
+            0.16796875
+          ],
+          "Size": [
+            38.0,
+            43.0
+          ],
+          "Offset": [
+            0.0,
+            21.5
+          ],
+          "Delay": 80.0
+        },
+        {
+          "UV": [
+            0.5,
+            0.0,
+            0.578125,
+            0.16796875
+          ],
+          "Size": [
+            40.0,
+            43.0
+          ],
+          "Offset": [
+            0.0,
+            21.5
+          ],
+          "Delay": 80.0
+        },
+        {
+          "UV": [
+            0.578125,
+            0.0,
+            0.65039062,
+            0.16796875
+          ],
+          "Size": [
+            37.0,
+            43.0
+          ],
+          "Offset": [
+            0.5,
+            21.5
+          ],
+          "Delay": 80.0
+        },
+        {
+          "UV": [
+            0.65039062,
+            0.0,
+            0.70117188,
+            0.16796875
+          ],
+          "Size": [
+            26.0,
+            43.0
+          ],
+          "Offset": [
+            0.0,
+            21.5
+          ],
+          "Delay": 80.0
+        },
+        {
+          "UV": [
+            0.70117188,
+            0.0,
+            0.7734375,
+            0.16796875
+          ],
+          "Size": [
+            37.0,
+            43.0
+          ],
+          "Offset": [
+            0.5,
+            21.5
+          ],
+          "Delay": 80.0
+        },
+        {
+          "UV": [
+            0.7734375,
+            0.0,
+            0.8515625,
+            0.16796875
+          ],
+          "Size": [
+            40.0,
+            43.0
+          ],
+          "Offset": [
+            0.0,
+            21.5
+          ],
+          "Delay": 80.0
+        },
+        {
+          "UV": [
+            0.0,
+            0.16796875,
+            0.16601562,
+            0.3359375
+          ],
+          "Size": [
+            85.0,
+            43.0
+          ],
+          "Offset": [
+            1.5,
+            19.5
+          ],
+          "Delay": 100.0
+        },
+        {
+          "UV": [
+            0.16601562,
+            0.16796875,
+            0.33203125,
+            0.3515625
+          ],
+          "Size": [
+            85.0,
+            47.0
+          ],
+          "Offset": [
+            1.5,
+            21.5
+          ],
+          "Delay": 100.0
+        },
+        {
+          "UV": [
+            0.33203125,
+            0.16796875,
+            0.50585938,
+            0.33984375
+          ],
+          "Size": [
+            89.0,
+            44.0
+          ],
+          "Offset": [
+            -0.5,
+            21.0
+          ],
+          "Delay": 100.0
+        },
+        {
+          "UV": [
+            0.50585938,
+            0.16796875,
+            0.68945312,
+            0.3359375
+          ],
+          "Size": [
+            94.0,
+            43.0
+          ],
+          "Offset": [
+            2.0,
+            21.5
+          ],
+          "Delay": 150.0
+        },
+        {
+          "UV": [
+            0.68945312,
+            0.16796875,
+            0.87304688,
+            0.3359375
+          ],
+          "Size": [
+            94.0,
+            43.0
+          ],
+          "Offset": [
+            2.0,
+            21.5
+          ],
+          "Delay": 150.0
+        },
+        {
+          "UV": [
+            0.0,
+            0.3515625,
+            0.18945312,
+            0.51953125
+          ],
+          "Size": [
+            97.0,
+            43.0
+          ],
+          "Offset": [
+            -3.5,
+            21.5
+          ],
+          "Delay": 150.0
+        },
+        {
+          "UV": [
+            0.18945312,
+            0.3515625,
+            0.36523438,
+            0.51953125
+          ],
+          "Size": [
+            90.0,
+            43.0
+          ],
+          "Offset": [
+            -3.0,
+            21.5
+          ],
+          "Delay": 150.0
+        },
+        {
+          "UV": [
+            0.36523438,
+            0.3515625,
+            0.44335938,
+            0.51953125
+          ],
+          "Size": [
+            40.0,
+            43.0
+          ],
+          "Offset": [
+            0.0,
+            21.5
+          ],
+          "Delay": 150.0
+        }
+      ]
+    }
+  }
+}

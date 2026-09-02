@@ -5,10 +5,13 @@
 #include "Game/Character/Player.h"
 #include "PlayerIdleState.h"
 #include "PlayerWalkState.h"
+#include "Game/Skills/WindJump.h"
+#include "World/World.h"
+#include "World/Level.h"
 
 Ptr<PlayerState> PlayerJumpState::HandleInput(Ptr<class PlayerComponent> PlayerComponent, Ptr<InputAction> Action, INPUT_TYPE::eType ButtonEvent)
 {
-    if (!PlayerComponent || !Action)
+     if (!PlayerComponent || !Action)
     {
         return nullptr;
     }
@@ -20,23 +23,55 @@ Ptr<PlayerState> PlayerJumpState::HandleInput(Ptr<class PlayerComponent> PlayerC
         return nullptr;
     }
 
-    // 일반 점프 키를 놓은 뒤부터 더블점프를 허용한다.
-    if (Action->GetName() == "MOVE_JUMP" && ButtonEvent == INPUT_TYPE::UP)
+    if (Action->GetName() == "MOVE_UP")
     {
-        if (!_UsedDoubleJump)
+        if (ButtonEvent == INPUT_TYPE::HOLD)
         {
-            _CanDoubleJump = true;
+            _IsUpPressed = true;
+        }
+        else if (ButtonEvent == INPUT_TYPE::UP)
+        {
+            _IsUpPressed = false;
         }
 
         return nullptr;
     }
 
-    if (Action->GetName() == "MOVE_JUMP" && ButtonEvent == INPUT_TYPE::HOLD && _CanDoubleJump && !_UsedDoubleJump)
+    // 첫 점프 키를 놓아야 공중점프를 사용할 수 있다.
+    if (Action->GetName() == "MOVE_JUMP" && ButtonEvent == INPUT_TYPE::UP)
     {
-        if (Player->DoubleJump())
+        if (!_UsedAirJump)
         {
-            _CanDoubleJump = false;
-            _UsedDoubleJump = true;
+            _CanAirJump = true;
+        }
+
+        return nullptr;
+    }
+
+    if (Action->GetName() == "MOVE_JUMP" && ButtonEvent == INPUT_TYPE::HOLD && _CanAirJump && !_UsedAirJump)
+    {
+        if (_IsUpPressed)
+        {
+            if (Player->UpJump())
+            {
+                DrawWindJumpEffect(Player, eWindJumpType::UpBack);
+
+                DrawWindJumpEffect(Player, eWindJumpType::UpSpecial);
+
+                DrawWindJumpEffect(Player, eWindJumpType::UpFront);
+
+                _CanAirJump = false;
+                _UsedAirJump = true;
+            }
+        }
+        else if (Player->DoubleJump())
+        {
+            DrawWindJumpEffect(Player, eWindJumpType::DoubleBack);
+
+            DrawWindJumpEffect(Player, eWindJumpType::DoubleFront);
+
+            _CanAirJump = false;
+            _UsedAirJump = true;
         }
 
         return nullptr;
@@ -60,6 +95,28 @@ Ptr<PlayerState> PlayerJumpState::HandleInput(Ptr<class PlayerComponent> PlayerC
     }
 
     return nullptr;
+}
+
+void PlayerJumpState::DrawWindJumpEffect(Ptr<class Player> Player, eWindJumpType Type)
+{
+    if (!Player)
+    {
+        return;
+    }
+
+    Ptr<Level> CurrentLevel = Player->GetLevel();
+
+    if (!CurrentLevel)
+    {
+        return;
+    }
+
+    Ptr<WindJump> Effect = CurrentLevel->SpawnActor<WindJump>("WindJumpEffect", Player->GetWorldPosition(), FVector3D(1.f, 1.f, 1.f), FRotator());
+
+    if (Effect)
+    {
+        Effect->Start(Type, Player->IsRight());
+    }
 }
 
 Ptr<PlayerState> PlayerJumpState::Tick(Ptr<class PlayerComponent> PlayerComponent, float DeltaTime)

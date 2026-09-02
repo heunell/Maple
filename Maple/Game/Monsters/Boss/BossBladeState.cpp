@@ -1,10 +1,8 @@
 #include "pch.h"
 #include "BossBladeState.h"
-#include "Boss.h"
-#include "BossComponent.h"
-#include "BossIdleState.h"
 #include "Component/SpriteComponent.h"
 #include "Game/Monsters/MonsterBase.h"
+#include "Game/Monsters/MonsterComponent.h"
 #include "World/Level.h"
 
 #include <cmath>
@@ -12,14 +10,19 @@
 #include <numbers>
 #include <random>
 
-bool BossBladeState::Init(Ptr<BossComponent> Owner)
+
+bool BossBladeState::Init(Ptr<MonsterComponent> Owner, Ptr<MonsterState> IdleState, const FBossBladeStateData& StateData)
 {
-	if (!Owner)
+	if (!Owner || !IdleState || StateData.CastAnimation.empty() || StateData.IdleAnimation.empty())
 	{
 		return false;
 	}
 
 	_Owner = Owner;
+
+	_IdleState = IdleState;
+
+	_StateData = StateData;
 
 	Ptr<MonsterBase> MonsterOwner = Owner->GetMonster();
 
@@ -28,21 +31,15 @@ bool BossBladeState::Init(Ptr<BossComponent> Owner)
 		return false;
 	}
 
-	Ptr<Boss> BossOwner = Cast<MonsterBase, Boss>(MonsterOwner);
-
-	if (!BossOwner)
-	{
-		return false;
-	}
-
-	Ptr<SpriteComponent> BossSprite = BossOwner->GetBossSprite();
+	Ptr<SpriteComponent> BossSprite =
+		MonsterOwner->FindSceneComponent<SpriteComponent>("BossSprite");
 
 	if (!BossSprite)
 	{
 		return false;
 	}
 
-	BossSprite->AddNotify("LUCID_MOB_8880140.skill1", _PatternData.SpawnFrame, this, &BossBladeState::SpawnBladePattern);
+	BossSprite->AddNotify(_StateData.CastAnimation, _StateData.SpawnFrame, this, &BossBladeState::SpawnBladePattern);
 
 	if (!_BladePool.Configure(
 		_PatternData.PoolMaxCount,
@@ -58,14 +55,14 @@ bool BossBladeState::Init(Ptr<BossComponent> Owner)
 
 Ptr<BossBlade> BossBladeState::CreateBlade()
 {
-	Ptr<BossComponent> BossController = Lock(_Owner);
+	Ptr<MonsterComponent> Owner = Lock(_Owner);
 
-	if (!BossController)
+	if (!Owner)
 	{
 		return nullptr;
 	}
 
-	Ptr<MonsterBase> MonsterOwner = BossController->GetMonster();
+	Ptr<MonsterBase> MonsterOwner = Owner->GetMonster();
 
 	if (!MonsterOwner)
 	{
@@ -84,12 +81,18 @@ Ptr<BossBlade> BossBladeState::CreateBlade()
 
 void BossBladeState::EnableBlade(const Ptr<BossBlade>& Blade)
 {
-	Blade->SetPoolEnable(true);
+	if (Blade)
+	{
+		Blade->SetPoolEnable(true);
+	}
 }
 
 void BossBladeState::DisableBlade(const Ptr<BossBlade>& Blade)
 {
-	Blade->SetPoolEnable(false);
+	if (Blade)
+	{
+		Blade->SetPoolEnable(false);
+	}
 }
 
 void BossBladeState::Enter(Ptr<MonsterComponent> Monster)
@@ -108,38 +111,19 @@ void BossBladeState::Enter(Ptr<MonsterComponent> Monster)
 		return;
 	}
 
-	Ptr<Boss> BossOwner = Cast<MonsterBase, Boss>(MonsterOwner);
-
-	if (!BossOwner)
-	{
-		return;
-	}
-
-	Ptr<SpriteComponent> BossSprite = BossOwner->GetBossSprite();
+	Ptr<SpriteComponent> BossSprite = MonsterOwner->FindSceneComponent<SpriteComponent>("BossSprite");
 
 	if (!BossSprite)
 	{
 		return;
 	}
 
-	BossSprite->ChangeAnimation("LUCID_MOB_8880140.skill1");
+	BossSprite->ChangeAnimation(_StateData.CastAnimation);
 }
 
 Ptr<MonsterState> BossBladeState::Tick(Ptr<MonsterComponent> Monster, float DeltaTime)
 {
-	if (!Monster)
-	{
-		return nullptr;
-	}
-
-	Ptr<BossComponent> BossController = Cast<MonsterComponent, BossComponent>(Monster);
-
-	if (!BossController)
-	{
-		return nullptr;
-	}
-
-	if (!_Spawned)
+	if (!Monster || !_Spawned)
 	{
 		return nullptr;
 	}
@@ -149,7 +133,7 @@ Ptr<MonsterState> BossBladeState::Tick(Ptr<MonsterComponent> Monster, float Delt
 		return nullptr;
 	}
 
-	return BossController->GetIdleState();
+	return Lock(_IdleState);
 }
 
 void BossBladeState::SpawnBladePattern()
@@ -159,28 +143,21 @@ void BossBladeState::SpawnBladePattern()
 		return;
 	}
 
-	Ptr<BossComponent> BossController = Lock(_Owner);
+	Ptr<MonsterComponent> Owner = Lock(_Owner);
 
-	if (!BossController)
+	if (!Owner)
 	{
 		return;
 	}
 
-	Ptr<MonsterBase> MonsterOwner = BossController->GetMonster();
+	Ptr<MonsterBase> MonsterOwner = Owner->GetMonster();
 
 	if (!MonsterOwner)
 	{
 		return;
 	}
 
-	Ptr<Boss> BossOwner = Cast<MonsterBase, Boss>(MonsterOwner);
-
-	if (!BossOwner)
-	{
-		return;
-	}
-
-	Ptr<SpriteComponent> BossSprite = BossOwner->GetBossSprite();
+	Ptr<SpriteComponent> BossSprite = MonsterOwner->FindSceneComponent<SpriteComponent>("BossSprite");
 
 	if (!BossSprite)
 	{
@@ -191,11 +168,11 @@ void BossBladeState::SpawnBladePattern()
 
 	std::mt19937 RandomEngine(RandomDevice());
 
-	std::uniform_int_distribution<int32> CountDistribution(_PatternData.SpawnMinCount,_PatternData.SpawnMaxCount);
+	std::uniform_int_distribution<int32> CountDistribution(_PatternData.SpawnMinCount, _PatternData.SpawnMaxCount);
 
 	std::uniform_int_distribution<int32> ResourceDistribution(0, _PatternData.ResourceCount - 1);
 
-	std::uniform_real_distribution<float> AngleDistribution(0.f, std::numbers::pi_v<float> *2.f);
+	std::uniform_real_distribution<float> AngleDistribution(0.f, std::numbers::pi_v<float> * 2.f);
 
 	std::uniform_real_distribution<float> RadiusDistribution(0.f, _PatternData.SpawnMaxRadius);
 
@@ -206,7 +183,7 @@ void BossBladeState::SpawnBladePattern()
 		return;
 	}
 
-	FVector3D Center = MonsterOwner->GetWorldPosition() + _PatternData.SpawnOffset;
+	FVector3D Center = MonsterOwner->GetWorldPosition() + _StateData.SpawnOffset;
 
 	for (int32 Index = 0; Index < BladeCount; ++Index)
 	{
@@ -216,7 +193,10 @@ void BossBladeState::SpawnBladePattern()
 
 		FVector3D Direction(cosf(Angle), sinf(Angle), 0.f);
 
-		FVector3D SpawnPosition(Center._x + Direction._x * Radius, Center._y + Direction._y * Radius, Center._z);
+		FVector3D SpawnPosition(
+			Center._x + Direction._x * Radius,
+			Center._y + Direction._y * Radius,
+			Center._z);
 
 		Ptr<BossBlade> Blade = _BladePool.Acquire();
 
@@ -230,17 +210,15 @@ void BossBladeState::SpawnBladePattern()
 
 	_Spawned = true;
 
-	BossSprite->ChangeAnimation("LUCID_MOB_8880140.stand");
+	BossSprite->ChangeAnimation(_StateData.IdleAnimation);
 }
 
 void BossBladeState::ReleaseBlade(Ptr<BossBlade> Blade)
 {
-	if (!Blade)
+	if (Blade)
 	{
-		return;
+		_BladePool.Release(Blade);
 	}
-
-	_BladePool.Release(Blade);
 }
 
 void BossBladeState::Destroy()
@@ -248,6 +226,8 @@ void BossBladeState::Destroy()
 	_BladePool.ReleaseAll();
 
 	_Owner.reset();
+
+	_IdleState.reset();
 
 	MonsterState::Destroy();
 }

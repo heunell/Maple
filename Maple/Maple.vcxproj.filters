@@ -467,6 +467,24 @@
     <ClInclude Include="Game\Monsters\Boss\BossTeleportState.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Skills\WindJump.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Monsters\Boss\BossTeleportEffect.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Monsters\Boss\Boss2.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Monsters\Boss\Boss2BlackBoard.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Monsters\Boss\Boss2IdleState.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Monsters\Boss\Boss2Component.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\Matrix.cpp">
@@ -881,6 +899,24 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Game\Monsters\Boss\BossTeleportState.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Skills\WindJump.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Monsters\Boss\BossTeleportEffect.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Monsters\Boss\Boss2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Monsters\Boss\Boss2BlackBoard.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Monsters\Boss\Boss2IdleState.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Monsters\Boss\Boss2Component.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

@@ -41,7 +41,15 @@ private:
 
 	Ptr<AABBCollisionComponent> _RightWall;
 
+	float _CameraMinCenterY = -1040.f;
+
+	float _CameraMaxCenterY = 0.f;
+
+	std::vector<FVector3D> _PlatformRegenPositions;
+
 	std::vector<FBackgroundScrollLayer> _BackgroundScrollLayers;
+
+	void RegenPlayerPlatform(Ptr<class Actor> Player);
 
 public:
 	virtual bool Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name) override;

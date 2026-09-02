@@ -16,12 +16,16 @@ public:
 private:
 	Weak<class BossComponent> _Owner;
 
+	Ptr<class BossTeleportEffect> _TeleportEffect;
+
 	FBossTeleportPatternData _PatternData;
+
+	bool _EffectStarted = false;
 
 	bool _Teleported = false;
 
 private:
-	void TeleportPlayer();
+	void StartTeleportEffect();
 
 public:
 	bool Init(Ptr<class BossComponent> Owner);
@@ -29,6 +33,8 @@ public:
 	virtual void Enter(Ptr<class MonsterComponent> Monster) override;
 
 	virtual Ptr<MonsterState> Tick(Ptr<class MonsterComponent> Monster, float DeltaTime) override;
+
+	void TeleportPlayer();
 
 	virtual void Destroy() override;
 };

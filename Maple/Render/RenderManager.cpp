@@ -13,9 +13,13 @@ bool RenderManager::Init()
 
     CreateRenderLayer("Default", 50);
 
+    CreateRenderLayer("SkillBack", 90);
+
     CreateRenderLayer("Player", 100);
 
-    //CreateRenderLayer("Monster", 500);
+    CreateRenderLayer("SkillFront", 110);
+
+    CreateRenderLayer("Monster", 500);
 
     CreateRenderLayer("UI", 1000);
     
