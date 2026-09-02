@@ -32,5 +32,7 @@ public:
 
 	void Start(Ptr<class BossPhase1GolemState> Owner, const FVector3D& Position, float GroundY, float FallDuration);
 
+    bool IsStanding() const;
+    
 	void SetPoolEnable(bool Enable);
 };

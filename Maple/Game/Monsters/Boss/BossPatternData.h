@@ -89,3 +89,8 @@ struct FBossPhase1GolemFallData
 
 	float ElapsedTime = 0.f;
 };
+
+struct FBossTeleportPatternData
+{
+	int32 TeleportFrame = 24;
+};

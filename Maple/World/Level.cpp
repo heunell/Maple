@@ -267,6 +267,11 @@ Ptr<class CollisionComponent> Level::FindCollider(std::pair<int32, int32>& Colli
 	return _CollisionManager->FindCollider(CollisionID);
 }
 
+Ptr<AABBCollisionComponent> Level::FindPlatformBelow(const FAABB2D& PlayerBox, float MaxDistance, const Ptr<CollisionComponent>& IgnoreGround)
+{
+    return _CollisionManager->FindPlatformBelow(PlayerBox, MaxDistance, IgnoreGround);
+}
+
 Ptr<Actor> Level::FindActor(int32 Id)
 {
 	auto It = _Actors.find(Id);

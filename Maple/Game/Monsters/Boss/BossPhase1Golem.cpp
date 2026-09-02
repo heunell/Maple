@@ -156,6 +156,11 @@ void BossPhase1Golem::Start(Ptr<BossPhase1GolemState> Owner, const FVector3D& Po
 	_Sprite->SetPlay("LUCID_GOLEM_8880160.attack1", true);
 }
 
+bool BossPhase1Golem::IsStanding() const
+{
+    return IsEnable() && !_Summoning && !_Falling && !_Landing;
+}
+
 void BossPhase1Golem::SetPoolEnable(bool Enable)
 {
 	SetEnable(Enable);

@@ -69,6 +69,8 @@ public:
     
     Ptr<class CollisionComponent> FindCollider(std::pair<int32, int32>& CollisionID);
     
+    Ptr<class AABBCollisionComponent> FindPlatformBelow(const FAABB2D& PlayerBox, float MaxDistance, const Ptr<class CollisionComponent>& IgnoreGround);
+
     void FindActors(const std::string& Tag, OUT std::vector<Ptr<class Actor>>& OutArr);
     
     void RemoveActor(int32 Id);

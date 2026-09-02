@@ -283,7 +283,11 @@ void BossPhase1GolemState::SpawnGolemPattern()
 
 	FirstGolem->Start(This<BossPhase1GolemState>(), FirstStartPosition, FirstGroundPosition._y, _PatternData.FallDuration);
 
-	SecondGolem->Start(This<BossPhase1GolemState>(), SecondStartPosition, SecondGroundPosition._y, _PatternData.FallDuration);
+    SecondGolem->Start(This<BossPhase1GolemState>(), SecondStartPosition, SecondGroundPosition._y, _PatternData.FallDuration);
+
+    BossBoard->ActivePhase1Golems.push_back(FirstGolem);
+
+    BossBoard->ActivePhase1Golems.push_back(SecondGolem);
 }
 
 void BossPhase1GolemState::ReleaseGolem(Ptr<BossPhase1Golem> Golem)
@@ -291,6 +295,34 @@ void BossPhase1GolemState::ReleaseGolem(Ptr<BossPhase1Golem> Golem)
 	if (!Golem)
 	{
 		return;
+	}
+
+	Ptr<BossComponent> BossController = Lock(_Owner);
+
+	if (BossController)
+	{
+		Ptr<MonsterBlackBoard> MonsterBoard = BossController->GetBlackBoard();
+
+		Ptr<BossBlackBoard> BossBoard = Cast<MonsterBlackBoard, BossBlackBoard>(MonsterBoard);
+
+		if (BossBoard)
+		{
+			std::vector<Weak<BossPhase1Golem>>& ActiveGolems = BossBoard->ActivePhase1Golems;
+
+			for (auto Iterator = ActiveGolems.begin(); Iterator != ActiveGolems.end();)
+			{
+				Ptr<BossPhase1Golem> ActiveGolem = Lock(*Iterator);
+
+				if (!ActiveGolem || ActiveGolem == Golem)
+				{
+					Iterator = ActiveGolems.erase(Iterator);
+
+					continue;
+				}
+
+				++Iterator;
+			}
+		}
 	}
 
 	_GolemPool.Release(Golem);

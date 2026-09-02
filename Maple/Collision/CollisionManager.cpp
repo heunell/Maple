@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "CollisionManager.h"
+#include "Collision/CollisionProfile.h"
 #include "Component/CollisionComponent.h"
+#include "Component/AABBCollisionComponent.h"
 #include "Collision/CollisionProfileManager.h"
 #include "Object/Actor.h"
 
@@ -140,6 +142,69 @@ Ptr<class CollisionComponent> CollisionManager::FindCollider(std::pair<int32, in
     }
 
     return It->second;
+}
+
+Ptr<AABBCollisionComponent> CollisionManager::FindPlatformBelow(const FAABB2D& PlayerBox, float MaxDistance, const Ptr<CollisionComponent>& IgnoreGround)
+{
+    Ptr<AABBCollisionComponent> NearestPlatform = nullptr;
+
+    float NearestDistance = MaxDistance + 1.f;
+
+    for (const auto& It : _Colliders)
+    {
+        Ptr<CollisionComponent> Component = It.second;
+
+        if (!Component || Component == IgnoreGround || !Component->IsEnable() || !Component->IsActive())
+        {
+            continue;
+        }
+
+        Ptr<Actor> Owner = Component->GetOwner();
+
+        if (!Owner || !Owner->IsEnable() || !Owner->IsActive())
+        {
+            continue;
+        }
+
+        Ptr<CollisionProfile> Profile = Component->GetProfile();
+
+        if (!Profile || Profile->GetChannel() != eCollisionChannel::COLLISION_CHANNEL_ENVIRONMENT)
+        {
+            continue;
+        }
+
+        Ptr<AABBCollisionComponent> Platform = Cast<CollisionComponent, AABBCollisionComponent>(Component);
+
+        if (!Platform)
+        {
+            continue;
+        }
+
+        const FAABB2D& PlatformBox = Platform->GetBox();
+
+        if (Platform->GetBoxSize()._x <= Platform->GetBoxSize()._y)
+        {
+            continue;
+        }
+
+        if (PlayerBox._Max._x <= PlatformBox._Min._x || PlayerBox._Min._x >= PlatformBox._Max._x)
+        {
+            continue;
+        }
+
+        const float Distance = PlayerBox._Min._y - PlatformBox._Max._y;
+
+        if (Distance <= 0.f || Distance > MaxDistance || Distance >= NearestDistance)
+        {
+            continue;
+        }
+
+        NearestDistance = Distance;
+
+        NearestPlatform = Platform;
+    }
+
+    return NearestPlatform;
 }
 
 void CollisionManager::Destroy()

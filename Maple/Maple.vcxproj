@@ -236,6 +236,7 @@
     <ClInclude Include="Game\Monsters\Boss\BossPatternData.h" />
     <ClInclude Include="Game\Monsters\Boss\BossPhase1Golem.h" />
     <ClInclude Include="Game\Monsters\Boss\BossPhase1GolemState.h" />
+    <ClInclude Include="Game\Monsters\Boss\BossTeleportState.h" />
     <ClInclude Include="Game\Monsters\MonsterBase.h" />
     <ClInclude Include="Game\Monsters\MonsterBlackBoard.h" />
     <ClInclude Include="Game\Monsters\MonsterComponent.h" />
@@ -379,6 +380,7 @@
     <ClCompile Include="Game\Monsters\Boss\BossPatternData.cpp" />
     <ClCompile Include="Game\Monsters\Boss\BossPhase1Golem.cpp" />
     <ClCompile Include="Game\Monsters\Boss\BossPhase1GolemState.cpp" />
+    <ClCompile Include="Game\Monsters\Boss\BossTeleportState.cpp" />
     <ClCompile Include="Game\Monsters\MonsterBase.cpp" />
     <ClCompile Include="Game\Monsters\MonsterBlackBoard.cpp" />
     <ClCompile Include="Game\Monsters\MonsterComponent.cpp" />

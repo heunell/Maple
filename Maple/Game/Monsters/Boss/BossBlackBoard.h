@@ -1,6 +1,7 @@
 #pragma once
 #include "Game/Monsters/MonsterBlackBoard.h"
 #include "BossPatternData.h"
+#include <vector>
 class BossBlackBoard : public MonsterBlackBoard
 {
 public:
@@ -15,4 +16,6 @@ public:
 	float IdleDuration = 4.f;
 
 	FBossPatternAreaData PatternArea;
+
+	std::vector<Weak<class BossPhase1Golem>> ActivePhase1Golems;
 };

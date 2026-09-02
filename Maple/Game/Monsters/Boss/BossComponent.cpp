@@ -6,6 +6,7 @@
 #include "BossFlowerState.h"
 #include "BossMushroomState.h"
 #include "BossPhase1GolemState.h"
+#include "BossTeleportState.h"
 #include "Game/Monsters/MonsterStateMachine.h"
 #include <random>
 
@@ -87,6 +88,18 @@ bool BossComponent::Init(int32 Id, const std::string& Name, Ptr<Actor> Owner)
 		return false;
 	}
 
+	Ptr<BossTeleportState> TeleportState = New<BossTeleportState>();
+
+	if (!TeleportState)
+	{
+		return false;
+	}
+
+	if (!TeleportState->Init(This<BossComponent>()))
+	{
+		return false;
+	}
+
 	if (!StateMachine->AddState(_IdleState))
 	{
 		return false;
@@ -112,6 +125,11 @@ bool BossComponent::Init(int32 Id, const std::string& Name, Ptr<Actor> Owner)
 		return false;
 	}
 
+	if (!StateMachine->AddState(TeleportState))
+	{
+		return false;
+	}
+
 	_PatternStates.push_back(BladeState);
 
 	_PatternStates.push_back(FlowerState);
@@ -120,6 +138,8 @@ bool BossComponent::Init(int32 Id, const std::string& Name, Ptr<Actor> Owner)
 
 	_PatternStates.push_back(Phase1GolemState);
 	
+	_PatternStates.push_back(TeleportState);
+
 	TransitionState(_IdleState);
 
 	return true;

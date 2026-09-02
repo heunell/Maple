@@ -69,7 +69,9 @@ bool Boss::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, con
 
 	_BossSprite->AddAnimationSequence("LUCID_MOB_8880140.skill1", false);	// Blade
 	
-	_BossSprite->AddAnimationSequence("LUCID_MOB_8880140.skill3", false);	// Mushroom
+	_BossSprite->AddAnimationSequence("LUCID_MOB_8880140.skill2", false);	// Teleport
+	
+	_BossSprite->AddAnimationSequence("LUCID_MOB_8880140.skill3", false);	// Mushroom & Golem
 
 	_BossSprite->AttachToComponent(GetRoot());
 
