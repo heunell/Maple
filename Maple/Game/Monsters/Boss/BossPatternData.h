@@ -16,5 +16,18 @@ struct FBossBladePatternData
 
 	float SpawnMaxRadius = 55.f;
 
-	FVector3D SpawnOffset = FVector3D(0.f, -100.f, 0.f);
+	FVector3D SpawnOffset = FVector3D(23.f, 288.5f, 0.f); // 기존 (0, -100, 0)
+};
+
+struct FBossPatternAreaData
+{
+	int32 SlotCount = 10;
+
+	float LeftBound = 0.f;
+
+	float RightBound = 0.f;
+
+	float GroundY = 0.f;
+
+	std::vector<FVector3D> GroundSpawnPositions;
 };

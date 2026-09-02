@@ -14,10 +14,18 @@ SceneComponent::~SceneComponent()
 bool SceneComponent::Init(int32 Id, const std::string& Name, Ptr<class Actor> Owner)
 {
     Component::Init(Id, Name, Owner);
+
+    SetRelativeScale(1.f,1.f,1.f);
+
     _TransformCBuffer = FIND_CBUFFER("Transform", TransformCBuffer);
+    
     if (_IsRender)
+    {
         RenderManager::Instance().AddRenderComponent(Owner->GetActorID(), This<SceneComponent>());
+    }
+
     _Type = COMPONENT_TYPE::SCENE;
+
     return true;
 }
 
@@ -27,10 +35,17 @@ void SceneComponent::Tick(float DeltaTime)
     for (auto& it : _Childs)
     {
         Ptr<SceneComponent> child = it.second;
+
         if (nullptr == child)
+        {
             continue;
+        }
+
         if (!child->IsActive() || !child->IsEnable())
+        {
             continue;
+        }
+
         child->Tick(DeltaTime);
     }
 }
@@ -48,13 +63,19 @@ void SceneComponent::Render(float DeltaTime)
 void SceneComponent::Destroy()
 {
     for (auto& it : _Childs)
+    {
         DESTROY(it.second)
+    }
     _Childs.clear();
+
     if (_IsRender)
     {
         Ptr<Actor> owner = Lock<Actor>(_Owner);
         if (!owner)
+        {
             return;
+        }
+
         RenderManager::Instance().RemoveRenderComponent(_RenderLayerName, owner->GetActorID(), GetComponentID());
     }
     Component::Destroy();
@@ -69,6 +90,7 @@ void SceneComponent::Load(std::ifstream& file)
 void SceneComponent::SetRenderLayerName(const std::string& name)
 {
     _RenderLayerName = name;
+    
     RenderManager::Instance().RefreshLayer();
 }
 
@@ -95,11 +117,19 @@ void SceneComponent::AttachToComponent(Ptr<SceneComponent> comp)
 void SceneComponent::AddChild(Ptr<SceneComponent> comp)
 {
     if (nullptr == comp)
+    {
         return;
+    }
+
     if (comp->GetComponentID() == GetComponentID())
+    {
         return;
+    }
+    
     comp->_Parent = This<SceneComponent>();
+    
     _Childs[comp->_Id] = comp;
+    
     UpdateTransform();
 }
 
@@ -111,9 +141,13 @@ Ptr<SceneComponent> SceneComponent::FindComponent(int32 id) const
         for (auto& subIt : _Childs)
         {
             Ptr<SceneComponent> comp = subIt.second->FindComponent(id);
+            
             if (nullptr != comp)
+            {
                 return comp;
+            }
         }
+
         return nullptr;
     }
     else
@@ -130,14 +164,18 @@ const FTransform& SceneComponent::GetWorldTransform() const
 void SceneComponent::SetWorldTransform(const FTransform& transform)
 {
     SetWorldPosition(transform._position);
+    
     SetWorldScale(transform._scale);
+    
     SetWorldRotation(transform._rotation);
 }
 
 void SceneComponent::SetWorldTransform(const FVector3D& pos, const FVector3D& scale, const FRotator& rot)
 {
     SetWorldPosition(pos);
+    
     SetWorldScale(scale);
+    
     SetWorldRotation(rot);
 }
 
@@ -166,13 +204,17 @@ void SceneComponent::SetWorldPosition(float x, float y, float z)
     if (Ptr<SceneComponent> parentComp = Lock<SceneComponent>(_Parent))
     {
         FMatrix matParentInv = parentComp->_Matrix._World;
+       
         matParentInv.Inverse();
+       
         _Relative._position = FVector3D(x,y,z).TransformCoord(matParentInv);
     }
     else
     {
         _Relative._position._x = x;
+       
         _Relative._position._y = y;
+       
         _Relative._position._z = z;
     }
     UpdateTransform();

@@ -181,6 +181,14 @@ void Animation2D::SetPlay(const std::string& Name, bool Play)
 	Sequence->SetPlay(Play);
 }
 
+void Animation2D::SetFrame(int32 Frame)
+{
+	if(!_CurrentSequence)
+	{
+		_CurrentSequence->SetFrame(Frame);
+	}
+}
+
 void Animation2D::ChangeAnimation(const std::string& Name)
 {
 	if (!_CurrentSequence)

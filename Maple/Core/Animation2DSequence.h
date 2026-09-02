@@ -48,6 +48,8 @@ public:
 
 	int32 GetFrame() const;
 
+	void SetFrame(int32 Frame);
+	
 	const float GetPlayTime() const;
 
 	const std::string& GetName() const;

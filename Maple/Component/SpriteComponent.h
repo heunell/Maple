@@ -64,6 +64,8 @@ public:
 
 	void SetPlay(const std::string& Name, bool Play);
 
+	void SetAnimationFrame(int32 Frame);
+
 	void SetAnimationFlip(bool Flip);
 
 	Ptr<class Animation2D> CreateAnimation();

@@ -15,7 +15,7 @@ public:
 	virtual bool Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name) override;
 
 protected:
-	Ptr<class SpriteComponent> CreateSprite(const std::string& ComponentName, const std::string& AnimationName);
+	Ptr<class SpriteComponent> CreateSprite(const std::string& ComponentName, const std::string& AnimationName, Ptr<class SceneComponent> Parent = nullptr);
 
 	Ptr<class ProgressBar> CreateProgressBar(const std::string& ComponentName, const std::string& AnimationName);
 };

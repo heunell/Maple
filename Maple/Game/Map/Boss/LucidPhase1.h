@@ -32,4 +32,7 @@ public:
 	virtual void Render(float DeltaTime) override;
 
 	virtual void Destroy() override;
+
+private:
+	bool InitBossPatternArea(Ptr<class Boss> Boss);
 };

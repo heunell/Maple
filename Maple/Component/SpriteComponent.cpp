@@ -263,6 +263,14 @@ void SpriteComponent::SetPlay(const std::string& Name, bool Play)
     }
 }
 
+void SpriteComponent::SetAnimationFrame(int32 Frame)
+{
+    if (_Animation)
+    {
+        _Animation->SetFrame(Frame);
+    }
+}
+
 void SpriteComponent::SetAnimationFlip(bool Flip)
 {
     if (!_Animation)

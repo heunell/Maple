@@ -43,6 +43,8 @@ public:
 
 	void SetPlay(const std::string& Name, bool Play);
 
+	void SetFrame(int32 Frame);
+
 	void ChangeAnimation(const std::string& Name);
 
 	void SetShader();

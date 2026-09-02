@@ -17,7 +17,7 @@ bool UI::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const
     return Actor::Init(Id, ScreenPosition, Scale, Rotator, Name);
 }
 
-Ptr<class SpriteComponent> UI::CreateSprite(const std::string &ComponentName, const std::string &AnimationName)
+Ptr<class SpriteComponent> UI::CreateSprite(const std::string &ComponentName, const std::string &AnimationName, Ptr<class SceneComponent> Parent)
 {
     Ptr<Animation2DData> Data = ANIMATION_MANAGER->FindAnimation(AnimationName);
 
@@ -37,7 +37,14 @@ Ptr<class SpriteComponent> UI::CreateSprite(const std::string &ComponentName, co
 
     Sprite->AddAnimationSequence(Data);
 
-    Sprite->AttachToComponent(GetRoot());
+    if (Parent)
+    {
+        Sprite->AttachToComponent(Parent);
+    }
+    else
+    {
+        Sprite->AttachToComponent(GetRoot());
+    }
 
     return Sprite;
 }

@@ -18,6 +18,23 @@ int32 Animation2DSequence::GetFrame() const
     return _Frame;
 }
 
+void Animation2DSequence::SetFrame(int32 Frame)
+{
+    if(!_Data)
+    {
+        return;
+    }
+
+    if(Frame < 0 || Frame >= _Data->GetFrameCount())
+    {
+        return;
+    }
+
+    _Frame = Frame;
+
+    _Time = 0.f;
+}
+
 const float Animation2DSequence::GetPlayTime() const
 {
     return _PlayTime;

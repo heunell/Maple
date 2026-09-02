@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "LucidPhase1.h"
+#include "Object/Actor.h"
 #include "World/World.h"
 #include "World/Level.h"
 #include "World/CameraZone.h"
@@ -10,10 +11,11 @@
 #include "Component/SceneComponent.h"
 #include "Component/SpriteComponent.h"
 #include "Render/RenderManager.h"
-#include "Object/Actor.h"
+#include "UI/BossHUD.h"
 #include "Game/Map/Gate/BossGate.h"
 #include "Game/Monsters/Boss/Boss.h"
-#include "UI/BossHUD.h"
+#include "Game/Monsters/Boss/BossComponent.h"
+#include "Game/Monsters/Boss/BossBlackBoard.h"
 
 bool LucidPhase1::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
@@ -190,9 +192,14 @@ bool LucidPhase1::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
 	if (!_Boss)
 	{
 		return false;
-	}
+	}	
 
 	_Boss->AddTag("Map.LucidPhase1");
+
+	if (!InitBossPatternArea(_Boss))
+	{
+		return false;
+	}
 
 	Ptr<BossHUD> BossHUDActor = GetLevel()->SpawnActor<BossHUD>("BossHUD", FVector3D::Zero, FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
 
@@ -221,4 +228,63 @@ void LucidPhase1::Render(float DeltaTime)
 
 void LucidPhase1::Destroy()
 {
+}
+
+bool LucidPhase1::InitBossPatternArea(Ptr<Boss> BossActor)
+{
+	if (!BossActor || !_LeftWall || !_RightWall || !_Floor)
+	{
+		return false;
+	}
+
+	Ptr<BossComponent> BossController = BossActor->FindActorComponent<BossComponent>("Boss");
+
+	if (!BossController)
+	{
+		return false;
+	}
+
+	Ptr<MonsterBlackBoard> MonsterBoard = BossController->GetBlackBoard();
+
+	if (!MonsterBoard)
+	{
+		return false;
+	}
+
+	Ptr<BossBlackBoard> BossBoard = Cast<MonsterBlackBoard, BossBlackBoard>(MonsterBoard);
+
+	if (!BossBoard)
+	{
+		return false;
+	}
+
+	FBossPatternAreaData& PatternArea = BossBoard->PatternArea;
+
+	PatternArea.LeftBound = _LeftWall->GetWorldPosition()._x + _LeftWall->GetBoxSize()._x * 0.5f;
+
+	PatternArea.RightBound = _RightWall->GetWorldPosition()._x - _RightWall->GetBoxSize()._x * 0.5f;
+
+	PatternArea.GroundY = _Floor->GetWorldPosition()._y + _Floor->GetBoxSize()._y * 0.5f;
+
+	if (PatternArea.SlotCount <= 0)
+	{
+		return false;
+	}
+
+	PatternArea.GroundSpawnPositions.clear();
+
+	PatternArea.GroundSpawnPositions.reserve(PatternArea.SlotCount);
+
+	float ArenaWidth = PatternArea.RightBound - PatternArea.LeftBound;
+
+	float SlotWidth = ArenaWidth / static_cast<float>(PatternArea.SlotCount);
+
+	for (int32 Index = 0; Index < PatternArea.SlotCount; ++Index)
+	{
+		float SpawnX = PatternArea.LeftBound + SlotWidth * static_cast<float>(Index) + SlotWidth * 0.5f;
+
+		PatternArea.GroundSpawnPositions.push_back(FVector3D(SpawnX, PatternArea.GroundY, 0.f));
+	}
+
+	return true;
 }

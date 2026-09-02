@@ -1,6 +1,6 @@
 #pragma once
 #include "Game/Monsters/MonsterBlackBoard.h"
-
+#include "BossPatternData.h"
 class BossBlackBoard : public MonsterBlackBoard
 {
 public:
@@ -13,4 +13,6 @@ public:
 
 public:
 	float IdleDuration = 4.f;
+
+	FBossPatternAreaData PatternArea;
 };
