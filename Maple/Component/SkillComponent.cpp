@@ -5,6 +5,7 @@
 #include "World/Level.h"
 #include "Game/Skills/SongOfHeaven.h"
 #include "Game/Skills/Anemoi/Anemoi.h"
+#include "Game/Skills/VortexSphere.h"
 
 SkillComponent::SkillComponent()
 {}

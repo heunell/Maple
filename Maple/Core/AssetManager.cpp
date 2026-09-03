@@ -27,8 +27,10 @@ bool AssetManager::Init()
     //if (!RegisterManager<SoundManager>(eAssetType::SOUND))
     //    return false;
 
-    //if (!RegisterManager<FontManager>(eAssetType::FONT))
-    //    return false;
+    if (!RegisterManager<FontManager>(eAssetType::FONT))
+    {
+        return false;
+    }
 
     return true;
 }

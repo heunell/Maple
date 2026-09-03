@@ -196,6 +196,8 @@
     <ClInclude Include="Core\Defines.h" />
     <ClInclude Include="Core\Device.h" />
     <ClInclude Include="Core\DirectoryManager.h" />
+    <ClInclude Include="Core\Font.h" />
+    <ClInclude Include="Core\FontManager.h" />
     <ClInclude Include="Core\GameEngine.h" />
     <ClInclude Include="Core\Material.h" />
     <ClInclude Include="Core\MaterialManager.h" />
@@ -208,6 +210,7 @@
     <ClInclude Include="Core\TextureManager.h" />
     <ClInclude Include="Core\TimeManager.h" />
     <ClInclude Include="Core\Timer.h" />
+    <ClInclude Include="Core\Widget.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game\Character\PlayerBlackBoard.h" />
     <ClInclude Include="Game\Character\State\PlayerCastSkillState.h" />
@@ -309,6 +312,7 @@
     <ClInclude Include="UI\MiniMap.h" />
     <ClInclude Include="UI\PlayerUI.h" />
     <ClInclude Include="UI\ProgressBar.h" />
+    <ClInclude Include="UI\TextBlock.h" />
     <ClInclude Include="UI\UI.h" />
     <ClInclude Include="World\CameraManager.h" />
     <ClInclude Include="World\CameraZone.h" />
@@ -355,6 +359,8 @@
     <ClCompile Include="Core\AssetManager.cpp" />
     <ClCompile Include="Core\Device.cpp" />
     <ClCompile Include="Core\DirectoryManager.cpp" />
+    <ClCompile Include="Core\Font.cpp" />
+    <ClCompile Include="Core\FontManager.cpp" />
     <ClCompile Include="Core\GameEngine.cpp" />
     <ClCompile Include="Core\Material.cpp" />
     <ClCompile Include="Core\MaterialManager.cpp" />
@@ -367,6 +373,7 @@
     <ClCompile Include="Core\TextureManager.cpp" />
     <ClCompile Include="Core\TimeManager.cpp" />
     <ClCompile Include="Core\Timer.cpp" />
+    <ClCompile Include="Core\Widget.cpp" />
     <ClCompile Include="Game\Character\PlayerBlackBoard.cpp" />
     <ClCompile Include="Game\Character\State\PlayerCastSkillState.cpp" />
     <ClCompile Include="Game\Character\State\PlayerIdleState.cpp" />
@@ -468,6 +475,7 @@
     <ClCompile Include="UI\MiniMap.cpp" />
     <ClCompile Include="UI\PlayerUI.cpp" />
     <ClCompile Include="UI\ProgressBar.cpp" />
+    <ClCompile Include="UI\TextBlock.cpp" />
     <ClCompile Include="UI\UI.cpp" />
     <ClCompile Include="World\CameraManager.cpp" />
     <ClCompile Include="World\CameraZone.cpp" />

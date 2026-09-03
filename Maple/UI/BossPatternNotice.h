@@ -20,6 +20,8 @@ private:
 
 	Ptr<class SpriteComponent> _RightSprite;
 
+	Ptr<class TextBlock>	   _TextBlock;
+
 	FBossPatternNoticeData _NoticeData;
 
 	float _ElapsedTime = 0.f;

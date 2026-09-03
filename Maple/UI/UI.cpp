@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "UI.h"
 #include "ProgressBar.h"
+#include "TextBlock.h"
 #include "Component/SpriteComponent.h"
 #include "Core/Animation2DData.h"
 #include "Core/AnimationManager.h"
@@ -75,4 +76,18 @@ Ptr<class ProgressBar> UI::CreateProgressBar(const std::string &ComponentName, c
     }
 
     return Bar;
+}
+
+Ptr<TextBlock> UI::CreateTextBlock(const std::string& ComponentName)
+{
+    Ptr<TextBlock> Text = CreateSceneComponent<TextBlock>(ComponentName);
+
+    if (!Text)
+    {
+        return nullptr;
+    }
+
+    Text->AttachToComponent(GetRoot());
+
+    return Text;
 }

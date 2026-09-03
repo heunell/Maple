@@ -18,5 +18,7 @@ protected:
 	Ptr<class SpriteComponent> CreateSprite(const std::string& ComponentName, const std::string& AnimationName, Ptr<class SceneComponent> Parent = nullptr);
 
 	Ptr<class ProgressBar> CreateProgressBar(const std::string& ComponentName, const std::string& AnimationName);
+
+	Ptr<class TextBlock> CreateTextBlock(const std::string& ComponentName);
 };
 
