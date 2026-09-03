@@ -3,8 +3,12 @@
 
 enum class eSkillType
 {
+	// Attack
     SongOfHeaven,
     Anemoi,
+	VortexSphere,
+
+	// Buff
     SharpEyes,
     CKnight,
     StormBringer,

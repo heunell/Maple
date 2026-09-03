@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "BossPatternNotice.h"
+#include "TextBlock.h"
 #include "Component/SpriteComponent.h"
 #include "Component/SceneComponent.h"
 #include "Core/AnimationManager.h"
@@ -70,6 +71,27 @@ bool BossPatternNotice::Init(int32 Id, const FVector3D& Position, const FVector3
 	RightSlot->SetRelativePosition(RightPositionX - 1.f, 0.f, 0.f);
 
 	SetNoticeEnable(false);
+
+	_TextBlock = CreateTextBlock("BossPatternNoticeText");
+
+	if (!_TextBlock)
+	{
+		return false;
+	}
+
+	_TextBlock->SetRelativePosition(35.f, -15.f, 0.f);
+
+	_TextBlock->SetSize(FVector2D(420.f, 40.f));
+
+	_TextBlock->SetFontSize(18.f);
+
+	_TextBlock->SetAlignH(eTextAlignH::CENTER);
+
+	_TextBlock->SetAlignV(eTextAlignV::MIDDLE);
+
+	_TextBlock->SetTextColor(255, 255, 255, 255);
+
+	_TextBlock->SetText(L"루시드가 강력한 소환수를 소환했습니다!");
 
 	return true;
 }
@@ -156,6 +178,11 @@ void BossPatternNotice::SetNoticeEnable(bool Enable)
 	{
 		_RightSprite->SetEnable(Enable);
 	}
+
+	if (_TextBlock)
+	{
+		_TextBlock->SetEnable(Enable);
+	}
 }
 
 void BossPatternNotice::SetNoticeOpacity(float Opacity)
@@ -165,6 +192,8 @@ void BossPatternNotice::SetNoticeOpacity(float Opacity)
 	_CenterSprite->SetOpacity(Opacity);
 
 	_RightSprite->SetOpacity(Opacity);
+
+	_TextBlock->SetOpacity(Opacity);
 }
 
 void BossPatternNotice::Destroy()
@@ -174,6 +203,8 @@ void BossPatternNotice::Destroy()
 	_CenterSprite.reset();
 
 	_RightSprite.reset();
+
+	_TextBlock.reset();
 
 	UI::Destroy();
 }

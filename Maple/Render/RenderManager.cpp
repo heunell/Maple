@@ -22,6 +22,8 @@ bool RenderManager::Init()
     CreateRenderLayer("Monster", 500);
 
     CreateRenderLayer("UI", 1000);
+
+    CreateRenderLayer("UIText", 1100);
     
     CreateRenderLayer("Cursor", 1500);
 

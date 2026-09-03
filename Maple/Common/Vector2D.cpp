@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Vector2D.h"
 
+FVector2D FVector2D::Zero = FVector2D(0.f, 0.f);
+
 FVector2D::FVector2D() : _x(0), _y(0)
 {}
 

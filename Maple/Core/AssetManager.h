@@ -6,6 +6,7 @@
 #include "TextureManager.h"
 #include "MaterialManager.h"
 #include "AnimationManager.h"
+#include "FontManager.h"
 
 class AssetManager : public Singleton<AssetManager>
 {
@@ -58,4 +59,5 @@ public:
 #define TEXTURE_MANAGER AssetManager::Instance().Get<TextureManager>(eAssetType::TEXTURE)
 #define MATERIAL_MANAGER AssetManager::Instance().Get<MaterialManager>(eAssetType::MATERIAL)
 #define ANIMATION_MANAGER AssetManager::Instance().Get<AnimationManager>(eAssetType::ANIMATION)
+#define FONT_MANAGER AssetManager::Instance().Get<FontManager>(eAssetType::FONT)
 

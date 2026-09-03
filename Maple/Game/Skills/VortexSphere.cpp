@@ -39,6 +39,8 @@ bool VortexSphere::Init(int32 Id, const FVector3D& Position, const FVector3D& Sc
 
     _CastSprite->SetEnable(false);
 
+    _CoolDown = _Datas.Cooldown;
+
     return true;
 }
 
@@ -106,7 +108,7 @@ void VortexSphere::Tick(float DeltaTime)
 
 void VortexSphere::Start()
 {
-    if (_IsCasting || _IsProjectileActive)
+    if (!CanUse() || _IsCasting || _IsProjectileActive)
     {
         return;
     }
@@ -126,6 +128,8 @@ void VortexSphere::Start()
     }
 
     _IsCasting = true;
+
+    StartCoolDown();
 
     _Direction = OwnerPlayer->IsRight() ? 1.f : -1.f;
 
