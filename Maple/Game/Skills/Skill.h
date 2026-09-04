@@ -7,6 +7,8 @@ enum class eSkillType
     SongOfHeaven,
     Anemoi,
 	VortexSphere,
+	HowlingGale,
+	TriflingWind,
 
 	// Buff
     SharpEyes,
@@ -45,6 +47,8 @@ public:
 	virtual void End() = 0;
 
 	virtual void Destroy() override;
+
+	virtual bool IsActive() const;
 
 	bool CanUse() const;
 

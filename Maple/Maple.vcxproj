@@ -230,6 +230,8 @@
     <ClInclude Include="Game\Monsters\Boss\Boss2.h" />
     <ClInclude Include="Game\Monsters\Boss\Boss2BlackBoard.h" />
     <ClInclude Include="Game\Monsters\Boss\Boss2Component.h" />
+    <ClInclude Include="Game\Monsters\Boss\Boss2Dragon.h" />
+    <ClInclude Include="Game\Monsters\Boss\Boss2DragonState.h" />
     <ClInclude Include="Game\Monsters\Boss\Boss2IdleState.h" />
     <ClInclude Include="Game\Monsters\Boss\Boss2LaserState.h" />
     <ClInclude Include="Game\Monsters\Boss\BossBlackBoard.h" />
@@ -250,6 +252,7 @@
     <ClInclude Include="Game\Monsters\Boss\BossPhase1GolemState.h" />
     <ClInclude Include="Game\Monsters\Boss\BossTeleportEffect.h" />
     <ClInclude Include="Game\Monsters\Boss\BossTeleportState.h" />
+    <ClInclude Include="Game\Character\State\PlayerChargeSkillState.h" />
     <ClInclude Include="Game\Monsters\MonsterBase.h" />
     <ClInclude Include="Game\Monsters\MonsterBlackBoard.h" />
     <ClInclude Include="Game\Monsters\MonsterComponent.h" />
@@ -265,6 +268,10 @@
     <ClInclude Include="Game\Skills\Anemoi\AnemoiState.h" />
     <ClInclude Include="Game\Skills\Anemoi\AnemoiTraceState.h" />
     <ClInclude Include="Game\Skills\BuffCastEffect.h" />
+    <ClInclude Include="Game\Skills\HowlingGale\HowlingGale.h" />
+    <ClInclude Include="Game\Skills\HowlingGale\HowlingGaleActor.h" />
+    <ClInclude Include="Game\Skills\HowlingGale\HowlingGaleDatas.h" />
+    <ClInclude Include="Game\Skills\SharpEyes.h" />
     <ClInclude Include="Game\Skills\Skill.h" />
     <ClInclude Include="Game\Skills\SongOfHeaven.h" />
     <ClInclude Include="Game\Skills\TriflingWind.h" />
@@ -392,6 +399,8 @@
     <ClCompile Include="Game\Monsters\Boss\Boss2.cpp" />
     <ClCompile Include="Game\Monsters\Boss\Boss2BlackBoard.cpp" />
     <ClCompile Include="Game\Monsters\Boss\Boss2Component.cpp" />
+    <ClCompile Include="Game\Monsters\Boss\Boss2Dragon.cpp" />
+    <ClCompile Include="Game\Monsters\Boss\Boss2DragonState.cpp" />
     <ClCompile Include="Game\Monsters\Boss\Boss2IdleState.cpp" />
     <ClCompile Include="Game\Monsters\Boss\Boss2LaserState.cpp" />
     <ClCompile Include="Game\Monsters\Boss\BossBlackBoard.cpp" />
@@ -412,6 +421,7 @@
     <ClCompile Include="Game\Monsters\Boss\BossPhase1GolemState.cpp" />
     <ClCompile Include="Game\Monsters\Boss\BossTeleportEffect.cpp" />
     <ClCompile Include="Game\Monsters\Boss\BossTeleportState.cpp" />
+    <ClCompile Include="Game\Character\State\PlayerChargeSkillState.cpp" />
     <ClCompile Include="Game\Monsters\MonsterBase.cpp" />
     <ClCompile Include="Game\Monsters\MonsterBlackBoard.cpp" />
     <ClCompile Include="Game\Monsters\MonsterComponent.cpp" />
@@ -427,6 +437,10 @@
     <ClCompile Include="Game\Skills\Anemoi\AnemoiState.cpp" />
     <ClCompile Include="Game\Skills\Anemoi\AnemoiTraceState.cpp" />
     <ClCompile Include="Game\Skills\BuffCastEffect.cpp" />
+    <ClCompile Include="Game\Skills\HowlingGale\HowlingGale.cpp" />
+    <ClCompile Include="Game\Skills\HowlingGale\HowlingGaleActor.cpp" />
+    <ClCompile Include="Game\Skills\HowlingGale\HowlingGaleDatas.cpp" />
+    <ClCompile Include="Game\Skills\SharpEyes.cpp" />
     <ClCompile Include="Game\Skills\Skill.cpp" />
     <ClCompile Include="Game\Skills\SongOfHeaven.cpp" />
     <ClCompile Include="Game\Skills\TriflingWind.cpp" />

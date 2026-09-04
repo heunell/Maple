@@ -83,15 +83,37 @@ void PlayerController::KeyBind()
 
 	MappingContext->BindInputAction(AnemoiAction, 'F');
 
+	Ptr<InputAction> VortexAction = InputSystem::Instance().FindOrAddInputAction("Vortex");
+
+	MappingContext->BindInputAction(VortexAction, 'D');
+
+	Ptr<InputAction> HowlingGale = InputSystem::Instance().FindOrAddInputAction("HowlingGale");
+
+	MappingContext->BindInputAction(HowlingGale, 'G');
+
+	Ptr<InputAction> SharpEyesCast = InputSystem::Instance().FindOrAddInputAction("SharpEyes");
+
+	MappingContext->BindInputAction(SharpEyesCast, '3');
+
 	_Input->AddInputContext(MappingContext->GetName());
 
-	_Input->BindAction(MappingContext->GetName(), PortalAction->GetName(), INPUT_TYPE::DOWN, GateInteract.get(), &GateInteractComponent::HandleInput);
+	_Input->BindAction(MappingContext->GetName(), PortalAction->GetName(),  INPUT_TYPE::DOWN, GateInteract.get(), &GateInteractComponent::HandleInput);
+																		    
+	_Input->BindAction(MappingContext->GetName(), SOHAction->GetName(),     INPUT_TYPE::DOWN, PlayerState.get(),  &PlayerComponent::HandleInput);
+																		    									  
+	_Input->BindAction(MappingContext->GetName(), SOHAction->GetName(),     INPUT_TYPE::HOLD, PlayerState.get(),  &PlayerComponent::HandleInput);
+																		    									  
+	_Input->BindAction(MappingContext->GetName(), SOHAction->GetName(),     INPUT_TYPE::UP,   PlayerState.get(),  &PlayerComponent::HandleInput);
+																		    									  
+	_Input->BindAction(MappingContext->GetName(), AnemoiAction->GetName(),  INPUT_TYPE::DOWN, PlayerState.get(),  &PlayerComponent::HandleInput);
+																		    									  
+	_Input->BindAction(MappingContext->GetName(), VortexAction->GetName(),  INPUT_TYPE::DOWN, PlayerState.get(),  &PlayerComponent::HandleInput);
+																		    									  
+	_Input->BindAction(MappingContext->GetName(), HowlingGale->GetName(),   INPUT_TYPE::DOWN, PlayerState.get(),  &PlayerComponent::HandleInput);
 
-	_Input->BindAction(MappingContext->GetName(), SOHAction->GetName(),  INPUT_TYPE::DOWN, PlayerState.get(), &PlayerComponent::HandleInput);
+	_Input->BindAction(MappingContext->GetName(), HowlingGale->GetName(), INPUT_TYPE::HOLD, PlayerState.get(), &PlayerComponent::HandleInput);
 
-	_Input->BindAction(MappingContext->GetName(), SOHAction->GetName(),  INPUT_TYPE::HOLD, PlayerState.get(), &PlayerComponent::HandleInput);
-
-	_Input->BindAction(MappingContext->GetName(), SOHAction->GetName(),  INPUT_TYPE::UP,   PlayerState.get(), &PlayerComponent::HandleInput);
-
-	_Input->BindAction(MappingContext->GetName(), AnemoiAction->GetName(), INPUT_TYPE::DOWN, PlayerState.get(), &PlayerComponent::HandleInput);
+	_Input->BindAction(MappingContext->GetName(), HowlingGale->GetName(), INPUT_TYPE::UP, PlayerState.get(), &PlayerComponent::HandleInput);
+																												  
+	_Input->BindAction(MappingContext->GetName(), SharpEyesCast->GetName(), INPUT_TYPE::DOWN, PlayerState.get(),  &PlayerComponent::HandleInput);
 }

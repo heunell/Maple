@@ -22,7 +22,7 @@ private:
 
 	Ptr<class TextBlock>	   _TextBlock;
 
-	FBossPatternNoticeData _NoticeData;
+	FBossPatternNoticeData     _NoticeData;
 
 	float _ElapsedTime = 0.f;
 

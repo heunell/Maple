@@ -27,5 +27,7 @@ public:
 
     virtual void End() override;
 
+    virtual bool IsActive() const override;
+
     virtual void Destroy() override;
 };

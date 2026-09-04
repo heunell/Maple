@@ -46,7 +46,9 @@ bool Boss2::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, co
 
 	_BossSprite->AddAnimationSequence(FlyData, true);
 
-	_BossSprite->AddAnimationSequence("LUCID_MOB_8880150.skill1", false);
+	_BossSprite->AddAnimationSequence("LUCID_MOB_8880150.skill1", false);	// 칼날
+
+	_BossSprite->AddAnimationSequence("LUCID_MOB_8880150.skill2", false);	// 브레스
 
 	_BossSprite->AttachToComponent(GetRoot());
 

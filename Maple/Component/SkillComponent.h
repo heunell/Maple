@@ -23,5 +23,7 @@ public:
 	void UseSkill(eSkillType SkillType, float DeltaTime);
 
 	void StopSkill(eSkillType SkillType);
+
+	bool IsSkillActive(eSkillType SkillType) const;
 };
 

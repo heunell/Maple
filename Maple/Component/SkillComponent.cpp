@@ -3,9 +3,14 @@
 #include "Object/Actor.h"
 #include "Component/SpriteComponent.h"
 #include "World/Level.h"
+// Attack
 #include "Game/Skills/SongOfHeaven.h"
 #include "Game/Skills/Anemoi/Anemoi.h"
 #include "Game/Skills/VortexSphere.h"
+#include "Game/Skills/HowlingGale/HowlingGale.h"
+
+// Buff
+#include "Game/Skills/SharpEyes.h"
 
 SkillComponent::SkillComponent()
 {}
@@ -41,9 +46,36 @@ bool SkillComponent::Init(int32 Id, const std::string& Name, Ptr<Actor> Owner)
         return false;
     }
     
+    Ptr<VortexSphere> _VortexSphere = _Level->SpawnActor<VortexSphere>("VortexSphere", FVector3D::Zero, FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f), Owner);
+
+    if (!_VortexSphere)
+    {
+        return false;
+    }
+
+    Ptr<HowlingGale> _HowlingGale = _Level->SpawnActor<HowlingGale>("HowlingGale", FVector3D::Zero, FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f), Owner);
+
+    if (!_HowlingGale)
+    {
+        return false;
+    }
+
+    Ptr<SharpEyes> _SharpEyes = _Level->SpawnActor<SharpEyes>("SharpEyes", FVector3D::Zero, FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f), Owner);
+
+    if (!_SharpEyes)
+    {
+        return false;
+    }
+
     _Skills[eSkillType::SongOfHeaven] = _SongOfHeaven;
 
-    _Skills[eSkillType::Anemoi] = _Anemoi;
+    _Skills[eSkillType::Anemoi]       = _Anemoi;
+
+    _Skills[eSkillType::VortexSphere] = _VortexSphere;
+
+    _Skills[eSkillType::HowlingGale]  = _HowlingGale;
+
+    _Skills[eSkillType::SharpEyes]    = _SharpEyes;
 
     return true;
 }
@@ -99,4 +131,16 @@ void SkillComponent::StopSkill(eSkillType SkillType)
     }
 
     FindSkill->second->End();
+}
+
+bool SkillComponent::IsSkillActive(eSkillType SkillType) const
+{
+    auto FindSkill = _Skills.find(SkillType);
+
+    if (FindSkill == _Skills.end() || !FindSkill->second)
+    {
+        return false;
+    }
+
+    return FindSkill->second->IsActive();
 }

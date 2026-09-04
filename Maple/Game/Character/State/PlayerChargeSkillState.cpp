@@ -1,17 +1,47 @@
 #include "pch.h"
-#include "PlayerCastSkillState.h"
+#include "PlayerChargeSkillState.h"
 #include "PlayerNoneActionState.h"
 #include "Component/PlayerComponent.h"
 #include "Component/SkillComponent.h"
 #include "Game/Character/Player.h"
 
-Ptr<PlayerState> PlayerCastSkillState::HandleInput(Ptr<class PlayerComponent> PlayerComponent, Ptr<InputAction> Action, INPUT_TYPE::eType ButtonEvent)
+Ptr<PlayerState> PlayerChargeSkillState::HandleInput(Ptr<PlayerComponent> PlayerComponent, Ptr<InputAction> Action, INPUT_TYPE::eType ButtonEvent)
 {
+    if (!PlayerComponent || !Action)
+    {
+        return nullptr;
+    }
+
+    if (Action->GetName() != _ActionName || ButtonEvent != INPUT_TYPE::UP)
+    {
+        return nullptr;
+    }
+
+    Ptr<Player> Player = PlayerComponent->GetPlayer();
+
+    if (!Player)
+    {
+        return nullptr;
+    }
+
+    Ptr<SkillComponent> Skill = Player->FindActorComponent<SkillComponent>("Skill");
+
+    if (!Skill)
+    {
+        return New<PlayerNoneActionState>();
+    }
+
+    Skill->StopSkill(_SkillType);
+
+    _IsReleased = true;
+
     return nullptr;
 }
 
-void PlayerCastSkillState::Enter(Ptr<class PlayerComponent> PlayerComponent)
+void PlayerChargeSkillState::Enter(Ptr<PlayerComponent> PlayerComponent)
 {
+    _IsReleased = false;
+
     if (!PlayerComponent)
     {
         return;
@@ -32,9 +62,9 @@ void PlayerCastSkillState::Enter(Ptr<class PlayerComponent> PlayerComponent)
     }
 }
 
-void PlayerCastSkillState::Exit(Ptr<class PlayerComponent> PlayerComponent)
+void PlayerChargeSkillState::Exit(Ptr<PlayerComponent> PlayerComponent)
 {
-    if (!PlayerComponent)
+    if (_IsReleased || !PlayerComponent)
     {
         return;
     }
@@ -54,7 +84,7 @@ void PlayerCastSkillState::Exit(Ptr<class PlayerComponent> PlayerComponent)
     }
 }
 
-Ptr<PlayerState> PlayerCastSkillState::Tick(Ptr<class PlayerComponent> PlayerComponent, float DeltaTime)
+Ptr<PlayerState> PlayerChargeSkillState::Tick(Ptr<PlayerComponent> PlayerComponent, float DeltaTime)
 {
     if (!PlayerComponent)
     {
@@ -75,7 +105,10 @@ Ptr<PlayerState> PlayerCastSkillState::Tick(Ptr<class PlayerComponent> PlayerCom
         return New<PlayerNoneActionState>();
     }
 
-    Skill->UseSkill(_SkillType, DeltaTime);
+    if (!_IsReleased)
+    {
+        Skill->UseSkill(_SkillType, DeltaTime);
+    }
 
     if (!Skill->IsSkillActive(_SkillType))
     {
@@ -85,7 +118,7 @@ Ptr<PlayerState> PlayerCastSkillState::Tick(Ptr<class PlayerComponent> PlayerCom
     return nullptr;
 }
 
-ePlayerAnimationType PlayerCastSkillState::GetAnimationType() const
+ePlayerAnimationType PlayerChargeSkillState::GetAnimationType() const
 {
     return ePlayerAnimationType::Shoot;
 }

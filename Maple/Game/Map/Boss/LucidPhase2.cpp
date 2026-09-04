@@ -20,6 +20,7 @@
 #include "UI/BossPatternNotice.h"
 
 #include "Game/Monsters/Boss/Boss2.h"
+#include "Game/Monsters/Boss/Boss2Component.h"
 
 #include <random>
 
@@ -422,6 +423,15 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
     }
 
     PatternNotice->AddTag("Map.LucidPhase2");
+
+    Ptr<Boss2Component> BossController = BossMonster->FindActorComponent<Boss2Component>("Boss2");
+
+    if (!BossController)
+    {
+        return false;
+    }
+
+    BossController->SetPatternNotice(PatternNotice);
 
     return true;
 }

@@ -121,7 +121,7 @@ bool BuffCastEffect::Start(Ptr<Player> Target, const FBuffCastEffectData& Data)
 
     _CastSprite->SetRenderLayerName(Data.CastRenderLayer);
 
-    _CastSprite->SetRelativePosition(Data.CastOffset);
+    //_CastSprite->SetRelativePosition(Data.CastOffset);
     
     _CastSprite->AddAnimationSequence(CastData, false);
     
@@ -142,7 +142,7 @@ bool BuffCastEffect::Start(Ptr<Player> Target, const FBuffCastEffectData& Data)
 
     _CastSpriteOverlay->SetRenderLayerName(Data.OverlayRenderLayer);
     
-    _CastSpriteOverlay->SetRelativePosition(Data.OverlayOffset);
+    //_CastSpriteOverlay->SetRelativePosition(Data.OverlayOffset);
     
     _CastSpriteOverlay->AddAnimationSequence(OverlayData, false);
     

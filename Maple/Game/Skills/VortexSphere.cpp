@@ -140,6 +140,10 @@ void VortexSphere::Start()
     _CastSprite->SetEnable(true);
 
     _CastSprite->ChangeAnimation("VortexSphere.Cast");
+
+    _CastSprite->SetAnimationFrame(0);
+
+    _CastSprite->SetPlay("VortexSphere.Cast", true);
 }
 
 void VortexSphere::Update(float DeltaTime)
@@ -181,7 +185,7 @@ void VortexSphere::Destroy()
     Skill::Destroy();
 }
 
-bool VortexSphere::IsCasting() const
+bool VortexSphere::IsActive() const
 {
     return _IsCasting;
 }

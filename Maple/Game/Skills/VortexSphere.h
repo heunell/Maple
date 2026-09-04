@@ -5,11 +5,11 @@
 
 struct FVortexSphereDatas
 {
-    float Cooldown = 30.f;           // 스킬 쿨타임
-    float LifeTime = 20.f;           // 투사체 유지시간
-    float MoveSpeed = 150.f;         // 기본 이동속도
-    float HitMoveSpeed = 75.f;       // 몬스터 타격 중 이동속도
-    float CollisionRadius = 150.f;   // 공격 충돌 반지름
+    float Cooldown = 13.f;           // 스킬 쿨타임
+    float LifeTime = 8.f;           // 투사체 유지시간
+    float MoveSpeed = 50.f;         // 기본 이동속도
+    float HitMoveSpeed = 35.f;       // 몬스터 타격 중 이동속도
+    float CollisionRadius = 120.f;   // 공격 충돌 반지름
     float HitInterval = 0.23f;       // 연속 공격 간격
     int32 DamageLines = 6;           // 한 번 공격할 때 출력할 데미지 줄 수
     FVector3D RightPosition = FVector3D(100.f, 0.f, 0.f); // 오른쪽 발사 위치
@@ -62,7 +62,7 @@ public:
 
     virtual void Destroy() override;
 
-    bool IsCasting() const;
+    virtual bool IsActive() const override;
 
 private:
     void Fire();

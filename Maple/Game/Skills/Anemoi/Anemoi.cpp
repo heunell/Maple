@@ -123,6 +123,11 @@ void Anemoi::End()
 {
 }
 
+bool Anemoi::IsActive() const
+{
+    return _Casting;
+}
+
 void Anemoi::Destroy()
 {
     _Casting = false;

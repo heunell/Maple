@@ -70,8 +70,6 @@ bool BossPatternNotice::Init(int32 Id, const FVector3D& Position, const FVector3
 
 	RightSlot->SetRelativePosition(RightPositionX - 1.f, 0.f, 0.f);
 
-	SetNoticeEnable(false);
-
 	_TextBlock = CreateTextBlock("BossPatternNoticeText");
 
 	if (!_TextBlock)
@@ -92,6 +90,8 @@ bool BossPatternNotice::Init(int32 Id, const FVector3D& Position, const FVector3
 	_TextBlock->SetTextColor(255, 255, 255, 255);
 
 	_TextBlock->SetText(L"루시드가 강력한 소환수를 소환했습니다!");
+
+	SetNoticeEnable(false);
 
 	return true;
 }

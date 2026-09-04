@@ -8,13 +8,9 @@ struct FBuffCastEffectData
 
     std::string CastRenderLayer = "SkillFront";
     
-    FVector3D CastOffset = FVector3D::Zero;
-
     std::string OverlayAnimation;
     
     std::string OverlayRenderLayer = "SkillFront";
-    
-    FVector3D OverlayOffset = FVector3D::Zero;
 };
 
 class BuffCastEffect : public Actor

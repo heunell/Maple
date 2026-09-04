@@ -135,3 +135,44 @@ struct FBossDragonPatternData
 
 	float DragonHeight = 220.f;
 };
+
+struct FBoss2DragonPatternData
+{
+	int32 BreathStartFrame = 20;
+
+	float AppearanceTime = 3.f;
+
+	float BreathTime = 4.5f;
+};
+
+struct FBoss2LaserData
+{
+	int32 WarningStartFrame = 5;
+
+	int32 WarningEndFrame = 10;
+
+	int32 ActiveFrame = 11;
+
+	int32 LastFrame = 20;
+
+	float WarningFrameDelay = 0.055f;
+
+	float WarningTime = 1.f;
+
+	float ActiveTime = 0.12f;
+
+	float FadeFrameDelay = 0.07f;
+};
+
+struct FBoss2LaserPatternData
+{
+	int32 PoolMaxCount = 15;
+
+	int32 LaserCount = 15;
+
+	float ActionDelay = 1.44f;
+
+	float SpawnInterval = 0.3f;
+
+	float ReappearDelay = 3.f;
+};

@@ -54,6 +54,11 @@ void Skill::Destroy()
     Actor::Destroy();
 }
 
+bool Skill::IsActive() const
+{
+    return false;
+}
+
 bool Skill::CanUse() const
 {
     return _RemainCoolDown <= 0.f;
