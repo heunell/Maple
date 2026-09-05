@@ -74,6 +74,11 @@ void LucidEntryNPC::ChangeToLucidPhase1()
         return;
     }
 
+    if (Manager->ChangeMap("LucidPhase1"))
+    {
+        CurrentLevel->StartBossBattle();
+    }
+
     Manager->ChangeMap("LucidPhase1");
 }
 

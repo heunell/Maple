@@ -3,6 +3,7 @@
 #include "ProgressBar.h"
 #include "Component/SceneComponent.h"
 #include "Component/SpriteComponent.h"
+#include "World/GameLevel.h"
 
 bool BossHUD::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
@@ -230,11 +231,45 @@ bool BossHUD::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, 
 
     _TimerSecondOnes->SetPlay("BOSS_TIMER.SECOND_ONES", false);
 
-    _RatioHundreds->SetEnable(false);
+    Ptr<GameLevel> CurrentLevel = Cast<Level, GameLevel>(GetLevel());
 
-    _RatioTens->SetEnable(false);
+    if (!CurrentLevel)
+    {
+        return false;
+    }
+
+    // 실제 보스 HP 연결 전의 시작 표시값
+    SetHP(1.f, 1.f);
+
+    SetRatio(100);
+    
+    SetLineCount(9);
+
+    SetDeathCount(CurrentLevel->GetBossDeathCount());
+
+    int32 RemainingSeconds = CurrentLevel->GetBossRemainingSeconds();
+
+    SetTimer(RemainingSeconds / 60, RemainingSeconds % 60);
 
     return true;
+}
+
+void BossHUD::Tick(float DeltaTime)
+{
+    UI::Tick(DeltaTime);
+
+    Ptr<GameLevel> CurrentLevel = Cast<Level, GameLevel>(GetLevel());
+
+    if (!CurrentLevel)
+    {
+        return;
+    }
+
+    SetDeathCount(CurrentLevel->GetBossDeathCount());
+
+    int32 RemainingSeconds = CurrentLevel->GetBossRemainingSeconds();
+
+    SetTimer(RemainingSeconds / 60, RemainingSeconds % 60);
 }
 
 void BossHUD::SetHP(float CurrentHP, float MaxHP)

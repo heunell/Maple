@@ -8,7 +8,11 @@ bool CollisionProfileManager::Init()
     CreateChannel(COLLISION_CHANNEL_PLAYERATTACK , COLLISION_RESPONSE_IGNORE);
                                                  
     CreateChannel(COLLISION_CHANNEL_MONSTER      , COLLISION_RESPONSE_IGNORE);
-                                                 
+
+    CreateChannel(COLLISION_CHANNEL_BOSS         , COLLISION_RESPONSE_IGNORE);
+
+    CreateChannel(COLLISION_CHANNEL_BOSSATTACK   , COLLISION_RESPONSE_IGNORE);
+
     CreateChannel(COLLISION_CHANNEL_ENVIRONMENT  , COLLISION_RESPONSE_IGNORE);
 
     CreateChannel(COLLISION_CHANNEL_CAMERAZONE   , COLLISION_RESPONSE_IGNORE);  
@@ -20,6 +24,12 @@ bool CollisionProfileManager::Init()
     CreateProfile("PlayerAttack", COLLISION_CHANNEL_PLAYERATTACK);
     
     CreateProfile("Monster"     , COLLISION_CHANNEL_MONSTER);
+    
+    CreateProfile("Golem"       , COLLISION_CHANNEL_MONSTER);
+
+    CreateProfile("Boss"        , COLLISION_CHANNEL_BOSS);
+
+    CreateProfile("BossAttack"  , COLLISION_CHANNEL_BOSSATTACK);
 
     CreateProfile("Environment" , COLLISION_CHANNEL_ENVIRONMENT);
 
@@ -27,10 +37,9 @@ bool CollisionProfileManager::Init()
 
     CreateProfile("Portal"      , COLLISION_CHANNEL_PORTAL);
         
-    SetProfileResponse("Player",       std::make_pair(COLLISION_CHANNEL_MONSTER      ,  COLLISION_RESPONSE_OVERLAP),
-                                       std::make_pair(COLLISION_CHANNEL_BULLET       ,  COLLISION_RESPONSE_IGNORE ),
-                                       std::make_pair(COLLISION_CHANNEL_ITEM         ,  COLLISION_RESPONSE_BLOCK  ),
+    SetProfileResponse("Player",       std::make_pair(COLLISION_CHANNEL_MONSTER      ,  COLLISION_RESPONSE_BLOCK),
                                        std::make_pair(COLLISION_CHANNEL_BOSS         ,  COLLISION_RESPONSE_OVERLAP),
+                                       std::make_pair(COLLISION_CHANNEL_BOSSATTACK   ,  COLLISION_RESPONSE_OVERLAP),
                                        std::make_pair(COLLISION_CHANNEL_ENVIRONMENT  ,  COLLISION_RESPONSE_BLOCK  ),
                                        std::make_pair(COLLISION_CHANNEL_CAMERAZONE   ,  COLLISION_RESPONSE_OVERLAP),
                                        std::make_pair(COLLISION_CHANNEL_PORTAL       ,  COLLISION_RESPONSE_OVERLAP));
@@ -41,7 +50,16 @@ bool CollisionProfileManager::Init()
     SetProfileResponse("Monster"     , std::make_pair(COLLISION_CHANNEL_PLAYER       ,  COLLISION_RESPONSE_OVERLAP),
                                        std::make_pair(COLLISION_CHANNEL_PLAYERATTACK ,  COLLISION_RESPONSE_OVERLAP),
                                        std::make_pair(COLLISION_CHANNEL_ENVIRONMENT  ,  COLLISION_RESPONSE_BLOCK  ));
-                                                                                     
+
+    SetProfileResponse("Golem"       , std::make_pair(COLLISION_CHANNEL_PLAYER       , COLLISION_RESPONSE_BLOCK),
+                                       std::make_pair(COLLISION_CHANNEL_PLAYERATTACK , COLLISION_RESPONSE_OVERLAP),
+                                       std::make_pair(COLLISION_CHANNEL_ENVIRONMENT  , COLLISION_RESPONSE_BLOCK));
+
+    SetProfileResponse("Boss"        , std::make_pair(COLLISION_CHANNEL_PLAYER       , COLLISION_RESPONSE_OVERLAP),
+                                       std::make_pair(COLLISION_CHANNEL_PLAYERATTACK , COLLISION_RESPONSE_OVERLAP));
+
+    SetProfileResponse("BossAttack"  , std::make_pair(COLLISION_CHANNEL_PLAYER       , COLLISION_RESPONSE_OVERLAP));
+
     SetProfileResponse("Environment" , std::make_pair(COLLISION_CHANNEL_PLAYER       ,  COLLISION_RESPONSE_BLOCK  ),
                                        std::make_pair(COLLISION_CHANNEL_MONSTER      ,  COLLISION_RESPONSE_BLOCK  ));
 
