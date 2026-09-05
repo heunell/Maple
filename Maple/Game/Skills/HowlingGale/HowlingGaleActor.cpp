@@ -125,7 +125,7 @@ void HowlingGaleActor::Tick(float DeltaTime)
 
     float MoveSpeed = _IsMonsterOverlap ? _Datas.HitMoveSpeed : _Datas.MoveSpeed;
 
-    AddWorldPositionX(_Direction * MoveSpeed * DeltaTime);
+    GetRoot()->AddWorldPositionX(_Direction * MoveSpeed * DeltaTime);
 
     if (_IsMonsterOverlap)
     {
