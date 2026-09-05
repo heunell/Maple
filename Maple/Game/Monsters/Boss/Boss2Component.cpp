@@ -5,7 +5,6 @@
 #include "Boss2IdleState.h"
 #include "BossBladeState.h"
 #include "Boss2DragonState.h"
-#include "Boss2LaserState.h"
 #include "Game/Monsters/MonsterStateMachine.h"
 #include "UI/BossPatternNotice.h"
 #include <random>
@@ -75,38 +74,7 @@ bool Boss2Component::Init(int32 Id, const std::string& Name, Ptr<Actor> Owner)
 		return false;
 	}
 
-	Ptr<Boss2LaserState> LaserState = New<Boss2LaserState>();
-
-	if (!LaserState)
-	{
-		return false;
-	}
-
-	FBoss2LaserStateData LaserData;
-
-	LaserData.ActionAnimation = "LaserRain.action_no_blank";
-
-	LaserData.IdleAnimation = "LUCID_MOB_8880150.fly";
-
-	LaserData.ActionRenderLayer = "BackGround";
-
-	LaserData.NoticeText = L"루시드가 강력한 공격을 사용하려 합니다!";
-
-	LaserData.ActionOffset = FVector3D::Zero;
-
-	if (!LaserState->Init(This<Boss2Component>(), _IdleState, LaserData))
-	{
-		return false;
-	}
-
-	/*Ptr<Boss2GolemState> LaserState = New<Boss2GolemState>();
-
-	if (!GolemState)
-	{
-		return false;
-	}
-
-	if (!GolemState->Init(This<Boss2Component>(), _IdleState))
+	/*if (!GolemState->Init(This<Boss2Component>(), _IdleState))
 	{
 		return false;
 	}*/
@@ -126,16 +94,9 @@ bool Boss2Component::Init(int32 Id, const std::string& Name, Ptr<Actor> Owner)
 		return false;
 	}
 
-	if (!StateMachine->AddState(LaserState))
-	{
-		return false;
-	}
-
 	_PatternStates.push_back(BladeState);
 
 	_PatternStates.push_back(DragonState);
-
-	_PatternStates.push_back(LaserState);
 
 	TransitionState(_IdleState);
 

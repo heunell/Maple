@@ -15,12 +15,6 @@ void Boss2Dragon::StartBreathPattern()
 
 	_ElapsedTime = 0.f;
 
-	_BodySprite->ChangeAnimation("Dragon.phase2.action.1.breathLoop");
-
-	_BodySprite->SetAnimationFrame(0);
-
-	_BodySprite->SetPlay("Dragon.Phase2.action.1.breathLoop", true);
-
 	for (int32 Index = 0; Index < static_cast<int32>(_BreathSprites.size()); ++Index)
 	{
 		Ptr<SpriteComponent> BreathSprite = _BreathSprites[Index];
@@ -151,6 +145,18 @@ void Boss2Dragon::Tick(float DeltaTime)
 
 	if (_Breathing)
 	{
+		// 몸체의 첫 브레스 동작을 끝까지 재생한 뒤 반복 모션으로 전환한다.
+		Ptr<Animation2D> Animation = _BodySprite->GetAnimation();
+
+		if (Animation && Animation->IsFinished())
+		{
+			_BodySprite->ChangeAnimation("Dragon.phase2.action.1.breathLoop");
+
+			_BodySprite->SetAnimationFrame(0);
+
+			_BodySprite->SetPlay("Dragon.phase2.action.1.breathLoop", true);
+		}
+
 		_ElapsedTime += DeltaTime;
 
 		if (_ElapsedTime < _PatternData.SweepTime)

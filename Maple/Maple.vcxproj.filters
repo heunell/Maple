@@ -488,12 +488,6 @@
     <ClInclude Include="UI\BossPatternNotice.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Monsters\Boss\Boss2Laser.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Monsters\Boss\Boss2LaserState.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Game\Character\State\PlayerCastSkillState.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -519,6 +513,27 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="UI\TextBlock.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Monsters\Boss\Boss2Dragon.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Monsters\Boss\Boss2DragonState.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Character\State\PlayerChargeSkillState.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Skills\HowlingGale\HowlingGale.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Skills\HowlingGale\HowlingGaleActor.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Skills\HowlingGale\HowlingGaleDatas.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Skills\SharpEyes.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -958,12 +973,6 @@
     <ClCompile Include="UI\BossPatternNotice.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Monsters\Boss\Boss2Laser.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Monsters\Boss\Boss2LaserState.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Character\State\PlayerCastSkillState.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -989,6 +998,27 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="UI\TextBlock.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Monsters\Boss\Boss2Dragon.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Monsters\Boss\Boss2DragonState.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Character\State\PlayerChargeSkillState.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Skills\HowlingGale\HowlingGale.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Skills\HowlingGale\HowlingGaleActor.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Skills\HowlingGale\HowlingGaleDatas.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Skills\SharpEyes.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
