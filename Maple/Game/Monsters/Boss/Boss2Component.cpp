@@ -5,6 +5,7 @@
 #include "Boss2IdleState.h"
 #include "BossBladeState.h"
 #include "Boss2DragonState.h"
+#include "Boss2LaserState.h"
 #include "Game/Monsters/MonsterStateMachine.h"
 #include "UI/BossPatternNotice.h"
 #include <random>
@@ -74,6 +75,18 @@ bool Boss2Component::Init(int32 Id, const std::string& Name, Ptr<Actor> Owner)
 		return false;
 	}
 
+	Ptr<Boss2LaserState> LaserState = New<Boss2LaserState>();
+
+	if (!LaserState)
+	{
+		return false;
+	}
+
+	if (!LaserState->Init(This<Boss2Component>(), _IdleState))
+	{
+		return false;
+	}
+
 	/*if (!GolemState->Init(This<Boss2Component>(), _IdleState))
 	{
 		return false;
@@ -94,9 +107,16 @@ bool Boss2Component::Init(int32 Id, const std::string& Name, Ptr<Actor> Owner)
 		return false;
 	}
 
+	if (!StateMachine->AddState(LaserState))
+	{
+		return false;
+	}
+
 	_PatternStates.push_back(BladeState);
 
 	_PatternStates.push_back(DragonState);
+
+	_PatternStates.push_back(LaserState);
 
 	TransitionState(_IdleState);
 

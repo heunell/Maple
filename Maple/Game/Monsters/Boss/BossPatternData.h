@@ -133,7 +133,9 @@ struct FBossDragonPatternData
 
 	float SpawnHeight = 300.f;
 
-	float DragonHeight = 220.f;
+	float DragonHeight = 100.f;
+
+	float SpawnOffsetX = 150.f;
 };
 
 struct FBoss2DragonPatternData
@@ -151,4 +153,42 @@ struct FBoss2DragonPatternData
 	FVector3D UpperPosition = FVector3D(-395.f, -750.f, 0.f);
 
 	FVector3D LowerPosition = FVector3D(-395.f, -1050.f, 0.f);
+};
+
+struct FBoss2LaserPatternData
+{
+	int32 PoolMaxCount = 15;
+
+	int32 LaserCount = 15;
+
+	float SpawnInterval = 0.5f;
+
+	float RotationMin = 30.f;
+
+	float RotationMax = 150.f;
+
+	// 경고 프레임을 반복하는 전체 시간.
+	int32 WarningStartFrame = 5;
+
+	int32 WarningEndFrame = 10;
+
+	float WarningTime = 1.f;
+
+	float WarningFrameDelay = 0.055f;
+
+	// 이 구간에서만 충돌 판정을 활성화한다.
+	int32 HitFrame = 11;
+
+	float HitTime = 0.1f;
+
+	int32 FadeStartFrame = 12;
+
+	int32 FadeEndFrame = 20;
+
+	float FadeFrameDelay = 0.07f;
+
+	// 중아에서 전조모션할 위치
+	FVector3D ActionPosition = FVector3D(711.f, -821.5f, 0.f);
+
+	std::string ActionRenderLayer = "BossPattern";
 };

@@ -179,7 +179,7 @@ void BossDragonState::SpawnDragonPattern()
 
 	bool LeftSide = SideDistribution(RandomEngine) == 0;
 
-	float DragonX = LeftSide ? PatternArea.LeftBound : PatternArea.RightBound;
+	float DragonX = LeftSide ? PatternArea.LeftBound + _PatternData.SpawnOffsetX : PatternArea.RightBound - _PatternData.SpawnOffsetX;
 
 	FVector3D DragonPosition(DragonX, PatternArea.GroundY + _PatternData.DragonHeight, 0.f);
 

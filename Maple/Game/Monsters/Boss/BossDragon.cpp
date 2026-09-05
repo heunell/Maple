@@ -209,10 +209,9 @@ void BossDragon::Start(const FVector3D& StartPosition, const FVector3D& DragonPo
 
 	_BodySprite->SetPlay("Dragon.phase1.action.0", true);
 
-	// Breath 원본은 오른쪽으로 진행하므로 오른쪽 Dragon만 뒤집는다.
 	for (Ptr<SpriteComponent>& BreathSprite : _BreathSprites)
 	{
-		BreathSprite->SetAnimationFlip(!LeftSide);
+		BreathSprite->SetAnimationFlip(LeftSide);
 
 		BreathSprite->SetEnable(false);
 	}

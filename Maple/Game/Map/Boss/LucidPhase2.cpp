@@ -415,7 +415,7 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
         return false;
     }
 
-    Ptr<BossPatternNotice> PatternNotice = GetLevel()->SpawnActor<BossPatternNotice>("BossPatternNotice", FVector3D::Zero, FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
+    Ptr<BossPatternNotice> PatternNotice = GetLevel()->SpawnActor<BossPatternNotice>("BossPatternNotice", FVector3D(0.f, 220.f, 0.f), FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
 
     if(!PatternNotice)
     {

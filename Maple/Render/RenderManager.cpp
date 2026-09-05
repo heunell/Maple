@@ -11,6 +11,8 @@ bool RenderManager::Init()
 {
     CreateRenderLayer("BackGround", 0);
 
+    CreateRenderLayer("BossPattern", 0);
+
     CreateRenderLayer("Default", 50);
 
     CreateRenderLayer("SkillBack", 90);

@@ -233,6 +233,8 @@
     <ClInclude Include="Game\Monsters\Boss\Boss2Dragon.h" />
     <ClInclude Include="Game\Monsters\Boss\Boss2DragonState.h" />
     <ClInclude Include="Game\Monsters\Boss\Boss2IdleState.h" />
+    <ClInclude Include="Game\Monsters\Boss\Boss2Laser.h" />
+    <ClInclude Include="Game\Monsters\Boss\Boss2LaserState.h" />
     <ClInclude Include="Game\Monsters\Boss\BossBlackBoard.h" />
     <ClInclude Include="Game\Monsters\Boss\BossBlade.h" />
     <ClInclude Include="Game\Monsters\Boss\BossBladeState.h" />
@@ -400,6 +402,8 @@
     <ClCompile Include="Game\Monsters\Boss\Boss2Dragon.cpp" />
     <ClCompile Include="Game\Monsters\Boss\Boss2DragonState.cpp" />
     <ClCompile Include="Game\Monsters\Boss\Boss2IdleState.cpp" />
+    <ClCompile Include="Game\Monsters\Boss\Boss2Laser.cpp" />
+    <ClCompile Include="Game\Monsters\Boss\Boss2LaserState.cpp" />
     <ClCompile Include="Game\Monsters\Boss\BossBlackBoard.cpp" />
     <ClCompile Include="Game\Monsters\Boss\BossBlade.cpp" />
     <ClCompile Include="Game\Monsters\Boss\BossBladeState.cpp" />
