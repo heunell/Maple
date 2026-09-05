@@ -239,6 +239,13 @@ void BossMushroomState::ReleaseMushroom(Ptr<BossMushroom> Mushroom)
 	_MushroomPool.Release(Mushroom);
 }
 
+void BossMushroomState::Reset()
+{
+	_MushroomPool.ReleaseAll();
+
+	_Spawned = false;
+}
+
 void BossMushroomState::Destroy()
 {
 	_MushroomPool.ReleaseAll();

@@ -26,4 +26,6 @@ public:
 	Ptr<class MonsterState> SelectPatternState();
 
 	Ptr<class BossIdleState> GetIdleState() const;
+
+	void ResetBattle();
 };

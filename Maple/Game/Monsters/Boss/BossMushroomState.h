@@ -45,4 +45,6 @@ public:
 	virtual void Destroy() override;
 
 	void ReleaseMushroom(Ptr<BossMushroom> Mushroom);
+
+	virtual void Reset() override;
 };

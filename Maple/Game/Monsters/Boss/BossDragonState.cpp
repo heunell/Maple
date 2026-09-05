@@ -122,6 +122,23 @@ bool BossDragonState::CanSelect() const
 	return _Dragon && !_Dragon->IsEnable();
 }
 
+void BossDragonState::Reset()
+{
+	if (_Dragon)
+	{
+		_Dragon->SetPatternEnable(false);
+	}
+
+	if (_Notice)
+	{
+		_Notice->Hide();
+	}
+
+	_CastStarted = false;
+
+	_DragonStarted = false;
+}
+
 void BossDragonState::SpawnDragonPattern()
 {
 	if (_DragonStarted)

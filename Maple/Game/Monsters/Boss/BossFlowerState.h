@@ -43,4 +43,6 @@ public:
 	virtual void Destroy() override;
 
 	void ReleaseFlower(Ptr<BossFlower> Flower);
+
+	virtual void Reset() override;
 };

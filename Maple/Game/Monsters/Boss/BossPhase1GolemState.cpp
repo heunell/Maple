@@ -328,6 +328,13 @@ void BossPhase1GolemState::ReleaseGolem(Ptr<BossPhase1Golem> Golem)
 	_GolemPool.Release(Golem);
 }
 
+void BossPhase1GolemState::Reset()
+{
+	_GolemPool.ReleaseAll();
+
+	_Spawned = false;
+}
+
 void BossPhase1GolemState::Destroy()
 {
 	_GolemPool.ReleaseAll();

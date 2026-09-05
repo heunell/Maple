@@ -40,5 +40,7 @@ public:
 
 	virtual bool CanSelect() const override;
 
+	virtual void Reset() override;
+
 	virtual void Destroy() override;
 };

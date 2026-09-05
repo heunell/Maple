@@ -284,6 +284,18 @@ void BossTeleportState::TeleportPlayer()
 	Movement->ResetMovement();
 }
 
+void BossTeleportState::Reset()
+{
+	if (_TeleportEffect)
+	{
+		_TeleportEffect->SetEffectEnable(false);
+	}
+
+	_EffectStarted = false;
+
+	_Teleported = false;
+}
+
 void BossTeleportState::Destroy()
 {
 	if (_TeleportEffect)

@@ -2,6 +2,38 @@
 #include "BossDragon.h"
 #include "Component/SpriteComponent.h"
 
+void BossDragon::StartBreathPattern()
+{
+	if (!_Preparing)
+	{
+		return;
+	}
+
+	_Preparing = false;
+
+	_Breathing = true;
+
+	_ElapsedTime = 0.f;
+
+	for (int32 Index = 0; Index < static_cast<int32>(_BreathSprites.size()); ++Index)
+	{
+		Ptr<SpriteComponent> BreathSprite = _BreathSprites[Index];
+
+		if (!BreathSprite)
+		{
+			continue;
+		}
+
+		std::string AnimationName = "Dragon.phase1.breath.tile." + std::to_string(Index);
+
+		BreathSprite->SetEnable(true);
+
+		BreathSprite->SetAnimationFrame(0);
+
+		BreathSprite->SetPlay(AnimationName, true);
+	}
+}
+
 bool BossDragon::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
 	if (!Actor::Init(Id, Position, Scale, Rotator, Name))
@@ -29,6 +61,8 @@ bool BossDragon::Init(int32 Id, const FVector3D& Position, const FVector3D& Scal
 	_BodySprite->AddAnimationSequence("Dragon.phase1.action.1.tail", false);
 
 	_BodySprite->AttachToComponent(GetRoot());
+
+	_BodySprite->AddNotify("Dragon.phase1.action.1.intro", _PatternData.BreathStartFrame, this, &BossDragon::StartBreathPattern);
 
 	for (int32 Index = 0; Index < _PatternData.BreathCount; ++Index)
 	{
@@ -102,46 +136,20 @@ void BossDragon::Tick(float DeltaTime)
 
 	if (_Preparing)
 	{
-		if (!Animation || !Animation->IsFinished())
-		{
-			return;
-		}
-
-		_Preparing = false;
-
-		_Breathing = true;
-
-		_ElapsedTime = 0.f;
-
-		_BodySprite->ChangeAnimation("Dragon.phase1.action.1.breathLoop");
-
-		_BodySprite->SetAnimationFrame(0);
-
-		_BodySprite->SetPlay("Dragon.phase1.action.1.breathLoop", true);
-
-		for (int32 Index = 0; Index < static_cast<int32>(_BreathSprites.size()); ++Index)
-		{
-			Ptr<SpriteComponent> BreathSprite = _BreathSprites[Index];
-
-			if (!BreathSprite)
-			{
-				continue;
-			}
-
-			std::string AnimationName = "Dragon.phase1.breath.tile." + std::to_string(Index);
-
-			BreathSprite->SetEnable(true);
-
-			BreathSprite->SetAnimationFrame(0);
-
-			BreathSprite->SetPlay(AnimationName, true);
-		}
-
 		return;
 	}
 
 	if (_Breathing)
 	{
+		if (Animation && Animation->IsFinished())
+		{
+			_BodySprite->ChangeAnimation("Dragon.phase1.action.1.breathLoop");
+
+			_BodySprite->SetAnimationFrame(0);
+
+			_BodySprite->SetPlay("Dragon.phase1.action.1.breathLoop", true);
+		}
+
 		_ElapsedTime += DeltaTime;
 
 		if (_ElapsedTime < _PatternData.BreathTime)

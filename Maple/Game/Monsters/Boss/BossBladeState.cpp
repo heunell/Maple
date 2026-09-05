@@ -221,6 +221,13 @@ void BossBladeState::ReleaseBlade(Ptr<BossBlade> Blade)
 	}
 }
 
+void BossBladeState::Reset()
+{
+	_BladePool.ReleaseAll();
+
+	_Spawned = false;
+}
+
 void BossBladeState::Destroy()
 {
 	_BladePool.ReleaseAll();

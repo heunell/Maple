@@ -36,5 +36,7 @@ public:
 
 	void TeleportPlayer();
 
+	virtual void Reset() override;
+
 	virtual void Destroy() override;
 };

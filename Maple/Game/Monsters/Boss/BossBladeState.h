@@ -48,4 +48,6 @@ public:
 	virtual void Destroy() override;
 
 	void ReleaseBlade(Ptr<BossBlade> Flower);
+
+	virtual void Reset();
 };

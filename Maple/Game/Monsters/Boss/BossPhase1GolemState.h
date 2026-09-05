@@ -44,4 +44,6 @@ public:
 	virtual void Destroy() override;
 
 	void ReleaseGolem(Ptr<BossPhase1Golem> Golem);
+
+	virtual void Reset();
 };

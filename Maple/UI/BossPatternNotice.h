@@ -43,4 +43,6 @@ public:
 	void Show(const std::wstring& Text);
 
 	bool IsFinished() const;
+
+	void Hide();
 };

@@ -165,6 +165,15 @@ bool BossPatternNotice::IsFinished() const
 	return _Finished;
 }
 
+void BossPatternNotice::Hide()
+{
+	_ElapsedTime = 0.f;
+
+	_Finished = true;
+
+	SetNoticeEnable(false);
+}
+
 void BossPatternNotice::SetNoticeEnable(bool Enable)
 {
 	SetEnable(Enable);

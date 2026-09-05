@@ -27,4 +27,6 @@ public:
 	virtual void Destroy() override;
 
 	uint8 GetType() const;
+
+	virtual void Reset();
 };

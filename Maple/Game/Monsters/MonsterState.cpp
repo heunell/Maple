@@ -24,3 +24,7 @@ uint8 MonsterState::GetType() const
 {
 	return _StateType;
 }
+
+void MonsterState::Reset()
+{
+}

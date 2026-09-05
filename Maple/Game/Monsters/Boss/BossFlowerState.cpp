@@ -227,6 +227,13 @@ void BossFlowerState::ReleaseFlower(Ptr<BossFlower> Flower)
 	_FlowerPool.Release(Flower);
 }
 
+void BossFlowerState::Reset()
+{
+	_FlowerPool.ReleaseAll();
+
+	_Spawned = false;
+}
+
 void BossFlowerState::Destroy()
 {
 	_FlowerPool.ReleaseAll();

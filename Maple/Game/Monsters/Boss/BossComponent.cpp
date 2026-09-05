@@ -218,3 +218,39 @@ Ptr<BossIdleState> BossComponent::GetIdleState() const
 {
 	return _IdleState;
 }
+
+void BossComponent::ResetBattle()
+{
+	Ptr<MonsterStateMachine> StateMachine = GetStateMachine();
+
+	if (!StateMachine || !_IdleState)
+	{
+		return;
+	}
+
+	for (Ptr<MonsterState>& PatternState : _PatternStates)
+	{
+		if (PatternState)
+		{
+			PatternState->Reset();
+		}
+	}
+
+	Ptr<MonsterBlackBoard> MonsterBoard = GetBlackBoard();
+
+	Ptr<BossBlackBoard> BossBoard = Cast<MonsterBlackBoard, BossBlackBoard>(MonsterBoard);
+
+	if (BossBoard)
+	{
+		BossBoard->ActivePhase1Golems.clear();
+	}
+
+	if (StateMachine->GetCurrentState() == _IdleState)
+	{
+		_IdleState->Enter(This<BossComponent>());
+	}
+	else
+	{
+		TransitionState(_IdleState);
+	}
+}

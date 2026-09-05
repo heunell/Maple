@@ -94,3 +94,29 @@ Ptr<class SpriteComponent> Boss::GetBossSprite() const
 {
 	return _BossSprite;
 }
+
+void Boss::ResetBattle()
+{
+	_Status.CurrentHP = _Status.MaxHP;
+
+	Ptr<BossComponent> Component = FindActorComponent<BossComponent>("Boss");
+
+	if (Component)
+	{
+		Component->ResetBattle();
+	}
+
+	if (_BossSprite)
+	{
+		_BossSprite->SetAnimationFrame(0);
+
+		_BossSprite->SetPlay("LUCID_MOB_8880140.stand", true);
+	}
+
+	if (_BottomSprite)
+	{
+		_BottomSprite->SetAnimationFrame(0);
+
+		_BottomSprite->SetPlay("LUCID_BOSS_8880158.stand", true);
+	}
+}

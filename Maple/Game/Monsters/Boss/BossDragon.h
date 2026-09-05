@@ -36,6 +36,8 @@ private:
 
 	bool _Ending = false;
 
+	void StartBreathPattern();
+
 public:
 	virtual bool Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name) override;
 

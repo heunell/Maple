@@ -2,6 +2,7 @@
 #include "MapManager.h"
 #include "Level.h"
 #include "Object/Actor.h"
+#include "Game/Monsters/Boss/Boss.h"
 #include "Game/Map/Boss/LucidEntry.h"
 #include "Game/Map/Boss/LucidPhase1.h"
 #include "Game/Map/Boss/LucidPhase2.h"
@@ -26,15 +27,20 @@ void MapManager::SetMapActorEnable(const std::string& MapName, bool Enable)
 
 	std::vector<Ptr<Actor>> MapActors;
 
-	// 같은 맵 태그를 가진 맵, NPC, 카메라 존을 모두 찾는다.
-
 	OwnerLevel->FindActors("Map." + MapName, MapActors);
 
 	for (Ptr<Actor>& MapActor : MapActors)
 	{
 		if (MapActor)
 		{
-			MapActor->SetEnable(Enable); // Active를 끄면 제거되니 Enable만 변경해서 Actor를 보존하기
+			Ptr<Boss> BossActor = Cast<Actor, Boss>(MapActor);
+
+			if (BossActor)
+			{
+				BossActor->ResetBattle();
+			}
+
+			MapActor->SetEnable(Enable);
 		}
 	}
 }

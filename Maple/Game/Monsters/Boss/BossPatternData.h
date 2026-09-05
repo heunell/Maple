@@ -123,6 +123,8 @@ struct FBossPatternNoticeData
 
 struct FBossDragonPatternData
 {
+	int32 BreathStartFrame = 10;
+
 	int32 SpawnFrame = 24;
 
 	int32 BreathCount = 9;
