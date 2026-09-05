@@ -2,6 +2,7 @@
 
 #include "Object/Actor.h"
 #include "BossPatternData.h"
+#include <vector>
 
 class Boss2Dragon : public Actor
 {
@@ -16,7 +17,7 @@ public:
 private:
 	Ptr<class SpriteComponent> _BodySprite;
 
-	Ptr<class SpriteComponent> _BreathSprite;
+	std::vector<Ptr<class SpriteComponent>> _BreathSprites;
 
 	FBoss2DragonPatternData _PatternData;
 
@@ -40,7 +41,7 @@ public:
 
 	virtual void Destroy() override;
 
-	void Start(const FVector3D& Position);
+	void Start();
 
 	void SetPatternEnable(bool Enable);
 };

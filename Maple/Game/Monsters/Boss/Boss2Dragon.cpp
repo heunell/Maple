@@ -2,6 +2,44 @@
 #include "Boss2Dragon.h"
 #include "Component/SpriteComponent.h"
 
+void Boss2Dragon::StartBreathPattern()
+{
+	if (!_Preparing)
+	{
+		return;
+	}
+
+	_Preparing = false;
+
+	_Breathing = true;
+
+	_ElapsedTime = 0.f;
+
+	_BodySprite->ChangeAnimation("Dragon.phase2.action.1.breathLoop");
+
+	_BodySprite->SetAnimationFrame(0);
+
+	_BodySprite->SetPlay("Dragon.Phase2.action.1.breathLoop", true);
+
+	for (int32 Index = 0; Index < static_cast<int32>(_BreathSprites.size()); ++Index)
+	{
+		Ptr<SpriteComponent> BreathSprite = _BreathSprites[Index];
+
+		if (!BreathSprite)
+		{
+			continue;
+		}
+
+		std::string AnimationName = "Dragon.phase2.breath.tile." + std::to_string(Index);
+
+		BreathSprite->SetEnable(true);
+
+		BreathSprite->SetAnimationFrame(0);
+
+		BreathSprite->SetPlay(AnimationName, true);
+	}
+}
+
 bool Boss2Dragon::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
 	if (!Actor::Init(Id, Position, Scale, Rotator, Name))
@@ -30,20 +68,31 @@ bool Boss2Dragon::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
 
 	_BodySprite->AttachToComponent(GetRoot());
 
+	_BodySprite->SetAnimationFlip(true);
+
 	_BodySprite->AddNotify("Dragon.phase2.action.1.intro", _PatternData.BreathStartFrame, this, &Boss2Dragon::StartBreathPattern);
 
-	_BreathSprite = CreateSceneComponent<SpriteComponent>("Boss2DragonBreath");
-
-	if (!_BreathSprite)
+	for (int32 Index = 0; Index < _PatternData.BreathCount; ++Index)
 	{
-		return false;
+		Ptr<SpriteComponent> BreathSprite = CreateSceneComponent<SpriteComponent>("Boss2DragonBreath" + std::to_string(Index));
+
+		if (!BreathSprite)
+		{
+			return false;
+		}
+
+		std::string AnimationName = "Dragon.phase2.breath.tile." + std::to_string(Index);
+
+		BreathSprite->SetRenderLayerName("Default");
+
+		BreathSprite->AddAnimationSequence(AnimationName, true);
+
+		BreathSprite->AttachToComponent(GetRoot());
+
+		BreathSprite->SetAnimationFlip(true);
+
+		_BreathSprites.push_back(BreathSprite);
 	}
-
-	_BreathSprite->SetRenderLayerName("Default");
-
-	_BreathSprite->AddAnimationSequence("Dragon.phase2.breath.tile.0", true);
-
-	_BreathSprite->AttachToComponent(GetRoot());
 
 	SetPatternEnable(false);
 
@@ -58,10 +107,27 @@ void Boss2Dragon::Tick(float DeltaTime)
 	{
 		_ElapsedTime += DeltaTime;
 
-		if (_ElapsedTime < _PatternData.AppearanceTime)
+		float Ratio = _ElapsedTime / _PatternData.AppearanceTime;
+
+		if (Ratio > 1.f)
+		{
+			Ratio = 1.f;
+		}
+
+		FVector3D Position = _PatternData.CreatePosition;
+
+		Position._x += (_PatternData.LowerPosition._x - _PatternData.CreatePosition._x) * Ratio;
+
+		Position._y += (_PatternData.LowerPosition._y - _PatternData.CreatePosition._y) * Ratio;
+
+		SetWorldPosition(Position);
+
+		if (Ratio < 1.f)
 		{
 			return;
 		}
+
+		SetWorldPosition(_PatternData.LowerPosition);
 
 		_ElapsedTime = 0.f;
 
@@ -87,10 +153,37 @@ void Boss2Dragon::Tick(float DeltaTime)
 	{
 		_ElapsedTime += DeltaTime;
 
-		if (_ElapsedTime < _PatternData.BreathTime)
+		if (_ElapsedTime < _PatternData.SweepTime)
 		{
+			float Ratio = _ElapsedTime / _PatternData.SweepTime;
+
+			FVector3D Position = _PatternData.LowerPosition;
+
+			Position._x += (_PatternData.UpperPosition._x - _PatternData.LowerPosition._x) * Ratio;
+
+			Position._y += (_PatternData.UpperPosition._y - _PatternData.LowerPosition._y) * Ratio;
+
+			SetWorldPosition(Position);
+
 			return;
 		}
+
+		if (_ElapsedTime < _PatternData.SweepTime * 2.f)
+		{
+			float Ratio = (_ElapsedTime - _PatternData.SweepTime) / _PatternData.SweepTime;
+
+			FVector3D Position = _PatternData.UpperPosition;
+
+			Position._x += (_PatternData.LowerPosition._x - _PatternData.UpperPosition._x) * Ratio;
+
+			Position._y += (_PatternData.LowerPosition._y - _PatternData.UpperPosition._y) * Ratio;
+
+			SetWorldPosition(Position);
+
+			return;
+		}
+
+		SetWorldPosition(_PatternData.LowerPosition);
 
 		_ElapsedTime = 0.f;
 
@@ -98,7 +191,13 @@ void Boss2Dragon::Tick(float DeltaTime)
 
 		_Ending = true;
 
-		_BreathSprite->SetEnable(false);
+		for (Ptr<SpriteComponent>& BreathSprite : _BreathSprites)
+		{
+			if (BreathSprite)
+			{
+				BreathSprite->SetEnable(false);
+			}
+		}
 
 		_BodySprite->ChangeAnimation("Dragon.phase2.action.1.tail");
 
@@ -124,33 +223,16 @@ void Boss2Dragon::Tick(float DeltaTime)
 	SetPatternEnable(false);
 }
 
-void Boss2Dragon::StartBreathPattern()
+void Boss2Dragon::Destroy()
 {
-	if (!_Preparing)
-	{
-		return;
-	}
+	_BreathSprites.clear();
 
-	_Preparing = false;
+	_BodySprite.reset();
 
-	_Breathing = true;
-
-	_ElapsedTime = 0.f;
-
-	_BodySprite->ChangeAnimation("Dragon.phase2.action.1.breathLoop");
-
-	_BodySprite->SetAnimationFrame(0);
-
-	_BodySprite->SetPlay("Dragon.phase2.action.1.breathLoop", true);
-
-	_BreathSprite->SetEnable(true);
-
-	_BreathSprite->SetAnimationFrame(0);
-
-	_BreathSprite->SetPlay("Dragon.phase2.breath.tile.0", true);
+	Actor::Destroy();
 }
 
-void Boss2Dragon::Start(const FVector3D& Position)
+void Boss2Dragon::Start()
 {
 	_ElapsedTime = 0.f;
 
@@ -162,7 +244,7 @@ void Boss2Dragon::Start(const FVector3D& Position)
 
 	_Ending = false;
 
-	SetWorldPosition(Position);
+	SetWorldPosition(_PatternData.CreatePosition);
 
 	SetPatternEnable(true);
 
@@ -171,8 +253,6 @@ void Boss2Dragon::Start(const FVector3D& Position)
 	_BodySprite->SetAnimationFrame(0);
 
 	_BodySprite->SetPlay("Dragon.phase2.action.0", true);
-
-	_BreathSprite->SetEnable(false);
 }
 
 void Boss2Dragon::SetPatternEnable(bool Enable)
@@ -184,9 +264,12 @@ void Boss2Dragon::SetPatternEnable(bool Enable)
 		_BodySprite->SetEnable(Enable);
 	}
 
-	if (_BreathSprite)
+	for (Ptr<SpriteComponent>& BreathSprite : _BreathSprites)
 	{
-		_BreathSprite->SetEnable(false);
+		if (BreathSprite)
+		{
+			BreathSprite->SetEnable(false);
+		}
 	}
 
 	if (!Enable)
@@ -196,18 +279,9 @@ void Boss2Dragon::SetPatternEnable(bool Enable)
 		_Appearing = false;
 
 		_Preparing = false;
-
+		
 		_Breathing = false;
 
 		_Ending = false;
 	}
-}
-
-void Boss2Dragon::Destroy()
-{
-	_BreathSprite.reset();
-
-	_BodySprite.reset();
-
-	Actor::Destroy();
 }

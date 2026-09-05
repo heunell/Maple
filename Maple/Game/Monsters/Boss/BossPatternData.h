@@ -140,13 +140,25 @@ struct FBoss2DragonPatternData
 {
 	int32 BreathStartFrame = 20;
 
+	int32 BreathCount = 9;
+
 	float AppearanceTime = 3.f;
 
-	float BreathTime = 4.5f;
+	float SweepTime = 2.25f;
+
+	FVector3D CreatePosition = FVector3D(-35.f, -720.f, 0.f);
+
+	FVector3D UpperPosition = FVector3D(-35.f, -1030.f, 0.f);
+
+	FVector3D LowerPosition = FVector3D(-35.f, -1420.5f, 0.f);
 };
 
 struct FBoss2LaserData
 {
+	std::string Animation = "LaserRain.laser";
+
+	std::string RenderLayer = "Monster";
+
 	int32 WarningStartFrame = 5;
 
 	int32 WarningEndFrame = 10;
@@ -162,6 +174,12 @@ struct FBoss2LaserData
 	float ActiveTime = 0.12f;
 
 	float FadeFrameDelay = 0.07f;
+
+	float WarningOpacity = 0.65f;
+
+	float ActiveOpacity = 1.f;
+
+	float FadeOpacity = 0.35f;
 };
 
 struct FBoss2LaserPatternData
@@ -170,9 +188,27 @@ struct FBoss2LaserPatternData
 
 	int32 LaserCount = 15;
 
-	float ActionDelay = 1.44f;
+	float SpawnInterval = 0.5f;
 
-	float SpawnInterval = 0.3f;
+	float RotationMin = 30.f;
+
+	float RotationMax = 150.f;
 
 	float ReappearDelay = 3.f;
+};
+
+struct FBoss2LaserActionData
+{
+	std::string Animation = "LaserRain.action_no_blank";
+
+	std::string RenderLayer = "BackGround";
+};
+
+struct FBoss2LaserStateData
+{
+	std::string IdleAnimation;
+
+	std::wstring NoticeText;
+
+	FVector3D ActionOffset = FVector3D::Zero;
 };

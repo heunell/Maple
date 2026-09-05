@@ -70,7 +70,7 @@ void BossDragonState::Enter(Ptr<MonsterComponent> Monster)
 
 	if (_Notice)
 	{
-		_Notice->Show();
+		_Notice->Show(L"루시드가 강력한 소환수를 소환했습니다!");
 	}
 }
 

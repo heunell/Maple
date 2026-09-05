@@ -55,7 +55,7 @@ void Boss2DragonState::Enter(Ptr<MonsterComponent> Monster)
 
 	if (Notice)
 	{
-		Notice->Show();
+		Notice->Show(L"루시드가 강력한 소환수를 소환했습니다!");
 	}
 }
 
@@ -146,8 +146,7 @@ void Boss2DragonState::SpawnDragonPattern()
 
 	_DragonStarted = true;
 
-	// 우선 출력을 확인하기 위해 루시드 위치를 기준점으로 사용한다.
-	_Dragon->Start(MonsterOwner->GetWorldPosition());
+	_Dragon->Start();
 }
 
 bool Boss2DragonState::CanSelect() const

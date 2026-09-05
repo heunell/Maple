@@ -76,16 +76,28 @@ bool Boss2Component::Init(int32 Id, const std::string& Name, Ptr<Actor> Owner)
 	}
 
 	Ptr<Boss2LaserState> LaserState = New<Boss2LaserState>();
-	
+
 	if (!LaserState)
 	{
 		return false;
 	}
 
-	//if (!LaserState->Init(This<Boss2Component>(), _IdleState))
-	//{
-	//	return false;
-	//}
+	FBoss2LaserStateData LaserData;
+
+	LaserData.ActionAnimation = "LaserRain.action_no_blank";
+
+	LaserData.IdleAnimation = "LUCID_MOB_8880150.fly";
+
+	LaserData.ActionRenderLayer = "BackGround";
+
+	LaserData.NoticeText = L"루시드가 강력한 공격을 사용하려 합니다!";
+
+	LaserData.ActionOffset = FVector3D::Zero;
+
+	if (!LaserState->Init(This<Boss2Component>(), _IdleState, LaserData))
+	{
+		return false;
+	}
 
 	/*Ptr<Boss2GolemState> LaserState = New<Boss2GolemState>();
 

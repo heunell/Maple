@@ -89,7 +89,7 @@ bool BossPatternNotice::Init(int32 Id, const FVector3D& Position, const FVector3
 
 	_TextBlock->SetTextColor(255, 255, 255, 255);
 
-	_TextBlock->SetText(L"루시드가 강력한 소환수를 소환했습니다!");
+	_TextBlock->SetText(L"");
 
 	SetNoticeEnable(false);
 
@@ -144,8 +144,13 @@ void BossPatternNotice::Tick(float DeltaTime)
 	SetNoticeOpacity(Opacity);
 }
 
-void BossPatternNotice::Show()
+void BossPatternNotice::Show(const std::wstring& Text)
 {
+	if (_TextBlock)
+	{
+		_TextBlock->SetText(Text);
+	}
+
 	_ElapsedTime = 0.f;
 
 	_Finished = false;

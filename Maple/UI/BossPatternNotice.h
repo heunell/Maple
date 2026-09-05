@@ -40,7 +40,7 @@ public:
 
 	virtual void Destroy() override;
 
-	void Show();
+	void Show(const std::wstring& Text);
 
 	bool IsFinished() const;
 };
