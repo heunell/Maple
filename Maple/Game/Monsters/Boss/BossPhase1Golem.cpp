@@ -35,6 +35,8 @@ bool BossPhase1Golem::Init(int32 Id, const FVector3D& Position, const FVector3D&
 
 	_Sprite->AddAnimationSequence("LUCID_GOLEM_8880161.stand", true);
 
+	_Sprite->AddAnimationSequence("LUCID_GOLEM_8880161.die1", false);
+
 	_Sprite->AttachToComponent(GetRoot());
 
 	_Collision = CreateSceneComponent<AABBCollisionComponent>("GolemCollision");
@@ -71,13 +73,37 @@ void BossPhase1Golem::Tick(float DeltaTime)
 		return;
 	}
 
+	if (_Status.CurrentHP <= 0)
+	{
+		_Collision->SetEnable(false);
+
+		_Sprite->ChangeAnimation("LUCID_GOLEM_8880161.die1");
+
+		if (!Animation->IsFinished())
+		{
+			return;
+		}
+
+		if (Ptr<BossPhase1GolemState> Owner = Lock(_Owner))
+		{
+			Owner->ReleaseGolem(This<BossPhase1Golem>());
+		}
+		else
+		{
+			SetPoolEnable(false);
+		}
+
+		return;
+	}
+
+
 	if (_Summoning)
 	{
 		if (!Animation->IsFinished())
 		{
 			return;
 		}
-
+		
 		_Summoning = false;
 
 		_Falling = true;
@@ -224,7 +250,7 @@ void BossPhase1Golem::Start(Ptr<BossPhase1GolemState> Owner, const FVector3D& Po
 
 bool BossPhase1Golem::IsStanding() const
 {
-    return IsEnable() && !_Summoning && !_Falling && !_Landing;
+	return IsEnable() && _Status.CurrentHP > 0 && !_Summoning && !_Falling && !_Landing;
 }
 
 void BossPhase1Golem::SetPoolEnable(bool Enable)

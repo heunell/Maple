@@ -44,11 +44,7 @@ bool BossPhase1GolemState::Init(Ptr<BossComponent> Owner)
 
 	BossSprite->AddNotify("LUCID_MOB_8880140.skill3", _PatternData.SpawnFrame, this, &BossPhase1GolemState::SpawnGolemPattern);
 
-	if (!_GolemPool.Configure(
-		_PatternData.PoolMaxCount,
-		std::bind_front(&BossPhase1GolemState::CreateGolem, this),
-		std::bind_front(&BossPhase1GolemState::EnableGolem, this),
-		std::bind_front(&BossPhase1GolemState::DisableGolem, this)))
+	if (!_GolemPool.Configure(_PatternData.PoolMaxCount, std::bind_front(&BossPhase1GolemState::CreateGolem, this), std::bind_front(&BossPhase1GolemState::EnableGolem, this), std::bind_front(&BossPhase1GolemState::DisableGolem, this)))
 	{
 		return false;
 	}

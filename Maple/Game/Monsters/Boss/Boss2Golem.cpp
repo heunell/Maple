@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Boss2Golem.h"
+#include "Boss2GolemState.h"
 #include "Component/SpriteComponent.h"
 #include "Component/AABBCollisionComponent.h"
 #include "Game/Map/Boss/LucidPhase2.h"
@@ -31,6 +32,8 @@ bool Boss2Golem::Init(int32 Id, const FVector3D& Position, const FVector3D& Scal
 	_Sprite->AddAnimationSequence("LUCID_GOLEM_8880171.regen", false);
 
 	_Sprite->AddAnimationSequence("LUCID_GOLEM_8880171.stand", true);
+
+	_Sprite->AddAnimationSequence("LUCID_GOLEM_8880171.die1", false);
 
 	_Sprite->AttachToComponent(GetRoot());
 
@@ -67,6 +70,29 @@ void Boss2Golem::Tick(float DeltaTime)
 
 	if (!Animation)
 	{
+		return;
+	}
+
+	if (_Status.CurrentHP <= 0)
+	{
+		_Collision->SetEnable(false);
+
+		_Sprite->ChangeAnimation("LUCID_GOLEM_8880171.die1");
+
+		if (!Animation->IsFinished())
+		{
+			return;
+		}
+
+		if (Ptr<Boss2GolemState> Owner = Lock(_Owner))
+		{
+			Owner->ReleaseGolem(This<Boss2Golem>());
+		}
+		else
+		{
+			SetPoolEnable(false);
+		}
+
 		return;
 	}
 

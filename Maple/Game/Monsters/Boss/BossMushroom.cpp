@@ -58,6 +58,17 @@ void BossMushroom::Tick(float DeltaTime)
 {
 	MonsterBase::Tick(DeltaTime);
 
+	if (_Status.CurrentHP <= 0 && !_Dying)
+	{
+		_Moving = false;
+
+		_Dying = true;
+
+		_Collision->SetEnable(false);
+
+		_Sprite->ChangeAnimation("LUCID_MUSHROOM_8880157.die1");
+	}
+
 	Ptr<Animation2D> Animation = _Sprite->GetAnimation();
 
 	if (!_Moving)
@@ -104,6 +115,8 @@ void BossMushroom::Tick(float DeltaTime)
 	_Collision->SetRelativePosition(_Direction > 0 ? -7.f : 7.f, 118.f, 0.f);
 
 	_Dying = true;
+
+	_Collision->SetEnable(false);
 
 	_Sprite->ChangeAnimation("LUCID_MUSHROOM_8880157.die1");
 }
