@@ -2,6 +2,7 @@
 #include "Boss.h"
 #include "BossComponent.h"
 #include "Component/SpriteComponent.h"
+#include "Component/AABBCollisionComponent.h"
 #include "Core/Animation2DData.h"
 #include "Core/AnimationManager.h"
 #include "Core/AssetManager.h"
@@ -79,6 +80,35 @@ bool Boss::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, con
 
 	_BossSprite->SetRelativePosition(0.f, 0.f, 0.1f);
 
+	Ptr<AABBCollisionComponent> TopCollision = CreateSceneComponent<AABBCollisionComponent>("BossTopCollision");
+
+	if (!TopCollision)
+	{
+		return false;
+	}
+
+	TopCollision->SetBoxSize(210.f, 120.f);
+
+	TopCollision->SetRelativePosition(20.f, 290.f, 0.f);
+	
+	TopCollision->AttachToComponent(GetRoot());
+	
+	TopCollision->SetCollisionProfile("Boss");
+
+	Ptr<AABBCollisionComponent> BottomCollision = CreateSceneComponent<AABBCollisionComponent>("BossBottomCollision");
+
+	if (!BottomCollision)
+	{
+		return false;
+	}
+
+	BottomCollision->SetBoxSize(95.f, 230.f);
+
+	BottomCollision->SetRelativePosition(-25.f, 115.f, 0.f);
+	
+	BottomCollision->AttachToComponent(GetRoot());
+	
+	BottomCollision->SetCollisionProfile("Boss");
 
 	Ptr<BossComponent> Component = CreateActorComponent<BossComponent>("Boss");
 

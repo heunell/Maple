@@ -2,6 +2,7 @@
 #include "BossMushroom.h"
 #include "BossMushroomState.h"
 #include "Component/SpriteComponent.h"
+#include "Component/AABBCollisionComponent.h"
 
 bool BossMushroom::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
@@ -34,6 +35,21 @@ bool BossMushroom::Init(int32 Id, const FVector3D& Position, const FVector3D& Sc
 	_Sprite->AddAnimationSequence("LUCID_MUSHROOM_8880157.die1", false);
 
 	_Sprite->AttachToComponent(GetRoot());
+
+	_Collision = CreateSceneComponent<AABBCollisionComponent>("MushroomCollision");
+
+	if (!_Collision)
+	{
+		return false;
+	}
+
+	_Collision->SetBoxSize(110.f, 210.f);
+
+	_Collision->SetRelativePosition(7.f, 118.f, 0.f);
+	
+	_Collision->AttachToComponent(GetRoot());
+	
+	_Collision->SetCollisionProfile("Monster");
 
 	return true;
 }
@@ -85,6 +101,8 @@ void BossMushroom::Tick(float DeltaTime)
 
 	_Moving = false;
 
+	_Collision->SetRelativePosition(_Direction > 0 ? -7.f : 7.f, 118.f, 0.f);
+
 	_Dying = true;
 
 	_Sprite->ChangeAnimation("LUCID_MUSHROOM_8880157.die1");
@@ -106,8 +124,9 @@ void BossMushroom::Start(Ptr<BossMushroomState> Owner, const FVector3D& Position
 
 	SetWorldPosition(Position);
 
-	// 원본 버섯은 왼쪽을 바라보므로 오른쪽 이동 버섯만 뒤집는다.
 	_Sprite->SetAnimationFlip(_Direction > 0);
+
+	_Collision->SetRelativePosition(_Direction > 0 ? -7.f : 7.f, 118.f, 0.f);
 
 	_Sprite->ChangeAnimation("LUCID_MUSHROOM_8880157.regen");
 }
@@ -119,6 +138,11 @@ void BossMushroom::SetPoolEnable(bool Enable)
 	if (_Sprite)
 	{
 		_Sprite->SetEnable(Enable);
+	}
+
+	if (_Collision)
+	{
+		_Collision->SetEnable(Enable);
 	}
 
 	if (!Enable)

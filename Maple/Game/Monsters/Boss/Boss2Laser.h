@@ -16,12 +16,15 @@ public:
 private:
     Ptr<class SpriteComponent> _Sprite;
 
+    Ptr<class OBBCollisionComponent> _Collision;
+
     Weak<class Boss2LaserState> _Owner;
 
     FBoss2LaserPatternData _PatternData;
 
-    // 생성 이후의 시간으로 경고, Hit, Fade를 구분한다.
     float _ElapsedTime = 0.f;
+
+    void OnOverlap(Weak<class CollisionComponent> Destination);
 
 public:
     virtual bool Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name) override;

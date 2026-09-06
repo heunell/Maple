@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "BossDragon.h"
 #include "Component/SpriteComponent.h"
+#include "Component/AABBCollisionComponent.h"
 
 void BossDragon::StartBreathPattern()
 {
@@ -14,6 +15,8 @@ void BossDragon::StartBreathPattern()
 	_Breathing = true;
 
 	_ElapsedTime = 0.f;
+
+	_Hit = false;
 
 	for (int32 Index = 0; Index < static_cast<int32>(_BreathSprites.size()); ++Index)
 	{
@@ -32,6 +35,12 @@ void BossDragon::StartBreathPattern()
 
 		BreathSprite->SetPlay(AnimationName, true);
 	}
+
+	for (Ptr<AABBCollisionComponent>& BreathCollision : _BreathCollisions)
+	{
+		BreathCollision->SetEnable(true);
+	}
+
 }
 
 bool BossDragon::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
@@ -84,6 +93,25 @@ bool BossDragon::Init(int32 Id, const FVector3D& Position, const FVector3D& Scal
 		BreathSprite->SetRelativePosition(0.f, 0.f, 0.1f);
 
 		_BreathSprites.push_back(BreathSprite);
+
+		Ptr<AABBCollisionComponent> BreathCollision = CreateSceneComponent<AABBCollisionComponent>("BossDragonBreathCollision" + std::to_string(Index));
+
+		if (!BreathCollision)
+		{
+			return false;
+		}
+
+		BreathCollision->SetBoxSize(564.f, 500.f);
+
+		BreathCollision->AttachToComponent(GetRoot());
+		
+		BreathCollision->SetCollisionProfile("BossAttack");
+		
+		BreathCollision->SetCollisionCallBack(COLLISION_STATE_OVERLAP, this, &BossDragon::OnOverlap);
+		
+		BreathCollision->SetEnable(false);
+
+		_BreathCollisions.push_back(BreathCollision);
 	}
 
 	SetPatternEnable(false);
@@ -166,6 +194,11 @@ void BossDragon::Tick(float DeltaTime)
 			BreathSprite->SetEnable(false);
 		}
 
+		for (Ptr<AABBCollisionComponent>& BreathCollision : _BreathCollisions)
+		{
+			BreathCollision->SetEnable(false);
+		}
+
 		_BodySprite->ChangeAnimation("Dragon.phase1.action.1.tail");
 
 		_BodySprite->SetAnimationFrame(0);
@@ -196,6 +229,8 @@ void BossDragon::Start(const FVector3D& StartPosition, const FVector3D& DragonPo
 
 	_ElapsedTime = 0.f;
 
+	_Hit = false;
+
 	_Appearing = true;
 
 	_Preparing = false;
@@ -223,6 +258,13 @@ void BossDragon::Start(const FVector3D& StartPosition, const FVector3D& DragonPo
 
 		BreathSprite->SetEnable(false);
 	}
+
+	for (int32 Index = 0; Index < static_cast<int32>(_BreathCollisions.size()); ++Index)
+	{
+		_BreathCollisions[Index]->SetRelativePosition((LeftSide ? 1.f : -1.f) * (653.f + 285.f * Index), 19.f, 0.f);
+
+		_BreathCollisions[Index]->SetEnable(false);
+	}
 }
 
 void BossDragon::SetPatternEnable(bool Enable)
@@ -246,6 +288,8 @@ void BossDragon::SetPatternEnable(bool Enable)
 
 		_ElapsedTime = 0.f;
 
+		_Hit = false;
+
 		_Appearing = false;
 
 		_Preparing = false;
@@ -260,7 +304,40 @@ void BossDragon::Destroy()
 {
 	_BreathSprites.clear();
 
+	_BreathCollisions.clear();
+
 	_BodySprite.reset();
 
 	Actor::Destroy();
+}
+
+void BossDragon::OnOverlap(Weak<CollisionComponent> Destination)
+{
+	if (!_Breathing || _Hit)
+	{
+		return;
+	}
+
+	Ptr<CollisionComponent> HitCollision = Lock<CollisionComponent>(Destination);
+
+	if (!HitCollision)
+	{
+		return;
+	}
+
+	Ptr<Actor> Player = Lock<Actor>(HitCollision->GetOwner());
+
+	if (!Player)
+	{
+		return;
+	}
+
+	if (HitCollision != Player->FindSceneComponent<CollisionComponent>("AABB"))
+	{
+		return;
+	}
+
+	_Hit = true;
+
+	// Todo : 플레이어의 즉사 피해 함수 연결
 }

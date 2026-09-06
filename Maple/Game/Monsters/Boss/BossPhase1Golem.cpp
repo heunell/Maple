@@ -1,7 +1,11 @@
 #include "pch.h"
 #include "BossPhase1Golem.h"
 #include "BossPhase1GolemState.h"
+#include "Core/GameEngine.h"
+#include "Collision/CollisionProfile.h"
 #include "Component/SpriteComponent.h"
+#include "Component/AABBCollisionComponent.h"
+#include "World/World.h"
 
 bool BossPhase1Golem::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
@@ -32,6 +36,21 @@ bool BossPhase1Golem::Init(int32 Id, const FVector3D& Position, const FVector3D&
 	_Sprite->AddAnimationSequence("LUCID_GOLEM_8880161.stand", true);
 
 	_Sprite->AttachToComponent(GetRoot());
+
+	_Collision = CreateSceneComponent<AABBCollisionComponent>("GolemCollision");
+
+	if (!_Collision)
+	{
+		return false;
+	}
+
+	_Collision->SetBoxSize(145.f, 240.f);
+
+	_Collision->SetRelativePosition(-1.5f, 100.5f, 0.f);
+	
+	_Collision->AttachToComponent(GetRoot());
+
+	_Collision->SetCollisionProfile("Monster");
 
 	return true;
 }
@@ -127,9 +146,56 @@ void BossPhase1Golem::Tick(float DeltaTime)
 	_Sprite->SetPlay("LUCID_GOLEM_8880161.stand", true);
 }
 
+void BossPhase1Golem::Collision(float DeltaTime)
+{
+	MonsterBase::Collision(DeltaTime);
+
+	if (!IsStanding() || !_Collision || !_Collision->GetProfile())
+	{
+		return;
+	}
+
+	if (_Collision->GetProfile()->GetName() == "Golem")
+	{
+		return;
+	}
+
+	Ptr<World> CurrentWorld = GameEngine::Instance().GetWorld();
+
+	if (!CurrentWorld)
+	{
+		return;
+	}
+
+	Ptr<Actor> Player = CurrentWorld->GetPlayer();
+
+	if (!Player || !Player->IsActive() || !Player->IsEnable())
+	{
+		return;
+	}
+
+	Ptr<AABBCollisionComponent> PlayerCollision = Player->FindSceneComponent<AABBCollisionComponent>("AABB");
+
+	if (!PlayerCollision || !PlayerCollision->IsActive() || !PlayerCollision->IsEnable())
+	{
+		return;
+	}
+
+	std::pair<int32, int32> PlayerCollisionID = PlayerCollision->GetColliderID();
+
+	if (_Collision->CheckState(PlayerCollisionID) != COLLISION_STATE_RELEASE)
+	{
+		return;
+	}
+
+	_Collision->SetCollisionProfile("Golem");
+}
+
 void BossPhase1Golem::Start(Ptr<BossPhase1GolemState> Owner, const FVector3D& Position, float GroundY, float FallDuration)
 {
 	_Owner = Owner;
+
+	_Collision->SetCollisionProfile("Monster");
 
 	_FallData.StartY = Position._y;
 
@@ -168,6 +234,11 @@ void BossPhase1Golem::SetPoolEnable(bool Enable)
 	if (_Sprite)
 	{
 		_Sprite->SetEnable(Enable);
+	}
+
+	if (_Collision)
+	{
+		_Collision->SetEnable(Enable);
 	}
 
 	if (!Enable)

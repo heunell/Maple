@@ -14,6 +14,8 @@ public:
 private:
 	Ptr<class SpriteComponent> _Sprite;
 
+	Ptr<class AABBCollisionComponent> _Collision;
+
 	Weak<class BossMushroomState> _Owner;
 
 	int32 _Direction = 0;

@@ -19,6 +19,10 @@ private:
 
 	std::vector<Ptr<class SpriteComponent>> _BreathSprites;
 
+	std::vector<Ptr<class AABBCollisionComponent>> _BreathCollisions;
+
+	bool _Hit = false;
+
 	FBoss2DragonPatternData _PatternData;
 
 	float _ElapsedTime = 0.f;
@@ -33,6 +37,8 @@ private:
 
 private:
 	void StartBreathPattern();
+
+	void OnOverlap(Weak<class CollisionComponent> Destination);
 
 public:
 	virtual bool Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name) override;

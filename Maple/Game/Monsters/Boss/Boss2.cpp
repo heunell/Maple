@@ -2,6 +2,7 @@
 #include "Boss2.h"
 #include "Boss2Component.h"
 #include "Component/SpriteComponent.h"
+#include "Component/AABBCollisionComponent.h"
 #include "Core/Animation2DData.h"
 #include "Core/AnimationManager.h"
 #include "Core/AssetManager.h"
@@ -51,6 +52,21 @@ bool Boss2::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, co
 	_BossSprite->AddAnimationSequence("LUCID_MOB_8880150.skill2", false);	// 브레스
 
 	_BossSprite->AttachToComponent(GetRoot());
+
+	Ptr<AABBCollisionComponent> Collision = CreateSceneComponent<AABBCollisionComponent>("BossCollision");
+
+	if (!Collision)
+	{
+		return false;
+	}
+
+	Collision->SetBoxSize(90.f, 125.f);
+
+	Collision->SetRelativePosition(0.f, 60.f, 0.f);
+	
+	Collision->AttachToComponent(GetRoot());
+	
+	Collision->SetCollisionProfile("Boss");
 
 	Ptr<Boss2Component> Component = CreateActorComponent<Boss2Component>("Boss2");
 

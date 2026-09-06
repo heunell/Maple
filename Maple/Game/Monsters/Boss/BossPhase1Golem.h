@@ -15,6 +15,8 @@ public:
 private:
 	Ptr<class SpriteComponent> _Sprite;
 
+	Ptr<class AABBCollisionComponent> _Collision;
+
 	Weak<class BossPhase1GolemState> _Owner;
 
 	FBossPhase1GolemFallData _FallData;
@@ -29,6 +31,8 @@ public:
 	virtual bool Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name) override;
 
 	virtual void Tick(float DeltaTime) override;
+
+	virtual void Collision(float DeltaTime) override;
 
 	void Start(Ptr<class BossPhase1GolemState> Owner, const FVector3D& Position, float GroundY, float FallDuration);
 

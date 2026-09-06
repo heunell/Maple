@@ -348,7 +348,7 @@ void Player::OnGround(Weak<class CollisionComponent> Collision)
 		return;
 	}
 
-	if(Component->GetProfile()->GetChannel() != eCollisionChannel::COLLISION_CHANNEL_ENVIRONMENT)
+	if (Component->GetProfile()->GetChannel() != COLLISION_CHANNEL_ENVIRONMENT && Component->GetProfile()->GetName() != "Golem") 
 	{
 		return;
 	}
@@ -421,7 +421,8 @@ void Player::OnLeftWall (Weak<class CollisionComponent> Collision)
 		return;
 	}
 
-	if(Component->GetProfile()->GetChannel() != eCollisionChannel::COLLISION_CHANNEL_ENVIRONMENT)
+	if(Component->GetProfile()->GetChannel() != eCollisionChannel::COLLISION_CHANNEL_ENVIRONMENT &&
+       Component->GetProfile()->GetName() != "Golem")
 	{
 		return;
 	}
@@ -433,7 +434,7 @@ void Player::OnLeftWall (Weak<class CollisionComponent> Collision)
 		return;
 	}
 
-	if(Wall->GetBoxSize()._y <= Wall->GetBoxSize()._x)
+	if(Wall->GetBoxSize()._y <= Wall->GetBoxSize()._x && Component->GetProfile()->GetChannel() == COLLISION_CHANNEL_ENVIRONMENT)
 	{
 		return;
 	}
@@ -459,7 +460,7 @@ void Player::OnRightWall(Weak<class CollisionComponent> Collision)
 		return;
 	}
 
-	if(Component->GetProfile()->GetChannel() != eCollisionChannel::COLLISION_CHANNEL_ENVIRONMENT)
+	if (Component->GetProfile()->GetChannel() != COLLISION_CHANNEL_ENVIRONMENT && Component->GetProfile()->GetName() != "Golem")
 	{
 		return;
 	}
@@ -471,7 +472,7 @@ void Player::OnRightWall(Weak<class CollisionComponent> Collision)
 		return;
 	}
 
-	if(Wall->GetBoxSize()._y <= Wall->GetBoxSize()._x)
+	if (Component->GetProfile()->GetChannel() == COLLISION_CHANNEL_ENVIRONMENT && Wall->GetBoxSize()._y <= Wall->GetBoxSize()._x) 
 	{
 		return;
 	}

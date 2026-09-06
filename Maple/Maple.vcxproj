@@ -214,6 +214,7 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game\Character\PlayerBlackBoard.h" />
     <ClInclude Include="Game\Character\State\PlayerCastSkillState.h" />
+    <ClInclude Include="Game\Character\State\PlayerDeadState.h" />
     <ClInclude Include="Game\Character\State\PlayerIdleState.h" />
     <ClInclude Include="Game\Character\State\PlayerJumpState.h" />
     <ClInclude Include="Game\Character\State\PlayerNoneActionState.h" />
@@ -316,6 +317,7 @@
     <ClInclude Include="UI\BossPatternNotice.h" />
     <ClInclude Include="UI\CursorUI.h" />
     <ClInclude Include="Game\Character\LucidEntryNPC.h" />
+    <ClInclude Include="UI\DeadNotice.h" />
     <ClInclude Include="UI\MiniMap.h" />
     <ClInclude Include="UI\PlayerUI.h" />
     <ClInclude Include="UI\ProgressBar.h" />
@@ -383,6 +385,7 @@
     <ClCompile Include="Core\Widget.cpp" />
     <ClCompile Include="Game\Character\PlayerBlackBoard.cpp" />
     <ClCompile Include="Game\Character\State\PlayerCastSkillState.cpp" />
+    <ClCompile Include="Game\Character\State\PlayerDeadState.cpp" />
     <ClCompile Include="Game\Character\State\PlayerIdleState.cpp" />
     <ClCompile Include="Game\Character\State\PlayerJumpState.cpp" />
     <ClCompile Include="Game\Character\State\PlayerNoneActionState.cpp" />
@@ -486,6 +489,7 @@
     <ClCompile Include="UI\BossPatternNotice.cpp" />
     <ClCompile Include="UI\CursorUI.cpp" />
     <ClCompile Include="Game\Character\LucidEntryNPC.cpp" />
+    <ClCompile Include="UI\DeadNotice.cpp" />
     <ClCompile Include="UI\MiniMap.cpp" />
     <ClCompile Include="UI\PlayerUI.cpp" />
     <ClCompile Include="UI\ProgressBar.cpp" />

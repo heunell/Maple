@@ -36,7 +36,7 @@ struct FBossFlowerPatternData
 						    
 	int32 FirstSlotIndex    = 1;
 						    
-	int32 LastSlotIndex     = 8;
+	int32 LastSlotIndex     = 7;
 
 	int32 MediumSmallWeight = 33;
 
@@ -53,9 +53,18 @@ struct FBossFlowerPatternData
 	float SpawnJitterRatio  = 0.15f;
 };
 
+struct FBossFlowerHitData
+{
+	float StartTime = 1.05f;
+
+	float Duration = 0.25f;
+
+	bool Hit = false;
+};
+
 struct FBossPatternAreaData
 {
-	int32 SlotCount  = 10;
+	int32 SlotCount  = 9;
 
 	float LeftBound  = 0.f;
 
@@ -83,7 +92,7 @@ struct FBossPhase1GolemPatternData
 
 	int32 FirstSlotIndex = 1;
 
-	int32 LastSlotIndex  = 8;
+	int32 LastSlotIndex  = 7;
 
 	int32 SpawnFrame     = 18;
 

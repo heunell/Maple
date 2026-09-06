@@ -14,6 +14,8 @@ public:
 private:
 	Ptr<class SpriteComponent> _Sprite;
 
+	Ptr<class SphereCollisionComponent> _Collision;
+
 	Weak<class BossBladeState> _Owner;
 
 	FVector3D _Direction;

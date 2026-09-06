@@ -59,6 +59,10 @@ void OBBCollisionComponent::Tick(float DeltaTime)
     _Box._center._x = _World._position._x;
     _Box._center._y = _World._position._y;
 
+    _Axis[AXIS_TYPE::X] = FVector3D::Normalize(FVector3D::Axis_X.TransformNormal(_Matrix._World));
+
+    _Axis[AXIS_TYPE::Y] = FVector3D::Normalize(FVector3D::Axis_Y.TransformNormal(_Matrix._World));
+
     _Box._Axis[AXIS_TYPE::X]._x = _Axis[AXIS_TYPE::X]._x;
     _Box._Axis[AXIS_TYPE::X]._y = _Axis[AXIS_TYPE::X]._y;
 
@@ -77,7 +81,7 @@ void OBBCollisionComponent::Tick(float DeltaTime)
     _Min._y = pos[0]._y;
 
 
-    _Min._x = pos[0]._x;
+    _Max._x = pos[0]._x;
     _Max._y = pos[0]._y;
 
     for (int i = 0; i < 4; ++i)

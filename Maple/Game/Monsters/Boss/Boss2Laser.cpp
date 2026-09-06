@@ -2,6 +2,7 @@
 #include "Boss2Laser.h"
 #include "Boss2LaserState.h"
 #include "Component/SpriteComponent.h"
+#include "Component/OBBCollisionComponent.h"
 
 bool Boss2Laser::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
@@ -23,7 +24,25 @@ bool Boss2Laser::Init(int32 Id, const FVector3D& Position, const FVector3D& Scal
 
 	_Sprite->AttachToComponent(GetRoot());
 
-	// 프레임 진행은 Tick에서 경과 시간을 기준으로 제어한다.
+	AddTag("BossAttack");
+
+	_Collision = CreateSceneComponent<OBBCollisionComponent>("LaserCollision");
+
+	if (!_Collision)
+	{
+		return false;
+	}
+
+	_Collision->SetBoxSize(760.f, 4.f);
+
+	_Collision->SetRelativePosition(0.f, 0.f, 0.f);
+
+	_Collision->AttachToComponent(GetRoot());
+
+	_Collision->SetCollisionProfile("BossAttack");
+
+	_Collision->SetCollisionCallBack(COLLISION_STATE_OVERLAP, this, &Boss2Laser::OnOverlap);
+
 	_Sprite->SetPlay("LaserRain.laser", false);
 
 	SetPoolEnable(false);
@@ -48,7 +67,6 @@ void Boss2Laser::Tick(float DeltaTime)
 		return;
 	}
 
-	// 현재는 충돌 없이 Hit 프레임만 표시한다.
 	if (_ElapsedTime < _PatternData.WarningTime + _PatternData.HitTime)
 	{
 		_Sprite->SetAnimationFrame(_PatternData.HitFrame);
@@ -56,8 +74,7 @@ void Boss2Laser::Tick(float DeltaTime)
 		return;
 	}
 
-	int32 Frame = _PatternData.FadeStartFrame + static_cast<int32>(
-		(_ElapsedTime - _PatternData.WarningTime - _PatternData.HitTime) / _PatternData.FadeFrameDelay);
+	int32 Frame = _PatternData.FadeStartFrame + static_cast<int32>( (_ElapsedTime - _PatternData.WarningTime - _PatternData.HitTime) / _PatternData.FadeFrameDelay);
 
 	if (Frame <= _PatternData.FadeEndFrame)
 	{
@@ -104,10 +121,49 @@ void Boss2Laser::SetPoolEnable(bool Enable)
 		_Sprite->SetEnable(Enable);
 	}
 
+	if (_Collision)
+	{
+		_Collision->SetEnable(Enable);
+	}
+
 	if (!Enable)
 	{
 		_Owner.reset();
 
 		_ElapsedTime = 0.f;
 	}
+}
+
+void Boss2Laser::OnOverlap(Weak<CollisionComponent> Destination)
+{
+	if (!_Collision || !_Collision->IsEnable())
+	{
+		return;
+	}
+
+	if (_ElapsedTime < _PatternData.WarningTime || _ElapsedTime >= _PatternData.WarningTime + _PatternData.HitTime)
+	{
+		return;
+	}
+
+	Ptr<CollisionComponent> HitCollision = Lock<CollisionComponent>(Destination);
+
+	if (!HitCollision)
+	{
+		return;
+	}
+
+	Ptr<Actor> Player = Lock<Actor>(HitCollision->GetOwner());
+
+	if (!Player)
+	{
+		return;
+	}
+
+	if (HitCollision != Player->FindSceneComponent<CollisionComponent>("AABB"))
+	{
+		return;
+	}
+
+	// Todo : 플레이어 피해 처리
 }
