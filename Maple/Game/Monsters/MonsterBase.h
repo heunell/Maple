@@ -25,6 +25,20 @@ public:
     MonsterBase() = default;
     virtual ~MonsterBase() = default;
 
+private:
+    Weak<class DamageNumber> _DamageNumbers[8];
+
+    int32 _DamageIndex = 0;
+
 protected:
     FMonsterStatus _Status;
+
+public:
+    void TakeDamage(int64 Damage);
+
+    int64 GetHP() const;
+
+    int64 GetMaxHP() const;
+
+    void ShowDamage(int64 Damage, const FVector3D& Position);
 };

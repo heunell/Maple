@@ -1,6 +1,8 @@
 #pragma once
 #include "Object/Actor.h"
 #include "Component/AABBCollisionComponent.h"
+#include "Game/Monsters/Boss/BossPatternData.h"
+
 #include <vector>
 
 struct FPlatformCollisionData
@@ -41,6 +43,10 @@ private:
 
 	Ptr<AABBCollisionComponent> _RightWall;
 
+	FBoss2GolemPatternData _GolemPatternData;
+
+	std::vector<FPhase2Platform> _Platforms;
+
 	float _CameraMinCenterY = -1040.f;
 
 	float _CameraMaxCenterY = 0.f;
@@ -55,4 +61,8 @@ public:
 	virtual bool Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name) override;
 
 	virtual void Tick(float DeltaTime) override;
+
+	void BreakPlatform(int32 PlatformIndex);
+
+	const std::vector<FPhase2Platform>& GetPlatforms() const;
 };

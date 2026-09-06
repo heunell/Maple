@@ -23,6 +23,7 @@
 #include "Game/Monsters/Boss/Boss2Component.h"
 
 #include <random>
+#include <iterator>
 
 bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
@@ -265,6 +266,8 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
         PlatformSprite->ChangeAnimation(IdleName);
 
         PlatformSprite->AttachToComponent(GetRoot());
+
+        _Platforms.push_back({ PlatformSprite, nullptr, IdleName, BreakName });
     }
 
     const FPlatformCollisionData PlatformCollisions[] =
@@ -316,8 +319,15 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
         }
     };
 
-    for (const FPlatformCollisionData& Platform : PlatformCollisions)
+    if (_Platforms.size() != std::size(PlatformCollisions))
     {
+        return false;
+    }
+
+    for (int32 Index = 0; Index < static_cast<int32>(_Platforms.size()); ++Index)
+    {
+        const FPlatformCollisionData& Platform = PlatformCollisions[Index];
+
         Ptr<AABBCollisionComponent> Collision = CreateSceneComponent<AABBCollisionComponent>(Platform.Name);
 
         if (!Collision)
@@ -333,10 +343,12 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
 
         Collision->SetCollisionProfile("Environment");
 
+        _Platforms[Index].Collision = Collision;
+
         FVector3D RegenPosition = Platform.Position;
 
         RegenPosition._y += Platform.Size._y * 0.5f;
-        
+
         _PlatformRegenPositions.push_back(RegenPosition);
     }
 
@@ -438,6 +450,45 @@ bool LucidPhase2::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
     return true;
 }
 
+
+void LucidPhase2::BreakPlatform(int32 PlatformIndex)
+{
+    if (PlatformIndex < 0 || PlatformIndex >= static_cast<int32>(_Platforms.size()))
+    {
+        return;
+    }
+
+    FPhase2Platform& Platform = _Platforms[PlatformIndex];
+
+    if (!Platform.Sprite || !Platform.Collision)
+    {
+        return;
+    }
+
+    if (Platform.State != ePhase2PlatformState::Active)
+    {
+        return;
+    }
+
+    Platform.State = ePhase2PlatformState::Break;
+
+    Platform.ElapsedTime = 0.f;
+
+    Platform.Collision->SetEnable(false);
+
+    Platform.Sprite->ChangeAnimation(Platform.BreakAnimation);
+
+    Platform.Sprite->SetAnimationFrame(0);
+
+    Platform.Sprite->SetPlay(Platform.BreakAnimation, true);
+}
+
+const std::vector<FPhase2Platform>& LucidPhase2::GetPlatforms() const
+{
+    return _Platforms;
+}
+
+
 void LucidPhase2::RegenPlayerPlatform(Ptr<Actor> Player)
 {
 	if (!Player || _PlatformRegenPositions.empty())
@@ -470,6 +521,58 @@ void LucidPhase2::RegenPlayerPlatform(Ptr<Actor> Player)
 void LucidPhase2::Tick(float DeltaTime)
 {
     Actor::Tick(DeltaTime);
+
+    for (FPhase2Platform& Platform : _Platforms)
+    {
+        if (!Platform.Sprite || !Platform.Collision)
+        {
+            continue;
+        }
+
+        if (Platform.State == ePhase2PlatformState::Break)
+        {
+            Ptr<Animation2D> Animation = Platform.Sprite->GetAnimation();
+
+            if (!Animation || !Animation->IsFinished())
+            {
+                continue;
+            }
+
+            Platform.Sprite->SetEnable(false);
+
+            Platform.State = ePhase2PlatformState::Regen;
+
+            Platform.ElapsedTime = 0.f;
+
+            continue;
+        }
+
+        if (Platform.State != ePhase2PlatformState::Regen)
+        {
+            continue;
+        }
+
+        Platform.ElapsedTime += DeltaTime;
+
+        if (Platform.ElapsedTime < _GolemPatternData.PlatformRegenTime)
+        {
+            continue;
+        }
+
+        Platform.Sprite->ChangeAnimation(Platform.IdleAnimation);
+
+        Platform.Sprite->SetAnimationFrame(0);
+
+        Platform.Sprite->SetPlay(Platform.IdleAnimation, true);
+
+        Platform.Sprite->SetEnable(true);
+
+        Platform.Collision->SetEnable(true);
+
+        Platform.State = ePhase2PlatformState::Active;
+
+        Platform.ElapsedTime = 0.f;
+    }
 
     for (const FBackgroundScrollLayer& Layer : _BackgroundScrollLayers)
     {

@@ -13,9 +13,17 @@ bool BossPatternNotice::Init(int32 Id, const FVector3D& Position, const FVector3
 		return false;
 	}
 
-	if (!ANIMATION_MANAGER->LoadAnimationFile(TEXT("UI\\PatternNotice.json"), "Animations"))
+	//if (!ANIMATION_MANAGER->LoadAnimationFile(TEXT("UI\\PatternNotice.json"), "Animations"))
+	//{
+	//	return false;
+	//}
+
+	if (!ANIMATION_MANAGER->FindAnimation("PATTERN_NOTICE.LEFT"))
 	{
-		return false;
+		if (!ANIMATION_MANAGER->LoadAnimationFile(TEXT("UI\\PatternNotice.json"), "Animations"))
+		{
+			return false;
+		}
 	}
 
 	Ptr<SceneComponent> LeftSlot = CreateSceneComponent<SceneComponent>("BossPatternNoticeLeftSlot");

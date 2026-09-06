@@ -167,7 +167,13 @@ Ptr<MonsterState> Boss2LaserState::Tick(Ptr<MonsterComponent> Monster, float Del
 			return nullptr;
 		}
 
-		// 기존 보스 Sprite를 전조로 교체하고 고정 위치로 이동한다.
+		Ptr<SceneComponent> BossCollision = MonsterOwner->FindSceneComponent("BossCollision");
+
+		if (BossCollision)
+		{
+			BossCollision->SetEnable(false);
+		}
+
 		MonsterOwner->SetWorldPosition(_PatternData.ActionPosition);
 
 		BossSprite->SetRenderLayerName(_PatternData.ActionRenderLayer);
@@ -291,6 +297,13 @@ void Boss2LaserState::Exit(Ptr<MonsterComponent> Monster)
 	}
 
 	MonsterOwner->SetWorldPosition(_StartPosition);
+
+	Ptr<SceneComponent> BossCollision = MonsterOwner->FindSceneComponent("BossCollision");
+
+	if (BossCollision)
+	{
+		BossCollision->SetEnable(true);
+	}
 
 	Ptr<SpriteComponent> BossSprite = MonsterOwner->FindSceneComponent<SpriteComponent>("BossSprite");
 

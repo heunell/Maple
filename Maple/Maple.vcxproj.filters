@@ -548,6 +548,15 @@
     <ClInclude Include="UI\DeadNotice.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Monsters\Boss\Boss2Golem.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Monsters\Boss\Boss2GolemState.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\DamageNumber.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\Matrix.cpp">
@@ -1043,6 +1052,15 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="UI\DeadNotice.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Monsters\Boss\Boss2Golem.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Monsters\Boss\Boss2GolemState.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\DamageNumber.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,12 +1,14 @@
 #include "pch.h"
 #include "Boss.h"
 #include "BossComponent.h"
+#include "Component/SceneComponent.h"
 #include "Component/SpriteComponent.h"
 #include "Component/AABBCollisionComponent.h"
 #include "Core/Animation2DData.h"
 #include "Core/AnimationManager.h"
 #include "Core/AssetManager.h"
-
+#include "World/GameLevel.h"
+#include "World/MapManager.h"
 
 bool Boss::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
@@ -18,6 +20,10 @@ bool Boss::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, con
 	AddTag("Monster");
 
 	AddTag("Boss");
+
+	_Status.MaxHP = 1000000000;
+
+	_Status.CurrentHP = _Status.MaxHP;
 
 	if (!ANIMATION_MANAGER->LoadAnimationFile(TEXT("Monsters\\Lucid\\Phase1\\LucidPhase1.json"), "Animations"))
 	{
@@ -51,6 +57,8 @@ bool Boss::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, con
 
 	_BottomSprite->AddAnimationSequence(BottomStandData, true);
 
+	_BottomSprite->AddAnimationSequence("LUCID_BOSS_8880158.die", false);
+
 	_BottomSprite->AttachToComponent(GetRoot());
 
 	_BottomSprite->SetRelativePosition(0.f, 0.f, 0.f);
@@ -67,6 +75,8 @@ bool Boss::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, con
 	_BossSprite->SetRenderLayerName("Default");
 
 	_BossSprite->AddAnimationSequence(BossStandData, true);
+
+	_BossSprite->AddAnimationSequence("LUCID_MOB_8880140.die1"  , false);   // DIE
 
 	_BossSprite->AddAnimationSequence("LUCID_MOB_8880140.skill1", false);	// Blade
 	
@@ -120,6 +130,38 @@ bool Boss::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, con
 	return true;
 }
 
+void Boss::Tick(float DeltaTime)
+{
+	if (_Status.CurrentHP > 0)
+	{
+		MonsterBase::Tick(DeltaTime);
+		return;
+	}
+
+	FindSceneComponent<AABBCollisionComponent>("BossTopCollision")->SetEnable(false);
+
+	FindSceneComponent<AABBCollisionComponent>("BossBottomCollision")->SetEnable(false);
+
+	_BossSprite->ChangeAnimation("LUCID_MOB_8880140.die1");
+
+	_BottomSprite->ChangeAnimation("LUCID_BOSS_8880158.die");
+
+	GetRoot()->Tick(DeltaTime);
+
+	if (!_BossSprite->GetAnimation()->IsFinished() || !_BottomSprite->GetAnimation()->IsFinished())
+	{
+		return;
+	}
+
+	if (Ptr<GameLevel> CurrentLevel = Cast<Level, GameLevel>(GetLevel()))
+	{
+		if (CurrentLevel->GetMapManager())
+		{
+			CurrentLevel->GetMapManager()->ChangeMap("LucidPhase2");
+		}
+	}
+}
+
 Ptr<class SpriteComponent> Boss::GetBossSprite() const
 {
 	return _BossSprite;
@@ -129,6 +171,10 @@ void Boss::ResetBattle()
 {
 	_Status.CurrentHP = _Status.MaxHP;
 
+	FindSceneComponent<AABBCollisionComponent>("BossTopCollision")->SetEnable(true);
+
+	FindSceneComponent<AABBCollisionComponent>("BossBottomCollision")->SetEnable(true);
+
 	Ptr<BossComponent> Component = FindActorComponent<BossComponent>("Boss");
 
 	if (Component)
@@ -136,12 +182,16 @@ void Boss::ResetBattle()
 		Component->ResetBattle();
 	}
 
+	_BossSprite->ChangeAnimation("LUCID_MOB_8880140.stand");
+
 	if (_BossSprite)
 	{
 		_BossSprite->SetAnimationFrame(0);
 
 		_BossSprite->SetPlay("LUCID_MOB_8880140.stand", true);
 	}
+
+	_BottomSprite->ChangeAnimation("LUCID_BOSS_8880158.stand");
 
 	if (_BottomSprite)
 	{

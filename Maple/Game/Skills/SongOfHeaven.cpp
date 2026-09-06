@@ -5,6 +5,10 @@
 #include "Component/SceneComponent.h"
 #include "Component/SpriteComponent.h"
 #include "Game/Character/Player.h"
+#include "Game/Monsters/MonsterBase.h"
+#include "UI/DamageNumber.h"
+#include "World/Level.h"
+#include <random>
 
 SongOfHeaven::SongOfHeaven()
 {}
@@ -303,25 +307,50 @@ void SongOfHeaven::Fire(float DeltaTime)
 
     SongOfHeavenProjectileCollision->SetCollisionCallBack(eCollisionState::COLLISION_STATE_OVERLAP, [this, ProjectileRoot](Weak<CollisionComponent> Destination)
         {
-            Ptr<CollisionComponent> MonsterCollision = Lock<CollisionComponent>(Destination);
-
+            Ptr<AABBCollisionComponent> MonsterCollision = Cast<CollisionComponent, AABBCollisionComponent>(Lock<CollisionComponent>(Destination));
+            
             if (!MonsterCollision)
             {
                 return;
             }
 
-            Ptr<Actor> Monster = Lock<Actor>(MonsterCollision->GetOwner());
+            Ptr<MonsterBase> Monster = Cast<Actor, MonsterBase>(Lock<Actor>(MonsterCollision->GetOwner()));
 
-            if (!Monster || !Monster->IsTag("Monster"))
+            if (!Monster || !Monster->IsTag("Monster") || Monster->GetHP() <= 0)
             {
                 return;
             }
 
-            const FVector3D HitPosition = ProjectileRoot->GetWorldPosition();
+            if (!ProjectileRoot->IsActive())
+            {
+                return;
+            }
 
-            Hit(HitPosition);
-            
-            ProjectileRoot->Destroy();
+            for (const FSongOfHeavenProjectile& Projectile : _Projectiles)
+            {
+                if (Projectile.Root != ProjectileRoot || !Projectile.Collision)
+                {
+                    continue;
+                }
+
+                const FVector3D HitPosition = Projectile.Collision->GetWorldPosition();
+
+                static std::mt19937 RandomEngine(std::random_device{}());
+
+                std::uniform_int_distribution<int64> DamageRange(7000000, 9000000);
+
+                const int64 Damage = DamageRange(RandomEngine);
+
+                Monster->TakeDamage(Damage);
+
+                Monster->ShowDamage(Damage, FVector3D(MonsterCollision->GetWorldPosition()._x, MonsterCollision->GetWorldPosition()._y + MonsterCollision->GetBoxSize()._y * 0.5f + 20.f, MonsterCollision->GetWorldPosition()._z));
+
+                Hit(HitPosition);
+
+                ProjectileRoot->Destroy();
+
+                break;
+            }
         });
 
     FSongOfHeavenProjectile SongOfHeavenProjectile;

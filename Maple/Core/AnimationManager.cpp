@@ -137,6 +137,12 @@ bool AnimationManager::Init()
     {
         return false;
     }
+
+    if (!LoadAnimationFile(TEXT("UI\\BossUI.json"), "DamageNumber"))
+    {
+        return false;
+    }
+
     return LoadAnimationFile(TEXT("UI\\Cursor.json"), "Animations");
 }
 

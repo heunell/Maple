@@ -233,6 +233,8 @@
     <ClInclude Include="Game\Monsters\Boss\Boss2Component.h" />
     <ClInclude Include="Game\Monsters\Boss\Boss2Dragon.h" />
     <ClInclude Include="Game\Monsters\Boss\Boss2DragonState.h" />
+    <ClInclude Include="Game\Monsters\Boss\Boss2Golem.h" />
+    <ClInclude Include="Game\Monsters\Boss\Boss2GolemState.h" />
     <ClInclude Include="Game\Monsters\Boss\Boss2IdleState.h" />
     <ClInclude Include="Game\Monsters\Boss\Boss2Laser.h" />
     <ClInclude Include="Game\Monsters\Boss\Boss2LaserState.h" />
@@ -317,6 +319,7 @@
     <ClInclude Include="UI\BossPatternNotice.h" />
     <ClInclude Include="UI\CursorUI.h" />
     <ClInclude Include="Game\Character\LucidEntryNPC.h" />
+    <ClInclude Include="UI\DamageNumber.h" />
     <ClInclude Include="UI\DeadNotice.h" />
     <ClInclude Include="UI\MiniMap.h" />
     <ClInclude Include="UI\PlayerUI.h" />
@@ -404,6 +407,8 @@
     <ClCompile Include="Game\Monsters\Boss\Boss2Component.cpp" />
     <ClCompile Include="Game\Monsters\Boss\Boss2Dragon.cpp" />
     <ClCompile Include="Game\Monsters\Boss\Boss2DragonState.cpp" />
+    <ClCompile Include="Game\Monsters\Boss\Boss2Golem.cpp" />
+    <ClCompile Include="Game\Monsters\Boss\Boss2GolemState.cpp" />
     <ClCompile Include="Game\Monsters\Boss\Boss2IdleState.cpp" />
     <ClCompile Include="Game\Monsters\Boss\Boss2Laser.cpp" />
     <ClCompile Include="Game\Monsters\Boss\Boss2LaserState.cpp" />
@@ -489,6 +494,7 @@
     <ClCompile Include="UI\BossPatternNotice.cpp" />
     <ClCompile Include="UI\CursorUI.cpp" />
     <ClCompile Include="Game\Character\LucidEntryNPC.cpp" />
+    <ClCompile Include="UI\DamageNumber.cpp" />
     <ClCompile Include="UI\DeadNotice.cpp" />
     <ClCompile Include="UI\MiniMap.cpp" />
     <ClCompile Include="UI\PlayerUI.cpp" />

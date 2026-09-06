@@ -1,6 +1,9 @@
 #pragma once
-
+#include "Core/Defines.h"
 #include "Common/Vector3D.h"
+
+#include <string>
+#include <vector>
 
 struct FBossBladePatternData
 {
@@ -202,4 +205,47 @@ struct FBoss2LaserPatternData
 	FVector3D ActionPosition = FVector3D(711.f, -821.5f, 0.f);
 
 	std::string ActionRenderLayer = "BossPattern";
+};
+
+struct FBoss2GolemPatternData
+{
+	int32 SpawnCount = 1;
+
+	int32 SpawnFrame = 18;
+
+	int32 PoolMaxCount = 0;
+
+	float SpawnHeight = 85.f;
+
+	float FallDuration = 0.36f;
+
+	float PlatformRegenTime = 4.f;
+
+	int64 MaxHP = 35000000;
+
+	FVector2D CollisionSize = FVector2D(156.f, 180.f);
+
+	FVector3D CollisionOffset = FVector3D(0.f, 90.f, 0.f);
+};
+
+enum class ePhase2PlatformState
+{
+	Active,
+	Break,
+	Regen
+};
+
+struct FPhase2Platform
+{
+	Ptr<class SpriteComponent> Sprite;
+
+	Ptr<class AABBCollisionComponent> Collision;
+
+	std::string IdleAnimation;
+
+	std::string BreakAnimation;
+
+	ePhase2PlatformState State = ePhase2PlatformState::Active;
+
+	float ElapsedTime = 0.f;
 };
