@@ -20,6 +20,17 @@ bool VortexSphere::Init(int32 Id, const FVector3D& Position, const FVector3D& Sc
 
     AddTag("PlayerAttack");
 
+    _CastRoot = CreateSceneComponent<SceneComponent>("VortexSphereCastRoot");
+
+    if (!_CastRoot)
+    {
+        return false;
+    }
+
+    _CastRoot->AttachToComponent(GetRoot());
+
+    _CastRoot->SetWorldPosition(Owner->GetWorldPosition());
+
     _CastSprite = CreateSceneComponent<SpriteComponent>("VortexSphereCastSprite");
 
     if (!_CastSprite)
@@ -27,7 +38,7 @@ bool VortexSphere::Init(int32 Id, const FVector3D& Position, const FVector3D& Sc
         return false;
     }
 
-    _CastSprite->AttachToComponent(GetRoot());
+    _CastSprite->AttachToComponent(_CastRoot);
 
     _CastSprite->SetRenderLayerName("SkillFront");
 
@@ -115,7 +126,7 @@ void VortexSphere::Start()
 
     Ptr<Actor> Owner = Lock<Actor>(_Owner);
 
-    if (!Owner || !_CastSprite)
+    if (!Owner || !_CastRoot || !_CastSprite)
     {
         return;
     }
@@ -137,6 +148,8 @@ void VortexSphere::Start()
 
     _CastSprite->SetAnimationFlip(OwnerPlayer->IsRight());
 
+    _CastRoot->SetWorldPosition(Owner->GetWorldPosition());
+
     _CastSprite->SetEnable(true);
 
     _CastSprite->ChangeAnimation("VortexSphere.Cast");
@@ -155,12 +168,14 @@ void VortexSphere::Update(float DeltaTime)
 
     Ptr<Actor> Owner = Lock<Actor>(_Owner);
 
-    if (!Owner || !_CastSprite)
+    if (!Owner || !_CastRoot)
     {
+        FinishCast();
+
         return;
     }
 
-    _CastSprite->SetWorldPosition(Owner->GetWorldPosition());
+    _CastRoot->SetWorldPosition(Owner->GetWorldPosition());
 }
 
 void VortexSphere::End()
@@ -180,7 +195,9 @@ void VortexSphere::Destroy()
 
     _HitSprites.clear();
 
-    DESTROY(_CastSprite);
+    _CastSprite.reset();
+
+    _CastRoot.reset();
 
     Skill::Destroy();
 }

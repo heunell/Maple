@@ -12,6 +12,8 @@ public:
 private:
     FHowlingGaleDatas _Datas;
 
+    Ptr<class SceneComponent>  _CastRoot;
+
     Ptr<class SpriteComponent> _CastSprite;
 
     float _CurrentChargeTime = 0.f;
