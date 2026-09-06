@@ -12,6 +12,8 @@ public:
     BossHUD& operator=(BossHUD&&) = delete;
 
 private:
+    Weak<class MonsterBase>    _Boss;
+
     Ptr<class ProgressBar>     _HPBar;
 
     Ptr<class SpriteComponent> _LineCountDigit;
@@ -41,7 +43,9 @@ public:
 
     virtual void Destroy() override;
 
-    void SetHP(float CurrentHP, float MaxHP);
+    void SetBoss(Ptr<class MonsterBase> Boss);
+
+    void SetHP(int64 CurrentHP, int64 MaxHP);
 
     void SetRatio(int32 Ratio);
 

@@ -3,6 +3,7 @@
 #include "ProgressBar.h"
 #include "Component/SceneComponent.h"
 #include "Component/SpriteComponent.h"
+#include "Game/Monsters/MonsterBase.h"
 #include "World/GameLevel.h"
 
 bool BossHUD::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
@@ -239,11 +240,7 @@ bool BossHUD::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, 
     }
 
     // 실제 보스 HP 연결 전의 시작 표시값
-    SetHP(1.f, 1.f);
-
-    SetRatio(100);
-    
-    SetLineCount(9);
+    SetHP(0, 0);
 
     SetDeathCount(CurrentLevel->GetBossDeathCount());
 
@@ -257,6 +254,11 @@ bool BossHUD::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, 
 void BossHUD::Tick(float DeltaTime)
 {
     UI::Tick(DeltaTime);
+
+    if (Ptr<MonsterBase> Boss = Lock(_Boss))
+    {
+        SetHP(Boss->GetHP(), Boss->GetMaxHP());
+    }
 
     Ptr<GameLevel> CurrentLevel = Cast<Level, GameLevel>(GetLevel());
 
@@ -272,12 +274,52 @@ void BossHUD::Tick(float DeltaTime)
     SetTimer(RemainingSeconds / 60, RemainingSeconds % 60);
 }
 
-void BossHUD::SetHP(float CurrentHP, float MaxHP)
+void BossHUD::SetBoss(Ptr<MonsterBase> Boss)
 {
-	if(_HPBar)
-	{
-		_HPBar->SetValue(CurrentHP, MaxHP);
-	}
+    _Boss = Boss;
+
+    if (Boss)
+    {
+        SetHP(Boss->GetHP(), Boss->GetMaxHP());
+    }
+    else
+    {
+        SetHP(0, 0);
+    }
+}
+
+void BossHUD::SetHP(int64 CurrentHP, int64 MaxHP)
+{
+    if (!_HPBar)
+    {
+        return;
+    }
+
+    if (MaxHP < 10 || CurrentHP <= 0)
+    {
+        _HPBar->SetValue(0.f, 1.f);
+
+        SetRatio(0);
+
+        SetLineCount(0);
+
+        return;
+    }
+
+    if (CurrentHP > MaxHP)
+    {
+        CurrentHP = MaxHP;
+    }
+
+    int64 LineHP = MaxHP / 10;
+
+    int32 LineCount = static_cast<int32>((CurrentHP - 1) / LineHP);
+
+    SetRatio(static_cast<int32>(CurrentHP * 100 / MaxHP));
+
+    SetLineCount(LineCount);
+
+    _HPBar->SetValue(static_cast<float>(CurrentHP - LineCount * LineHP), static_cast<float>(LineHP));
 }
 
 void BossHUD::SetRatio(int32 Ratio)
@@ -382,6 +424,8 @@ void BossHUD::SetTimer(int32 Minute, int32 Second)
 
 void BossHUD::Destroy()
 {
+    _Boss.reset();
+
     _LineCountDigit = nullptr;
 
     _RatioHundreds   = nullptr;

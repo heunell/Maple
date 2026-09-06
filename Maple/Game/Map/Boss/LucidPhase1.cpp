@@ -211,6 +211,8 @@ bool LucidPhase1::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
 
 	BossHUDActor->AddTag("Map.LucidPhase1");
 	
+	BossHUDActor->SetBoss(_Boss);
+
 	return true;
 }
 
