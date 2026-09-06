@@ -4,6 +4,7 @@
 #include "Component/AABBCollisionComponent.h"
 #include "Component/SceneComponent.h"
 #include "Component/SpriteComponent.h"
+#include "Component/SkillComponent.h"
 #include "Game/Character/Player.h"
 #include "Game/Monsters/MonsterBase.h"
 #include "UI/DamageNumber.h"
@@ -348,6 +349,18 @@ void SongOfHeaven::Fire(float DeltaTime)
                 Hit(HitPosition);
 
                 ProjectileRoot->Destroy();
+
+                Ptr<Actor> Owner = Lock<Actor>(_Owner);
+
+                if (Owner)
+                {
+                    Ptr<SkillComponent> Skills = Owner->FindActorComponent<SkillComponent>("Skill");
+
+                    if (Skills)
+                    {
+                        Skills->StartSkill(eSkillType::TriflingWind);
+                    }
+                }
 
                 break;
             }

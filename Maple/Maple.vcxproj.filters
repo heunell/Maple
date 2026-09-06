@@ -557,6 +557,9 @@
     <ClInclude Include="UI\DamageNumber.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Skills\TriflingWindActor.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\Matrix.cpp">
@@ -1061,6 +1064,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="UI\DamageNumber.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Skills\TriflingWindActor.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

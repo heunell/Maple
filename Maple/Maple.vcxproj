@@ -278,6 +278,7 @@
     <ClInclude Include="Game\Skills\Skill.h" />
     <ClInclude Include="Game\Skills\SongOfHeaven.h" />
     <ClInclude Include="Game\Skills\TriflingWind.h" />
+    <ClInclude Include="Game\Skills\TriflingWindActor.h" />
     <ClInclude Include="Game\Skills\VortexSphere.h" />
     <ClInclude Include="Game\Skills\WindJump.h" />
     <ClInclude Include="Input\Input.h" />
@@ -452,6 +453,7 @@
     <ClCompile Include="Game\Skills\Skill.cpp" />
     <ClCompile Include="Game\Skills\SongOfHeaven.cpp" />
     <ClCompile Include="Game\Skills\TriflingWind.cpp" />
+    <ClCompile Include="Game\Skills\TriflingWindActor.cpp" />
     <ClCompile Include="Game\Skills\VortexSphere.cpp" />
     <ClCompile Include="Game\Skills\WindJump.cpp" />
     <ClCompile Include="Input\Input.cpp" />

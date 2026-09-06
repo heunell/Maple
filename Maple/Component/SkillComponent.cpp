@@ -7,6 +7,7 @@
 #include "Game/Skills/SongOfHeaven.h"
 #include "Game/Skills/Anemoi/Anemoi.h"
 #include "Game/Skills/VortexSphere.h"
+#include "Game/Skills/TriflingWind.h"
 #include "Game/Skills/HowlingGale/HowlingGale.h"
 
 // Buff
@@ -66,6 +67,15 @@ bool SkillComponent::Init(int32 Id, const std::string& Name, Ptr<Actor> Owner)
     {
         return false;
     }
+
+    Ptr<TriflingWind> _TriflingWind = _Level->SpawnActor<TriflingWind>("TriflingWind", FVector3D::Zero, FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f), Owner);
+
+    if (!_TriflingWind)
+    {
+        return false;
+    }
+
+    _Skills[eSkillType::TriflingWind] = _TriflingWind;
 
     _Skills[eSkillType::SongOfHeaven] = _SongOfHeaven;
 
