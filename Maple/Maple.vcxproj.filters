@@ -560,6 +560,9 @@
     <ClInclude Include="Game\Skills\TriflingWindActor.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Monsters\Boss\Boss2MoveState.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\Matrix.cpp">
@@ -1067,6 +1070,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Game\Skills\TriflingWindActor.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Monsters\Boss\Boss2MoveState.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

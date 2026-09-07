@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Boss2LaserState.h"
+#include "Boss2MoveState.h"
 #include "Boss2Component.h"
 #include "Component/SpriteComponent.h"
 #include "Core/GameEngine.h"
@@ -39,11 +40,7 @@ bool Boss2LaserState::Init(Ptr<MonsterComponent> Owner, Ptr<MonsterState> IdleSt
 
 	BossSprite->AddAnimationSequence("LaserRain.action_no_blank", false);
 
-	if (!_LaserPool.Configure(
-		_PatternData.PoolMaxCount,
-		std::bind_front(&Boss2LaserState::CreateLaser, this),
-		std::bind_front(&Boss2LaserState::EnableLaser, this),
-		std::bind_front(&Boss2LaserState::DisableLaser, this)))
+	if (!_LaserPool.Configure(_PatternData.PoolMaxCount, std::bind_front(&Boss2LaserState::CreateLaser, this), std::bind_front(&Boss2LaserState::EnableLaser, this), std::bind_front(&Boss2LaserState::DisableLaser, this)))
 	{
 		return false;
 	}
@@ -225,7 +222,7 @@ Ptr<MonsterState> Boss2LaserState::Tick(Ptr<MonsterComponent> Monster, float Del
 		return nullptr;
 	}
 
-	return Lock(_IdleState);
+	return BossController->GetMoveState();
 }
 
 void Boss2LaserState::SpawnLaserPattern()

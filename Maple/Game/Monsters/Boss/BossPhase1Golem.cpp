@@ -181,10 +181,10 @@ void BossPhase1Golem::Collision(float DeltaTime)
 		return;
 	}
 
-	if (_Collision->GetProfile()->GetName() == "Golem")
-	{
-		return;
-	}
+	//if (_Collision->GetProfile()->GetName() == "Golem") // 버그처리 임시 조치
+	//{
+	//	return;
+	//}
 
 	Ptr<World> CurrentWorld = GameEngine::Instance().GetWorld();
 
@@ -207,14 +207,27 @@ void BossPhase1Golem::Collision(float DeltaTime)
 		return;
 	}
 
-	std::pair<int32, int32> PlayerCollisionID = PlayerCollision->GetColliderID();
+	//std::pair<int32, int32> PlayerCollisionID = PlayerCollision->GetColliderID();
 
-	if (_Collision->CheckState(PlayerCollisionID) != COLLISION_STATE_RELEASE)
+	//if (_Collision->CheckState(PlayerCollisionID) != COLLISION_STATE_RELEASE)
+	//{
+	//	return;
+	//}
+
+	//_Collision->SetCollisionProfile("Golem");
+
+	// 몸체가 실제로 겹치면 통과를 허용한다. 경계에 닿기만 한 경우는 제외한다.
+	if (_Collision->GetWorldPosition()._x - _Collision->GetBoxSize()._x * 0.5f < PlayerCollision->GetWorldPosition()._x + PlayerCollision->GetBoxSize()._x * 0.5f && 
+		_Collision->GetWorldPosition()._x + _Collision->GetBoxSize()._x * 0.5f > PlayerCollision->GetWorldPosition()._x - PlayerCollision->GetBoxSize()._x * 0.5f && 
+		_Collision->GetWorldPosition()._y - _Collision->GetBoxSize()._y * 0.5f < PlayerCollision->GetWorldPosition()._y + PlayerCollision->GetBoxSize()._y * 0.5f && 
+		_Collision->GetWorldPosition()._y + _Collision->GetBoxSize()._y * 0.5f > PlayerCollision->GetWorldPosition()._y - PlayerCollision->GetBoxSize()._y * 0.5f)
 	{
-		return;
+		_Collision->SetCollisionProfile("Monster");
 	}
-
-	_Collision->SetCollisionProfile("Golem");
+	else
+	{
+		_Collision->SetCollisionProfile("Golem");
+	}
 }
 
 void BossPhase1Golem::Start(Ptr<BossPhase1GolemState> Owner, const FVector3D& Position, float GroundY, float FallDuration)

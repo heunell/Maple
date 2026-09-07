@@ -249,3 +249,8 @@ struct FPhase2Platform
 
 	float ElapsedTime = 0.f;
 };
+
+struct FBoss2MovePatternData
+{
+	float MoveSpeed = 150.f;
+};

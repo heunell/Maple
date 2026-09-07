@@ -17,6 +17,8 @@ public:
 private:
 	Ptr<class Boss2IdleState> 			 _IdleState;
 
+	Ptr<class Boss2MoveState>			 _MoveState;
+
 	std::vector<Ptr<class MonsterState>> _PatternStates;
 
 	Weak<class BossPatternNotice> 		 _PatternNotice;
@@ -29,6 +31,8 @@ public:
 	Ptr<class MonsterState> SelectPatternState();
 
 	Ptr<class Boss2IdleState> GetIdleState() const;
+
+	Ptr<class Boss2MoveState> GetMoveState() const;
 
 	void SetPatternNotice(Ptr<class BossPatternNotice> PatternNotice);
 

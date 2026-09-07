@@ -12,6 +12,7 @@
 #include "Render/RenderManager.h"
 #include "Object/Actor.h"
 #include "Game/Character/LucidEntryNPC.h"
+#include "Game/Map/Gate/BossGate.h"
 
 LucidEntry::LucidEntry()
 {
@@ -115,7 +116,7 @@ bool LucidEntry::Init(int32 Id, const FVector3D& Position, const FVector3D& Scal
         Sprite->AttachToComponent(GetRoot());
     }
 
-    if(RoomType == eRoomType::Entry)
+    if (RoomType == eRoomType::Entry)
     {
         Ptr<LucidEntryNPC> NPC = GetLevel()->SpawnActor<LucidEntryNPC>("LucidEntryNPC", FVector3D(191.f, -158.f, 0.f), FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
 
@@ -126,8 +127,20 @@ bool LucidEntry::Init(int32 Id, const FVector3D& Position, const FVector3D& Scal
 
         NPC->AddTag(MapTag);
     }
+    else if (RoomType == eRoomType::Reward)
+    {
+        Ptr<BossGate> Gate = GetLevel()->SpawnActor<BossGate>("LucidRewardExitGate", FVector3D(450.f, -261.f, 0.f), FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
 
-    // 지면 충돌 콜리전
+        if (!Gate)
+        {
+            return false;
+        }
+
+        Gate->AddTag(MapTag);
+
+        Gate->SetTargetMap("LucidEntry");
+    }
+
     _Floor = CreateSceneComponent<AABBCollisionComponent>("Floor");
 
     if (!_Floor)

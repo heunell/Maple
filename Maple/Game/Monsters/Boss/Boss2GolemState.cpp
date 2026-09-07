@@ -2,6 +2,7 @@
 #include "Boss2GolemState.h"
 #include "Boss2Component.h"
 #include "Boss2IdleState.h"
+#include "Boss2MoveState.h"
 #include "Component/SpriteComponent.h"
 #include "Core/GameEngine.h"
 #include "Game/Map/Boss/LucidPhase2.h"
@@ -243,7 +244,7 @@ Ptr<MonsterState> Boss2GolemState::Tick(Ptr<MonsterComponent> Monster, float Del
 		return nullptr;
 	}
 
-	return BossController->GetIdleState();
+	return BossController->GetMoveState();
 }
 
 void Boss2GolemState::Destroy()

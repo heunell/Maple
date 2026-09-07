@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "BossBladeState.h"
+#include "Boss2MoveState.h"
+#include "Boss2Component.h"
 #include "Component/SpriteComponent.h"
 #include "Game/Monsters/MonsterBase.h"
 #include "Game/Monsters/MonsterComponent.h"
@@ -133,7 +135,9 @@ Ptr<MonsterState> BossBladeState::Tick(Ptr<MonsterComponent> Monster, float Delt
 		return nullptr;
 	}
 
-	return Lock(_IdleState);
+	Ptr<Boss2Component> BossController = Cast<MonsterComponent, Boss2Component>(Monster);
+
+	return BossController ? BossController->GetMoveState() : nullptr;
 }
 
 void BossBladeState::SpawnBladePattern()

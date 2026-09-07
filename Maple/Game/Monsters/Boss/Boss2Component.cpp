@@ -3,6 +3,7 @@
 #include "Boss2Component.h"
 #include "Boss2BlackBoard.h"
 #include "Boss2IdleState.h"
+#include "Boss2MoveState.h"
 #include "BossBladeState.h"
 #include "Boss2DragonState.h"
 #include "Boss2LaserState.h"
@@ -42,6 +43,18 @@ bool Boss2Component::Init(int32 Id, const std::string& Name, Ptr<Actor> Owner)
 		return false;
 	}
 
+	_MoveState = New<Boss2MoveState>();
+
+	if (!_MoveState)
+	{
+		return false;
+	}
+
+	if (!_MoveState->Init(This<Boss2Component>(), _IdleState))
+	{
+		return false;
+	}
+
 	Ptr<BossBladeState> BladeState = New<BossBladeState>();
 
 	if (!BladeState)
@@ -72,6 +85,11 @@ bool Boss2Component::Init(int32 Id, const std::string& Name, Ptr<Actor> Owner)
 	}
 	
 	if (!DragonState->Init(This<Boss2Component>(), _IdleState))
+	{
+		return false;
+	}
+
+	if (!StateMachine->AddState(_MoveState))
 	{
 		return false;
 	}
@@ -144,6 +162,8 @@ void Boss2Component::Destroy()
 
 	_PatternStates.clear();
 
+	_MoveState.reset();
+
 	_IdleState.reset();
 }
 
@@ -178,6 +198,11 @@ Ptr<MonsterState> Boss2Component::SelectPatternState()
 Ptr<Boss2IdleState> Boss2Component::GetIdleState() const
 {
 	return _IdleState;
+}
+
+Ptr<Boss2MoveState> Boss2Component::GetMoveState() const
+{
+	return _MoveState;
 }
 
 void Boss2Component::SetPatternNotice(Ptr<class BossPatternNotice> PatternNotice)

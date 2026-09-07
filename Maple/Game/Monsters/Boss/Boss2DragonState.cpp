@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Boss2DragonState.h"
+#include "Boss2MoveState.h"
 #include "Boss2Component.h"
 #include "Boss2Dragon.h"
 #include "Component/SpriteComponent.h"
@@ -120,7 +121,7 @@ Ptr<MonsterState> Boss2DragonState::Tick(Ptr<MonsterComponent> Monster, float De
 		return nullptr;
 	}
 
-	return Lock(_IdleState);
+	return BossController ? BossController->GetMoveState() : nullptr;
 }
 
 void Boss2DragonState::SpawnDragonPattern()
