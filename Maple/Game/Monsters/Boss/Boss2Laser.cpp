@@ -74,7 +74,7 @@ void Boss2Laser::Tick(float DeltaTime)
 		return;
 	}
 
-	int32 Frame = _PatternData.FadeStartFrame + static_cast<int32>( (_ElapsedTime - _PatternData.WarningTime - _PatternData.HitTime) / _PatternData.FadeFrameDelay);
+	int32 Frame = _PatternData.FadeStartFrame + static_cast<int32>((_ElapsedTime - _PatternData.WarningTime - _PatternData.HitTime) / _PatternData.FadeFrameDelay);
 
 	if (Frame <= _PatternData.FadeEndFrame)
 	{

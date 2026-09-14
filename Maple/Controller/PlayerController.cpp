@@ -95,6 +95,22 @@ void PlayerController::KeyBind()
 
 	MappingContext->BindInputAction(SharpEyesCast, '3');
 
+	Ptr<InputAction> CygnusKnights = InputSystem::Instance().FindOrAddInputAction("CygnusKnights");
+
+	MappingContext->BindInputAction(CygnusKnights, '1');
+
+	Ptr<InputAction> StormBringer = InputSystem::Instance().FindOrAddInputAction("StormBringer");
+
+	MappingContext->BindInputAction(StormBringer, '2');
+
+	Ptr<InputAction> GloryOfGuardians = InputSystem::Instance().FindOrAddInputAction("GloryOfGuardians");
+
+	MappingContext->BindInputAction(GloryOfGuardians, '4');
+
+	Ptr<InputAction> DeSpell = InputSystem::Instance().FindOrAddInputAction("DeSpell");
+
+	MappingContext->BindInputAction(DeSpell, 'Q');
+
 	_Input->AddInputContext(MappingContext->GetName());
 
 	_Input->BindAction(MappingContext->GetName(), PortalAction->GetName(),  INPUT_TYPE::DOWN, GateInteract.get(), &GateInteractComponent::HandleInput);
@@ -116,4 +132,12 @@ void PlayerController::KeyBind()
 	_Input->BindAction(MappingContext->GetName(), HowlingGale->GetName(), INPUT_TYPE::UP, PlayerState.get(), &PlayerComponent::HandleInput);
 																												  
 	_Input->BindAction(MappingContext->GetName(), SharpEyesCast->GetName(), INPUT_TYPE::DOWN, PlayerState.get(),  &PlayerComponent::HandleInput);
+
+	_Input->BindAction(MappingContext->GetName(), CygnusKnights->GetName(), INPUT_TYPE::DOWN, PlayerState.get(),  &PlayerComponent::HandleInput);
+
+	_Input->BindAction(MappingContext->GetName(), StormBringer->GetName(), INPUT_TYPE::DOWN, PlayerState.get(), &PlayerComponent::HandleInput);
+
+	_Input->BindAction(MappingContext->GetName(), GloryOfGuardians->GetName(), INPUT_TYPE::DOWN, PlayerState.get(), &PlayerComponent::HandleInput);
+
+	_Input->BindAction(MappingContext->GetName(), DeSpell->GetName(), INPUT_TYPE::DOWN, PlayerState.get(), &PlayerComponent::HandleInput);
 }

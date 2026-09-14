@@ -6,7 +6,7 @@
 #include "Game/Character/Player.h"
 #include "World/Level.h"
 
-bool Anemoi::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator Rotator, const std::string& Name, Ptr<Actor> Owner)
+bool Anemoi::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name, Ptr<Actor> Owner)
 {
     if (!Skill::Init(Id, Position, Scale, Rotator, Name, Owner))
     {

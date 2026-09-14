@@ -37,6 +37,26 @@ Ptr<PlayerState> PlayerNoneActionState::HandleInput(Ptr<class PlayerComponent> P
         return New<PlayerCastSkillState>(eSkillType::SharpEyes);
     }
 
+    if (Action->GetName() == "CygnusKnights" && ButtonEvent == INPUT_TYPE::DOWN)
+    {
+        return New<PlayerCastSkillState>(eSkillType::CKnight);
+    }
+
+    if (Action->GetName() == "StormBringer" && ButtonEvent == INPUT_TYPE::DOWN)
+    {
+        return New<PlayerCastSkillState>(eSkillType::StormBringer);
+    }
+
+    if (Action->GetName() == "GloryOfGuardians" && ButtonEvent == INPUT_TYPE::DOWN)
+    {
+        return New<PlayerCastSkillState>(eSkillType::GloryOfGuardians);
+    }
+
+    if (Action->GetName() == "DeSpell" && ButtonEvent == INPUT_TYPE::DOWN)
+    {
+        return New<PlayerCastSkillState>(eSkillType::DeSpell);
+    }
+
     return nullptr;
 }
 

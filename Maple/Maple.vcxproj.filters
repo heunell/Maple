@@ -563,6 +563,18 @@
     <ClInclude Include="Game\Monsters\Boss\Boss2MoveState.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Skills\CygnusKnights.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Skills\StormBringer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Skills\GloryOfGuardians.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Skills\DeSpell.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\Matrix.cpp">
@@ -1073,6 +1085,18 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Game\Monsters\Boss\Boss2MoveState.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Skills\CygnusKnights.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Skills\StormBringer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Skills\GloryOfGuardians.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Skills\DeSpell.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

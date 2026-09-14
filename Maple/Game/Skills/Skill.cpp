@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Skill.h"
 
-bool Skill::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator Rotator, const std::string& Name, Ptr<Actor> Owner)
+bool Skill::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name, Ptr<Actor> Owner)
 {
     if (!Owner)
     {

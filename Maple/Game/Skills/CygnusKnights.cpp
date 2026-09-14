@@ -1,11 +1,11 @@
 #include "pch.h"
-#include "SharpEyes.h"
+#include "CygnusKnights.h"
 #include "BuffCastEffect.h"
 #include "Component/BuffComponent.h"
 #include "Game/Character/Player.h"
 #include "World/Level.h"
 
-bool SharpEyes::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name, Ptr<Actor> Owner)
+bool CygnusKnights::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name, Ptr<Actor> Owner)
 {
     if (!Skill::Init(Id, Position, Scale, Rotator, Name, Owner))
     {
@@ -17,10 +17,10 @@ bool SharpEyes::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale
     return true;
 }
 
-void SharpEyes::Collision(float DeltaTime)
+void CygnusKnights::Collision(float DeltaTime)
 {}
 
-void SharpEyes::Start()
+void CygnusKnights::Start()
 {
     if (!CanUse())
     {
@@ -28,7 +28,7 @@ void SharpEyes::Start()
     }
 
     Ptr<Actor> Owner = Lock(_Owner);
-
+    
     if (!Owner)
     {
         return;
@@ -50,7 +50,7 @@ void SharpEyes::Start()
         return;
     }
 
-    Ptr<BuffCastEffect> Effect = Level->SpawnActor<BuffCastEffect>("SharpEyesCastEffect", PlayerOwner->GetWorldPosition(), FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
+    Ptr<BuffCastEffect> Effect = Level->SpawnActor<BuffCastEffect>("CygnusKnightsCastEffect", PlayerOwner->GetWorldPosition(), FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f));
 
     if (!Effect)
     {
@@ -59,9 +59,13 @@ void SharpEyes::Start()
 
     FBuffCastEffectData EffectData;
 
-    EffectData.CastAnimation = "SharpEyes.Cast";
-    
+    EffectData.CastAnimation = "CKnight.Cast";
+
     EffectData.CastRenderLayer = "SkillFront";
+
+    EffectData.OverlayAnimation = "CKnight.Aura";
+
+    EffectData.OverlayRenderLayer = "SkillFront";
 
     if (!Effect->Start(PlayerOwner, EffectData))
     {
@@ -69,30 +73,30 @@ void SharpEyes::Start()
     }
 
     FBuffData BuffData;
-   
-    BuffData.Type = eBuffType::SharpEyes;
-    
+
+    BuffData.Type = eBuffType::CKnight;
+
     BuffData.Category = eBuffCategory::Buff;
-    
+
     BuffData.Duration = 180.f;
 
     if (!Buff->ApplyBuff(BuffData))
     {
         Effect->Remove();
-       
+
         return;
     }
 
     StartCoolDown();
 }
 
-void SharpEyes::Update(float DeltaTime)
+void CygnusKnights::Update(float DeltaTime)
 {}
 
-void SharpEyes::End()
+void CygnusKnights::End()
 {}
 
-void SharpEyes::Destroy()
+void CygnusKnights::Destroy()
 {
     Skill::Destroy();
 }

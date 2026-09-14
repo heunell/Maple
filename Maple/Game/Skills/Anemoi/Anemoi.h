@@ -15,7 +15,7 @@ private:
     bool _Casting = false;
 
 public:
-    virtual bool Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator Rotator, const std::string& Name, Ptr<class Actor> Owner) override;
+    virtual bool Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name, Ptr<class Actor> Owner) override;
 
     virtual void Tick(float DeltaTime) override;
 

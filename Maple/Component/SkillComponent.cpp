@@ -12,6 +12,10 @@
 
 // Buff
 #include "Game/Skills/SharpEyes.h"
+#include "Game/Skills/CygnusKnights.h"
+#include "Game/Skills/StormBringer.h"
+#include "Game/Skills/GloryOfGuardians.h"
+#include "Game/Skills/DeSpell.h"
 
 SkillComponent::SkillComponent()
 {}
@@ -68,6 +72,34 @@ bool SkillComponent::Init(int32 Id, const std::string& Name, Ptr<Actor> Owner)
         return false;
     }
 
+    Ptr<CygnusKnights> _CygnusKnights = _Level->SpawnActor<CygnusKnights>("CygnusKnights", FVector3D::Zero, FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f), Owner);
+
+    if (!_CygnusKnights)
+    {
+        return false;
+    }
+
+    Ptr<StormBringer> _StormBringer = _Level->SpawnActor<StormBringer>("StormBringer", FVector3D::Zero, FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f), Owner);
+
+    if (!_StormBringer)
+    {
+        return false;
+    }
+
+    Ptr<GloryOfGuardians> _GloryOfGuardians = _Level->SpawnActor<GloryOfGuardians>("GloryOfGuardians", FVector3D::Zero, FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f), Owner);
+
+    if (!_GloryOfGuardians)
+    {
+        return false;
+    }
+
+    Ptr<DeSpell> _DeSpell = _Level->SpawnActor<DeSpell>("DeSpell", FVector3D::Zero, FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f), Owner);
+
+    if (!_DeSpell)
+    {
+        return false;
+    }
+
     Ptr<TriflingWind> _TriflingWind = _Level->SpawnActor<TriflingWind>("TriflingWind", FVector3D::Zero, FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f), Owner);
 
     if (!_TriflingWind)
@@ -86,6 +118,14 @@ bool SkillComponent::Init(int32 Id, const std::string& Name, Ptr<Actor> Owner)
     _Skills[eSkillType::HowlingGale]  = _HowlingGale;
 
     _Skills[eSkillType::SharpEyes]    = _SharpEyes;
+
+    _Skills[eSkillType::CKnight]      = _CygnusKnights;
+
+    _Skills[eSkillType::StormBringer] = _StormBringer;
+
+    _Skills[eSkillType::GloryOfGuardians] = _GloryOfGuardians;
+
+    _Skills[eSkillType::DeSpell]      = _DeSpell;
 
     return true;
 }
