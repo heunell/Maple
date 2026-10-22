@@ -52,6 +52,8 @@ bool VortexSphere::Init(int32 Id, const FVector3D& Position, const FVector3D& Sc
 
     _CoolDown = _Datas.Cooldown;
 
+    _MPCost   = 500;
+    
     return true;
 }
 

@@ -18,6 +18,7 @@ private:
 
 	int32 _BossDeathCount = 10;
 
+	
 	std::chrono::steady_clock::time_point _BossBattleStartTime;
 
 	bool _BossBattleRunning = false;
@@ -30,9 +31,13 @@ public:
 	Ptr<class MapManager> GetMapManager() const;
 
 	void StartBossBattle();
+	
+	bool EndBossBattle();
 
 	int32 GetBossDeathCount() const;
 
+	void DecreaseBossDeathCount();
+	
 	int32 GetBossRemainingSeconds() const;
 };
 

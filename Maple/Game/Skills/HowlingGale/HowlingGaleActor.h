@@ -2,6 +2,7 @@
 
 #include "Object/Actor.h"
 #include "HowlingGaleDatas.h"
+#include <utility>
 #include <vector>
 
 class HowlingGaleActor : public Actor
@@ -19,8 +20,9 @@ private:
 
     Ptr<class AABBCollisionComponent> _AttackRange;
 
-    std::vector<Ptr<class SpriteComponent>> _HitSprites;
-
+    //std::vector<Ptr<class SpriteComponent>> _HitSprites;
+    std::vector<std::pair<Ptr<class SceneComponent>, Ptr<class SpriteComponent>>> _HitSprites;
+    
     FVector3D _HitPosition;
 
     float _CurrentLifeTime = 0.f;

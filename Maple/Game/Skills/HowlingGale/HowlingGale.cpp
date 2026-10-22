@@ -51,6 +51,8 @@ bool HowlingGale::Init(int32 Id, const FVector3D& Position, const FVector3D& Sca
 
     _CoolDown = _Datas.Cooldown;
 
+    _MPCost   = 500;
+    
     return true;
 }
 

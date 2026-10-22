@@ -32,6 +32,8 @@ protected:
 	float _CoolDown = 0.f;
 
 	float _RemainCoolDown = 0.f;
+	
+	int32 _MPCost = 0;
 
 public:
 	virtual bool Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name, Ptr<Actor> Owner);

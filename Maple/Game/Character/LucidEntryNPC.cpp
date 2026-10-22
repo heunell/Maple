@@ -7,6 +7,7 @@
 #include "Core/AssetManager.h"
 #include "World/GameLevel.h"
 #include "World/MapManager.h"
+#include "UI/LucidEntryDialogUI.h"
 
 bool LucidEntryNPC::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
@@ -55,7 +56,24 @@ bool LucidEntryNPC::Init(int32 Id, const FVector3D& Position, const FVector3D& S
 
 void LucidEntryNPC::Interaction()
 {
-    ChangeToLucidPhase1();
+    if (!_DialogUI)
+    {
+        Ptr<Level> CurrentLevel = GetLevel();
+        
+        if (!CurrentLevel)
+        {
+            return;
+        }
+        
+        _DialogUI = CurrentLevel->SpawnActor<LucidEntryDialogUI>("LucidEntryDialogUI", FVector3D(0.f, 0.f, 0.f), FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f), This<LucidEntryNPC>());
+        
+        if (!_DialogUI)
+        {
+            return;
+        }
+    }
+    
+    _DialogUI->Open();
 }
 
 void LucidEntryNPC::ChangeToLucidPhase1()
@@ -79,11 +97,19 @@ void LucidEntryNPC::ChangeToLucidPhase1()
         CurrentLevel->StartBossBattle();
     }
 
-    Manager->ChangeMap("LucidPhase1");
+    //Manager->ChangeMap("LucidPhase1"); // 중복호출로 인한 제거 Confirm함수에서 호출하고 있다.
 }
 
 void LucidEntryNPC::Destroy()
-{
+{   
+    if (_DialogUI)
+    {
+        _DialogUI->Close();
+        
+        _DialogUI->Remove();
+        
+        _DialogUI = nullptr;
+    }
     _Interaction = nullptr;
 
     _Sprite = nullptr;

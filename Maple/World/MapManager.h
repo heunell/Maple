@@ -30,6 +30,8 @@ public:
 
 	bool ChangeMap(const std::string& MapName);
 
+	bool GetPlayerSpawnPosition(FVector3D& Position) const;
+	
 	virtual void Destroy() override;
 };
 

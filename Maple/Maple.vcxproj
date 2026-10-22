@@ -327,6 +327,7 @@
     <ClInclude Include="Game\Character\LucidEntryNPC.h" />
     <ClInclude Include="UI\DamageNumber.h" />
     <ClInclude Include="UI\DeadNotice.h" />
+    <ClInclude Include="UI\LucidEntryDialogUI.h" />
     <ClInclude Include="UI\MiniMap.h" />
     <ClInclude Include="UI\PlayerUI.h" />
     <ClInclude Include="UI\ProgressBar.h" />
@@ -508,6 +509,7 @@
     <ClCompile Include="Game\Character\LucidEntryNPC.cpp" />
     <ClCompile Include="UI\DamageNumber.cpp" />
     <ClCompile Include="UI\DeadNotice.cpp" />
+    <ClCompile Include="UI\LucidEntryDialogUI.cpp" />
     <ClCompile Include="UI\MiniMap.cpp" />
     <ClCompile Include="UI\PlayerUI.cpp" />
     <ClCompile Include="UI\ProgressBar.cpp" />

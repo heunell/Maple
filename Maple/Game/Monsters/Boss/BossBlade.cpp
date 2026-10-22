@@ -3,8 +3,7 @@
 #include "BossBladeState.h"
 #include "Component/SpriteComponent.h"
 #include "Component/SphereCollisionComponent.h"
-
-#include <cmath>
+#include "Game/Character/Player.h"
 
 bool BossBlade::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
@@ -44,6 +43,8 @@ bool BossBlade::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale
 	_Collision->SetRelativePosition(0.f, 0.f, 0.f);
 	
 	_Collision->SetCollisionProfile("BossAttack");
+	
+	_Collision->SetCollisionCallBack(COLLISION_STATE_OVERLAP, this, &BossBlade::OnOverlap);
 
 	return true;
 }
@@ -128,4 +129,35 @@ void BossBlade::SetPoolEnable(bool Enable)
 
 		_ElapsedTime = 0.f;
 	}
+}
+
+void BossBlade::OnOverlap(Weak<class CollisionComponent> Destination)
+{
+	if (!_Collision || !_Collision->IsEnable())
+	{
+		return;
+	}
+	
+	Ptr<CollisionComponent> HitCollision = Lock<CollisionComponent>(Destination);
+
+	if (!HitCollision)
+	{
+		return;
+	}
+
+	Ptr<class Player> Player = Cast<Actor, class Player>(HitCollision->GetOwner());
+
+	if (!Player)
+	{
+		return;
+	}
+
+	if (HitCollision != Player->FindSceneComponent<CollisionComponent>("AABB"))
+	{
+		return;
+	}
+
+	_Collision->SetEnable(false);
+
+	Player->TakePercentDamage(20, true);
 }

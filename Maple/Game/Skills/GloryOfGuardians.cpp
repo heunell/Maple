@@ -12,6 +12,8 @@ bool GloryOfGuardians::Init(int32 Id, const FVector3D& Position, const FVector3D
         return false;
     }
 
+    _MPCost   = 125;
+    
     _CoolDown = 30.f;
 
     return true;

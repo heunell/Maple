@@ -12,6 +12,8 @@ bool DeSpell::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, 
         return false;
     }
 
+    _MPCost   = 200;
+    
     _CoolDown = 30.f;
 
     return true;

@@ -20,6 +20,8 @@ bool Anemoi::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
         return false;
     }
 
+    _MPCost   = 1000;
+    
     _CoolDown = _Datas.Cooldown;
 
     SkillSprite->AddAnimationSequence("Anemoi.Cast", false);

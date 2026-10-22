@@ -11,7 +11,7 @@ private:
     float _ElapsedTime = 0.f;
 
 public:
-    bool Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name, int64 Damage);
+    bool Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name, int64 Damage, eActorType TargetType = eActorType::Monster);
 
     virtual void Tick(float DeltaTime) override;
 

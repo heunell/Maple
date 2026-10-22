@@ -95,10 +95,34 @@ void HowlingGaleActor::Tick(float DeltaTime)
 {
     Actor::Tick(DeltaTime);
 
+    for (size_t i = 0; i < _HitSprites.size();)
+    {
+        Ptr<SceneComponent> HitRoot = _HitSprites[i].first;
+
+        Ptr<SpriteComponent> HitSprite = _HitSprites[i].second;
+
+        HitRoot->Tick(DeltaTime);
+
+        Ptr<Animation2D> Animation = HitSprite->GetAnimation();
+
+        if (Animation && Animation->IsFinished())
+        {
+            HitRoot->Destroy();
+
+            _HitSprites.erase(_HitSprites.begin() + i);
+
+            continue;
+        }
+
+        i++;
+    }
+    
     if (_IsEnding)
     {
         if (!_Sprite)
         {
+            Destroy();
+            
             Remove();
 
             return;
@@ -108,6 +132,8 @@ void HowlingGaleActor::Tick(float DeltaTime)
 
         if (Animation && Animation->IsFinished())
         {
+            Destroy();
+            
             Remove();
         }
 
@@ -144,42 +170,33 @@ void HowlingGaleActor::Tick(float DeltaTime)
     }
 
     _IsMonsterOverlap = false;
-
-    for (size_t i = 0; i < _HitSprites.size();)
-    {
-        Ptr<SpriteComponent> HitSprite = _HitSprites[i];
-
-        if (!HitSprite)
-        {
-            _HitSprites.erase(_HitSprites.begin() + i);
-
-            continue;
-        }
-
-        Ptr<Animation2D> Animation = HitSprite->GetAnimation();
-
-        if (Animation && Animation->IsFinished())
-        {
-            HitSprite->Destroy();
-
-            _HitSprites.erase(_HitSprites.begin() + i);
-
-            continue;
-        }
-
-        i++;
-    }
 }
 
 void HowlingGaleActor::Destroy()
 {
+    SetEnable(false);
+
+    SetActive(false);
+
+    for (auto& It : _HitSprites)
+    {
+        It.first->Destroy();
+    }
+
+    _HitSprites.clear();
+
+    if (_Root)
+    {
+        _Root->Destroy();
+
+        _Root.reset();
+    }
+    
     _Owner.reset();
 
     _Sprite.reset();
 
     _AttackRange.reset();
-
-    _HitSprites.clear();
 
     Actor::Destroy();
 }
@@ -207,17 +224,26 @@ void HowlingGaleActor::OnMonsterOverlap(Weak<CollisionComponent> Destination)
 
 void HowlingGaleActor::Hit()
 {
+    Ptr<SceneComponent> HitRoot = CreateSceneComponent<SceneComponent>("HowlingGaleHitRoot");
+    
+    if (!HitRoot)
+    {
+        return;
+    }
+    
+    HitRoot->SetWorldPosition(_HitPosition);
+    
     Ptr<SpriteComponent> HitSprite = CreateSceneComponent<SpriteComponent>("HowlingGaleHitSprite");
 
     if (!HitSprite)
     {
+        HitRoot->Destroy();
+        
         return;
     }
 
-    HitSprite->AttachToComponent(GetRoot());
-
-    HitSprite->SetWorldPosition(_HitPosition);
-
+    HitSprite->AttachToComponent(HitRoot);
+    
     HitSprite->SetRenderLayerName("SkillFront");
 
     if (_Stack == 1)
@@ -233,7 +259,7 @@ void HowlingGaleActor::Hit()
         HitSprite->ChangeAnimation("HowlingGale.Stack2.Hit");
     }
 
-    _HitSprites.push_back(HitSprite);
+    _HitSprites.emplace_back(HitRoot, HitSprite);
 }
 
 void HowlingGaleActor::BeginEnd()
@@ -252,6 +278,8 @@ void HowlingGaleActor::BeginEnd()
 
     if (!_Sprite)
     {
+        Destroy();
+        
         Remove();
 
         return;

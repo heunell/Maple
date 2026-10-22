@@ -19,9 +19,13 @@ void InteractionComponent::Tick(float DeltaTime)
 void InteractionComponent::Destroy()
 {
     _InteractionCallback = nullptr;
+    
     _InteractionTarget.reset();
+    
+    _Pressed = false;
+    
     _LastClickTime = {};
-
+    
     ActorComponent::Destroy();
 }
 
@@ -68,26 +72,45 @@ bool InteractionComponent::IsMouseInsideTarget() const
 
 void InteractionComponent::TryInteraction()
 {
+    if (_ClickType == eInteractionClickType::Click)
+    {
+        if (InputSystem::Instance().GetMouseDown(MOUSE_BUTTON_TYPE::LButton))
+        {
+            _Pressed = IsMouseInsideTarget();
+            
+            return;
+        }
+        
+        if (InputSystem::Instance().GetMouseHold(MOUSE_BUTTON_TYPE::LButton))
+        {
+            return;
+        }
+    
+        if (!_Pressed)
+        {
+            return;
+        }
+        
+        _Pressed = false;
+        
+        if (InputSystem::Instance().GetMouseUp(MOUSE_BUTTON_TYPE::LButton) && IsMouseInsideTarget() && _InteractionCallback)
+        {
+            _InteractionCallback();
+        }
+        
+        return;
+    }
+
     if (!InputSystem::Instance().GetMouseDown(MOUSE_BUTTON_TYPE::LButton))
     {
         return;
     }
-
+    
     // 대상 밖을 클릭하면 기존 첫 번째 클릭을 취소한다.
     if (!IsMouseInsideTarget())
     {
         _LastClickTime = {};
      
-        return;
-    }
-
-    if (_ClickType == eInteractionClickType::Click)
-    {
-        if (_InteractionCallback)
-        {
-            _InteractionCallback();
-        }
-
         return;
     }
 

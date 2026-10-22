@@ -3,6 +3,7 @@
 #include "BossMushroomState.h"
 #include "Component/SpriteComponent.h"
 #include "Component/AABBCollisionComponent.h"
+#include "Game/Character/Player.h"
 
 bool BossMushroom::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
@@ -51,6 +52,8 @@ bool BossMushroom::Init(int32 Id, const FVector3D& Position, const FVector3D& Sc
 	
 	_Collision->SetCollisionProfile("Monster");
 
+	_Collision->SetCollisionCallBack(COLLISION_STATE_OVERLAP, this, &BossMushroom::OnOverlap);
+	
 	return true;
 }
 
@@ -170,4 +173,38 @@ void BossMushroom::SetPoolEnable(bool Enable)
 
 		_Dying = false;
 	}
+}
+
+void BossMushroom::OnOverlap(Weak<class CollisionComponent> Destination)
+{
+	if (!_Moving || _Dying || _Status.CurrentHP <= 0)
+	{
+		return;
+	}
+	
+	if (!_Collision || !_Collision->IsEnable())
+	{
+		return;
+	}
+	
+	Ptr<CollisionComponent> HitCollision = Lock<CollisionComponent>(Destination);
+	
+	if (!HitCollision)
+	{
+		return;
+	}
+	
+	Ptr<class Player> Player = Cast<Actor, class Player>(HitCollision->GetOwner());
+
+	if (!Player)
+	{
+		return;
+	}
+
+	if (HitCollision != Player->FindSceneComponent<CollisionComponent>("AABB"))
+	{
+		return;
+	}
+
+	Player->TakePercentDamage(50);
 }

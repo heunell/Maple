@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Skill.h"
+#include "Game/Character/Player.h"
 
 bool Skill::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name, Ptr<Actor> Owner)
 {
@@ -61,10 +62,24 @@ bool Skill::IsActive() const
 
 bool Skill::CanUse() const
 {
-    return _RemainCoolDown <= 0.f;
+    if (_RemainCoolDown > 0.f)
+    {
+        return false;
+    }
+    
+    Ptr<Player> PlayerOwner = Cast<Actor, Player>(Lock(_Owner));
+    
+    return PlayerOwner && PlayerOwner->CanUseMP(_MPCost);
 }
 
 void Skill::StartCoolDown()
 {
+    Ptr<Player> PlayerOwner = Cast<Actor, Player>(Lock(_Owner));
+    
+    if (!PlayerOwner || !PlayerOwner->UseMP(_MPCost))
+    {
+        return;
+    }
+    
     _RemainCoolDown = _CoolDown;
 }

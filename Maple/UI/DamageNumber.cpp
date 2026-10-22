@@ -7,7 +7,7 @@
 #include "Core/AssetManager.h"
 #include <string>
 
-bool DamageNumber::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name, int64 Damage)
+bool DamageNumber::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name, int64 Damage, eActorType TargetType)
 {
     if (!Actor::Init(Id, Position, Scale, Rotator, Name))
     {
@@ -24,7 +24,7 @@ bool DamageNumber::Init(int32 Id, const FVector3D& Position, const FVector3D& Sc
 
     for (char Digit : Text)
     {
-        Ptr<Animation2DData> Data = ANIMATION_MANAGER->FindAnimation(std::string("LUCID_EXTRA.DAMAGE.NO_RED.") + Digit);
+        Ptr<Animation2DData> Data = ANIMATION_MANAGER->FindAnimation(std::string( TargetType == eActorType::Player ? "LUCID_EXTRA.DAMAGE.NO_VIOLET." : "LUCID_EXTRA.DAMAGE.NO_RED.") + Digit);
 
         if (!Data || Data->GetFrameCount() <= 0)
         {
@@ -40,7 +40,7 @@ bool DamageNumber::Init(int32 Id, const FVector3D& Position, const FVector3D& Sc
 
     for (size_t Index = 0; Index < Text.size(); ++Index)
     {
-        Ptr<Animation2DData> Data = ANIMATION_MANAGER->FindAnimation(std::string("LUCID_EXTRA.DAMAGE.NO_RED.") + Text[Index]);
+        Ptr<Animation2DData> Data = ANIMATION_MANAGER->FindAnimation(std::string(TargetType == eActorType::Player ? "LUCID_EXTRA.DAMAGE.NO_VIOLET." : "LUCID_EXTRA.DAMAGE.NO_RED.") + Text[Index]);
 
         Ptr<SceneComponent> Slot = CreateSceneComponent<SceneComponent>("DigitSlot" + std::to_string(Index));
 

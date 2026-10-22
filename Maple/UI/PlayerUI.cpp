@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "PlayerUI.h"
 #include "ProgressBar.h"
+#include "Core/GameEngine.h"
+#include "World/World.h"
+#include "Game/Character/Player.h"
 
 PlayerUI::PlayerUI()
 {}
@@ -63,6 +66,30 @@ bool PlayerUI::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale,
     SetEXP(0.f, 1.f);
 
     return true;
+}
+
+void PlayerUI::Tick(float DeltaTime)
+{
+    UI::Tick(DeltaTime);
+    
+    Ptr<World> CurrentWorld = GameEngine::Instance().GetWorld();
+    
+    if (!CurrentWorld)
+    {
+        return;
+    }
+    
+    Ptr<Player> PlayerOwner = Cast<Actor, Player>(CurrentWorld->GetPlayer());
+    
+    if (!PlayerOwner)
+    {
+        return;
+    }
+    
+    // Player의 현재 수치를 프로그래스바에 반영
+    SetHP(static_cast<float>(PlayerOwner->GetHP()), static_cast<float>(PlayerOwner->GetMaxHP()));
+    
+    SetMP(static_cast<float>(PlayerOwner->GetMP()), static_cast<float>(PlayerOwner->GetMaxMP()));
 }
 
 void PlayerUI::SetHP(float CurrentHP, float MaxHP)

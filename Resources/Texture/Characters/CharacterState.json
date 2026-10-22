@@ -1,5 +1,16 @@
 {
   "Animations": {
+    "Dead": {
+      "Texture": "Characters/Dead.png",
+      "Frames": [
+        {
+          "UV": [0.0, 0.0, 1.0, 1.0],
+          "Size": [67.0, 73.0],
+          "Offset": [0.0, 0.0],
+          "Delay": 0.0
+        }
+      ]
+    },
     "ARMED_SHOOT": {
       "Texture": "Characters/Armed_atlas.png",
       "Loop": false,

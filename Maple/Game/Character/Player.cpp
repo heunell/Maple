@@ -1,9 +1,13 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "Player.h"
 #include "State/PlayerState.h"
 #include "State/PlayerStateMachine.h"
+#include "State/PlayerIdleState.h"
+#include "State/PlayerDeadState.h"
 #include "World/World.h"
 #include "World/Level.h"
+#include "World/MapManager.h"
+#include "World/GameLevel.h"
 #include "Collision/CollisionProfile.h"
 #include "Controller/PlayerController.h"
 #include "Component/PlayerComponent.h"
@@ -19,6 +23,7 @@
 #include "Core/GameEngine.h"
 #include "Core/TimeManager.h"
 #include "Render/RenderManager.h"
+#include "UI/DamageNumber.h"
 #include "Game/Map/Gate/GateInteractComponent.h"
 
 bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
@@ -59,6 +64,54 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 	
 	SkillSprite->SetEnable(false);
 
+	Ptr<SceneComponent> DeadRoot = CreateSceneComponent<SceneComponent>("DeadGhostRoot");
+	
+	if (!DeadRoot)
+	{
+		return false;
+	}
+	
+	DeadRoot->AttachToComponent(GetRoot());
+	
+	Ptr<SpriteComponent> DeadSprite = CreateSceneComponent<SpriteComponent>("DeadGhost");
+	
+	if (!DeadSprite)
+	{
+		return false;
+	}
+	
+	DeadSprite->AttachToComponent(DeadRoot);
+	
+	DeadSprite->SetRenderLayerName("Player");
+	
+	DeadSprite->AddAnimationSequence("Dead", false);
+	
+	DeadSprite->SetEnable(false);
+	
+	DeadRoot = CreateSceneComponent<SceneComponent>("DeadTombRoot");
+	
+	if (!DeadRoot)
+	{
+		return false;
+	}
+	
+	DeadRoot->AttachToComponent(GetRoot());
+	
+	DeadSprite = CreateSceneComponent<SpriteComponent>("DeadTomb");
+	
+	if (!DeadSprite)
+	{
+		return false;
+	}
+	
+	DeadSprite->AttachToComponent(DeadRoot);
+	
+	DeadSprite->SetRenderLayerName("Player");
+	
+	DeadSprite->AddAnimationSequence("TombFallFrame", false);
+
+	DeadSprite->SetEnable(false);
+	
 	CreateActorComponent<SkillComponent>("Skill");
 
 	if (!CreateActorComponent<BuffComponent>("Buff"))
@@ -209,6 +262,26 @@ bool Player::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, c
 void Player::Tick(float DeltaTime)
 {
 	Pawn::Tick(DeltaTime);
+	
+	if (_InvincTimer > 0.f)
+	{
+		_InvincTimer -= DeltaTime;
+		
+		if (_InvincTimer < 0.f)
+		{
+			_InvincTimer = 0.f;
+		}
+	}
+	
+	if (_ReviveInvincibleTimer > 0.f)
+	{
+		_ReviveInvincibleTimer -= DeltaTime;
+		
+		if (_ReviveInvincibleTimer < 0.f)
+		{
+			_ReviveInvincibleTimer = 0.f;
+		}
+	}
 }
 
 void Player::Collision(float DeltaTime)
@@ -313,7 +386,7 @@ bool Player::DownJump()
 	Ptr<CollisionComponent> CurrentGround = Lock(_CurrentGround);
 
 	if (!CurrentGround || !GetLevel())
-{
+	{
 		return false;
 	}
 
@@ -334,6 +407,171 @@ bool Player::DownJump()
 	return true;
 }
 
+void Player::TakeDamage(int32 Damage, bool IgnoreInvincible)
+{
+	if (Damage <= 0 || _CurrentHP <= 0 || _ReviveInvincibleTimer > 0.f)
+	{
+		return;
+	}
+
+	if (!IgnoreInvincible && _InvincTimer > 0.f)
+	{
+		return;
+	}
+
+	if (Damage >= _CurrentHP)
+	{
+		_CurrentHP = 0;
+		
+		Ptr<GameLevel> CurrentLevel = Cast<Level, GameLevel>(GetLevel());
+		
+		if (CurrentLevel)
+		{
+			CurrentLevel->DecreaseBossDeathCount();
+		}
+	}
+	else
+	{
+		_CurrentHP -= Damage;
+	}
+
+	if (!IgnoreInvincible)
+	{
+		_InvincTimer = 1.f;
+	}
+	
+	if (_AABBCollision)
+	{
+		ShowDamage(Damage, FVector3D(_AABBCollision->GetWorldPosition()._x, _AABBCollision->GetWorldPosition()._y + _AABBCollision->GetBoxSize()._y * 0.5f + 20.f, _AABBCollision->GetWorldPosition()._z));
+	}
+	
+	if (_CurrentHP == 0)
+	{
+		Ptr<PlayerComponent> PlayerState = FindActorComponent<PlayerComponent>("PlayerState");
+
+		if (PlayerState)
+		{
+			PlayerState->TransitionMovement(New<PlayerDeadState>());
+		}
+	}
+}
+
+void Player::ShowDamage(int32 Damage, const FVector3D& Position)
+{
+	if (Damage <= 0 || !GetLevel())
+	{
+		return;
+	}
+	
+	GetLevel()->SpawnActor<DamageNumber>("PlayerDamageNumber", Position, FVector3D(1.f, 1.f, 1.f), FRotator(0.f, 0.f, 0.f), Damage, eActorType::Player);
+}
+
+void Player::TakePercentDamage(int32 Percent, bool IgnoreInvincible)
+{
+	if (Percent <= 0)
+	{
+		return;
+	}
+
+	const int32 Damage = _MaxHP * Percent / 100;
+
+	TakeDamage(Damage, IgnoreInvincible);
+}
+
+bool Player::Revive()
+{
+	if (_CurrentHP > 0 || !_Movement || !_AABBCollision)
+	{
+		return false;
+	}
+	
+	Ptr<GameLevel> CurrentLevel = Cast<Level, GameLevel>(GetLevel());
+	
+	if (!CurrentLevel)
+	{
+		return false;
+	}
+	
+	Ptr<MapManager> Maps = CurrentLevel->GetMapManager();
+	
+	Ptr<PlayerComponent> PlayerState = FindActorComponent<PlayerComponent>("PlayerState");
+	
+	Ptr<PlayerController> Controller = GetController<PlayerController>();
+	
+	if (!Maps || !PlayerState || !PlayerState->GetStateMachine() || !Controller || !Controller->GetInputComponent())
+	{
+		return false;
+	}
+	
+	FVector3D SpawnPosition = FVector3D::Zero;
+	
+	if (!Maps->GetPlayerSpawnPosition(SpawnPosition))
+	{
+		return false;
+	}
+	
+	_CurrentHP = _MaxHP;
+	_CurrentMP = _MaxMP;
+
+	_InvincTimer = 0.f;
+	_ReviveInvincibleTimer = 3.f;
+
+	_CurrentGround.reset();
+	_IgnoredGround.reset();
+
+	SetWorldPosition(SpawnPosition);
+
+	_Movement->ResetMovement();
+	_Movement->SetLanding(false);
+
+	PlayerState->TransitionMovement(New<PlayerIdleState>());
+
+	_Movement->SetEnable(true);
+	_AABBCollision->SetEnable(true);
+
+	// 복구가 끝난 뒤 키보드 입력을 다시 받는다.
+	Controller->GetInputComponent()->SetEnable(true);
+
+	return true;
+}
+
+bool Player::UseMP(int32 Cost)
+{
+	if (!CanUseMP(Cost))
+	{
+		return false;
+	}
+
+	_CurrentMP -= Cost;
+
+	return true;
+}
+
+bool Player::CanUseMP(int32 Cost) const
+{
+	return Cost >= 0 && _CurrentMP >= Cost;
+}
+
+int32 Player::GetHP() const
+{
+	return _CurrentHP;
+}
+
+int32 Player::GetMaxHP() const
+{
+	return _MaxHP;
+}
+
+int32 Player::GetMP() const
+{
+	return _CurrentMP;
+}
+
+int32 Player::GetMaxMP() const
+{
+	return _MaxMP;
+}
+
 void Player::MoveUp(float DeltaTime)
 {
 	// todo : Move Up과 Down은 메이플스토리에서 해당하는 로직이 조금씩 다르기 때문에 잠시 대기
@@ -341,6 +579,11 @@ void Player::MoveUp(float DeltaTime)
 
 void Player::OnGround(Weak<class CollisionComponent> Collision)
 {
+	if (_CurrentHP <= 0)
+	{
+		return;
+	}
+	
 	Ptr<CollisionComponent> Component = Lock<CollisionComponent>(Collision);
 
 	if(!Component || !Component->GetProfile())
@@ -414,6 +657,11 @@ void Player::OnGroundRelease(Weak<class CollisionComponent> Collision)
 
 void Player::OnLeftWall (Weak<class CollisionComponent> Collision)
 {
+	if (_CurrentHP <= 0)
+	{
+		return;
+	}
+	
 	Ptr<CollisionComponent> Component = Lock<CollisionComponent>(Collision);
 
 	if(!Component || !Component->GetProfile())
@@ -453,6 +701,11 @@ void Player::OnLeftWall (Weak<class CollisionComponent> Collision)
 
 void Player::OnRightWall(Weak<class CollisionComponent> Collision)
 {
+	if (_CurrentHP <= 0)
+	{
+		return;
+	}
+	
 	Ptr<CollisionComponent> Component = Lock<CollisionComponent>(Collision);
 
 	if(!Component || !Component->GetProfile())

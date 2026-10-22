@@ -3,6 +3,7 @@
 #include "Boss2LaserState.h"
 #include "Component/SpriteComponent.h"
 #include "Component/OBBCollisionComponent.h"
+#include "Game/Character/Player.h"
 
 bool Boss2Laser::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
@@ -153,7 +154,7 @@ void Boss2Laser::OnOverlap(Weak<CollisionComponent> Destination)
 		return;
 	}
 
-	Ptr<Actor> Player = Lock<Actor>(HitCollision->GetOwner());
+	Ptr<class Player> Player = Cast<Actor, class Player>(HitCollision->GetOwner());
 
 	if (!Player)
 	{
@@ -164,6 +165,8 @@ void Boss2Laser::OnOverlap(Weak<CollisionComponent> Destination)
 	{
 		return;
 	}
-
-	// Todo : 플레이어 피해 처리
+	
+	_Collision->SetEnable(false);
+	
+	Player->TakePercentDamage(15, true);
 }

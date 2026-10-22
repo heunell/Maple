@@ -24,6 +24,18 @@ private:
     
     float _Opacity = 0.f;
     
+    int32 _MaxHP = 50000;
+    
+    int32 _CurrentHP = 50000;
+    
+    int32 _MaxMP = 30000;
+    
+    int32 _CurrentMP = 30000;
+    
+    float _InvincTimer = 0.f;
+    
+    float _ReviveInvincibleTimer = 0.f;
+    
 public:
     virtual bool Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name) override;
     
@@ -51,6 +63,26 @@ public:
 
     bool DownJump();
 
+    void TakeDamage(int32 Damage, bool IgnoreInvincible = false);
+    
+    void TakePercentDamage(int32 Percent, bool IgnoreInvincible = false);
+    
+    void ShowDamage(int32 Damage, const FVector3D& Position);
+    
+    bool Revive();
+    
+    bool UseMP(int32 Cost);
+    
+    bool CanUseMP(int32 Cost) const;
+    
+    int32 GetHP() const;
+    
+    int32 GetMP() const;
+    
+    int32 GetMaxHP() const;
+    
+    int32 GetMaxMP() const;
+    
 private:
     void MoveUp   (float DeltaTime);
     

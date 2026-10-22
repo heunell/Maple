@@ -73,6 +73,8 @@ bool SongOfHeaven::Init(int32 Id, const FVector3D& Position, const FVector3D& Sc
     {
         return false;
     }
+    
+    _MPCost   = 55;
 
     AddTag("PlayerAttack");
 
@@ -165,6 +167,11 @@ void SongOfHeaven::Start()
         return;
     }
 
+    if (!CanUse())
+    {
+        return;
+    }
+    
     Ptr<SpriteComponent> SkillSprite = Owner->FindSceneComponent<SpriteComponent>("SkillSprite");
 
     if (!SkillSprite)
@@ -280,6 +287,13 @@ void SongOfHeaven::Fire(float DeltaTime)
         return;
     }
 
+    if (!OwnerPlayer->UseMP(_MPCost))
+    {
+        End();
+        
+        return;
+    }
+    
     Ptr<SceneComponent> ProjectileRoot = CreateSceneComponent<SceneComponent>("ProjectileRoot");
 
     ProjectileRoot->AttachToComponent(GetRoot());

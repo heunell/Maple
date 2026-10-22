@@ -36,6 +36,8 @@ private:
 
 	eInteractionClickType _ClickType = eInteractionClickType::Click;
 
+  bool _Pressed = false;
+  
 	std::chrono::steady_clock::time_point _LastClickTime;
 
 	std::function<void()> _InteractionCallback;
@@ -51,6 +53,7 @@ public:
 
 	void SetClickType(eInteractionClickType ClickType);
 
+	bool IsMouseInsideTarget() const;
 	 
 public:
 	template<typename T>
@@ -63,10 +66,6 @@ public:
 	}
 
 private:
-	bool IsMouseInsideTarget() const;
-
 	void TryInteraction();
-
-
 };
 

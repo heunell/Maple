@@ -3,9 +3,11 @@
 #include "BossPhase1GolemState.h"
 #include "Core/GameEngine.h"
 #include "Collision/CollisionProfile.h"
+#include "Collision/CollisionSystem.h"
 #include "Component/SpriteComponent.h"
 #include "Component/AABBCollisionComponent.h"
 #include "World/World.h"
+#include "Game/Character/Player.h"
 
 bool BossPhase1Golem::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
@@ -143,6 +145,8 @@ void BossPhase1Golem::Tick(float DeltaTime)
 		_Falling = false;
 
 		_Landing = true;
+		
+		CheckLandingDamage();
 
 		_Sprite->ChangeAnimation("LUCID_GOLEM_8880161.revive");
 
@@ -291,5 +295,59 @@ void BossPhase1Golem::SetPoolEnable(bool Enable)
         _Falling = false;
 
         _Landing = false;
+	}
+}
+
+void BossPhase1Golem::CheckLandingDamage()
+{
+	if (!_Collision)
+	{
+		return;
+	}
+
+	Ptr<World> CurrentWorld = GameEngine::Instance().GetWorld();
+
+	if (!CurrentWorld)
+	{
+		return;
+	}
+
+	Ptr<class Player> Player = Cast<Actor, class Player>(CurrentWorld->GetPlayer());
+
+	if (!Player || !Player->IsActive() || !Player->IsEnable())
+	{
+		return;
+	}
+
+	Ptr<AABBCollisionComponent> PlayerCollision = Player->FindSceneComponent<AABBCollisionComponent>("AABB");
+
+	if (!PlayerCollision || !PlayerCollision->IsActive() || !PlayerCollision->IsEnable())
+	{
+		return;
+	}
+
+	const FVector3D& GolemPosition  = _Collision->GetWorldPosition();
+	
+	const FVector2D& GolemSize      = _Collision->GetBoxSize();
+
+	const FVector3D& PlayerPosition = PlayerCollision->GetWorldPosition();
+	
+	const FVector2D& PlayerSize     = PlayerCollision->GetBoxSize();
+
+	FAABB2D GolemBox
+	{
+		FVector2D(GolemPosition._x - GolemSize._x * 0.5f, GolemPosition._y - GolemSize._y * 0.5f), 
+		FVector2D(GolemPosition._x + GolemSize._x * 0.5f, GolemPosition._y + GolemSize._y * 0.5f)
+	};
+
+	FAABB2D PlayerBox
+	{
+		FVector2D(PlayerPosition._x - PlayerSize._x * 0.5f, PlayerPosition._y - PlayerSize._y * 0.5f),
+		FVector2D(PlayerPosition._x + PlayerSize._x * 0.5f, PlayerPosition._y + PlayerSize._y * 0.5f)
+	};
+
+	if (CollisionSystem::AABBToAABB(GolemBox, PlayerBox))
+	{
+		Player->TakePercentDamage(35);
 	}
 }

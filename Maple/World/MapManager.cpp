@@ -169,6 +169,27 @@ bool MapManager::ChangeMap(const std::string& MapName)
 	return true;
 }
 
+bool MapManager::GetPlayerSpawnPosition(FVector3D& Position) const
+{
+	Ptr<Actor> CurrentMap = Lock<Actor>(_CurrentMap);
+	
+	if (!CurrentMap)
+	{
+		return false;
+	}
+	
+	auto It = _PlayerSpawnPositions.find(CurrentMap->GetName());
+	
+	if (It == _PlayerSpawnPositions.end())
+	{
+		return false;
+	}
+	
+	Position = It->second;
+	
+	return true;
+}
+
 void MapManager::Destroy()
 {
 	// Map Actor는 Level 이 소유하니까 여기서 Destroy 안함

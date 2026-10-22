@@ -2,6 +2,7 @@
 #include "BossDragon.h"
 #include "Component/SpriteComponent.h"
 #include "Component/AABBCollisionComponent.h"
+#include "Game/Character/Player.h"
 
 void BossDragon::StartBreathPattern()
 {
@@ -325,7 +326,7 @@ void BossDragon::OnOverlap(Weak<CollisionComponent> Destination)
 		return;
 	}
 
-	Ptr<Actor> Player = Lock<Actor>(HitCollision->GetOwner());
+	Ptr<class Player> Player = Cast<Actor, class Player>(HitCollision->GetOwner());
 
 	if (!Player)
 	{
@@ -339,5 +340,5 @@ void BossDragon::OnOverlap(Weak<CollisionComponent> Destination)
 
 	_Hit = true;
 
-	// Todo : 플레이어의 즉사 피해 함수 연결
+	Player->TakePercentDamage(100, true);
 }

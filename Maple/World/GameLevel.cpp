@@ -61,9 +61,31 @@ void GameLevel::StartBossBattle()
     _BossBattleRunning = true;
 }
 
+bool GameLevel::EndBossBattle()
+{
+    if (!_MapManager || !_MapManager->ChangeMap("LucidEntry"))
+    {
+        return false;
+    }
+    
+    _BossBattleRunning = false;
+    
+    return true;
+}
+
 int32 GameLevel::GetBossDeathCount() const
 {
     return _BossDeathCount;
+}
+
+void GameLevel::DecreaseBossDeathCount()
+{
+    if (!_BossBattleRunning || _BossDeathCount <= 0)
+    {
+        return;
+    }
+    
+    --_BossDeathCount;
 }
 
 int32 GameLevel::GetBossRemainingSeconds() const

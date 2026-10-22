@@ -132,6 +132,11 @@ bool AnimationManager::Init()
     {
         return false;
     }
+    
+    if (!LoadAnimationFile(TEXT("UI\\BossUI.json"), "BossEnter"))
+    {
+        return false;
+    }
 
     if (!LoadAnimationFile(TEXT("UI\\BossUI.json"), "BossHUD"))
     {
@@ -143,6 +148,11 @@ bool AnimationManager::Init()
         return false;
     }
 
+    if (!LoadAnimationFile(TEXT("UI\\DeadNotice.json"), "Animations"))
+    {
+        return false;
+    }
+    
     return LoadAnimationFile(TEXT("UI\\Cursor.json"), "Animations");
 }
 

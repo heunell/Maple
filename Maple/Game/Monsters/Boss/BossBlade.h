@@ -26,6 +26,8 @@ private:
 
 	float _LifeTime = 6.35f;
 
+	void OnOverlap(Weak<class CollisionComponent> Destination);
+	
 public:
 	virtual bool Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name) override;
 

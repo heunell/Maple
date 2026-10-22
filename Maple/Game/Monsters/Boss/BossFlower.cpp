@@ -3,6 +3,7 @@
 #include "BossFlowerState.h"
 #include "Component/SpriteComponent.h"
 #include "Component/OBBCollisionComponent.h"
+#include "Game/Character/Player.h"
 
 bool BossFlower::Init(int32 Id, const FVector3D& Position, const FVector3D& Scale, const FRotator& Rotator, const std::string& Name)
 {
@@ -166,7 +167,7 @@ void BossFlower::OnOverlap(Weak<CollisionComponent> Destination)
 		return;
 	}
 
-	Ptr<Actor> Player = Lock<Actor>(HitCollision->GetOwner());
+	Ptr<class Player> Player = Cast<Actor, class Player>(HitCollision->GetOwner());//Ptr<Actor> Player = Lock<Actor>(HitCollision->GetOwner());
 
 	if (!Player)
 	{
@@ -180,5 +181,7 @@ void BossFlower::OnOverlap(Weak<CollisionComponent> Destination)
 
 	_HitData.Hit = true;
 
-	// Todo : Player 피해처리
+	_HitData.Hit = true;
+	
+	Player->TakePercentDamage(15);
 }

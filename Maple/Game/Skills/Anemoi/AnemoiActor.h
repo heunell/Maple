@@ -1,6 +1,7 @@
 #pragma once
 #include "Object/Actor.h"
 #include "AnemoiDatas.h"
+#include <unordered_map>
 
 class AnemoiActor : public Actor
 {
@@ -14,7 +15,7 @@ private:
     Weak<class Actor> _Target;
 
     Ptr<class SpriteComponent> _Sprite = nullptr;
-
+    
     Ptr<class AABBCollisionComponent> _AttackRange = nullptr;
 
     Ptr<class AnemoiStateMachine> _StateMachine = nullptr;
